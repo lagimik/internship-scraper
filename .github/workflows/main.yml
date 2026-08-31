@@ -12,12 +12,12 @@ jobs:
       contents: write
 
     steps:
-     - name: Commit and push to gh-pages
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Publish site to gh-pages
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git fetch origin
-          git switch --track origin/gh-pages
-          git merge origin/main
-          git commit --allow-empty -m "Publish /site to GitHub Pages" || true
-          git subtree push --prefix site gh-pages
+          git subtree split --prefix site --branch pages-deploy
+          git push --force origin pages-deploy:gh-pages
