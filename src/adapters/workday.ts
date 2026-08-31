@@ -45,10 +45,12 @@ export const WORKDAY_BOARDS: WorkdayBoard[] = [
  { url: 'https://rockwellautomation.wd1.myworkdayjobs.com/en-US/External_Rockwell_Automation/', name: 'Rockwell Automation' },
  { url: 'https://cae.wd3.myworkdayjobs.com/career/', name: 'CAE' },
  { url: 'https://enbridge.wd3.myworkdayjobs.com/enbridge_careers', name: 'Enbridge' }, 
+ { url: 'https://suncor.wd1.myworkdayjobs.com/Suncor_External', name: 'Suncor' },
  { url: 'https://bb.wd3.myworkdayjobs.com/en-US/Student', name: 'BlackBerry (Student)' },
  { url: 'https://flir.wd1.myworkdayjobs.com/en-CA/flircareers/', name: 'FLIR' },
  { url: 'https://trimble.wd1.myworkdayjobs.com/en-US/TrimbleCareers/?locationCountry=a30a87ed25634629aa6c3958aa2b91ea', name: 'Trimble' },
  { url: 'https://bb.wd3.myworkdayjobs.com/QNX', name: 'QNX' },
+ { url: 'https://curtisswright.wd1.myworkdayjobs.com/CW_External_Career_Site', name: 'Curtiss-Wright' },
  
 
 

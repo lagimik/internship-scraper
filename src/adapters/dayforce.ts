@@ -23,6 +23,7 @@ export interface DayforceBoard {
 
 export const DAYFORCE_BOARDS: DayforceBoard[] = [
   { url: 'https://jobs.dayforcehcm.com/en-CA/eclipse/CANDIDATEPORTAL', name: 'Eclipse Automation' },
+  { url: 'https://jobs.dayforcehcm.com/en-US/pp4h663/CANDIDATEPORTAL', name: 'Synaptive' }
 ];
 
 export interface ParsedDayforceUrl {
