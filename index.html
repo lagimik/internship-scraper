@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<!-- saved from url=(0022)http://localhost:4000/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Job Tracker, Internships, Canada</title>
+<style>
+  :root {
+    --bg: #0f1115; --panel: #171a21; --panel-2: #1d212a; --line: #272c37;
+    --fg: #e6e9ef; --muted: #8b93a4; --accent: #5b9dff; --ok: #3fb950;
+    --warn: #d29922; --bad: #f85149; --radius: 10px;
+  }
+  @media (prefers-color-scheme: light) {
+    :root {
+      --bg: #f6f7f9; --panel: #fff; --panel-2: #f0f2f5; --line: #dfe3ea;
+      --fg: #12151a; --muted: #5b6474; --accent: #0b62d6;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--fg);
+    font: 14px/1.5 ui-sans-serif, -apple-system, "Segoe UI", Roboto, sans-serif;
+  }
+  header {
+    position: sticky; top: 0; z-index: 10; background: var(--panel);
+    border-bottom: 1px solid var(--line); padding: 12px 20px;
+  }
+  .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; }
+  h1 { font-size: 16px; margin: 0 12px 0 0; font-weight: 650; letter-spacing: -.01em; }
+  .pill {
+    background: var(--panel-2); border: 1px solid var(--line); border-radius: 999px;
+    padding: 3px 10px; font-size: 12px; color: var(--muted);
+  }
+  input[type=search], select {
+    background: var(--panel-2); color: var(--fg); border: 1px solid var(--line);
+    border-radius: 8px; padding: 7px 10px; font-size: 13px; font-family: inherit;
+  }
+  input[type=search] { min-width: 260px; flex: 1 1 260px; }
+  label.check { display: flex; gap: 6px; align-items: center; font-size: 13px; color: var(--muted); cursor: pointer; }
+  main { padding: 16px 20px 60px; max-width: 1200px; margin: 0 auto; }
+  .job {
+    background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+    padding: 12px 14px; margin-bottom: 8px; display: grid;
+    grid-template-columns: 1fr auto; gap: 10px; align-items: start;
+  }
+  .job h2 { font-size: 15px; margin: 0 0 4px; font-weight: 600; }
+  .job h2 a { color: var(--fg); text-decoration: none; }
+  .job h2 a:hover { color: var(--accent); text-decoration: underline; }
+  .meta { color: var(--muted); font-size: 12.5px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
+  .tag {
+    font-size: 11px; padding: 2px 7px; border-radius: 6px;
+    background: var(--panel-2); border: 1px solid var(--line);
+  }
+  .tag.mechanical-engineering, .tag.mechatronics { color: #79c0ff; }
+  .tag.design-manufacturing, .tag.manufacturing-engineering { color: #7ee787; }
+  .tag.materials-engineering { color: #d2a8ff; }
+  .tag.project-management, .tag.program-management { color: #ffa657; }
+  .tag.intern, .tag\[co-op\] { color: var(--warn); }
+  .tag.amb { color: var(--warn); border-color: var(--warn); }
+  .actions { display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; }
+  button.st {
+    background: var(--panel-2); color: var(--muted); border: 1px solid var(--line);
+    border-radius: 7px; padding: 4px 9px; font-size: 12px; cursor: pointer; font-family: inherit;
+  }
+  button.st:hover { color: var(--fg); border-color: var(--accent); }
+  button.st.on { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .empty { color: var(--muted); text-align: center; padding: 60px 20px; }
+  .runs { font-size: 12px; color: var(--muted); margin-top: 24px; border-top: 1px solid var(--line); padding-top: 12px; }
+  .runs .bad { color: var(--bad); }
+  .runs .good { color: var(--ok); }
+  a.src { color: var(--muted); text-decoration: none; }
+  a.src:hover { color: var(--accent); }
+  @media (max-width: 640px) { .job { grid-template-columns: 1fr; } .actions { justify-content: flex-start; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="row">
+    <h1>Job Tracker <span style="color:var(--muted);font-weight:400">Internships · Canada</span></h1>
+    <span class="pill" id="count">5 unreviewed · 5 total</span>
+    <input type="search" id="q" placeholder="Search title, company, location…">
+    <select id="source"><option value="">All sources</option><option value="workday">workday (2)</option><option value="oracle">oracle (2)</option><option value="simplify">simplify (1)</option></select>
+    <select id="category"><option value="">All roles</option><option value="mechanical-engineering">mechanical-engineering (4)</option><option value="manufacturing-engineering">manufacturing-engineering (1)</option></select>
+    <select id="type"><option value="">Intern + co-op</option><option value="intern">intern (5)</option></select>
+    <select id="province"><option value="">All provinces</option><option value="ON">ON (4)</option><option value="QC">QC (1)</option></select>
+    <select id="sort">
+      <option value="newest">Newest posted</option>
+      <option value="oldest">Oldest posted</option>
+    </select>
+    <label class="check"><input type="checkbox" id="remote"> Remote</label>
+  </div>
+</header>
+
+<main>
+  <div id="list"><article class="job">
+      <div>
+        <h2><a href="https://lumentum.wd5.myworkdayjobs.com/en-US/LITE/job/Canada---Ottawa-Bill-Leathem/Mechanical-Designer--Co-op-Intern-_20261123" target="_blank" rel="noopener">Mechanical Designer (Co-op/Intern)</a></h2>
+        <div class="meta">
+          <strong style="color:var(--fg)">Lumentum</strong>
+          <span>·</span><span>Canada - Ottawa (Bill Leathem)</span>
+          
+          <span>·</span><span title="2026-08-29T04:00:57.603Z">2d ago</span>
+          <span>·</span><span>workday</span>
+          <span class="tag mechanical-engineering">mechanical-engineering</span><span class="tag">intern</span>
+        </div>
+      </div>
+      <div class="actions" data-id="1cc25df93fadcbd2">
+        <button class="st on" data-status="new">new</button><button class="st " data-status="applied">applied</button><button class="st " data-status="interview">interview scheduled</button><button class="st " data-status="rejected">rejected</button><button class="st " data-status="offer">offer</button>
+      </div>
+    </article><article class="job">
+      <div>
+        <h2><a href="https://emit.fa.ca3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2001/job/85371" target="_blank" rel="noopener">Intern, Mechanical Engineering - Winter 2027</a></h2>
+        <div class="meta">
+          <strong style="color:var(--fg)">WSP</strong>
+          <span>·</span><span>Thornhill, ON, Canada; CA/ON/Thornhill (Commerce Valley Drive West)</span>
+          
+          <span>·</span><span title="2026-08-26T00:00:00.000Z">6d ago</span>
+          <span>·</span><span>oracle</span>
+          <span class="tag mechanical-engineering">mechanical-engineering</span><span class="tag">intern</span>
+        </div>
+      </div>
+      <div class="actions" data-id="96883a2d5fa43c78">
+        <button class="st on" data-status="new">new</button><button class="st " data-status="applied">applied</button><button class="st " data-status="interview">interview scheduled</button><button class="st " data-status="rejected">rejected</button><button class="st " data-status="offer">offer</button>
+      </div>
+    </article><article class="job">
+      <div>
+        <h2><a href="https://emit.fa.ca3.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_2001/job/91602" target="_blank" rel="noopener">Mechanical Engineering Co-op Student</a></h2>
+        <div class="meta">
+          <strong style="color:var(--fg)">WSP</strong>
+          <span>·</span><span>Thornhill, ON, Canada; CA/ON/Thornhill (Commerce Valley Drive West)</span>
+          
+          <span>·</span><span title="2026-08-25T00:00:00.000Z">7d ago</span>
+          <span>·</span><span>oracle</span>
+          <span class="tag mechanical-engineering">mechanical-engineering</span><span class="tag">intern</span>
+        </div>
+      </div>
+      <div class="actions" data-id="cbf45992e2f1131f">
+        <button class="st on" data-status="new">new</button><button class="st " data-status="applied">applied</button><button class="st " data-status="interview">interview scheduled</button><button class="st " data-status="rejected">rejected</button><button class="st " data-status="offer">offer</button>
+      </div>
+    </article><article class="job">
+      <div>
+        <h2><a href="https://slihrms.wd3.myworkdayjobs.com/en-US/careers/job/CAONMississauga2251-Speakman-Drive/Mechanical---Chemical-Engineering-Student---Fall_R-159103" target="_blank" rel="noopener">Mechanical Engineering/Mechanical Engineering Technology Student - Fall</a></h2>
+        <div class="meta">
+          <strong style="color:var(--fg)">AtkinsRealis</strong>
+          <span>·</span><span>CA.ON.Mississauga.2251 Speakman Drive</span>
+          
+          <span>·</span><span title="2026-08-22T04:01:18.155Z">9d ago</span>
+          <span>·</span><span>workday</span>
+          <span class="tag mechanical-engineering">mechanical-engineering</span><span class="tag">intern</span>
+        </div>
+      </div>
+      <div class="actions" data-id="ac68747a6f1ce0ff">
+        <button class="st on" data-status="new">new</button><button class="st " data-status="applied">applied</button><button class="st " data-status="interview">interview scheduled</button><button class="st " data-status="rejected">rejected</button><button class="st " data-status="offer">offer</button>
+      </div>
+    </article><article class="job">
+      <div>
+        <h2><a href="https://globalhr.wd5.myworkdayjobs.com/rec_rtx_ext_gateway/job/CA-QC-LONGUEUIL-J01--1000-Blvd-Marie-Victorin--J01-BLDG/Stage---Hiver-2027---Industrialisation----Internship---Winter-2027---Industrialization-Production-Readiness_01867520" target="_blank" rel="noopener">Industrialization Intern - Industrialization Production Readiness</a></h2>
+        <div class="meta">
+          <strong style="color:var(--fg)">RTX</strong>
+          <span>·</span><span>Longueuil, QC, Canada</span>
+          
+          <span>·</span><span title="2026-08-21T00:00:00.000Z">11d ago</span>
+          <span>·</span><span>simplify</span>
+          <span class="tag manufacturing-engineering">manufacturing-engineering</span><span class="tag">intern</span>
+        </div>
+      </div>
+      <div class="actions" data-id="9481537e3e653013">
+        <button class="st on" data-status="new">new</button><button class="st " data-status="applied">applied</button><button class="st " data-status="interview">interview scheduled</button><button class="st " data-status="rejected">rejected</button><button class="st " data-status="offer">offer</button>
+      </div>
+    </article></div>
+  <div class="runs" id="runs"><strong>Last run per source:</strong> <span class="good">ashby ✓ 0 kept</span> · <span class="good">custom ✓ 0 kept</span> · <span class="good">github ✓ 0 kept</span> · <span class="good">greenhouse ✓ 0 kept</span> · <span class="good">lever ✓ 0 kept</span> · <span class="good">oracle ✓ 2 kept</span> · <span class="good">simplify ✓ 1 kept</span> · <span class="good">successfactors ✓ 0 kept</span> · <span class="good">ultipro ✓ 0 kept</span> · <span class="good">workday ✓ 2 kept</span></div>
+</main>
+
+<script>
+const $ = (id) => document.getElementById(id);
+const STATUSES = ['new', 'applied', 'interview', 'rejected', 'offer'];
+// Stored value -> button label, where the two differ.
+const STATUS_LABELS = { interview: 'interview scheduled' };
+const controls = ['q','source','category','type','province','sort','remote'];
+let facetsLoaded = false;
+// Mirrored from the last load so a status click can adjust the header count locally.
+let total = 0;
+let unreviewed = 0;
+let shown = 0;
+let matching = 0;
+
+function params() {
+  const p = new URLSearchParams();
+  for (const id of controls) {
+    const el = $(id);
+    const v = el.type === 'checkbox' ? (el.checked ? '1' : '') : el.value;
+    if (v) p.set(id, v);
+  }
+  return p;
+}
+
+function renderCount() {
+  // Stale postings are deleted by the scrape rather than filtered here, so `matching`
+  // is the whole board unless you have narrowed it with the controls above.
+  $('count').textContent = `${unreviewed} unreviewed · ${matching} total`;
+}
+
+function fillSelect(el, items, label = (v) => v) {
+  const cur = el.value;
+  const first = el.querySelector('option').outerHTML;
+  el.innerHTML = first + items.map(i =>
+    `<option value="${i.v}">${esc(i.label ?? label(i.v))} (${i.n})</option>`).join('');
+  el.value = cur;
+}
+
+function esc(s) {
+  return String(s ?? '').replace(/[&<>"']/g, c =>
+    ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+}
+
+// Calendar days, not elapsed 24-hour periods: something posted at 11pm yesterday is
+// "yesterday" all of today, not "today" until 11pm tonight.
+function ago(iso) {
+  if (!iso) return '';
+  const then = new Date(iso);
+  if (Number.isNaN(then.getTime())) return '';
+  const startOfDay = (x) => new Date(x.getFullYear(), x.getMonth(), x.getDate()).getTime();
+  const d = Math.round((startOfDay(new Date()) - startOfDay(then)) / 86400000);
+  if (d <= 0) return 'today';
+  if (d === 1) return 'yesterday';
+  if (d < 30) return `${d}d ago`;
+  if (d < 365) return `${Math.floor(d / 30)}mo ago`;
+  return `${Math.floor(d / 365)}y ago`;
+}
+
+async function load() {
+  const res = await fetch('/api/jobs?' + params());
+  const { jobs, facets, matching: matchingCount } = await res.json();
+
+  total = facets.total;
+  unreviewed = facets.fresh;
+  shown = jobs.length;
+  matching = matchingCount ?? jobs.length;
+  renderCount();
+
+  if (!facetsLoaded) {
+    fillSelect($('source'), facets.sources);
+    fillSelect($('category'), facets.categories);
+    fillSelect($('type'), facets.types);
+    fillSelect($('province'), facets.provinces);
+    facetsLoaded = true;
+  }
+
+  $('list').innerHTML = jobs.length ? jobs.map(j => {
+    const sources = (() => { try { return JSON.parse(j.sources); } catch { return [j.source]; } })();
+    const tags = [
+      j.role_category && `<span class="tag ${j.role_category}">${j.role_category}</span>`,
+      j.type && `<span class="tag">${esc(j.type)}</span>`,
+      j.remote ? '<span class="tag">remote</span>' : '',
+      j.canada_confidence === 'ambiguous'
+        ? `<span class="tag amb" title="Location rule: ${esc(j.canada_matched_by)}">location?</span>` : '',
+    ].filter(Boolean).join('');
+
+    return `<article class="job">
+      <div>
+        <h2><a href="${esc(j.url)}" target="_blank" rel="noopener">${esc(j.title)}</a></h2>
+        <div class="meta">
+          <strong style="color:var(--fg)">${esc(j.company)}</strong>
+          <span>·</span><span>${esc(j.location) || '-'}</span>
+          ${j.salary_raw ? `<span>·</span><span>${esc(j.salary_raw)}</span>` : ''}
+          <span>·</span><span title="${esc(j.posted_at || j.first_seen_at)}">${ago(j.posted_at || j.first_seen_at)}</span>
+          <span>·</span><span>${sources.map(esc).join(' + ')}</span>
+          ${tags}
+        </div>
+      </div>
+      <div class="actions" data-id="${esc(j.id)}">
+        ${STATUSES.map(s =>
+          `<button class="st ${j.status === s ? 'on' : ''}" data-status="${s}">${STATUS_LABELS[s] ?? s}</button>`).join('')}
+      </div>
+    </article>`;
+  }).join('') : '<div class="empty">No jobs match these filters.<br/>Run <code>npm run scrape</code> to fetch more.</div>';
+
+  $('runs').innerHTML = '<strong>Last run per source:</strong> ' + facets.runs.map(r =>
+    `<span class="${r.ok ? 'good' : 'bad'}">${esc(r.source)} ${r.ok ? `✓ ${r.kept} kept` : `✗ ${esc((r.error || '').slice(0, 60))}`}</span>`
+  ).join(' · ');
+}
+
+$('list').addEventListener('click', async (e) => {
+  const btn = e.target.closest('button.st');
+  if (!btn) return;
+  const actions = btn.closest('.actions');
+  const id = actions.dataset.id;
+  const status = btn.dataset.status;
+
+  // Repaint immediately rather than waiting on the round-trip, and move only this
+  // row's buttons, the old code re-fetched and re-rendered all ~290 jobs, which is
+  // what made a click feel sticky.
+  const previous = actions.querySelector('button.st.on');
+  if (previous === btn) return;
+  previous?.classList.remove('on');
+  btn.classList.add('on');
+  updateUnreviewed(previous?.dataset.status, status);
+
+  try {
+    const res = await fetch('/api/status', {
+      method: 'POST',
+      headers: { 'content-type': 'application/json' },
+      body: JSON.stringify({ id, status }),
+    });
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+  } catch (err) {
+    // The save failed, so put the buttons back rather than showing a state the
+    // database doesn't have.
+    btn.classList.remove('on');
+    previous?.classList.add('on');
+    updateUnreviewed(status, previous?.dataset.status);
+    alert(`Could not save status: ${err.message}`);
+  }
+});
+
+/** Keep the header count in step without refetching the whole list. */
+function updateUnreviewed(from, to) {
+  if (from === to) return;
+  if (from === 'new') unreviewed--;
+  if (to === 'new') unreviewed++;
+  renderCount();
+}
+
+let t;
+for (const id of controls) {
+  const el = $(id);
+  const ev = el.tagName === 'INPUT' && el.type === 'search' ? 'input' : 'change';
+  el.addEventListener(ev, () => {
+    clearTimeout(t);
+    t = setTimeout(load, ev === 'input' ? 220 : 0);
+  });
+}
+
+// The scraper runs hourly, but the page only ever loaded once, leave the tab open and
+// it quietly goes stale. Refresh on a timer, and again whenever the tab regains focus
+// so coming back to it never shows yesterday's list.
+const REFRESH_MS = 5 * 60 * 1000;
+
+function refreshIfIdle() {
+  // Don't yank the list out from under a search you're typing, and don't waste a
+  // request on a tab nobody is looking at.
+  if (document.hidden) return;
+  if (document.activeElement === $('q')) return;
+  load();
+}
+
+setInterval(refreshIfIdle, REFRESH_MS);
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden) refreshIfIdle();
+});
+
+load();
+</script>
+
+
+</body></html>
