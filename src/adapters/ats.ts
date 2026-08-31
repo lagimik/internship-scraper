@@ -17,6 +17,7 @@ export interface Board {
 
 /** Verified live Greenhouse boards (checked against the API, not guessed). */
 export const GREENHOUSE_BOARDS: Board[] = [
+  { token: 'spacex', name: 'SpaceX' },
   { token: 'geotab', name: 'Geotab' },
   { token: 'hootsuite', name: 'Hootsuite' },
   { token: 'thinkific', name: 'Thinkific' },
