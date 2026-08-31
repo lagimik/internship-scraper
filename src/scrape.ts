@@ -17,6 +17,10 @@ import { jobBankAdapter } from './adapters/jobbank.js';
 import { workdayAdapter } from './adapters/workday.js';
 import { ashbyAdapter } from './adapters/ashby.js';
 import { simplifyAdapter } from './adapters/simplify.js';
+import { oracleAdapter } from './adapters/oracle.js';
+import { successFactorsAdapter } from './adapters/successfactors.js';
+import { ultiProAdapter } from './adapters/ultipro.js';
+import { customAdapter } from './adapters/custom.js';
 
 /**
  * Sources cheap enough to poll often, the whole group finishes in ~10 seconds and
@@ -29,6 +33,10 @@ export function fastAdapters(): Adapter[] {
     greenhouseAdapter(),
     leverAdapter(),
     ashbyAdapter(),
+    oracleAdapter(),
+    successFactorsAdapter(),
+    ultiProAdapter(),
+    customAdapter(),
   ];
 }
 

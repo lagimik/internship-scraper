@@ -4,94 +4,84 @@
  * Order matters: exclusions run before inclusions, because most false positives
  * ("Sales Engineer", "Engineering Manager") also contain a matching keyword.
  */
+/**
+ * Mechanical and manufacturing role-title matching.
+ * Exclusions run before inclusions so computing work never enters broad engineering
+ * project, program, or student matches.
+ */
 
 import type { JobType, RoleCategory } from '../types.js';
 
-/**
- * Titles that contain a match keyword but are not the job I want.
- * Checked first, an exclusion always wins.
- */
 const EXCLUSIONS: Array<[RegExp, string]> = [
-  [/\b(sales|solutions?|customer|field|support|partner|forward.deployed)\s+engineer/, 'non-eng-engineer'],
-  [/\b(hardware|mechanical|electrical|civil|chemical|industrial|process|manufacturing|firmware|test|quality|validation|optical|rf)\s+engineer/, 'other-discipline'],
-  [/\b(engineering|software|technical|development)\s+(manager|director|lead|head)\b/, 'management'],
-  [/\bmanager,?\s+(software|engineering)/, 'management'],
-  [/\b(vp|vice president|head of|chief|principal architect)\b/, 'leadership'],
-  [/\b(recruiter|sourcer|talent|hr|people ops)\b/, 'recruiting'],
-  [/\b(technical writer|documentation|content|marketing|designer|ux researcher)\b/, 'non-eng'],
-  [/\b(professor|lecturer|instructor|teaching assistant|postdoc)\b/, 'academic'],
-  [/\bengineering\s+(program|project|product)\s+manager/, 'management'],
-  [/\b(program|project|product)\s+manager\b/, 'management'],
-  // Bank and insurer intern programs are mostly finance roles. Without this,
-  // "Financial Advisor Intern - Mobile" matched the intern shorthand, which read
-  // "mobile" as mobile development.
-  // Deliberately narrow: bare "risk" or "analyst" would drop real engineering roles
-  // like "Software Developer Intern, Risk Platform", so match the finance job itself
-  // rather than any mention of a finance-adjacent word.
-  [/\b(financial|finance|investment|banking|wealth|actuarial|accounting|underwriting)\s+(advisor|adviser|analyst|associate|intern(ship)?|co.?op|specialist|officer|manager|consultant|representative)\b/, 'finance'],
-  [/\b(actuarial|audit|tax|teller|branch manager|relationship manager)\b/, 'finance'],
-  [/\b(financial|investment|banking|wealth)\s+(advisor|adviser)\b/, 'non-eng-business'],
+  // Computing disciplines are explicitly out of scope.
+  [/\b(software|firmware)\b|\b(swe|sde)\b/, 'software'],
+  [/\bdev\s?ops\b|\bsite reliability\b|\bsre\b|\bmlops\b/, 'devops'],
+  [/\b(computer|computing)\s+science\b|\binformatique\b/, 'computer-science'],
+  [/\bdata\s+(science|scientist|engineering|engineer|analytics|analyst)\b/, 'data-science'],
+  [/\b(machine learning|artificial intelligence|deep learning|computer vision|nlp|llm|genai)\b|\b(ai|ml)\s+(engineer|developer|scientist)\b/, 'ai-ml'],
+  [/\b(front.?end|back.?end|full.?stack|web|mobile|ios|android)\s+(engineer|developer|dev)\b/, 'software'],
+  [/\b(programmer|developer|cloud engineer|platform engineer|infrastructure engineer)\b/, 'software-infrastructure'],
+  [/\b(cybersecurity|information technology|\bit\b|network|database)\s+(engineer|developer|analyst|specialist|manager|intern|co.?op)\b/, 'computing'],
+
+  // Other disciplines and common false positives.
+  [/\b(sales|solutions?|customer|field service|support|application|forward.deployed)\s+engineer\b/, 'non-target-engineer'],
+  [/\b(civil|structural|electrical|chemical|petroleum|mining|geotechnical|environmental|optical|rf)\s+engineer/, 'other-discipline'],
+  [/\b(engineering|technical)\s+(director|lead|head)\b/, 'leadership'],
+  [/\b(vp|vice president|head of|chief)\b/, 'leadership'],
+  [/\b(recruiter|sourcer|talent acquisition|human resources|people ops)\b/, 'recruiting'],
+  [/\b(marketing|graphic designer|ux|user experience|content|technical writer)\b/, 'non-engineering'],
+  [/\b(finance|financial|accounting|audit|tax|banking|investment|actuarial)\b/, 'finance'],
 ];
 
-/** [pattern, category, ruleName], first match wins, so order most-specific first. */
+/** [pattern, category, rule name]. Specific categories precede general ones. */
 const INCLUSIONS: Array<[RegExp, RoleCategory, string]> = [
-  // AI / ML
-  [/\b(ai|artificial intelligence)\s+(engineer|developer|dev)\b/, 'ai-ml', 'ai-engineer'],
-  [/\b(ml|machine learning)\s+(engineer|developer|dev)\b/, 'ai-ml', 'ml-engineer'],
-  [/\b(deep learning|nlp|computer vision|llm|genai|generative ai)\s+(engineer|developer|scientist)\b/, 'ai-ml', 'ai-specialty'],
-  [/\bapplied\s+(scientist|ml|ai)\b/, 'ai-ml', 'applied-scientist'],
-  [/\bresearch engineer\b/, 'ai-ml', 'research-engineer'],
-  [/\bmlops\b/, 'ai-ml', 'mlops'],
+  // Mechatronics and electromechanical engineering.
+  [/\bmechatronic(s|al)?\s+(engineer|engineering|designer|technologist|technician|intern|student|co.?op)\b/, 'mechatronics', 'mechatronics'],
+  [/\belectro.?mechanical\s+(engineer|engineering|designer|technologist|intern|student|co.?op)\b/, 'mechatronics', 'electromechanical'],
+  [/\brobotics\s+(mechanical|mechatronics)\s+(engineer|engineering|designer|intern|student|co.?op)\b/, 'mechatronics', 'robotics-mechanical'],
 
-  // DevOps / infra
-  [/\bdev\s?ops\b/, 'devops', 'devops'],
-  [/\b(site reliability|sre)\b/, 'devops', 'sre'],
-  [/\b(platform|infrastructure|infra|cloud|systems?)\s+engineer\b/, 'devops', 'platform-infra'],
-  [/\b(build|release|deployment)\s+engineer\b/, 'devops', 'build-release'],
+  // Design for manufacturing, mechanical design, and tooling design.
+  [/\bdesign\s+for\s+manufactur(ing|ability)\b|\bdfma?\b/, 'design-manufacturing', 'design-for-manufacturing'],
+  [/\b(manufacturing|mechanical|product|machine|tooling)\s+design\s+(engineer|engineering|designer|intern|student|co.?op)\b/, 'design-manufacturing', 'manufacturing-design'],
+  [/\bdesign\s+engineer(ing)?\b|\bengineering\s+designer\b/, 'design-manufacturing', 'design-engineering'],
+  [/\b(cad|catia|solidworks|creo)\s+(designer|design|engineer|technologist|intern|student|co.?op)\b/, 'design-manufacturing', 'cad-design'],
+  [/\btool(ing)?\s+(design|designer|engineer|engineering)\b/, 'design-manufacturing', 'tooling-design'],
 
-  // Core software
-  [/\bsoftware\s+(development\s+)?engineer\b/, 'swe', 'software-engineer'],
-  [/\bsoftware\s+(developer|dev)\b/, 'swe', 'software-developer'],
-  [/\bsoftware\s+engineering\b/, 'swe', 'software-engineering'],
-  // "Software Development Intern" / "Software Development Co-op": the noun form,
-  // with no "engineer"/"developer" head word. Common on Workday postings.
-  [/\bsoftware\s+development\b/, 'swe', 'software-development'],
-  [/\bsoftware\s+dev\b/, 'swe', 'software-dev'],
-  [/\b(sde|swe)\b/, 'swe', 'sde-swe'],
-  [/\b(front.?end|back.?end|full.?stack|web|mobile|ios|android|game|embedded|systems)\s+(engineer|developer|dev)\b/, 'swe', 'specialty-developer'],
-  [/\b(engineer|developer)\s*,?\s*(front.?end|back.?end|full.?stack|infrastructure|platform)\b/, 'swe', 'developer-comma-specialty'],
-  [/\b(programmer|developer)\b/, 'swe', 'generic-developer'],
-  [/\bengineer\b.*\b(intern|co.?op)\b/, 'swe', 'engineer-intern'],
+  // Materials engineering, metallurgy, composites, and polymers.
+  [/\bmaterials?\s+(engineer|engineering|scientist|science|specialist|technologist|intern|student|co.?op)\b/, 'materials-engineering', 'materials-engineering'],
+  [/\b(metallurgy|metallurgical|metallurgist)\b/, 'materials-engineering', 'metallurgy'],
+  [/\b(composites?|polymers?)\s+(engineer|engineering|specialist|technologist|intern|student|co.?op)\b/, 'materials-engineering', 'composites-materials'],
 
-  // Intern shorthand: internship titles routinely drop the "engineer"/"developer"
-  // head word ("Machine Learning Intern", "Backend Intern", "Engineering Co-op"),
-  // so the rules above never fire on them. Only trust these when the title actually
-  // says intern/co-op, bare "Data Science" or "Security" is not a role we want.
-  //
-  // `intern` here is deliberately \bintern\b(ship)? and never a bare prefix: "Internal
-  // Audit Manager" and "Internal Sales" would otherwise match, and banks post many of
-  // both. Separators are allowed between the role word and the intern word so
-  // "Data Scientist, Fall 2026 (Co-op/Internship)" still matches.
-  [/\b(ml|machine learning|ai|deep learning|nlp|computer vision|data scien(ce|tist)|applied scien(ce|tist))\b.*\b(intern(ship)?|co.?op)\b/, 'ai-ml', 'ai-ml-intern-shorthand'],
-  [/\b(devops|sre|site reliability|platform|infrastructure|cloud)\b.*\b(intern(ship)?|co.?op)\b/, 'devops', 'devops-intern-shorthand'],
-  [/\b(software|engineering|developer|development|technical|back.?end|front.?end|full.?stack|web|mobile|ios|android|embedded|systems|qa|test automation|programm(er|ing))\b.*\b(intern(ship)?|co.?op)\b/, 'swe', 'swe-intern-shorthand'],
-  // Reverse order: "Intern - Software Engineering", "Co-op, Backend".
-  [/\b(intern(ship)?|co.?op)\b.*\b(software|engineering|developer|development|back.?end|front.?end|full.?stack|web|mobile|devops|machine learning|data scien(ce|tist))\b/, 'swe', 'intern-prefix-shorthand'],
+  // Engineering project and program management.
+  [/\b(engineering|mechanical|manufacturing|industrial|technical)\s+project\s+(manager|management|coordinator|engineer|intern|student|co.?op)\b/, 'project-management', 'engineering-project-management'],
+  [/\bproject\s+(manager|management|coordinator|engineer|intern|student|co.?op)\b.*\b(engineering|mechanical|manufacturing|industrial|design)\b/, 'project-management', 'project-management-engineering'],
+  [/\b(engineering|mechanical|manufacturing|industrial|technical)\s+program(me)?\s+(manager|management|coordinator|engineer|intern|student|co.?op)\b/, 'program-management', 'engineering-program-management'],
+  [/\bprogram(me)?\s+(manager|management|coordinator|engineer|intern|student|co.?op)\b.*\b(engineering|mechanical|manufacturing|industrial|design)\b/, 'program-management', 'program-management-engineering'],
 
-  // French titles, common in Quebec postings.
-  [/\bing(é|e)nieur\s+(logiciel|en logiciel|d(é|e)veloppement)/, 'swe', 'fr-ingenieur-logiciel'],
-  [/\bd(é|e)veloppeur(\.?se)?\b/, 'swe', 'fr-developpeur'],
-  [/\bg(é|e)nie logiciel\b/, 'swe', 'fr-genie-logiciel'],
-  // Noun form: "Stagiaire en développement de logiciels", "Stage - Développement logiciel".
-  [/\bd(é|e)veloppement\s+(de\s+)?logiciels?\b/, 'swe', 'fr-developpement-logiciel'],
-  [/\bd(é|e)veloppement\s+(web|mobile|infonuagique|cloud|full.?stack)\b/, 'swe', 'fr-developpement-specialty'],
-  [/\bstagiaire\s+en\s+(d(é|e)veloppement|informatique|logiciel|programmation)/, 'swe', 'fr-stagiaire-dev'],
+  // Core mechanical and manufacturing engineering.
+  [/\bmechanical\s+(engineer|engineering|designer|technologist|intern|student|co.?op)\b/, 'mechanical-engineering', 'mechanical-engineering'],
+  [/\bmanufacturing\s+(engineer|engineering|technologist|specialist|intern|student|co.?op)\b/, 'manufacturing-engineering', 'manufacturing-engineering'],
+  [/\b(industrialization|production|process)\s+(engineer|engineering|technologist|intern|student|co.?op)\b/, 'manufacturing-engineering', 'production-process-engineering'],
+  [/\b(industrial engineer|industrial engineering)\b/, 'manufacturing-engineering', 'industrial-engineering'],
+
+  // Student-first title forms.
+  [/\b(intern(ship)?|co.?op|student|placement)\b.*\bmechanical\s+engineering\b/, 'mechanical-engineering', 'mechanical-student-prefix'],
+  [/\b(intern(ship)?|co.?op|student|placement)\b.*\bmechatronic(s|al)?\b/, 'mechatronics', 'mechatronics-student-prefix'],
+  [/\b(intern(ship)?|co.?op|student|placement)\b.*\b(materials?|metallurg|composite)\b/, 'materials-engineering', 'materials-student-prefix'],
+  [/\b(intern(ship)?|co.?op|student|placement)\b.*\b(manufacturing|industrialization|production engineering)\b/, 'manufacturing-engineering', 'manufacturing-student-prefix'],
+  [/\b(intern(ship)?|co.?op|student|placement)\b.*\b(engineering\s+)?project\s+management\b/, 'project-management', 'project-student-prefix'],
+  [/\b(intern(ship)?|co.?op|student|placement)\b.*\b(engineering\s+)?program(me)?\s+management\b/, 'program-management', 'program-student-prefix'],
+
+  // French titles common in Quebec.
+  [/\bing(é|e)nieur(e)?\s+(en\s+)?m(é|e)canique\b|\bg(é|e)nie\s+m(é|e)canique\b/, 'mechanical-engineering', 'fr-mechanical'],
+  [/\bm(é|e)catronique\b/, 'mechatronics', 'fr-mechatronics'],
+  [/\bing(é|e)nieur(e)?\s+(en\s+)?(fabrication|manufacturier|production|proc(é|e)d(é|e)s?)\b/, 'manufacturing-engineering', 'fr-manufacturing'],
+  [/\bconception\s+(m(é|e)canique|pour\s+la\s+fabrication)\b/, 'design-manufacturing', 'fr-design'],
+  [/\b(mat(é|e)riaux|m(é|e)tallurgie|composites?)\b/, 'materials-engineering', 'fr-materials'],
+  [/\b(gestionnaire|coordonnateur|charg(é|e))\s+(de\s+)?projet\b.*\b(ing(é|e)nierie|m(é|e)canique|fabrication)\b/, 'project-management', 'fr-project'],
+  [/\b(gestionnaire|coordonnateur|charg(é|e))\s+(de\s+)?programme\b.*\b(ing(é|e)nierie|m(é|e)canique|fabrication)\b/, 'program-management', 'fr-program'],
 ];
 
-// French variants matter: Quebec postings are frequently listed in French
-// ("Stagiaire DevOps - Automne 2026" is an internship, not a full-time role).
-// Note: co-op patterns deliberately live in COOP only, not here, INTERN is tested
-// first, so repeating them would make `co-op` unreachable.
 const INTERN = /\bintern(ship)?s?\b|\bsummer\s+20\d\d\b|\b(fall|winter|spring|summer)\s+(term|20\d\d)\b|\bstudent\b|\bplacement\b|\bstagiaire\b|\bstages?\b|\b(é|e)tudiant(e)?\b|\bapprenti(ce|ceship)?\b|\bundergrad(uate)?\b|\bwork\s+term\b/;
 const COOP = /\bco.?op\b|\balternance\b/;
 const NEW_GRAD = /\bnew\s?grad(uate)?\b|\bentry.level\b|\buniversity grad|\bcampus\b|\bearly career\b|\bjeune dipl(ô|o)m(é|e)\b/;
@@ -102,7 +92,6 @@ export interface RoleMatch {
   category: RoleCategory | null;
   type: JobType | null;
   matchedBy: string | null;
-  /** Set when an exclusion fired, for debugging the filter. */
   excludedBy?: string;
 }
 
@@ -116,37 +105,31 @@ export function normalizeTitle(title: string): string {
 }
 
 export function classifyType(title: string): JobType | null {
-  const t = normalizeTitle(title);
-  // "Intern" wins over "Co-op": titles like "Software Engineering Intern -
-  // Fall-Spring Co-op" contain both, and calling those `co-op` split the real
-  // internships across two filter values. Co-op only fires when nothing says intern.
-  if (INTERN.test(t)) return 'intern';
-  if (COOP.test(t)) return 'co-op';
-  if (NEW_GRAD.test(t)) return 'new-grad';
-  if (CONTRACT.test(t)) return 'contract';
+  const normalized = normalizeTitle(title);
+  if (INTERN.test(normalized)) return 'intern';
+  if (COOP.test(normalized)) return 'co-op';
+  if (NEW_GRAD.test(normalized)) return 'new-grad';
+  if (CONTRACT.test(normalized)) return 'contract';
   return 'full-time';
 }
 
-/** True for the student-track types, what the `--interns-only` scrape keeps. */
 export function isStudentType(type: JobType | null): boolean {
   return type === 'intern' || type === 'co-op';
 }
 
 export function matchRole(title: string): RoleMatch {
-  const t = normalizeTitle(title);
-  if (!t) return { matches: false, category: null, type: null, matchedBy: null };
+  const normalized = normalizeTitle(title);
+  if (!normalized) return { matches: false, category: null, type: null, matchedBy: null };
 
-  for (const [re, reason] of EXCLUSIONS) {
-    if (re.test(t)) {
+  for (const [pattern, reason] of EXCLUSIONS) {
+    if (pattern.test(normalized)) {
       return { matches: false, category: null, type: null, matchedBy: null, excludedBy: reason };
     }
   }
-
-  for (const [re, category, rule] of INCLUSIONS) {
-    if (re.test(t)) {
-      return { matches: true, category, type: classifyType(t), matchedBy: rule };
+  for (const [pattern, category, rule] of INCLUSIONS) {
+    if (pattern.test(normalized)) {
+      return { matches: true, category, type: classifyType(normalized), matchedBy: rule };
     }
   }
-
   return { matches: false, category: null, type: null, matchedBy: null };
 }

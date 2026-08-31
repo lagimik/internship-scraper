@@ -1,7 +1,14 @@
 /** The normalized shape every adapter must produce. See CLAUDE.md. */
 
 export type JobType = 'intern' | 'co-op' | 'new-grad' | 'full-time' | 'contract';
-export type RoleCategory = 'swe' | 'devops' | 'ai-ml';
+export type RoleCategory =
+  | 'mechanical-engineering'
+  | 'mechatronics'
+  | 'design-manufacturing'
+  | 'manufacturing-engineering'
+  | 'materials-engineering'
+  | 'project-management'
+  | 'program-management';
 export type JobStatus = 'new' | 'applied' | 'interview' | 'rejected' | 'offer';
 
 /** How confident we are that this posting is actually in Canada. */

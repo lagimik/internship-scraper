@@ -24,17 +24,9 @@ import { fetchText } from '../lib/fetch.js';
  */
 export const GITHUB_SOURCES = [
   // Canada-only lists.
-  'https://raw.githubusercontent.com/negarprh/Canadian-Tech-Internships-2026/main/README.md',
-  'https://raw.githubusercontent.com/negarprh/Canadian-Tech-Internships-2026/main/README-2027.md',
-  'https://raw.githubusercontent.com/hanzili/canada_sde_intern_position/main/README.md',
-  'https://raw.githubusercontent.com/hanzili/canada_sde_junior_new_grad_position/main/README.md',
-  // International lists (filtered down to Canadian rows).
-  'https://raw.githubusercontent.com/speedyapply/2027-SWE-College-Jobs/main/INTERN_INTL.md',
-  'https://raw.githubusercontent.com/speedyapply/2027-SWE-College-Jobs/main/NEW_GRAD_INTL.md',
-  'https://raw.githubusercontent.com/speedyapply/2026-SWE-College-Jobs/main/INTERN_INTL.md',
-  'https://raw.githubusercontent.com/speedyapply/2026-SWE-College-Jobs/main/NEW_GRAD_INTL.md',
-  'https://raw.githubusercontent.com/vanshb03/Summer2027-Internships/main/README.md',
-  'https://raw.githubusercontent.com/vanshb03/Summer2026-Internships/main/README.md',
+  'https://raw.githubusercontent.com/negarprh/Canadian-Tech-Internships-2027/refs/heads/main/README.md',
+
+
   // Note: the SimplifyJobs repos are NOT listed here. They stopped rendering a
   // markdown table, so this parser found nothing in them; they're read from their
   // published listings.json instead, see adapters/simplify.ts.

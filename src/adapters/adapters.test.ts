@@ -5,6 +5,12 @@ import { parseMarkdownTables, dateCellToIso } from './github-md.js';
 import { parseWorkdayUrl, parseWorkdayPostedOn } from './workday.js';
 import { parseSimplifyListings } from './simplify.js';
 import { collectLocations, mapEmploymentType } from './ashby.js';
+import {
+  discoverCyberRecruiterPages,
+  parseConfiguredHtml,
+  parseCyberRecruiterJobs,
+  parsePrevueJobs,
+} from './custom.js';
 
 test('github: angle-bracket markdown links yield a clean URL', () => {
   // hanzili's lists escape URLs as [Apply](<https://…>). Keeping the ">" produced
@@ -130,4 +136,56 @@ test('simplify: closed listings are dropped', () => {
   assert.equal(jobs.length, 1);
   assert.equal(jobs[0]?.company, 'A');
   assert.equal(jobs[0]?.location, 'Toronto, ON, Canada');
+});
+
+test('custom: Prevue JSON maps structured jobs', () => {
+  const board = { kind: 'prevue-json' as const, name: 'Martinrea', url: 'https://example.com/jobs/', siteId: 596 };
+  const [job] = parsePrevueJobs({ data: { jobs: [{
+    id: 332542,
+    title: 'Mechanical Engineering Intern',
+    startDateRef: 'Aug 20, 2026',
+    jobLocation: 'Vaughan, ON, Canada',
+    workplaceType: 'Onsite',
+    employmentType: 'Intern',
+    jobUrl: 'https://example.com/jobs/332542',
+  }] } }, board);
+  assert.equal(job?.title, 'Mechanical Engineering Intern');
+  assert.equal(job?.location, 'Vaughan, ON, Canada');
+  assert.equal(job?.type, 'intern');
+  assert.equal(job?.postedAt?.slice(0, 10), '2026-08-20');
+});
+
+test('custom: configured HTML cards map title, location and date', () => {
+  const board = {
+    kind: 'html' as const,
+    name: 'General Dynamics',
+    url: 'https://example.com/search/jobs/in/country/canada',
+    selectors: {
+      card: '.jobs-section__item', titleLink: 'h2 a', location: '.location', postedDate: 'time',
+    },
+  };
+  const [job] = parseConfiguredHtml(`
+    <div class="jobs-section__item"><h2><a href="/jobs/123-design-intern">Design Intern</a></h2>
+    <div class="location">London, ON, Canada</div><time datetime="2026-08-25">Aug 25</time></div>`, board);
+  assert.equal(job?.url, 'https://example.com/jobs/123-design-intern');
+  assert.equal(job?.location, 'London, ON, Canada');
+  assert.equal(job?.postedAt, '2026-08-25T00:00:00.000Z');
+});
+
+test('custom: Cyber Recruiter discovers Canada pages and parses row groups', () => {
+  const index = `<a class="JobLink" href="Careers.aspx?groupvalue=ON-KIT&type=GROUP">Kitchener</a>
+    <a class="JobLink" href="Careers.aspx?groupvalue=TX-DAL&type=GROUP">Dallas</a>`;
+  assert.deepEqual(discoverCyberRecruiterPages(index, 'https://careers.example.com/'), [
+    'https://careers.example.com/Careers.aspx?groupvalue=ON-KIT&type=GROUP',
+  ]);
+  const html = `<table><tr><td><a class="JobLink" href="Careers.aspx?req=1&type=JOBDESCR">Project Intern</a></td></tr>
+    <tr><td>FT/PT Status:</td><td>Full Time</td></tr>
+    <tr><td>Location:</td><td>Kitchener</td></tr>
+    <tr><td>A student project-management placement supporting automation projects.</td></tr>
+    <tr><td><hr></td></tr></table>`;
+  const [job] = parseCyberRecruiterJobs(html, {
+    kind: 'cyber-recruiter', name: 'Brock', url: 'https://careers.example.com/',
+  }, 'https://careers.example.com/Careers.aspx');
+  assert.equal(job?.location, 'Kitchener, Canada');
+  assert.match(job?.description ?? '', /student project-management/);
 });

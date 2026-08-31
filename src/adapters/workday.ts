@@ -32,6 +32,23 @@ export interface WorkdayBoard {
  * Canadian employers and Canada-hiring enterprises.
  */
 export const WORKDAY_BOARDS: WorkdayBoard[] = [
+
+  //Mechanical Engineering ....
+ { url: 'https://magna.wd3.myworkdayjobs.com/en-US/Magna', name: 'Magna International' },
+ { url: 'https://globalhr.wd5.myworkdayjobs.com/en-CA/REC_RTX_Ext_Gateway/', name: 'RTX' },
+ { url: 'https://lumentum.wd5.myworkdayjobs.com/LITE', name: 'Lumentum' },
+ { url: 'https://ciena.wd5.myworkdayjobs.com/Careers', name: 'Ciena' },
+ { url: 'https://ag.wd3.myworkdayjobs.com/Airbus', name: 'Airbus' },
+ { url: 'https://slihrms.wd3.myworkdayjobs.com/careers', name: 'AtkinsRealis' },
+ { url: 'https://brucepower.wd3.myworkdayjobs.com/BrucePower', name: 'Bruce Power' },
+ { url: 'https://generalmotors.wd5.myworkdayjobs.com/en-CA/Careers_GM', name: 'General Motors' },
+ { url: 'https://rockwellautomation.wd1.myworkdayjobs.com/en-US/External_Rockwell_Automation/', name: 'Rockwell Automation' },
+ { url: 'https://cae.wd3.myworkdayjobs.com/career/', name: 'CAE' },
+ { url: 'https://enbridge.wd3.myworkdayjobs.com/enbridge_careers', name: 'Enbridge' }, 
+ { url: 'https://bb.wd3.myworkdayjobs.com/en-US/Student', name: 'BlackBerry (Student)' },
+
+
+  /*
   { url: 'https://harriscomputer.wd3.myworkdayjobs.com/en-US/1', name: 'Harris Computer' },
   { url: 'https://td.wd3.myworkdayjobs.com/en-US/TD_Bank_Careers', name: 'TD Bank' },
   { url: 'https://cibc.wd3.myworkdayjobs.com/en-US/search', name: 'CIBC' },
@@ -51,16 +68,18 @@ export const WORKDAY_BOARDS: WorkdayBoard[] = [
   { url: 'https://ciena.wd5.myworkdayjobs.com/en-US/Careers', name: 'Ciena' },
   { url: 'https://salesforce.wd12.myworkdayjobs.com/en-US/External_Career_Site', name: 'Salesforce' },
   { url: 'https://pwc.wd3.myworkdayjobs.com/en-US/Global_Experienced_Careers', name: 'PwC' },
+   */
 
   // Dedicated student/campus tenants. Their totals look tiny next to a general careers
   // board, but every row is a student role rather than one intern buried in a thousand
   // senior postings, so they are the highest-signal boards on this platform.
-  { url: 'https://bb.wd3.myworkdayjobs.com/en-US/Student', name: 'BlackBerry (Student)' },
-  { url: 'https://sunlife.wd3.myworkdayjobs.com/en-US/Campus', name: 'Sun Life (Campus)' },
+  //{ url: 'https://bb.wd3.myworkdayjobs.com/en-US/Student', name: 'BlackBerry (Student)' },
+  //{ url: 'https://sunlife.wd3.myworkdayjobs.com/en-US/Campus', name: 'Sun Life (Campus)' },
 
   // Canadian banks, insurers, manufacturers and tech. Host names are not derivable
   // from company names (TELUS Health is `lifeworks`, OTPP is `otppb`) and site paths
   // are irregular and case-sensitive, so these are copied from working careers URLs.
+  /*
   { url: 'https://magna.wd3.myworkdayjobs.com/en-US/Magna', name: 'Magna International' },
   { url: 'https://rbc.wd3.myworkdayjobs.com/en-US/RBCGLOBAL1', name: 'RBC' },
   { url: 'https://manulife.wd3.myworkdayjobs.com/en-US/MFCJH_Jobs', name: 'Manulife' },
@@ -74,6 +93,7 @@ export const WORKDAY_BOARDS: WorkdayBoard[] = [
   { url: 'https://bdc.wd10.myworkdayjobs.com/en-US/BDC_Careers', name: 'BDC' },
   { url: 'https://navcanada.wd10.myworkdayjobs.com/en-US/NAV_Careers', name: 'NAV Canada' },
   { url: 'https://cineplex.wd3.myworkdayjobs.com/en-US/Cineplex', name: 'Cineplex' },
+   */
 ];
 
 interface WorkdayPosting {
