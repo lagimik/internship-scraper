@@ -6,6 +6,7 @@
   "scripts": {
     "test": "tsx --test src/**/*.test.ts",
     "scrape": "tsx src/scrape.ts",
+    "export": "tsx src/export-static.ts",
     "typecheck": "tsc --noEmit",
     "web": "tsx src/web/server.ts",
     "serve": "tsx src/serve.ts",
