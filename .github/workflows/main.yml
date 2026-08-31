@@ -12,18 +12,12 @@ jobs:
       contents: write
 
     steps:
-      - name: Checkout main branch
-        uses: actions/checkout@v4
-        with:
-          ref: main
-          fetch-depth: 0
-
-
-      - name: Commit and push to gh-pages
+     - name: Commit and push to gh-pages
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git checkout -b gh-pages
-          git add .
-          git commit --allow-empty -m "Publish to GitHub Pages (excluding /raw)" || true
+          git fetch origin
+          git switch --track origin/gh-pages
+          git merge origin/main
+          git commit --allow-empty -m "Publish /site to GitHub Pages" || true
           git subtree push --prefix site gh-pages
