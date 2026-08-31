@@ -1,0 +1,329 @@
+
+
+<!doctype html>
+<html lang="en-US">
+<head><title>
+	Job Browsing
+</title><meta name="viewport" content="width=device-width; initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" /><link rel="stylesheet" href="CRCareersPage.css" /><link rel="icon" href="images/favicon.ico" sizes="32x32" /><link href="/WebResource.axd?d=rhRRvYQTYv6mNRHqzCKJ7u4inhMCE4rztlCDFY78ezPj4sonpIHgcczLkkP8J3MVFKLJ3gaMe0WUH7I8cVMRFmA0jFr7bskrovYhU76S2ku5A74gp_fQpsNgk2G1UjV-rskkpu2fn9L5YYlZAZFKnA2&amp;t=638532749380000000" type="text/css" rel="stylesheet" class="Telerik_stylesheet" /></head>
+
+<body>
+
+    <div id="header-outer" data-has-menu="true" data-user-set-bg="#ffffff" data-format="default" data-cart="false" data-transparency-option="0" data-shrink-num="15" data-full-width="false" data-using-secondary="0" data-using-logo="1" data-logo-height="80" data-padding="12" data-header-resize="" style="padding-top: 12px;">
+        <header id="top">
+            <div class="container" style="visibility: visible; width=100%">
+                <div class="row">
+               
+                    <div class="col span_12">
+                        
+                            <img class="default-logo dark-version" alt="Visibility Software" src="images/brock-logo-1.png" />
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col span_12">
+                        <a href="#mobilemenu" id="toggle-nav"><i class="icon-reorder2"></i></a>
+                        <nav>
+                            <ul class="sf-menu">
+
+
+                                
+                                <li class="menu-item current-menu-item current_page_item">
+                                    <a href="https://www.brocksolutions.com/contact/">Contact</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="https://www.brocksolutions.com/"> | </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="https://www.brocksolutions.com/">Home</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+    <div id="page-header-bg">
+
+        <div class="container">
+            <div class="row" style="top: 8px; visibility: visible;">
+                <div class="col span_12">
+                    <h1>Openings</h1>
+                    <span class="subheader"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container">
+        <div class="container main-content">
+            <div class="row">
+
+                <div class="col span_12 dark left">
+                   
+                                    <div id="divContent">
+                                        <form name="frmCRSS" method="post" action="./Careers.aspx?type=CAREERSMAIN" id="frmCRSS">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="u0kk655n2CGzVPLP7V0c4718ldNLokcJazQosv/3aXdAP66hfB0XCfmKYl1NPL/A+mPqHQpmq/yrtCKaOdpdnsUXg72hGZQsevqH81dyvzpK5Ex0/VsxmUjgN/cLDCHn+LmLbXXAqclJY8Gn0YVBHb9s3H8XiM5Rc+qquMlp1j+mQto0QCq7rlAq18gy0LAl1dbP+Mtp3afB6xk9tbd6i6WdVelp7vdgrOojKx9w9Zi53wGcW7+FNE4r/cwghGOH3VzTPRr40JixMRHoxN0AWkrtIImwOOjPYu3HsXLi8Le+ipresBLbTfLxCuLKi/cvtzFOmcGSB79AKFjb+nmwKLWDIoIaHtXEjtWp2ozqIB7gWPL3R9e5pcpeyi3lVt97NafvY86wlnFwJutANB75PMxKyKxezvSlLnM7LI/TyIgMoGrLb6wrGEHXFFe2xp3rscUck4BSKIDxLDa846Sq+fpNcxvfmbpIQtS6Ya2XABKe0nMntZmjhUcol2NGKXdEYxBrSFw09Mrvd5gvAK6np1zR3b7/jXHElvio2Kevf1IEyc+4t3iv+VxO5Y7Rvpr2pmTU2JpLnxg2J0/fkSWXhtThqdAGCcoVbMF8U/zYVL3t3KzbqPMLyu8wDFupCZl5" />
+
+
+<script src="/ScriptResource.axd?d=NJmAwtEo3Ipnlaxl6CMhvkTMC8aa92jBihXQIh_4BDGKZKFM7HmYDM4zSflXht6pYqCat0bf1O_iww9M2qzIONzM7ysKJYwzXpsbRzSnaetGvsu6xlX0RNdxwdCVR98bcxEp10PClWSzh1wjlKGkePHbEatY0SYp0v7YF6rJyMM1&amp;t=5c0e0825" type="text/javascript"></script>
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="796F993D" />
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="hjcutx/+w+3Txu/hHaRelh/qQ2kGskxteIsTlZeEJoEkJex+7AhVsQHclN1fSkqQHJCunUz+sZBfoD8BguMY4DeX2oajFyXFJbFybiH5XNAU1pM0gPoJEljWZAvv781MLOGbF6ZQcMdtpU1YDGQW+A==" />
+                                            
+
+<script language="JavaScript">
+<!--	
+    function ValidatorTrim(s) {
+        var m = s.match(/^\s*(\S+(\s+\S+)*)\s*$/);
+        return (m == null) ? "" : m[1];
+    }
+
+//-->
+</script>
+
+<script language="JavaScript">
+    var nav = window.Event ? true : false;
+    if (nav) {
+        window.captureEvents(Event.KEYDOWN);
+        window.onkeydown = NetscapeEventHandler_KeyDown;
+    } else {
+        document.onkeydown = MicrosoftEventHandler_KeyDown;
+    }
+
+    function NetscapeEventHandler_KeyDown(e) {
+        if (e.which == 13 && e.target.type != 'textarea' && e.target.type != 'submit') {
+            return false;
+        }
+        return true;
+    }
+
+    function MicrosoftEventHandler_KeyDown() {
+        if (event.keyCode == 13 && event.srcElement.type != 'textarea' &&
+            event.srcElement.type != 'submit')
+            return false;
+        return true;
+    }
+
+    function ReferFriendEmail() {
+
+        var uri = "mailto:?subject=";
+        var body = (document.getElementById('CRCareers1_hidBody')).value;
+        var subject = (document.getElementById('CRCareers1_hidSubject')).value;
+        body = body.substr(0, 1600);
+
+        uri += encodeURIComponent(subject);
+        uri += "&body=";
+        uri += encodeURIComponent(body);
+
+        try {
+            window.open(uri);
+
+        } catch (err) {
+            try {
+                uri = uri.substr(0, uri.length / 2);
+                window.open(uri);  // try a smaller size
+            }
+            catch (err) {
+                try {
+                    uri = uri.substr(0, uri.length / 2);
+                    window.open(uri);  // try an even smaller size
+                }
+                catch (err) {
+                    // give up now
+                }
+            }
+        }
+
+
+    }
+
+</script>
+
+
+<input type="hidden" name="CRCareers1$hidSubject" id="CRCareers1_hidSubject" />
+<input type="hidden" name="CRCareers1$hidBody" id="CRCareers1_hidBody" />
+
+<div id="CRCareers1_RadPageLayout2" class="t-container t-container-fluid borderCssClass">
+	<div class="t-row">
+		<div class="t-col t-col-12">
+			
+                    
+                
+		</div>
+	</div><div class="t-row">
+		<div class="t-col t-col-12">
+			
+                    <div class="row">
+                        
+                    </div>
+                
+		</div>
+	</div><div class="t-row">
+		<div class="t-col t-col-12">
+			
+                    <div class="row">
+                        
+                    </div>
+                
+		</div>
+	</div><div class="t-row">
+		<div class="t-col t-col-12">
+			
+                    <div class="row">
+                        
+                    </div>
+                
+		</div>
+	</div><div class="t-row">
+		<div class="t-col t-col-12">
+			
+                    <div class="row">
+                        
+                    </div>
+                
+		</div>
+	</div><div class="t-row">
+		<div class="t-col t-col-12">
+			
+                    
+                
+		</div>
+	</div><div id="CRCareers1_tblPageGroup" class="t-row">
+		<div id="CRCareers1_LayoutRow1" class="t-row">
+			<div class="t-col t-col-12">
+				
+                            <div id="CRCareers1_Div1" class="row">
+                                <span id="CRCareers1_lblBrowseInstGroup" class="MainBodyText"></span>
+                            </div>
+                        
+			</div>
+		</div><div id="CRCareers1_LayoutRow2" class="t-row">
+			<div class="t-col t-col-12">
+				
+                            <div class="row">
+                                <table id="CRCareers1_tblPageGroup2" cellspacing="2" cellpadding="2" border="0">
+					<tr>
+						<td><a Class="JobLink" href="Careers.aspx?groupvalue=AU-BNE&groupby=OLEVEL2&groupby2=&firstgroup=&type=DRAWSINGLEGROUPCOMPLETE">Brisbane</a> <span Class="MainBodyText">(2)</span></td>
+					</tr><tr>
+						<td><a Class="JobLink" href="Careers.aspx?groupvalue=IL-CHI&groupby=OLEVEL2&groupby2=&firstgroup=&type=DRAWSINGLEGROUPCOMPLETE">Chicago</a> <span Class="MainBodyText">(1)</span></td>
+					</tr><tr>
+						<td><a Class="JobLink" href="Careers.aspx?groupvalue=TX-DAL&groupby=OLEVEL2&groupby2=&firstgroup=&type=DRAWSINGLEGROUPCOMPLETE">Dallas</a> <span Class="MainBodyText">(12)</span></td>
+					</tr><tr>
+						<td><a Class="JobLink" href="Careers.aspx?groupvalue=MI-DET&groupby=OLEVEL2&groupby2=&firstgroup=&type=DRAWSINGLEGROUPCOMPLETE">Detroit</a> <span Class="MainBodyText">(5)</span></td>
+					</tr><tr>
+						<td><a Class="JobLink" href="Careers.aspx?groupvalue=IE-DUB&groupby=OLEVEL2&groupby2=&firstgroup=&type=DRAWSINGLEGROUPCOMPLETE">Dublin</a> <span Class="MainBodyText">(2)</span></td>
+					</tr><tr>
+						<td><a Class="JobLink" href="Careers.aspx?groupvalue=ON-KIT&groupby=OLEVEL2&groupby2=&firstgroup=&type=DRAWSINGLEGROUPCOMPLETE">Kitchener</a> <span Class="MainBodyText">(8)</span></td>
+					</tr><tr>
+						<td><a Class="JobLink" href="Careers.aspx?groupvalue=CA-LA&groupby=OLEVEL2&groupby2=&firstgroup=&type=DRAWSINGLEGROUPCOMPLETE">Los Angeles</a> <span Class="MainBodyText">(1)</span></td>
+					</tr><tr>
+						<td><a Class="JobLink" href="Careers.aspx?groupvalue=KY-LOU&groupby=OLEVEL2&groupby2=&firstgroup=&type=DRAWSINGLEGROUPCOMPLETE">Louisville</a> <span Class="MainBodyText">(1)</span></td>
+					</tr><tr>
+						<td><a Class="JobLink" href="Careers.aspx?groupvalue=AU-MEL&groupby=OLEVEL2&groupby2=&firstgroup=&type=DRAWSINGLEGROUPCOMPLETE">Melbourne</a> <span Class="MainBodyText">(2)</span></td>
+					</tr><tr>
+						<td><a Class="JobLink" href="Careers.aspx?groupvalue=NJ-EWR&groupby=OLEVEL2&groupby2=&firstgroup=&type=DRAWSINGLEGROUPCOMPLETE">Newark</a> <span Class="MainBodyText">(1)</span></td>
+					</tr><tr>
+						<td><a Class="JobLink" href="Careers.aspx?groupvalue=PA-PHL&groupby=OLEVEL2&groupby2=&firstgroup=&type=DRAWSINGLEGROUPCOMPLETE">Philadelphia</a> <span Class="MainBodyText">(1)</span></td>
+					</tr><tr>
+						<td><a Class="JobLink" href="Careers.aspx?groupvalue=AZ-PHX&groupby=OLEVEL2&groupby2=&firstgroup=&type=DRAWSINGLEGROUPCOMPLETE">Phoenix</a> <span Class="MainBodyText">(1)</span></td>
+					</tr><tr>
+						<td><a Class="JobLink" href="Careers.aspx?groupvalue=CA-SFO&groupby=OLEVEL2&groupby2=&firstgroup=&type=DRAWSINGLEGROUPCOMPLETE">San Francisco</a> <span Class="MainBodyText">(1)</span></td>
+					</tr><tr>
+						<td><a Class="JobLink" href="Careers.aspx?groupvalue=AU-SYD&groupby=OLEVEL2&groupby2=&firstgroup=&type=DRAWSINGLEGROUPCOMPLETE">Sydney</a> <span Class="MainBodyText">(2)</span></td>
+					</tr><tr>
+						<td><a Class="JobLink" href="Careers.aspx?groupvalue=FL-TPA&groupby=OLEVEL2&groupby2=&firstgroup=&type=DRAWSINGLEGROUPCOMPLETE">Tampa</a> <span Class="MainBodyText">(1)</span></td>
+					</tr><tr>
+						<td><a Class="JobLink" href="Careers.aspx?groupvalue=ON-TOR&groupby=OLEVEL2&groupby2=&firstgroup=&type=DRAWSINGLEGROUPCOMPLETE">Toronto</a> <span Class="MainBodyText">(1)</span></td>
+					</tr><tr>
+						<td><a Class="JobLink" href="Careers.aspx?groupvalue=BC-VAN&groupby=OLEVEL2&groupby2=&firstgroup=&type=DRAWSINGLEGROUPCOMPLETE">Vancouver</a> <span Class="MainBodyText">(2)</span></td>
+					</tr><tr>
+						<td><a Class="JobLink" href="Careers.aspx?groupvalue=NC-WS&groupby=OLEVEL2&groupby2=&firstgroup=&type=DRAWSINGLEGROUPCOMPLETE">Winston Salem</a> <span Class="MainBodyText">(5)</span></td>
+					</tr>
+				</table>
+                            </div>
+                        
+			</div>
+		</div>
+	</div><div class="t-row">
+		<div class="t-col t-col-12">
+			
+                    <div class="row">
+                        
+                    </div>
+                
+		</div>
+	</div><div class="t-row">
+		<div class="t-col t-col-12">
+			
+                    <div class="row">
+                        
+                    </div>
+                
+		</div>
+	</div><div class="t-row">
+		<div class="t-col t-col-12">
+			
+                    <div class="row">
+
+                        
+
+                    </div>
+                
+		</div>
+	</div><div class="t-row">
+		<div class="t-col t-col-12">
+			
+                    <div class="row">
+
+                        
+                    </div>
+                
+		</div>
+	</div>
+</div>
+
+<input type="hidden" name="FormType">
+
+<input type=hidden name=litVersion value="12.6.0.42">
+
+
+<input type=hidden name=litNETVersion value="2.0">
+                                        </form>
+                                    </div>
+                               
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <footer>
+
+        <div id="footer-outer" data-using-widget-area="false">
+            <div class="row" id="copyright">
+                <div class="container">
+                    <div class="col span_5">
+                        <p>&copy; Powered by Cyber Recruiter. All Rights Reserved. </p>
+                    </div>
+                    <!--/span_5-->
+                    <div class="col span_7 col_last">
+                        
+                    </div>
+                    <!--/span_7-->
+                </div>
+                <!--/container-->
+            </div>
+            <!--/row-->
+        </div>
+        <!--/footer-outer-->
+    </footer>
+
+
+
+
+
+</body>
+
+</html>

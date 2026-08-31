@@ -1,0 +1,1 @@
+{"total":0,"jobPostings":[{"title":"Health and Wellness Advisor","externalPath":"/job/Calgary-AB-CAN/Health-and-Wellness-Advisor_R0017602-1","locationsText":"Calgary, AB, CAN","postedOn":"Posted 11 Days Ago","bulletFields":["R0017602"]}],"facets":[],"userAuthenticated":false}

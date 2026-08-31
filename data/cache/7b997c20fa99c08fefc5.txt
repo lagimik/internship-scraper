@@ -1,0 +1,170 @@
+{
+  "items" : [ {
+    "SearchId" : 1,
+    "Keyword" : "student",
+    "CorrectedKeyword" : null,
+    "UseExactKeywordFlag" : false,
+    "SuggestedKeyword" : null,
+    "ExecuteSpellCheckFlag" : true,
+    "Location" : null,
+    "LocationId" : null,
+    "Radius" : 0,
+    "RadiusUnit" : "MI",
+    "SelectedTitlesFacet" : null,
+    "SelectedCategoriesFacet" : null,
+    "SelectedPostingDatesFacet" : null,
+    "SelectedLocationsFacet" : null,
+    "LastSelectedFacet" : null,
+    "Facets" : "TITLES;LOCATIONS;LOCATION_LEVEL1;LOCATION_LEVEL2;LOCATION_LEVEL3;CATEGORIES;POSTING_DATES;WORK_LOCATIONS;FLEX_FIELDS;ORGANIZATIONS;WORKPLACE_TYPES",
+    "Offset" : 0,
+    "Limit" : 25,
+    "SortBy" : "POSTING_DATES_DESC",
+    "TotalJobsCount" : 1,
+    "Latitude" : null,
+    "Longitude" : null,
+    "SiteNumber" : "CX_1001",
+    "JobFamilyId" : null,
+    "PostingStartDate" : null,
+    "PostingEndDate" : null,
+    "SelectedWorkLocationsFacet" : null,
+    "RequisitionId" : null,
+    "CandidateNumber" : null,
+    "WorkLocationZipCode" : null,
+    "WorkLocationCountryCode" : null,
+    "SelectedFlexFieldsFacets" : null,
+    "OrganizationId" : null,
+    "SelectedOrganizationsFacet" : null,
+    "UserTargetFacetName" : null,
+    "UserTargetFacetInputTerm" : null,
+    "HotJobFlag" : null,
+    "WorkplaceType" : null,
+    "SelectedWorkplaceTypesFacet" : null,
+    "BotQRShortCode" : null,
+    "requisitionList" : [ {
+      "Id" : "106719",
+      "Title" : "Strategic Sourcing Assistant (Co-op)",
+      "PostedDate" : "2026-05-12",
+      "PostingEndDate" : null,
+      "Language" : "US",
+      "PrimaryLocationCountry" : "CA",
+      "GeographyId" : 100000002663877,
+      "HotJobFlag" : false,
+      "WorkplaceTypeCode" : "ORA_HYBRID",
+      "JobFamily" : null,
+      "JobFunction" : null,
+      "WorkerType" : null,
+      "ContractType" : null,
+      "ManagerLevel" : null,
+      "JobSchedule" : null,
+      "JobShift" : null,
+      "JobType" : null,
+      "StudyLevel" : null,
+      "DomesticTravelRequired" : null,
+      "InternationalTravelRequired" : null,
+      "WorkDurationYears" : null,
+      "WorkDurationMonths" : null,
+      "WorkHours" : null,
+      "WorkDays" : null,
+      "LegalEmployer" : null,
+      "BusinessUnit" : null,
+      "Department" : null,
+      "Organization" : null,
+      "BusinessUnitId" : 300000030084868,
+      "LegalEmployerId" : 300000027982086,
+      "OrganizationId" : 1,
+      "MediaThumbURL" : null,
+      "ShortDescriptionStr" : "Are you a co-op student interested in global sourcing? Apply now as the Strategic Sourcing Assistant student to join the S&C Electric Canada team and gain valuable experience!",
+      "PrimaryLocation" : "Toronto, ON, Canada",
+      "Distance" : 1.778544E+12,
+      "TrendingFlag" : true,
+      "BeFirstToApplyFlag" : false,
+      "Relevancy" : 15.530929565429688,
+      "WorkplaceType" : "Hybrid",
+      "ExternalQualificationsStr" : null,
+      "ExternalResponsibilitiesStr" : null,
+      "secondaryLocations" : [ ],
+      "otherWorkLocations" : [ ],
+      "workLocation" : [ {
+        "LocationId" : 300000030101383,
+        "LocationName" : "Toronto",
+        "AddressLine1" : "90 Belfield Road",
+        "AddressLine2" : null,
+        "AddressLine3" : null,
+        "AddressLine4" : null,
+        "Building" : null,
+        "TownOrCity" : "Etobicoke",
+        "PostalCode" : "M9W 1G4",
+        "Country" : "CA",
+        "Region1" : null,
+        "Region2" : null,
+        "Region3" : "ON",
+        "Latitude" : 43.703,
+        "Longitude" : -79.57144
+      } ]
+    } ],
+    "categoriesFacet" : [ {
+      "Id" : 300000002646080,
+      "Name" : "002 - Co-Op",
+      "TotalCount" : 1
+    } ],
+    "locationsFacet" : [ {
+      "Id" : 300000000294844,
+      "Name" : "Canada",
+      "TotalCount" : 1
+    }, {
+      "Id" : 100000002655371,
+      "Name" : "ON, Canada",
+      "TotalCount" : 1
+    }, {
+      "Id" : 100000002663877,
+      "Name" : "Toronto, ON, Canada",
+      "TotalCount" : 1
+    } ],
+    "postingDatesFacet" : [ {
+      "Id" : 31,
+      "Name" : "Greater than 30 days",
+      "TotalCount" : 1
+    } ],
+    "titlesFacet" : [ {
+      "Id" : "SC_ELECTRIC_CO_OP",
+      "Name" : "Co-Op",
+      "TotalCount" : 1
+    } ],
+    "workLocationsFacet" : [ {
+      "Id" : 300000030101383,
+      "Name" : "Toronto",
+      "TotalCount" : 1
+    } ],
+    "flexFieldsFacet" : [ ],
+    "organizationsFacet" : [ {
+      "Id" : 1,
+      "Name" : "S&C Electric Company",
+      "TotalCount" : 1
+    } ],
+    "workplaceTypesFacet" : [ {
+      "Id" : "ORA_HYBRID",
+      "Name" : "Hybrid",
+      "TotalCount" : 1
+    } ]
+  } ],
+  "count" : 1,
+  "hasMore" : false,
+  "limit" : 200,
+  "offset" : 0,
+  "links" : [ {
+    "rel" : "self",
+    "href" : "https://ejia.fa.us6.oraclecloud.com:443/hcmRestApi/resources/11.13.18.05/recruitingCEJobRequisitions",
+    "name" : "recruitingCEJobRequisitions",
+    "kind" : "collection"
+  }, {
+    "rel" : "action",
+    "href" : "https://ejia.fa.us6.oraclecloud.com:443/hcmRestApi/resources/11.13.18.05/recruitingCEJobRequisitions/action/getRequisitionsLocationCoordinates",
+    "name" : "getRequisitionsLocationCoordinates",
+    "kind" : "other"
+  }, {
+    "rel" : "action",
+    "href" : "https://ejia.fa.us6.oraclecloud.com:443/hcmRestApi/resources/11.13.18.05/recruitingCEJobRequisitions/action/getRequisitionDetailsForMap",
+    "name" : "getRequisitionDetailsForMap",
+    "kind" : "other"
+  } ]
+}

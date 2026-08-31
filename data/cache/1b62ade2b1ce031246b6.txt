@@ -1,0 +1,170 @@
+{
+  "items" : [ {
+    "SearchId" : 1,
+    "Keyword" : "student",
+    "CorrectedKeyword" : null,
+    "UseExactKeywordFlag" : false,
+    "SuggestedKeyword" : null,
+    "ExecuteSpellCheckFlag" : true,
+    "Location" : null,
+    "LocationId" : null,
+    "Radius" : 0,
+    "RadiusUnit" : "MI",
+    "SelectedTitlesFacet" : null,
+    "SelectedCategoriesFacet" : null,
+    "SelectedPostingDatesFacet" : null,
+    "SelectedLocationsFacet" : null,
+    "LastSelectedFacet" : null,
+    "Facets" : "TITLES;LOCATIONS;LOCATION_LEVEL1;LOCATION_LEVEL2;LOCATION_LEVEL3;CATEGORIES;POSTING_DATES;WORK_LOCATIONS;FLEX_FIELDS;ORGANIZATIONS;WORKPLACE_TYPES",
+    "Offset" : 0,
+    "Limit" : 25,
+    "SortBy" : "POSTING_DATES_DESC",
+    "TotalJobsCount" : 1,
+    "Latitude" : null,
+    "Longitude" : null,
+    "SiteNumber" : "CX_3001",
+    "JobFamilyId" : null,
+    "PostingStartDate" : null,
+    "PostingEndDate" : null,
+    "SelectedWorkLocationsFacet" : null,
+    "RequisitionId" : null,
+    "CandidateNumber" : null,
+    "WorkLocationZipCode" : null,
+    "WorkLocationCountryCode" : null,
+    "SelectedFlexFieldsFacets" : null,
+    "OrganizationId" : null,
+    "SelectedOrganizationsFacet" : null,
+    "UserTargetFacetName" : null,
+    "UserTargetFacetInputTerm" : null,
+    "HotJobFlag" : null,
+    "WorkplaceType" : null,
+    "SelectedWorkplaceTypesFacet" : null,
+    "BotQRShortCode" : null,
+    "requisitionList" : [ {
+      "Id" : "12710",
+      "Title" : "Engineering Supervisor",
+      "PostedDate" : "2026-07-22",
+      "PostingEndDate" : null,
+      "Language" : "US",
+      "PrimaryLocationCountry" : "CA",
+      "GeographyId" : 100000884541373,
+      "HotJobFlag" : false,
+      "WorkplaceTypeCode" : null,
+      "JobFamily" : null,
+      "JobFunction" : null,
+      "WorkerType" : null,
+      "ContractType" : null,
+      "ManagerLevel" : null,
+      "JobSchedule" : null,
+      "JobShift" : null,
+      "JobType" : null,
+      "StudyLevel" : null,
+      "DomesticTravelRequired" : null,
+      "InternationalTravelRequired" : null,
+      "WorkDurationYears" : null,
+      "WorkDurationMonths" : null,
+      "WorkHours" : null,
+      "WorkDays" : null,
+      "LegalEmployer" : null,
+      "BusinessUnit" : null,
+      "Department" : null,
+      "Organization" : null,
+      "BusinessUnitId" : 300000058981332,
+      "LegalEmployerId" : 300000015404255,
+      "OrganizationId" : 300000058981332,
+      "MediaThumbURL" : null,
+      "ShortDescriptionStr" : "Come Join Our Team at Traxle!\n\n",
+      "PrimaryLocation" : "Guelph, ON, Canada",
+      "Distance" : 1.7846784E+12,
+      "TrendingFlag" : false,
+      "BeFirstToApplyFlag" : true,
+      "Relevancy" : 6.132961750030518,
+      "WorkplaceType" : "",
+      "ExternalQualificationsStr" : null,
+      "ExternalResponsibilitiesStr" : null,
+      "secondaryLocations" : [ ],
+      "otherWorkLocations" : [ ],
+      "workLocation" : [ {
+        "LocationId" : 300000059353450,
+        "LocationName" : "Traxle",
+        "AddressLine1" : "280 Speedvale Avenue West",
+        "AddressLine2" : null,
+        "AddressLine3" : null,
+        "AddressLine4" : null,
+        "Building" : null,
+        "TownOrCity" : "Guelph",
+        "PostalCode" : "N1H 1C4",
+        "Country" : "CA",
+        "Region1" : null,
+        "Region2" : null,
+        "Region3" : "Ontario",
+        "Latitude" : 43.54685,
+        "Longitude" : -80.28401
+      } ]
+    } ],
+    "categoriesFacet" : [ {
+      "Id" : 300000059040287,
+      "Name" : "Leadership",
+      "TotalCount" : 1
+    } ],
+    "locationsFacet" : [ {
+      "Id" : 300000000396101,
+      "Name" : "Canada",
+      "TotalCount" : 1
+    }, {
+      "Id" : 100000884523211,
+      "Name" : "ON, Canada",
+      "TotalCount" : 1
+    }, {
+      "Id" : 100000884541373,
+      "Name" : "Guelph, ON, Canada",
+      "TotalCount" : 1
+    } ],
+    "postingDatesFacet" : [ {
+      "Id" : 31,
+      "Name" : "Greater than 30 days",
+      "TotalCount" : 1
+    } ],
+    "titlesFacet" : [ {
+      "Id" : "ENG",
+      "Name" : "Engineering",
+      "TotalCount" : 1
+    } ],
+    "workLocationsFacet" : [ {
+      "Id" : 300000059353450,
+      "Name" : "Traxle",
+      "TotalCount" : 1
+    } ],
+    "flexFieldsFacet" : [ ],
+    "organizationsFacet" : [ {
+      "Id" : 300000058981332,
+      "Name" : "Traxle Manufacturing",
+      "TotalCount" : 1
+    } ],
+    "workplaceTypesFacet" : [ {
+      "Id" : "ORA_ON_SITE",
+      "Name" : "On-site",
+      "TotalCount" : 1
+    } ]
+  } ],
+  "count" : 1,
+  "hasMore" : false,
+  "limit" : 200,
+  "offset" : 0,
+  "links" : [ {
+    "rel" : "self",
+    "href" : "https://fa-epmd-saasfaprod1.fa.ocs.oraclecloud.com:443/hcmRestApi/resources/11.13.18.05/recruitingCEJobRequisitions",
+    "name" : "recruitingCEJobRequisitions",
+    "kind" : "collection"
+  }, {
+    "rel" : "action",
+    "href" : "https://fa-epmd-saasfaprod1.fa.ocs.oraclecloud.com:443/hcmRestApi/resources/11.13.18.05/recruitingCEJobRequisitions/action/getRequisitionsLocationCoordinates",
+    "name" : "getRequisitionsLocationCoordinates",
+    "kind" : "other"
+  }, {
+    "rel" : "action",
+    "href" : "https://fa-epmd-saasfaprod1.fa.ocs.oraclecloud.com:443/hcmRestApi/resources/11.13.18.05/recruitingCEJobRequisitions/action/getRequisitionDetailsForMap",
+    "name" : "getRequisitionDetailsForMap",
+    "kind" : "other"
+  } ]
+}

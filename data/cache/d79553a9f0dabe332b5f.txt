@@ -1,0 +1,293 @@
+
+
+<!doctype html>
+<html lang="en-US">
+<head><title>
+	Job Browsing
+</title><meta name="viewport" content="width=device-width; initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" /><link rel="stylesheet" href="CRCareersPage.css" /><link rel="icon" href="images/favicon.ico" sizes="32x32" /><link href="/WebResource.axd?d=rhRRvYQTYv6mNRHqzCKJ7u4inhMCE4rztlCDFY78ezPj4sonpIHgcczLkkP8J3MVFKLJ3gaMe0WUH7I8cVMRFmA0jFr7bskrovYhU76S2ku5A74gp_fQpsNgk2G1UjV-rskkpu2fn9L5YYlZAZFKnA2&amp;t=638532749380000000" type="text/css" rel="stylesheet" class="Telerik_stylesheet" /></head>
+
+<body>
+
+    <div id="header-outer" data-has-menu="true" data-user-set-bg="#ffffff" data-format="default" data-cart="false" data-transparency-option="0" data-shrink-num="15" data-full-width="false" data-using-secondary="0" data-using-logo="1" data-logo-height="80" data-padding="12" data-header-resize="" style="padding-top: 12px;">
+        <header id="top">
+            <div class="container" style="visibility: visible; width=100%">
+                <div class="row">
+               
+                    <div class="col span_12">
+                        
+                            <img class="default-logo dark-version" alt="Visibility Software" src="images/brock-logo-1.png" />
+                        </a>
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col span_12">
+                        <a href="#mobilemenu" id="toggle-nav"><i class="icon-reorder2"></i></a>
+                        <nav>
+                            <ul class="sf-menu">
+
+
+                                
+                                <li class="menu-item current-menu-item current_page_item">
+                                    <a href="https://www.brocksolutions.com/contact/">Contact</a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="https://www.brocksolutions.com/"> | </a>
+                                </li>
+                                <li class="menu-item">
+                                    <a href="https://www.brocksolutions.com/">Home</a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </header>
+    </div>
+    <div id="page-header-bg">
+
+        <div class="container">
+            <div class="row" style="top: 8px; visibility: visible;">
+                <div class="col span_12">
+                    <h1>Openings</h1>
+                    <span class="subheader"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="container">
+        <div class="container main-content">
+            <div class="row">
+
+                <div class="col span_12 dark left">
+                   
+                                    <div id="divContent">
+                                        <form name="frmCRSS" method="post" action="./Careers.aspx?groupvalue=ON-TOR&amp;groupby=OLEVEL2&amp;groupby2=&amp;firstgroup=&amp;type=DRAWSINGLEGROUPCOMPLETE" id="frmCRSS">
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="btBrpCSqkfP/P5P4LDFRyayCjetra3cv3Hwbof3eJIm5vBDPvU8ZmnjmqYhpDJWwnzMZoQ7C24ayDr35oU1lfF/sr0F6pSXmTCr9R46udfFaR6MPPfpDnITJaDE682ch0MgZtgZeSpO9DYoQBxhELJ4HpIzRRdK2anqusqduPodOYSijICegf1SXAaHc4RFKdd/1ue9zxPsXJR3YLEgYtC13TRsm1bIReV8rQvEZhXGD2+efwmv4A7GpYTZiTxXvag1sDWPBMY6RDnOw+ZJ1X/n8bE2pm6QpsKewzmP/reEbPiGs6jHIX++1tOZ6cpabUxIipAk8AOcFt3PYzkRrPWBLuuZWWFmfqFA0ULpMX/QGIE1qZbBv8mdElRYbTXpddeRjFDzxcE/bZkRc5htLF6Hcj9iSh10abXtJXbpMqHcPTSe7oDYYDXuzu7qWRN9rIje8WpCiUpc3rWI9lfxeyQ68GUDvigZNfadS2Wll23OXmur81ltBRDpSWQbTIaU4z2hxjWLuByzLG0CS0u7COrdVqRc7miK7gs+auQy9e7Phi1Bfzeb6HD5K2NbbMfnsWd1bo/4LMbthKZY/uDf0DsKVH4dUC7uORjWgqSp6DKgasuOEEMhAgc36z16XsD3n2MbyGGmoMOTYDu2yPcb0lQWmKKl6acIO9rCztMEKL1hLk/p4FiNi5mjpagHtkX/dt0mzHMpgnHziq83tTFvBVPyxaK2X/iLV4gvb9/GgIC1sQLuE1YUl6k5DiBxaQJb6xaNgZwPC/j3LLMiqEEC1JenmHJUUBzlAy1E1PHsZ2zaIWjOlKBfb05Y40OuVwsIx+umgNiI34kBN2VPAZ0vl/LZEFceikkcV4Keqw3OKneRmXvIVDUPs3+OlbtqH8vK3lJ7HFBvIlPldlvpBJ/hlfGwh+Vpkep87TC9EmQ6M7PHe4UxHLKnudvTMCx8wBaEZjCWNk5ke0tk6gZH/jJZ4mg==" />
+
+
+<script src="/ScriptResource.axd?d=NJmAwtEo3Ipnlaxl6CMhvkTMC8aa92jBihXQIh_4BDGKZKFM7HmYDM4zSflXht6pYqCat0bf1O_iww9M2qzIONzM7ysKJYwzXpsbRzSnaetGvsu6xlX0RNdxwdCVR98bcxEp10PClWSzh1wjlKGkePHbEatY0SYp0v7YF6rJyMM1&amp;t=5c0e0825" type="text/javascript"></script>
+<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="796F993D" />
+<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="GJ0uuXPXMW8xdAYBcKUnLZqXRR1BBWzUFcqG8dD3aUCK+ErjItApxOymBqT3GaK/+Jj2HlQ60bFTe8OudMd0bC6sN0Uz5dCgTsTcsD/s1x82bCwC+0v9D7JKObaK9XN7My7Px29WoUMg2YLQ2b5zlA==" />
+                                            
+
+<script language="JavaScript">
+<!--	
+    function ValidatorTrim(s) {
+        var m = s.match(/^\s*(\S+(\s+\S+)*)\s*$/);
+        return (m == null) ? "" : m[1];
+    }
+
+//-->
+</script>
+
+<script language="JavaScript">
+    var nav = window.Event ? true : false;
+    if (nav) {
+        window.captureEvents(Event.KEYDOWN);
+        window.onkeydown = NetscapeEventHandler_KeyDown;
+    } else {
+        document.onkeydown = MicrosoftEventHandler_KeyDown;
+    }
+
+    function NetscapeEventHandler_KeyDown(e) {
+        if (e.which == 13 && e.target.type != 'textarea' && e.target.type != 'submit') {
+            return false;
+        }
+        return true;
+    }
+
+    function MicrosoftEventHandler_KeyDown() {
+        if (event.keyCode == 13 && event.srcElement.type != 'textarea' &&
+            event.srcElement.type != 'submit')
+            return false;
+        return true;
+    }
+
+    function ReferFriendEmail() {
+
+        var uri = "mailto:?subject=";
+        var body = (document.getElementById('CRCareers1_hidBody')).value;
+        var subject = (document.getElementById('CRCareers1_hidSubject')).value;
+        body = body.substr(0, 1600);
+
+        uri += encodeURIComponent(subject);
+        uri += "&body=";
+        uri += encodeURIComponent(body);
+
+        try {
+            window.open(uri);
+
+        } catch (err) {
+            try {
+                uri = uri.substr(0, uri.length / 2);
+                window.open(uri);  // try a smaller size
+            }
+            catch (err) {
+                try {
+                    uri = uri.substr(0, uri.length / 2);
+                    window.open(uri);  // try an even smaller size
+                }
+                catch (err) {
+                    // give up now
+                }
+            }
+        }
+
+
+    }
+
+</script>
+
+
+<input type="hidden" name="CRCareers1$hidSubject" id="CRCareers1_hidSubject" />
+<input type="hidden" name="CRCareers1$hidBody" id="CRCareers1_hidBody" />
+
+<div id="CRCareers1_RadPageLayout2" class="t-container t-container-fluid borderCssClass">
+	<div class="t-row">
+		<div class="t-col t-col-12">
+			
+                    
+                
+		</div>
+	</div><div class="t-row">
+		<div class="t-col t-col-12">
+			
+                    <div class="row">
+                        
+                    </div>
+                
+		</div>
+	</div><div class="t-row">
+		<div class="t-col t-col-12">
+			
+                    <div class="row">
+                        
+                    </div>
+                
+		</div>
+	</div><div class="t-row">
+		<div class="t-col t-col-12">
+			
+                    <div class="row">
+                        
+                    </div>
+                
+		</div>
+	</div><div class="t-row">
+		<div class="t-col t-col-12">
+			
+                    <div class="row">
+                        <table id="CRCareers1_tblComplete" border="0">
+				<tr>
+					<td><table id="CRCareers1_tblCompleteDetail" border="0">
+						<tr>
+							<td colspan="2"><span id="CRCareers1_lblBrowseInstComplete" class="MainBodyText"><strong><br><BR><hr><BR>Current Open Positions<br><BR></strong>(Click on any location to view the jobs in that area..)<br><BR><br></span></td>
+						</tr><tr>
+							<td colspan="2"><a class="JobLink" href="https://careers.brocksolutions.com//Careers.aspx?req=HTO-YYZ-26-1&type=JOBDESCR">Operations Software Engineer</a></td>
+						</tr><tr>
+							<td class="MainBodyText"><b>FT/PT Status:</b></td><td class="MainBodyText">Full Time</td>
+						</tr><tr>
+							<td class="MainBodyText"><b>Location:</b></td><td class="MainBodyText">Toronto</td>
+						</tr><tr>
+							<td class="MainBodyText"><b>Location:</b></td><td class="MainBodyText">Toronto</td>
+						</tr><tr>
+							<td class="MainBodyText" colspan="2"><div class="OutlineElement Ltr SCXW2442535 BCX8" style="-webkit-user-drag: none; -webkit-tap-highlight-color: transparent; margin: 0px; padding: 0px; user-select: text; clear: both; cursor: text; overflow: visible; position: relative; direction: ltr;...</td>
+						</tr><tr>
+							<td colspan="2"><HR noshade color=black size=1></td>
+						</tr>
+					</table></td>
+				</tr>
+			</table>
+                    </div>
+                
+		</div>
+	</div><div class="t-row">
+		<div class="t-col t-col-12">
+			
+                    
+                
+		</div>
+	</div><div class="t-row">
+		<div class="t-col t-col-12">
+			
+                    <div class="row">
+                        
+                    </div>
+                
+		</div>
+	</div><div class="t-row">
+		<div class="t-col t-col-12">
+			
+                    <div class="row">
+                        
+                    </div>
+                
+		</div>
+	</div><div class="t-row">
+		<div class="t-col t-col-12">
+			
+                    <div class="row">
+
+                        
+
+                    </div>
+                
+		</div>
+	</div><div class="t-row">
+		<div class="t-col t-col-12">
+			
+                    <div class="row">
+
+                        
+                    </div>
+                
+		</div>
+	</div>
+</div>
+
+<input type="hidden" name="FormType">
+
+<input type=hidden name=litVersion value="12.6.0.42">
+
+
+<input type=hidden name=litNETVersion value="2.0">
+                                        </form>
+                                    </div>
+                               
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <footer>
+
+        <div id="footer-outer" data-using-widget-area="false">
+            <div class="row" id="copyright">
+                <div class="container">
+                    <div class="col span_5">
+                        <p>&copy; Powered by Cyber Recruiter. All Rights Reserved. </p>
+                    </div>
+                    <!--/span_5-->
+                    <div class="col span_7 col_last">
+                        
+                    </div>
+                    <!--/span_7-->
+                </div>
+                <!--/container-->
+            </div>
+            <!--/row-->
+        </div>
+        <!--/footer-outer-->
+    </footer>
+
+
+
+
+
+</body>
+
+</html>

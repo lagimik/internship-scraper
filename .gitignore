@@ -1,6 +1,4 @@
 node_modules/
-data/
-output/
 scripts/_probe.ts
 *.log
 .DS_Store
