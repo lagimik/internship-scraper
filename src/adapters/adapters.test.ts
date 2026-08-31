@@ -6,6 +6,7 @@ import { parseWorkdayUrl, parseWorkdayPostedOn } from './workday.js';
 import { parseSimplifyListings } from './simplify.js';
 import { collectLocations, mapEmploymentType } from './ashby.js';
 import { parseDayforceResponse, parseDayforceUrl } from './dayforce.js';
+import { parseBambooHrPosting, parseBambooHrUrl } from './bamboohr.js';
 import {
   discoverCyberRecruiterPages,
   parseConfiguredHtml,
@@ -141,6 +142,40 @@ test('dayforce: structured posting maps location, type, salary and URL', () => {
   assert.equal(job.salaryRaw, '$25 - $30/hour');
   assert.match(job.description ?? '', /Build & test controls/);
   assert.equal(job.url, 'https://jobs.dayforcehcm.com/en-CA/eclipse/CANDIDATEPORTAL/jobs/4031');
+});
+
+test('bamboohr: careers URL decomposes into tenant API parts', () => {
+  assert.deepEqual(parseBambooHrUrl('https://avidbots.bamboohr.com/careers/937'), {
+    origin: 'https://avidbots.bamboohr.com',
+    tenant: 'avidbots',
+  });
+  assert.equal(parseBambooHrUrl('https://example.com/careers'), null);
+  assert.equal(parseBambooHrUrl('https://avidbots.bamboohr.com/employees'), null);
+});
+
+test('bamboohr: detail record maps structured location, date and description', () => {
+  const board = { url: 'https://avidbots.bamboohr.com/careers', name: 'Avidbots' };
+  const parsed = parseBambooHrUrl(board.url);
+  assert.ok(parsed);
+  const job = parseBambooHrPosting({
+    id: '937',
+    jobOpeningName: ' Software Developer Intern ',
+    jobOpeningStatus: 'Open',
+    employmentStatusLabel: 'Internship',
+    location: { city: 'Kitchener', state: 'Ontario', addressCountry: 'Canada' },
+    atsLocation: { country: null, state: null, city: null },
+    description: '<p>Build &amp; test robots.</p><ul><li>Write software</li></ul>',
+    compensation: { displayText: '$25–$30/hour', currency: 'CAD' },
+    datePosted: '2026-08-25',
+    jobOpeningShareUrl: 'https://avidbots.bamboohr.com/careers/937',
+  }, board, parsed);
+  assert.ok(job);
+  assert.equal(job.location, 'Kitchener, Ontario, Canada');
+  assert.equal(job.type, 'intern');
+  assert.equal(job.postedAt, '2026-08-25T00:00:00.000Z');
+  assert.equal(job.salaryRaw, '$25–$30/hour');
+  assert.equal(job.salaryCurrency, 'CAD');
+  assert.match(job.description ?? '', /Build & test robots/);
 });
 
 test('ashby: secondary locations are kept so Canada-remote roles survive', () => {

@@ -22,6 +22,7 @@ import { successFactorsAdapter } from './adapters/successfactors.js';
 import { ultiProAdapter } from './adapters/ultipro.js';
 import { customAdapter } from './adapters/custom.js';
 import { dayforceAdapter } from './adapters/dayforce.js';
+import { bambooHrAdapter } from './adapters/bamboohr.js';
 
 /**
  * Sources cheap enough to poll often, the whole group finishes in ~10 seconds and
@@ -39,6 +40,7 @@ export function fastAdapters(): Adapter[] {
     ultiProAdapter(),
     customAdapter(),
     dayforceAdapter(),
+    bambooHrAdapter(),
   ];
 }
 
