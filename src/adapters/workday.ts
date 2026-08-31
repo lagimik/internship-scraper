@@ -51,6 +51,8 @@ export const WORKDAY_BOARDS: WorkdayBoard[] = [
  { url: 'https://trimble.wd1.myworkdayjobs.com/en-US/TrimbleCareers/?locationCountry=a30a87ed25634629aa6c3958aa2b91ea', name: 'Trimble' },
  { url: 'https://bb.wd3.myworkdayjobs.com/QNX', name: 'QNX' },
  { url: 'https://curtisswright.wd1.myworkdayjobs.com/CW_External_Career_Site', name: 'Curtiss-Wright' },
+ { url: 'https://toyota.wd503.myworkdayjobs.com/en-US/Toyota_CA', name: 'Toyota' },
+ { url: 'https://multimatic.wd10.myworkdayjobs.com/MMEC', name: 'Multimatic' },
  
 
 
