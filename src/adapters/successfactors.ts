@@ -38,7 +38,7 @@ export const SUCCESSFACTORS_BOARDS: SuccessFactorsBoard[] = [
   {
     url: 'https://careers.brp.com/global/en/job/36297/Manufacturing-Engineer',
     name: 'BRP',
-  }
+  },
   {
     url: 'https://jobs.aecon.com/go/Aecon-Engineering/2609417/',
     name: 'Aecon',
