@@ -25,6 +25,7 @@
     "typescript": "^7.0.2"
   },
   "dependencies": {
-    "cheerio": "^1.2.0"
+    "cheerio": "^1.2.0",
+    "sqlite": "^5.1.1"
   }
 }
