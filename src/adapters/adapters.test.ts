@@ -5,6 +5,7 @@ import { parseMarkdownTables, dateCellToIso } from './github-md.js';
 import { parseWorkdayUrl, parseWorkdayPostedOn } from './workday.js';
 import { parseSimplifyListings } from './simplify.js';
 import { collectLocations, mapEmploymentType } from './ashby.js';
+import { parseDayforceResponse, parseDayforceUrl } from './dayforce.js';
 import {
   discoverCyberRecruiterPages,
   parseConfiguredHtml,
@@ -105,6 +106,41 @@ test('workday: relative postedOn becomes a date', () => {
   assert.equal(parseWorkdayPostedOn('Posted 11 Days Ago', now)?.slice(0, 10), '2026-07-23');
   assert.equal(parseWorkdayPostedOn('Posted 30+ Days Ago', now)?.slice(0, 10), '2026-07-04');
   assert.equal(parseWorkdayPostedOn(undefined), null);
+});
+
+test('dayforce: careers URL decomposes into public API identifiers', () => {
+  const parsed = parseDayforceUrl('https://jobs.dayforcehcm.com/en-CA/eclipse/CANDIDATEPORTAL/jobs/4031');
+  assert.deepEqual(parsed, {
+    origin: 'https://jobs.dayforcehcm.com',
+    cultureCode: 'en-CA',
+    clientNamespace: 'eclipse',
+    jobBoardCode: 'CANDIDATEPORTAL',
+  });
+  assert.equal(parseDayforceUrl('https://example.com/en-CA/eclipse/CANDIDATEPORTAL'), null);
+});
+
+test('dayforce: structured posting maps location, type, salary and URL', () => {
+  const board = {
+    url: 'https://jobs.dayforcehcm.com/en-CA/eclipse/CANDIDATEPORTAL',
+    name: 'Eclipse Automation',
+  };
+  const parsed = parseDayforceUrl(board.url);
+  assert.ok(parsed);
+  const [job] = parseDayforceResponse({ jobPostings: [{
+    jobPostingId: 4031,
+    jobTitle: ' Software Design Co-op (Nuclear) ',
+    jobDescription: 'Job Type: Co-op\nCompensation: $25 - $30/hour\nBuild &amp; test controls.',
+    hasVirtualLocation: false,
+    postingStartTimestampUTC: '2026-07-13T04:00:00+00:00',
+    postingLocations: [{ formattedAddress: 'Cambridge, ON, Canada' }],
+  }] }, board, parsed);
+  assert.ok(job);
+  assert.equal(job.title, 'Software Design Co-op (Nuclear)');
+  assert.equal(job.location, 'Cambridge, ON, Canada');
+  assert.equal(job.type, 'co-op');
+  assert.equal(job.salaryRaw, '$25 - $30/hour');
+  assert.match(job.description ?? '', /Build & test controls/);
+  assert.equal(job.url, 'https://jobs.dayforcehcm.com/en-CA/eclipse/CANDIDATEPORTAL/jobs/4031');
 });
 
 test('ashby: secondary locations are kept so Canada-remote roles survive', () => {

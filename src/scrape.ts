@@ -21,6 +21,7 @@ import { oracleAdapter } from './adapters/oracle.js';
 import { successFactorsAdapter } from './adapters/successfactors.js';
 import { ultiProAdapter } from './adapters/ultipro.js';
 import { customAdapter } from './adapters/custom.js';
+import { dayforceAdapter } from './adapters/dayforce.js';
 
 /**
  * Sources cheap enough to poll often, the whole group finishes in ~10 seconds and
@@ -37,6 +38,7 @@ export function fastAdapters(): Adapter[] {
     successFactorsAdapter(),
     ultiProAdapter(),
     customAdapter(),
+    dayforceAdapter(),
   ];
 }
 
