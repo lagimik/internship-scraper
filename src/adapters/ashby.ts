@@ -23,6 +23,8 @@ export interface AshbyBoard {
 
 /** Verified live Ashby boards (checked against the API, not guessed). */
 export const ASHBY_BOARDS: AshbyBoard[] = [
+  { token: 'miovision', name: 'Miovision' },
+  { token: 'trexo%20robotics', name: 'Trexo Robotics' },
   { token: 'cohere', name: 'Cohere' },
   { token: 'wealthsimple', name: 'Wealthsimple' },
   { token: '1password', name: '1Password' },
