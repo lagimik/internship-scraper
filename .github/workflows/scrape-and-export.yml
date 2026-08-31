@@ -1,0 +1,57 @@
+name: Scrape and export internships
+
+on:
+  schedule:
+    # 8:00 AM, 2:00 PM, and 8:00 PM EST (UTC-5).
+    - cron: '0 1,13,19 * * *'
+  workflow_dispatch:
+
+concurrency:
+  group: scrape-and-export-main
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  scrape-and-export:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Scrape internships
+        run: npm run scrape
+
+      - name: Export site
+        run: npm run export
+
+      - name: Commit and push changes
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add --all
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          RUN_AT="$(TZ=Etc/GMT+5 date '+%Y-%m-%d %I:%M %p EST')"
+          git commit -m "internship run for ${RUN_AT}"
+          git pull --rebase origin main
+          git push origin HEAD:main
