@@ -65,6 +65,29 @@ test('roles: target titles match', () => {
   }
 });
 
+test('roles: common unordered and qualified title permutations match', () => {
+  const cases: Array<[string, string]> = [
+    ['Summer Intern, Mechanical Systems', 'mechanical-engineering'],
+    ['Student - Mechanical Designer', 'design-manufacturing'],
+    ['Co-op, Product CAD Design', 'design-manufacturing'],
+    ['Intern - Polymer Materials', 'materials-engineering'],
+    ['Quality Engineering Co-op', 'manufacturing-engineering'],
+    ['Supplier Quality Intern', 'manufacturing-engineering'],
+    ['2027 Summer Intern - Manufacturing Controls Engineer', 'manufacturing-engineering'],
+    ['Co-op - Process Improvement', 'manufacturing-engineering'],
+    ['Industrial Automation Student', 'manufacturing-engineering'],
+    ['NPI Engineering Intern', 'manufacturing-engineering'],
+    ['Student Project Coordinator - Manufacturing', 'project-management'],
+    ['Engineering Services Project Controls Student', 'project-management'],
+    ['Co-op, Technical Program Assistant', 'program-management'],
+  ];
+  for (const [title, category] of cases) {
+    const m = matchRole(title);
+    assert.equal(m.matches, true, `should match: ${title}`);
+    assert.equal(m.category, category, `wrong category for: ${title}`);
+  }
+});
+
 test('roles: computing and business titles are excluded', () => {
   for (const t of [
     'DevOps Engineer Intern',
@@ -92,6 +115,15 @@ test('roles: false positives excluded', () => {
     'Technical Recruiter',
     'Product Manager',
     'Marketing Intern',
+    'Quality Assurance Tester Intern',
+    'QA Automation Co-op',
+    'Test Automation Engineer Intern',
+    'Business Operations Intern',
+    'Sales Operations Co-op',
+    'Product Management Intern',
+    'Industrial Solutions Intern',
+    'Operations Intern',
+    'Logistics Co-op',
   ];
   for (const title of bad) {
     assert.equal(matchRole(title).matches, false, `should exclude: ${title}`);
@@ -106,6 +138,7 @@ test('roles: job type classification', () => {
   assert.equal(classifyType('Manufacturing Co-op - Fall 2026'), 'intern');
   // Co-op still fires on its own when nothing says "intern".
   assert.equal(classifyType('Mechatronics Coop'), 'co-op');
+  assert.equal(classifyType('Mechanical Engineering CO-OP'), 'co-op');
   assert.equal(classifyType('New Grad Mechanical Engineer'), 'new-grad');
   assert.equal(classifyType('Mechanical Engineer'), 'full-time');
 });

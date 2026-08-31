@@ -21,69 +21,107 @@ const EXCLUSIONS: Array<[RegExp, string]> = [
   [/\b(machine learning|artificial intelligence|deep learning|computer vision|nlp|llm|genai)\b|\b(ai|ml)\s+(engineer|developer|scientist)\b/, 'ai-ml'],
   [/\b(front.?end|back.?end|full.?stack|web|mobile|ios|android)\s+(engineer|developer|dev)\b/, 'software'],
   [/\b(programmer|developer|cloud engineer|platform engineer|infrastructure engineer)\b/, 'software-infrastructure'],
-  [/\b(cybersecurity|information technology|\bit\b|network|database)\s+(engineer|developer|analyst|specialist|manager|intern|co.?op)\b/, 'computing'],
+  [/\b(cybersecurity|information technology|it|network|database)\s+(engineer|developer|analyst|specialist|manager|intern|co\s?op)\b/, 'computing'],
+  [/\b(qa|quality assurance)\s+(analyst|tester|automation|developer)\b|\btest\s+automation\b/, 'software-testing'],
 
   // Other disciplines and common false positives.
-  [/\b(sales|solutions?|customer|field service|support|application|forward.deployed)\s+engineer\b/, 'non-target-engineer'],
-  [/\b(civil|structural|electrical|chemical|petroleum|mining|geotechnical|environmental|optical|rf)\s+engineer/, 'other-discipline'],
-  [/\b(engineering|technical)\s+(director|lead|head)\b/, 'leadership'],
   [/\b(vp|vice president|head of|chief)\b/, 'leadership'],
   [/\b(recruiter|sourcer|talent acquisition|human resources|people ops)\b/, 'recruiting'],
   [/\b(marketing|graphic designer|ux|user experience|content|technical writer)\b/, 'non-engineering'],
   [/\b(finance|financial|accounting|audit|tax|banking|investment|actuarial)\b/, 'finance'],
+  [/\b(business|sales|revenue|people|customer)\s+operations\b/, 'business-operations'],
+  [/\bproduct\s+(manager|management|marketing)\b/, 'product-management'],
 ];
 
-/** [pattern, category, rule name]. Specific categories precede general ones. */
-const INCLUSIONS: Array<[RegExp, RoleCategory, string]> = [
-  // Mechatronics and electromechanical engineering.
-  [/\bmechatronic(s|al)?\s+(engineer|engineering|designer|technologist|technician|intern|student|co.?op)\b/, 'mechatronics', 'mechatronics'],
-  [/\belectro.?mechanical\s+(engineer|engineering|designer|technologist|intern|student|co.?op)\b/, 'mechatronics', 'electromechanical'],
-  [/\brobotics\s+(mechanical|mechatronics)\s+(engineer|engineering|designer|intern|student|co.?op)\b/, 'mechatronics', 'robotics-mechanical'],
+const STUDENT_MARKER = /\b(intern(ship)?s?|co\s?op|student|placement|stagiaire|stages?|étudiant(e)?|apprenti(ce|ceship)?|undergrad(uate)?|work\s+term)\b/;
+const ENGINEERING_ROLE = /\b(engineer(ing)?|designer|design|technologist|technician|specialist|scientist|coordinator|manager|management|controls?)\b/;
 
-  // Design for manufacturing, mechanical design, and tooling design.
-  [/\bdesign\s+for\s+manufactur(ing|ability)\b|\bdfma?\b/, 'design-manufacturing', 'design-for-manufacturing'],
-  [/\b(manufacturing|mechanical|product|machine|tooling)\s+design\s+(engineer|engineering|designer|intern|student|co.?op)\b/, 'design-manufacturing', 'manufacturing-design'],
-  [/\bdesign\s+engineer(ing)?\b|\bengineering\s+designer\b/, 'design-manufacturing', 'design-engineering'],
-  [/\b(cad|catia|solidworks|creo)\s+(designer|design|engineer|technologist|intern|student|co.?op)\b/, 'design-manufacturing', 'cad-design'],
-  [/\btool(ing)?\s+(design|designer|engineer|engineering)\b/, 'design-manufacturing', 'tooling-design'],
+interface ConceptRule {
+  category: RoleCategory;
+  name: string;
+  /** Every expression must match, but their order and distance do not matter. */
+  all: RegExp[];
+  /** At least one expression must match when supplied. */
+  any?: RegExp[];
+}
 
-  // Materials engineering, metallurgy, composites, and polymers.
-  [/\bmaterials?\s+(engineer|engineering|scientist|science|specialist|technologist|intern|student|co.?op)\b/, 'materials-engineering', 'materials-engineering'],
-  [/\b(metallurgy|metallurgical|metallurgist)\b/, 'materials-engineering', 'metallurgy'],
-  [/\b(composites?|polymers?)\s+(engineer|engineering|specialist|technologist|intern|student|co.?op)\b/, 'materials-engineering', 'composites-materials'],
-
-  // Engineering project and program management.
-  [/\b(engineering|mechanical|manufacturing|industrial|technical)\s+project\s+(manager|management|coordinator|engineer|intern|student|co.?op)\b/, 'project-management', 'engineering-project-management'],
-  [/\bproject\s+(manager|management|coordinator|engineer|intern|student|co.?op)\b.*\b(engineering|mechanical|manufacturing|industrial|design)\b/, 'project-management', 'project-management-engineering'],
-  [/\b(engineering|mechanical|manufacturing|industrial|technical)\s+program(me)?\s+(manager|management|coordinator|engineer|intern|student|co.?op)\b/, 'program-management', 'engineering-program-management'],
-  [/\bprogram(me)?\s+(manager|management|coordinator|engineer|intern|student|co.?op)\b.*\b(engineering|mechanical|manufacturing|industrial|design)\b/, 'program-management', 'program-management-engineering'],
-
-  // Core mechanical and manufacturing engineering.
-  [/\bmechanical\s+(engineer|engineering|designer|technologist|intern|student|co.?op)\b/, 'mechanical-engineering', 'mechanical-engineering'],
-  [/\bmanufacturing\s+(engineer|engineering|technologist|specialist|intern|student|co.?op)\b/, 'manufacturing-engineering', 'manufacturing-engineering'],
-  [/\b(industrialization|production|process)\s+(engineer|engineering|technologist|intern|student|co.?op)\b/, 'manufacturing-engineering', 'production-process-engineering'],
-  [/\b(industrial engineer|industrial engineering)\b/, 'manufacturing-engineering', 'industrial-engineering'],
-
-  // Student-first title forms.
-  [/\b(intern(ship)?|co.?op|student|placement)\b.*\bmechanical\s+engineering\b/, 'mechanical-engineering', 'mechanical-student-prefix'],
-  [/\b(intern(ship)?|co.?op|student|placement)\b.*\bmechatronic(s|al)?\b/, 'mechatronics', 'mechatronics-student-prefix'],
-  [/\b(intern(ship)?|co.?op|student|placement)\b.*\b(materials?|metallurg|composite)\b/, 'materials-engineering', 'materials-student-prefix'],
-  [/\b(intern(ship)?|co.?op|student|placement)\b.*\b(manufacturing|industrialization|production engineering)\b/, 'manufacturing-engineering', 'manufacturing-student-prefix'],
-  [/\b(intern(ship)?|co.?op|student|placement)\b.*\b(engineering\s+)?project\s+management\b/, 'project-management', 'project-student-prefix'],
-  [/\b(intern(ship)?|co.?op|student|placement)\b.*\b(engineering\s+)?program(me)?\s+management\b/, 'program-management', 'program-student-prefix'],
+/**
+ * Rules describe co-occurring concepts instead of enumerating title word orders.
+ * Specific categories precede general ones so, for example, mechanical design does
+ * not get consumed by the broader mechanical rule.
+ */
+const CONCEPT_RULES: ConceptRule[] = [
+  {
+    category: 'mechatronics',
+    name: 'mechatronics',
+    all: [/\b(mechatronic(s|al)?|electro\s?mechanical|robotics\s+(mechanical|mechatronics))\b/],
+    any: [ENGINEERING_ROLE, STUDENT_MARKER],
+  },
+  {
+    category: 'design-manufacturing',
+    name: 'design-for-manufacturing',
+    all: [/\b(design\s+for\s+manufactur(ing|ability)|dfma?|dfa)\b/],
+  },
+  {
+    category: 'design-manufacturing',
+    name: 'mechanical-manufacturing-design',
+    all: [/\b(mechanical|manufacturing|product|machine|tooling|engineering)\b/, /\b(design|designer|cad|catia|solidworks|creo|tooling)\b/],
+    any: [ENGINEERING_ROLE, STUDENT_MARKER],
+  },
+  {
+    category: 'materials-engineering',
+    name: 'materials-engineering',
+    all: [/\b(materials?|metallurg(y|ical|ist)?|composites?|polymers?)\b/],
+    any: [ENGINEERING_ROLE, STUDENT_MARKER],
+  },
+  {
+    category: 'project-management',
+    name: 'engineering-project',
+    all: [/\bprojects?\b/, /\b(engineering|mechanical|manufacturing|industrial|technical|design)\b/],
+    any: [/\b(manager|management|coordinator|engineer|controls?|lead|assistant)\b/, STUDENT_MARKER],
+  },
+  {
+    category: 'program-management',
+    name: 'engineering-program',
+    all: [/\bprogram(me)?s?\b/, /\b(engineering|mechanical|manufacturing|industrial|technical|design)\b/],
+    any: [/\b(manager|management|coordinator|engineer|lead|assistant)\b/, STUDENT_MARKER],
+  },
+  {
+    category: 'manufacturing-engineering',
+    name: 'manufacturing-production',
+    all: [/\b(manufacturing|industrialization|production|assembly|factory|plant)\b/],
+    any: [ENGINEERING_ROLE, STUDENT_MARKER, /\b(operations|automation|process|quality|maintenance|equipment|npi|new\s+product\s+introduction)\b/],
+  },
+  {
+    category: 'manufacturing-engineering',
+    name: 'quality-process-automation',
+    all: [/\b(quality(\s+control|\s+engineering)?|supplier\s+quality|process(\s+improvement|\s+engineering)?|industrial\s+automation|manufacturing\s+controls?|equipment\s+engineering|npi|new\s+product\s+introduction)\b/],
+    any: [ENGINEERING_ROLE, STUDENT_MARKER],
+  },
+  {
+    category: 'manufacturing-engineering',
+    name: 'industrial-engineering',
+    all: [/\bindustrial\b/, /\bengineer(ing)?\b/],
+  },
+  {
+    category: 'mechanical-engineering',
+    name: 'mechanical-engineering',
+    all: [/\b(mechanical|mechanics|machine\s+systems?)\b/],
+    any: [ENGINEERING_ROLE, STUDENT_MARKER],
+  },
 
   // French titles common in Quebec.
-  [/\bing(é|e)nieur(e)?\s+(en\s+)?m(é|e)canique\b|\bg(é|e)nie\s+m(é|e)canique\b/, 'mechanical-engineering', 'fr-mechanical'],
-  [/\bm(é|e)catronique\b/, 'mechatronics', 'fr-mechatronics'],
-  [/\bing(é|e)nieur(e)?\s+(en\s+)?(fabrication|manufacturier|production|proc(é|e)d(é|e)s?)\b/, 'manufacturing-engineering', 'fr-manufacturing'],
-  [/\bconception\s+(m(é|e)canique|pour\s+la\s+fabrication)\b/, 'design-manufacturing', 'fr-design'],
-  [/\b(mat(é|e)riaux|m(é|e)tallurgie|composites?)\b/, 'materials-engineering', 'fr-materials'],
-  [/\b(gestionnaire|coordonnateur|charg(é|e))\s+(de\s+)?projet\b.*\b(ing(é|e)nierie|m(é|e)canique|fabrication)\b/, 'project-management', 'fr-project'],
-  [/\b(gestionnaire|coordonnateur|charg(é|e))\s+(de\s+)?programme\b.*\b(ing(é|e)nierie|m(é|e)canique|fabrication)\b/, 'program-management', 'fr-program'],
+  { category: 'mechatronics', name: 'fr-mechatronics', all: [/\bmécatronique\b/] },
+  { category: 'design-manufacturing', name: 'fr-design', all: [/\bconception\s+(mécanique|pour\s+la\s+fabrication)\b/] },
+  { category: 'materials-engineering', name: 'fr-materials', all: [/\b(matériaux|métallurgie|composites?)\b/] },
+  { category: 'mechanical-engineering', name: 'fr-mechanical', all: [/\b(ingénieur(e)?\s+(en\s+)?mécanique|génie\s+mécanique)\b/] },
+  { category: 'manufacturing-engineering', name: 'fr-manufacturing', all: [/\b(fabrication|manufacturier|production|procédés?|qualité|assemblage)\b/], any: [/\b(ingénieur(e)?|ingénierie|spécialiste|technicien(ne)?)\b/, STUDENT_MARKER] },
+  { category: 'project-management', name: 'fr-project', all: [/\bprojets?\b/, /\b(ingénierie|mécanique|fabrication)\b/], any: [/\b(gestionnaire|coordonnateur|chargé)\b/, STUDENT_MARKER] },
+  { category: 'program-management', name: 'fr-program', all: [/\bprogrammes?\b/, /\b(ingénierie|mécanique|fabrication)\b/], any: [/\b(gestionnaire|coordonnateur|chargé)\b/, STUDENT_MARKER] },
 ];
 
 const INTERN = /\bintern(ship)?s?\b|\bsummer\s+20\d\d\b|\b(fall|winter|spring|summer)\s+(term|20\d\d)\b|\bstudent\b|\bplacement\b|\bstagiaire\b|\bstages?\b|\b(é|e)tudiant(e)?\b|\bapprenti(ce|ceship)?\b|\bundergrad(uate)?\b|\bwork\s+term\b/;
-const COOP = /\bco.?op\b|\balternance\b/;
+const COOP = /\bco\s?op\b|\balternance\b/;
 const NEW_GRAD = /\bnew\s?grad(uate)?\b|\bentry.level\b|\buniversity grad|\bcampus\b|\bearly career\b|\bjeune dipl(ô|o)m(é|e)\b/;
 const CONTRACT = /\bcontract(or)?\b|\bfixed.term\b|\btemporary\b|\bfreelance\b|\bcontractuel\b/;
 
@@ -98,8 +136,8 @@ export interface RoleMatch {
 export function normalizeTitle(title: string): string {
   return (title ?? '')
     .toLowerCase()
-    .replace(/[_/|]/g, ' ')
-    .replace(/[–—]/g, '-')
+    .replace(/co[‐‑‒–—-]?op/g, 'co op')
+    .replace(/[\p{P}\p{S}]+/gu, ' ')
     .replace(/\s+/g, ' ')
     .trim();
 }
@@ -126,9 +164,11 @@ export function matchRole(title: string): RoleMatch {
       return { matches: false, category: null, type: null, matchedBy: null, excludedBy: reason };
     }
   }
-  for (const [pattern, category, rule] of INCLUSIONS) {
-    if (pattern.test(normalized)) {
-      return { matches: true, category, type: classifyType(normalized), matchedBy: rule };
+  for (const rule of CONCEPT_RULES) {
+    const matchesAll = rule.all.every((pattern) => pattern.test(normalized));
+    const matchesAny = !rule.any || rule.any.some((pattern) => pattern.test(normalized));
+    if (matchesAll && matchesAny) {
+      return { matches: true, category: rule.category, type: classifyType(normalized), matchedBy: rule.name };
     }
   }
   return { matches: false, category: null, type: null, matchedBy: null };
