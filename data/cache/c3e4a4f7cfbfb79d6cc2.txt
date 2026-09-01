@@ -1,1 +1,0 @@
-{"total":0,"jobPostings":[{"title":"Aircraft Maintenance Instructor","externalPath":"/job/Greenwood/MQ-9B-RPAS-Maintenance-Instructor_119296","locationsText":"Greenwood","postedOn":"Posted 30+ Days Ago","bulletFields":["119296"]}],"facets":[],"userAuthenticated":false}

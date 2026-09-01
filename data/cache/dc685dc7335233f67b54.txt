@@ -1,1 +1,0 @@
-{"total":0,"jobPostings":[{"title":"Mechanical Engineer","externalPath":"/job/Fort-McMurray-Mildred-Lake-AB-CAN/Mechanical-Engineer_R0017463","locationsText":"Fort McMurray (Mildred Lake), AB, CAN","postedOn":"Posted 11 Days Ago","bulletFields":["R0017463"]}],"facets":[],"userAuthenticated":false}

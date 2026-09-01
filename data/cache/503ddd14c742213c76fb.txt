@@ -1,1 +1,0 @@
-{"total":0,"jobPostings":[{"title":"CNC Programmer - 3rd Shift","externalPath":"/job/Fort-Wayne-Indiana/CNC-Programmer---3rd-Shift_JR103010-2","locationsText":"Fort Wayne, Indiana","postedOn":"Posted 30+ Days Ago","bulletFields":["JR103010"]}],"facets":[],"userAuthenticated":false}
