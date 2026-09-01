@@ -1,4 +1,4 @@
-/** Applies student, country, four-month-term, and role filters. */
+/** Applies student, country, Winter/Hiver 2027 work-term, and role filters. */
 
 import type { JobPosting, RawJob } from '../types.js';
 import { matchLocations } from './location.js';

@@ -41,7 +41,7 @@ export interface JobPosting {
   locationConfidence: LocationConfidence;
   /** Which location rule fired. */
   locationMatchedBy: string | null;
-  /** Parsed duration. Unknown terms remain eligible; explicit non-four-month terms do not. */
+  /** Parsed duration for the targeted Winter/Hiver 2027 term. Unspecified terms are excluded. */
   workTermMonths: number | null;
   workTermConfidence: WorkTermConfidence;
   workTermMatchedBy: string | null;

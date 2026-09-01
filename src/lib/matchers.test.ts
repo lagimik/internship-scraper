@@ -55,12 +55,35 @@ test('canada: remote handling', () => {
   assert.equal(match('Remote - US only', 'US')?.confidence, 'confirmed');
 });
 
-test('work terms: accepts four months or unspecified and rejects explicit longer terms', () => {
-  assert.deepEqual(matchWorkTerm('Mechanical Intern - 4 months', null).months, 4);
-  assert.deepEqual(matchWorkTerm('Mechanical Intern', 'Term: 16 weeks').months, 4);
-  assert.equal(matchWorkTerm('Mechanical Intern - Summer 2027', null).confidence, 'inferred');
-  assert.equal(isFourMonthEligible(matchWorkTerm('Mechanical Intern', null)), true);
-  assert.equal(isFourMonthEligible(matchWorkTerm('Mechanical Intern - 8 months', null)), false);
+test('work terms: accepts Winter 2027 and Hiver 2027 postings', () => {
+  for (const text of [
+    'Winter 2027', '2027 Winter', 'Hiver 2027', '2027 Hiver',
+    'Starting January 2027', 'Internship beginning January 2027',
+    'Débutant en janvier 2027', 'Stage - janvier 2027',
+    'January to April 2027', 'Janvier à avril 2027',
+  ]) {
+    const term = matchWorkTerm(`Mechanical Intern - ${text}`, null);
+    assert.equal(isFourMonthEligible(term), true, `should accept ${text}`);
+    assert.equal(term.months, 4);
+  }
+});
+
+test('work terms: rejects other terms and unspecified postings', () => {
+  for (const text of [
+    'Winter 2026', 'Spring 2027', 'Summer 2027', 'Fall 2027',
+    'Hiver 2026', 'Printemps 2027', 'Starting May 2027',
+    'Mechanical Intern', '4-month Mechanical Intern',
+  ]) {
+    assert.equal(isFourMonthEligible(matchWorkTerm(text, null)), false, `should reject ${text}`);
+  }
+});
+
+test('work terms: incompatible durations override Winter/Hiver 2027 wording', () => {
+  for (const text of ['8 months', 'eight-month', '12 months', '32 weeks', 'huit mois']) {
+    const term = matchWorkTerm(`Winter 2027 Mechanical Intern - ${text}`, null);
+    assert.equal(isFourMonthEligible(term), false, `should reject ${text}`);
+  }
+  assert.equal(isFourMonthEligible(matchWorkTerm('Hiver 2027 - stage de quatre mois', null)), true);
 });
 
 test('roles: target titles match', () => {
