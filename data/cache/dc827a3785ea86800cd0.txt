@@ -309,7 +309,7 @@
         <div class="paginationShell clearfix" xml:lang="en-US" lang="en-US">
                     <div class="well well-lg pagination-well pagination">
                         <div class="pagination-label-row">
-                            <span class="paginationLabel" aria-label="Results 22 – 30">Results <b>22 – 30</b> of <b>30</b></span>
+                            <span class="paginationLabel" aria-label="Results 22 – 27">Results <b>22 – 27</b> of <b>27</b></span>
                             <span class="srHelp" style="font-size:0px">Page 2 of 2</span>
                         </div>
                             <ul class="pagination">
@@ -323,7 +323,7 @@
                 </div>
 
             <div class="searchResultsShell">
-				<table id="searchresults" class="searchResults full table table-striped table-hover" cellpadding="0" cellspacing="0" aria-label="Search results for intern AND Canada. Page 2 of 2, Results 22 to 30 of 30">
+				<table id="searchresults" class="searchResults full table table-striped table-hover" cellpadding="0" cellspacing="0" aria-label="Search results for intern AND Canada. Page 2 of 2, Results 22 to 27 of 27">
 					<thead>
                             <tr id="search-results-header">
 											<th id="hdrTitle" aria-sort="none" scope="col" width="40%">
@@ -400,81 +400,25 @@
                             <tr class="data-row">
                                                 <td class="colTitle" headers="hdrTitle">
 													<span class="jobTitle hidden-phone">
-														<a href="/job/Tiverton-Electrical-Technologist-Onta/604898017/" class="jobTitle-link">Electrical Technologist</a>
+														<a href="/job/Toronto-Senior-Engineer-%28MechanicalPiping-Design%29-Onta/592729317/" class="jobTitle-link">Senior Engineer (Mechanical/Piping Design)</a>
 													</span>
                                                     <div class="jobdetail-phone visible-phone">
                                                                     <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Tiverton-Electrical-Technologist-Onta/604898017/">Electrical Technologist</a>
+                                                                        <a class="jobTitle-link" href="/job/Toronto-Senior-Engineer-%28MechanicalPiping-Design%29-Onta/592729317/">Senior Engineer (Mechanical/Piping Design)</a>
                                                                     </span>
-                                                                    <span class="jobDate visible-phone">Aug 4, 2026
+                                                                    <span class="jobDate visible-phone">Aug 16, 2026
 													                </span>
                                                                     <span class="jobDistance visible-phone">0.00 mi</span>
                                                     </div>
                                                 </td>
 											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 4, 2026
-												</span>
-											</td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Tiverton, Ontario, Canada
-            
-        </span>
-											</td>
-									<td class="hidden-phone"></td>
-                            </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
-														<a href="/job/Toronto-Technologist-%28HCLHVL%29-Onta/605479717/" class="jobTitle-link">Technologist (HCL/HVL)</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Toronto-Technologist-%28HCLHVL%29-Onta/605479717/">Technologist (HCL/HVL)</a>
-                                                                    </span>
-                                                                    <span class="jobDate visible-phone">Aug 24, 2026
-													                </span>
-                                                                    <span class="jobDistance visible-phone">0.00 mi</span>
-                                                    </div>
-                                                </td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 24, 2026
+												<span class="jobDate">Aug 16, 2026
 												</span>
 											</td>
 											<td class="colLocation hidden-phone" headers="hdrLocation">
         
         <span class="jobLocation">
             Toronto, Ontario, Canada
-            
-        </span>
-											</td>
-									<td class="hidden-phone"></td>
-                            </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
-														<a href="/job/Chalk-River-Vice-President-of-Construction-Onta/605338917/" class="jobTitle-link">Vice President of Construction</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Chalk-River-Vice-President-of-Construction-Onta/605338917/">Vice President of Construction</a>
-                                                                    </span>
-                                                                    <span class="jobDate visible-phone">Aug 19, 2026
-													                </span>
-                                                                    <span class="jobDistance visible-phone">0.00 mi</span>
-                                                    </div>
-                                                </td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 19, 2026
-												</span>
-											</td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Chalk River, Ontario, Canada
             
         </span>
 											</td>
@@ -497,34 +441,6 @@
                                                 </td>
 											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
 												<span class="jobDate">Aug 19, 2026
-												</span>
-											</td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Toronto, Ontario, Canada
-            
-        </span>
-											</td>
-									<td class="hidden-phone"></td>
-                            </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
-														<a href="/job/Toronto-Senior-Engineer-%28MechanicalPiping-Design%29-Onta/592729317/" class="jobTitle-link">Senior Engineer (Mechanical/Piping Design)</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Toronto-Senior-Engineer-%28MechanicalPiping-Design%29-Onta/592729317/">Senior Engineer (Mechanical/Piping Design)</a>
-                                                                    </span>
-                                                                    <span class="jobDate visible-phone">Aug 16, 2026
-													                </span>
-                                                                    <span class="jobDistance visible-phone">0.00 mi</span>
-                                                    </div>
-                                                </td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 16, 2026
 												</span>
 											</td>
 											<td class="colLocation hidden-phone" headers="hdrLocation">
@@ -762,7 +678,7 @@ $('#distance').watermark('');
 		//<![CDATA[
 			$(function() 
 			{
-				var ctid = '714686a9-efac-40aa-a5f2-4aaa2fa9758f';
+				var ctid = 'c0a8c122-0ebb-4c96-a16e-57963cda6761';
 				var referrer = '';
 				var landing = document.location.href;
 				var brand = '';
@@ -825,7 +741,7 @@ $('#distance').watermark('');
 				$.ajaxSetup({
 					cache   : false,
 					headers : {
-						"X-CSRF-Token" : "0cf70b50-2739-4799-8b30-a04211aac395"
+						"X-CSRF-Token" : "9658522c-b78f-492a-a67c-5543582d67a6"
 					}
 				});
 			//]]>

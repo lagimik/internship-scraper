@@ -19,7 +19,7 @@
     "Offset" : 25,
     "Limit" : 25,
     "SortBy" : "POSTING_DATES_DESC",
-    "TotalJobsCount" : 28,
+    "TotalJobsCount" : 27,
     "Latitude" : null,
     "Longitude" : null,
     "SiteNumber" : "CX_2001",
@@ -41,67 +41,6 @@
     "SelectedWorkplaceTypesFacet" : null,
     "BotQRShortCode" : null,
     "requisitionList" : [ {
-      "Id" : "88176",
-      "Title" : "Junior Materials Technician - Prince George",
-      "PostedDate" : "2026-06-03",
-      "PostingEndDate" : null,
-      "Language" : "US",
-      "PrimaryLocationCountry" : "CA",
-      "GeographyId" : 100000012805243,
-      "HotJobFlag" : false,
-      "WorkplaceTypeCode" : null,
-      "JobFamily" : null,
-      "JobFunction" : null,
-      "WorkerType" : null,
-      "ContractType" : null,
-      "ManagerLevel" : null,
-      "JobSchedule" : null,
-      "JobShift" : null,
-      "JobType" : null,
-      "StudyLevel" : null,
-      "DomesticTravelRequired" : null,
-      "InternationalTravelRequired" : null,
-      "WorkDurationYears" : null,
-      "WorkDurationMonths" : null,
-      "WorkHours" : null,
-      "WorkDays" : null,
-      "LegalEmployer" : null,
-      "BusinessUnit" : null,
-      "Department" : null,
-      "Organization" : null,
-      "BusinessUnitId" : 300000008015285,
-      "LegalEmployerId" : 300000008011168,
-      "OrganizationId" : 300000008011168,
-      "MediaThumbURL" : "https://globalerp.blob.core.windows.net/images/WSPCareer_LabWorker2.jpg",
-      "ShortDescriptionStr" : "Why WSP? A global community of brilliant minds – your next idea, mentor, or opportunity is always within reach.",
-      "PrimaryLocation" : "Prince George, BC, Canada",
-      "Distance" : 1.7804448E+12,
-      "TrendingFlag" : false,
-      "BeFirstToApplyFlag" : false,
-      "Relevancy" : 6.7581329345703125,
-      "WorkplaceType" : "",
-      "ExternalQualificationsStr" : null,
-      "ExternalResponsibilitiesStr" : null,
-      "secondaryLocations" : [ ],
-      "otherWorkLocations" : [ ],
-      "workLocation" : [ {
-        "LocationId" : 300002039426656,
-        "LocationName" : "CA/BC/Prince George (3456 Opie Crescent)",
-        "AddressLine1" : "3456 Opie Crescent",
-        "AddressLine2" : null,
-        "AddressLine3" : null,
-        "AddressLine4" : null,
-        "Building" : null,
-        "TownOrCity" : "Prince George",
-        "PostalCode" : "V2N 2P9",
-        "Country" : "CA",
-        "Region1" : "British Columbia",
-        "Region2" : null,
-        "Region3" : "BC",
-        "Latitude" : 53.90034,
-        "Longitude" : -122.78576
-      } ]
-    }, {
       "Id" : "85264",
       "Title" : "Programme and Project Controls / PMO Senior Consultant (Health and Life Sciences)",
       "PostedDate" : "2026-04-27",
@@ -139,7 +78,7 @@
       "Distance" : 1.777248E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 6.901862621307373,
+      "Relevancy" : 6.921211242675781,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -250,7 +189,7 @@
       "Distance" : 1.777248E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 6.258655548095703,
+      "Relevancy" : 6.276415824890137,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -327,7 +266,7 @@
     "categoriesFacet" : [ {
       "Id" : 300000018364005,
       "Name" : "Engineering",
-      "TotalCount" : 16
+      "TotalCount" : 15
     }, {
       "Id" : 300000018364026,
       "Name" : "Technical Services",
@@ -360,7 +299,7 @@
     }, {
       "Id" : 300000000314850,
       "Name" : "Canada",
-      "TotalCount" : 6
+      "TotalCount" : 5
     }, {
       "Id" : 100008468697738,
       "Name" : "Oxfordshire, United Kingdom",
@@ -374,22 +313,22 @@
       "Name" : "Cambridge, Cambridgeshire, United Kingdom",
       "TotalCount" : 4
     }, {
-      "Id" : 100000012804592,
-      "Name" : "ON, Canada",
-      "TotalCount" : 3
-    }, {
       "Id" : 100008498577858,
       "Name" : "SC, United States",
+      "TotalCount" : 3
+    }, {
+      "Id" : 100008468790610,
+      "Name" : "Didcot, Oxfordshire, United Kingdom",
       "TotalCount" : 3
     } ],
     "postingDatesFacet" : [ {
       "Id" : 7,
       "Name" : "Less than 7 days",
-      "TotalCount" : 11
+      "TotalCount" : 9
     }, {
       "Id" : 30,
       "Name" : "Less than 30 days",
-      "TotalCount" : 19
+      "TotalCount" : 18
     }, {
       "Id" : 31,
       "Name" : "Greater than 30 days",
@@ -406,7 +345,7 @@
     }, {
       "Id" : "ENG_MECHANICAL",
       "Name" : "Mechanical Engineering",
-      "TotalCount" : 4
+      "TotalCount" : 3
     }, {
       "Id" : "ENG_FIRE_LIFE",
       "Name" : "Fire and Life Safety Engineering",
@@ -445,10 +384,6 @@
       "Name" : "US/SC/Indian Land (Sharonview Way)",
       "TotalCount" : 3
     }, {
-      "Id" : 300000018391957,
-      "Name" : "CA/ON/Thornhill (Commerce Valley Drive West)",
-      "TotalCount" : 2
-    }, {
       "Id" : 300005985385342,
       "Name" : "US/TX/Dallas (Oak Lawn Avenue)",
       "TotalCount" : 2
@@ -468,6 +403,10 @@
       "Id" : 300015264858635,
       "Name" : "US/MO/St Louis (Olive Boulevard)",
       "TotalCount" : 2
+    }, {
+      "Id" : 300015264858735,
+      "Name" : "US/AZ/Phoenix (E Camelback Rd)",
+      "TotalCount" : 2
     } ],
     "flexFieldsFacet" : [ ],
     "organizationsFacet" : [ {
@@ -481,7 +420,7 @@
     }, {
       "Id" : 300000008011168,
       "Name" : "WSP Canada Inc.",
-      "TotalCount" : 6
+      "TotalCount" : 5
     }, {
       "Id" : 300012705750261,
       "Name" : "WSP Group Africa (Pty) Ltd",
@@ -494,7 +433,7 @@
     "workplaceTypesFacet" : [ {
       "Id" : "ORA_ON_SITE",
       "Name" : "On-site",
-      "TotalCount" : 28
+      "TotalCount" : 27
     } ]
   } ],
   "count" : 1,

@@ -78,7 +78,7 @@
       "Distance" : 1.783296E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 51.14934539794922,
+      "Relevancy" : 51.19576644897461,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -139,7 +139,7 @@
       "Distance" : 1.783296E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 50.9057502746582,
+      "Relevancy" : 50.95172119140625,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -184,7 +184,7 @@
       "Distance" : 1.783296E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 2.7737574577331543,
+      "Relevancy" : 2.7755179405212402,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -245,7 +245,7 @@
       "Distance" : 1.7830368E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 16.46550750732422,
+      "Relevancy" : 16.36935806274414,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -306,7 +306,7 @@
       "Distance" : 1.7830368E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 8.195183753967285,
+      "Relevancy" : 8.20051097869873,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -367,7 +367,7 @@
       "Distance" : 1.7830368E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 6.657008171081543,
+      "Relevancy" : 6.660406112670898,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -428,7 +428,7 @@
       "Distance" : 1.7830368E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 3.4277596473693848,
+      "Relevancy" : 3.4292068481445312,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -473,7 +473,7 @@
       "Distance" : 1.7830368E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 3.2929184436798096,
+      "Relevancy" : 3.294497013092041,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -534,7 +534,7 @@
       "Distance" : 1.7830368E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 3.2314810752868652,
+      "Relevancy" : 3.233072280883789,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -595,7 +595,7 @@
       "Distance" : 1.7830368E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 2.9154467582702637,
+      "Relevancy" : 2.917104959487915,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -656,7 +656,7 @@
       "Distance" : 1.7830368E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 2.8440489768981934,
+      "Relevancy" : 2.845895290374756,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -717,7 +717,7 @@
       "Distance" : 1.7830368E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 2.070582389831543,
+      "Relevancy" : 2.0721852779388428,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -778,7 +778,7 @@
       "Distance" : 1.7829504E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 3.081738233566284,
+      "Relevancy" : 3.083230495452881,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -839,7 +839,7 @@
       "Distance" : 1.782864E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : true,
-      "Relevancy" : 3.5011420249938965,
+      "Relevancy" : 3.502593755722046,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -884,7 +884,7 @@
       "Distance" : 1.782864E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 3.129978656768799,
+      "Relevancy" : 3.1317312717437744,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -945,7 +945,7 @@
       "Distance" : 1.782864E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 2.663766384124756,
+      "Relevancy" : 2.665742874145508,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1006,7 +1006,7 @@
       "Distance" : 1.7827776E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 2.4331765174865723,
+      "Relevancy" : 2.43479585647583,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1067,7 +1067,7 @@
       "Distance" : 1.7826912E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 54.45451354980469,
+      "Relevancy" : 54.50266647338867,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1128,7 +1128,7 @@
       "Distance" : 1.7823456E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 1.8646855354309082,
+      "Relevancy" : 1.866160273551941,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1189,7 +1189,7 @@
       "Distance" : 1.7822592E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 2.1755526065826416,
+      "Relevancy" : 2.177187442779541,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1250,7 +1250,7 @@
       "Distance" : 1.7820864E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : true,
-      "Relevancy" : 6.055708408355713,
+      "Relevancy" : 6.059175491333008,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1311,7 +1311,7 @@
       "Distance" : 1.7820864E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 2.9093077182769775,
+      "Relevancy" : 2.9111127853393555,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1372,7 +1372,7 @@
       "Distance" : 1.7820864E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : true,
-      "Relevancy" : 2.865767240524292,
+      "Relevancy" : 2.867465019226074,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1433,7 +1433,7 @@
       "Distance" : 1.7818272E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 2.303344964981079,
+      "Relevancy" : 2.3049888610839844,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1494,7 +1494,7 @@
       "Distance" : 1.7818272E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 2.215271472930908,
+      "Relevancy" : 2.2169127464294434,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1521,11 +1521,11 @@
     "categoriesFacet" : [ {
       "Id" : 300000004888048,
       "Name" : "Maintenance",
-      "TotalCount" : 54
+      "TotalCount" : 53
     }, {
       "Id" : 300000002220533,
       "Name" : "Internships",
-      "TotalCount" : 38
+      "TotalCount" : 39
     }, {
       "Id" : 300000004888098,
       "Name" : "Sales and Marketing",
@@ -1562,7 +1562,7 @@
     "locationsFacet" : [ {
       "Id" : 300000000314958,
       "Name" : "France",
-      "TotalCount" : 92
+      "TotalCount" : 91
     }, {
       "Id" : 300000000317270,
       "Name" : "Poland",
@@ -1586,7 +1586,7 @@
     }, {
       "Id" : 300000024133449,
       "Name" : "Grand Est, France",
-      "TotalCount" : 26
+      "TotalCount" : 25
     }, {
       "Id" : 300000000314850,
       "Name" : "Canada",
@@ -1603,15 +1603,15 @@
     "postingDatesFacet" : [ {
       "Id" : 7,
       "Name" : "Less than 7 days",
-      "TotalCount" : 23
+      "TotalCount" : 22
     }, {
       "Id" : 30,
       "Name" : "Less than 30 days",
-      "TotalCount" : 65
+      "TotalCount" : 66
     }, {
       "Id" : 31,
       "Name" : "Greater than 30 days",
-      "TotalCount" : 190
+      "TotalCount" : 189
     } ],
     "titlesFacet" : [ ],
     "workLocationsFacet" : [ {
@@ -1663,7 +1663,7 @@
     }, {
       "Id" : 1,
       "Name" : "ArcelorMittal",
-      "TotalCount" : 21
+      "TotalCount" : 22
     }, {
       "Id" : 300000013673777,
       "Name" : "ARCELORMITTAL LONG PRODUCTS CANADA - AMLPC",

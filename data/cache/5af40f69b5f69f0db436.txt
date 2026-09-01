@@ -19,7 +19,7 @@
     "Offset" : 0,
     "Limit" : 25,
     "SortBy" : "POSTING_DATES_DESC",
-    "TotalJobsCount" : 28,
+    "TotalJobsCount" : 27,
     "Latitude" : null,
     "Longitude" : null,
     "SiteNumber" : "CX_2001",
@@ -78,7 +78,7 @@
       "Distance" : 1.7881344E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 13.902759552001953,
+      "Relevancy" : 13.92133903503418,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -139,7 +139,7 @@
       "Distance" : 1.7881344E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 13.623409271240234,
+      "Relevancy" : 13.641386032104492,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -225,7 +225,7 @@
       "Distance" : 1.7878752E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 14.391387939453125,
+      "Relevancy" : 12.41089153289795,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -286,7 +286,7 @@
       "Distance" : 1.7878752E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 13.623409271240234,
+      "Relevancy" : 11.641386032104492,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -347,7 +347,7 @@
       "Distance" : 1.7877888E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 12.391387939453125,
+      "Relevancy" : 12.41089153289795,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -408,7 +408,7 @@
       "Distance" : 1.7877888E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 12.055488586425781,
+      "Relevancy" : 12.07437515258789,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -469,7 +469,7 @@
       "Distance" : 1.7877024E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 68.60360717773438,
+      "Relevancy" : 68.73973083496094,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -647,7 +647,7 @@
       "Distance" : 1.7877024E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 12.218037605285645,
+      "Relevancy" : 12.237232208251953,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -708,7 +708,7 @@
       "Distance" : 1.7877024E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 11.902759552001953,
+      "Relevancy" : 11.92133903503418,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -730,67 +730,6 @@
         "Region3" : null,
         "Latitude" : 40.61661,
         "Longitude" : -111.88806
-      } ]
-    }, {
-      "Id" : "91602",
-      "Title" : "Mechanical Engineering Co-op Student",
-      "PostedDate" : "2026-08-25",
-      "PostingEndDate" : null,
-      "Language" : "US",
-      "PrimaryLocationCountry" : "CA",
-      "GeographyId" : 100000012809483,
-      "HotJobFlag" : false,
-      "WorkplaceTypeCode" : null,
-      "JobFamily" : null,
-      "JobFunction" : null,
-      "WorkerType" : null,
-      "ContractType" : null,
-      "ManagerLevel" : null,
-      "JobSchedule" : null,
-      "JobShift" : null,
-      "JobType" : null,
-      "StudyLevel" : null,
-      "DomesticTravelRequired" : null,
-      "InternationalTravelRequired" : null,
-      "WorkDurationYears" : null,
-      "WorkDurationMonths" : null,
-      "WorkHours" : null,
-      "WorkDays" : null,
-      "LegalEmployer" : null,
-      "BusinessUnit" : null,
-      "Department" : null,
-      "Organization" : null,
-      "BusinessUnitId" : 300000008015285,
-      "LegalEmployerId" : 300000008011168,
-      "OrganizationId" : 300000008011168,
-      "MediaThumbURL" : "https://globalerp.blob.core.windows.net/images/WSPCareer_EngineerBlueprints.jpg",
-      "ShortDescriptionStr" : "Do the work the world needs",
-      "PrimaryLocation" : "Thornhill, ON, Canada",
-      "Distance" : 1.787616E+12,
-      "TrendingFlag" : true,
-      "BeFirstToApplyFlag" : false,
-      "Relevancy" : 68.60360717773438,
-      "WorkplaceType" : "",
-      "ExternalQualificationsStr" : null,
-      "ExternalResponsibilitiesStr" : null,
-      "secondaryLocations" : [ ],
-      "otherWorkLocations" : [ ],
-      "workLocation" : [ {
-        "LocationId" : 300000018391957,
-        "LocationName" : "CA/ON/Thornhill (Commerce Valley Drive West)",
-        "AddressLine1" : "150 Commerce Valley Drive West",
-        "AddressLine2" : null,
-        "AddressLine3" : null,
-        "AddressLine4" : null,
-        "Building" : null,
-        "TownOrCity" : "Thornhill",
-        "PostalCode" : "L3T 7Z3",
-        "Country" : "CA",
-        "Region1" : null,
-        "Region2" : null,
-        "Region3" : "ON",
-        "Latitude" : 43.83988,
-        "Longitude" : -79.3833
       } ]
     }, {
       "Id" : "87098",
@@ -830,7 +769,7 @@
       "Distance" : 1.787616E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 13.625761985778809,
+      "Relevancy" : 13.648634910583496,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -891,7 +830,7 @@
       "Distance" : 1.7872704E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 9.391387939453125,
+      "Relevancy" : 9.41089153289795,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -952,7 +891,7 @@
       "Distance" : 1.7872704E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 9.391387939453125,
+      "Relevancy" : 9.41089153289795,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1013,7 +952,7 @@
       "Distance" : 1.7872704E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 8.25937271118164,
+      "Relevancy" : 8.276480674743652,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1174,7 +1113,7 @@
       "Distance" : 1.7872704E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 8.25937271118164,
+      "Relevancy" : 8.276480674743652,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1267,7 +1206,7 @@
       "Distance" : 1.787184E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 8.902759552001953,
+      "Relevancy" : 8.92133903503418,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1353,7 +1292,7 @@
       "Distance" : 1.787184E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 8.758989334106445,
+      "Relevancy" : 8.777264595031738,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1439,7 +1378,7 @@
       "Distance" : 1.7865792E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 7.391387462615967,
+      "Relevancy" : 7.410891532897949,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1500,7 +1439,7 @@
       "Distance" : 1.7864928E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 10.983789443969727,
+      "Relevancy" : 11.009847640991211,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1594,7 +1533,7 @@
       "Distance" : 1.7851968E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 6.259372711181641,
+      "Relevancy" : 6.276480674743652,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1655,7 +1594,7 @@
       "Distance" : 1.7846784E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 7.391387462615967,
+      "Relevancy" : 7.410891532897949,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1766,7 +1705,7 @@
       "Distance" : 1.784592E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 6.758988857269287,
+      "Relevancy" : 6.777264595031738,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1852,7 +1791,7 @@
       "Distance" : 1.783296E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 6.902759552001953,
+      "Relevancy" : 6.92133903503418,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1913,7 +1852,7 @@
       "Distance" : 1.7814816E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 7.055488109588623,
+      "Relevancy" : 7.074374675750732,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -2024,7 +1963,7 @@
       "Distance" : 1.7814816E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 6.623409748077393,
+      "Relevancy" : 6.641385555267334,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -2197,11 +2136,72 @@
         "Latitude" : 51.6229,
         "Longitude" : -1.28515
       } ]
+    }, {
+      "Id" : "88176",
+      "Title" : "Junior Materials Technician - Prince George",
+      "PostedDate" : "2026-06-03",
+      "PostingEndDate" : null,
+      "Language" : "US",
+      "PrimaryLocationCountry" : "CA",
+      "GeographyId" : 100000012805243,
+      "HotJobFlag" : false,
+      "WorkplaceTypeCode" : null,
+      "JobFamily" : null,
+      "JobFunction" : null,
+      "WorkerType" : null,
+      "ContractType" : null,
+      "ManagerLevel" : null,
+      "JobSchedule" : null,
+      "JobShift" : null,
+      "JobType" : null,
+      "StudyLevel" : null,
+      "DomesticTravelRequired" : null,
+      "InternationalTravelRequired" : null,
+      "WorkDurationYears" : null,
+      "WorkDurationMonths" : null,
+      "WorkHours" : null,
+      "WorkDays" : null,
+      "LegalEmployer" : null,
+      "BusinessUnit" : null,
+      "Department" : null,
+      "Organization" : null,
+      "BusinessUnitId" : 300000008015285,
+      "LegalEmployerId" : 300000008011168,
+      "OrganizationId" : 300000008011168,
+      "MediaThumbURL" : "https://globalerp.blob.core.windows.net/images/WSPCareer_LabWorker2.jpg",
+      "ShortDescriptionStr" : "Why WSP? A global community of brilliant minds – your next idea, mentor, or opportunity is always within reach.",
+      "PrimaryLocation" : "Prince George, BC, Canada",
+      "Distance" : 1.7804448E+12,
+      "TrendingFlag" : false,
+      "BeFirstToApplyFlag" : false,
+      "Relevancy" : 6.777264595031738,
+      "WorkplaceType" : "",
+      "ExternalQualificationsStr" : null,
+      "ExternalResponsibilitiesStr" : null,
+      "secondaryLocations" : [ ],
+      "otherWorkLocations" : [ ],
+      "workLocation" : [ {
+        "LocationId" : 300002039426656,
+        "LocationName" : "CA/BC/Prince George (3456 Opie Crescent)",
+        "AddressLine1" : "3456 Opie Crescent",
+        "AddressLine2" : null,
+        "AddressLine3" : null,
+        "AddressLine4" : null,
+        "Building" : null,
+        "TownOrCity" : "Prince George",
+        "PostalCode" : "V2N 2P9",
+        "Country" : "CA",
+        "Region1" : "British Columbia",
+        "Region2" : null,
+        "Region3" : "BC",
+        "Latitude" : 53.90034,
+        "Longitude" : -122.78576
+      } ]
     } ],
     "categoriesFacet" : [ {
       "Id" : 300000018364005,
       "Name" : "Engineering",
-      "TotalCount" : 16
+      "TotalCount" : 15
     }, {
       "Id" : 300000018364026,
       "Name" : "Technical Services",
@@ -2234,7 +2234,7 @@
     }, {
       "Id" : 300000000314850,
       "Name" : "Canada",
-      "TotalCount" : 6
+      "TotalCount" : 5
     }, {
       "Id" : 100008468697738,
       "Name" : "Oxfordshire, United Kingdom",
@@ -2248,22 +2248,22 @@
       "Name" : "Cambridge, Cambridgeshire, United Kingdom",
       "TotalCount" : 4
     }, {
-      "Id" : 100000012804592,
-      "Name" : "ON, Canada",
-      "TotalCount" : 3
-    }, {
       "Id" : 100008498577858,
       "Name" : "SC, United States",
+      "TotalCount" : 3
+    }, {
+      "Id" : 100008468790610,
+      "Name" : "Didcot, Oxfordshire, United Kingdom",
       "TotalCount" : 3
     } ],
     "postingDatesFacet" : [ {
       "Id" : 7,
       "Name" : "Less than 7 days",
-      "TotalCount" : 11
+      "TotalCount" : 9
     }, {
       "Id" : 30,
       "Name" : "Less than 30 days",
-      "TotalCount" : 19
+      "TotalCount" : 18
     }, {
       "Id" : 31,
       "Name" : "Greater than 30 days",
@@ -2280,7 +2280,7 @@
     }, {
       "Id" : "ENG_MECHANICAL",
       "Name" : "Mechanical Engineering",
-      "TotalCount" : 4
+      "TotalCount" : 3
     }, {
       "Id" : "ENG_FIRE_LIFE",
       "Name" : "Fire and Life Safety Engineering",
@@ -2319,10 +2319,6 @@
       "Name" : "US/SC/Indian Land (Sharonview Way)",
       "TotalCount" : 3
     }, {
-      "Id" : 300000018391957,
-      "Name" : "CA/ON/Thornhill (Commerce Valley Drive West)",
-      "TotalCount" : 2
-    }, {
       "Id" : 300005985385342,
       "Name" : "US/TX/Dallas (Oak Lawn Avenue)",
       "TotalCount" : 2
@@ -2342,6 +2338,10 @@
       "Id" : 300015264858635,
       "Name" : "US/MO/St Louis (Olive Boulevard)",
       "TotalCount" : 2
+    }, {
+      "Id" : 300015264858735,
+      "Name" : "US/AZ/Phoenix (E Camelback Rd)",
+      "TotalCount" : 2
     } ],
     "flexFieldsFacet" : [ ],
     "organizationsFacet" : [ {
@@ -2355,7 +2355,7 @@
     }, {
       "Id" : 300000008011168,
       "Name" : "WSP Canada Inc.",
-      "TotalCount" : 6
+      "TotalCount" : 5
     }, {
       "Id" : 300012705750261,
       "Name" : "WSP Group Africa (Pty) Ltd",
@@ -2368,7 +2368,7 @@
     "workplaceTypesFacet" : [ {
       "Id" : "ORA_ON_SITE",
       "Name" : "On-site",
-      "TotalCount" : 28
+      "TotalCount" : 27
     } ]
   } ],
   "count" : 1,

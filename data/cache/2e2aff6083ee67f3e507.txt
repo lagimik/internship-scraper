@@ -358,8 +358,8 @@
                             <span class="alert-icon-frequency-error fa fa-exclamation-circle"></span><div class="frequency-error-message" aria-live="polite" id="frequency-error-feedback"></div>
                         </div>
         <span class="subscribe-frequency-label">
-            <label id="labelFrequencySpinBtn" for="j_idt784" aria-hidden="true">Select how often (in days) to receive an alert:</label>
-            <input id="j_idt784" type="number" class="form-control subscribe-frequency frequencySpinBtn" name="frequency" required="required" min="1" max="99" maxlength="2" value="7" oninput="j2w.Agent.setValidFrequency(this)" aria-labelledby="labelFrequencySpinBtn" />
+            <label id="labelFrequencySpinBtn" for="j_idt493" aria-hidden="true">Select how often (in days) to receive an alert:</label>
+            <input id="j_idt493" type="number" class="form-control subscribe-frequency frequencySpinBtn" name="frequency" required="required" min="1" max="99" maxlength="2" value="7" oninput="j2w.Agent.setValidFrequency(this)" aria-labelledby="labelFrequencySpinBtn" />
         </span>
                         <div class="savesearch-buttons-wrapper">
                                 <button class="btn savesearch-link" id="savesearch-link" tabindex="0"><i class="icon-envelope glyphicon-envelope" aria-hidden="true"></i> Create Alert</button>
@@ -379,8 +379,8 @@
                         <div class="frequency-error-message" aria-live="polite"></div>
                     </div>
         <span class="subscribe-frequency-label">
-            <label id="labelFrequencySpinBtn" for="j_idt795" aria-hidden="true">Select how often (in days) to receive an alert:</label>
-            <input id="j_idt795" type="number" class="form-control subscribe-frequency frequencySpinBtn" name="frequency" required="required" min="1" max="99" maxlength="2" value="7" oninput="j2w.Agent.setValidFrequency(this)" aria-labelledby="labelFrequencySpinBtn" />
+            <label id="labelFrequencySpinBtn" for="j_idt505" aria-hidden="true">Select how often (in days) to receive an alert:</label>
+            <input id="j_idt505" type="number" class="form-control subscribe-frequency frequencySpinBtn" name="frequency" required="required" min="1" max="99" maxlength="2" value="7" oninput="j2w.Agent.setValidFrequency(this)" aria-labelledby="labelFrequencySpinBtn" />
         </span>
                     <input id="emailsubscribe-button" class="btn emailsubscribe-button" title="Create Alert" value="Create Alert" type="submit" style="float: none" />
                 </div>
@@ -395,7 +395,7 @@
         <div class="paginationShell clearfix" xml:lang="en-US" lang="en-US">
                     <div class="well well-lg pagination-well pagination">
                         <div class="pagination-label-row">
-                            <span class="paginationLabel" aria-label="Results 126 – 141">Results <b>126 – 141</b> of <b>141</b></span>
+                            <span class="paginationLabel" aria-label="Results 126 – 144">Results <b>126 – 144</b> of <b>144</b></span>
                             <span class="srHelp" style="font-size:0px">Page 6 of 6</span>
                         </div>
                             <ul class="pagination">
@@ -413,7 +413,7 @@
                 </div>
 
             <div class="searchResultsShell">
-				<table id="searchresults" class="searchResults full table table-striped table-hover" cellpadding="0" cellspacing="0" aria-label="Search results for intern AND Canada. Page 6 of 6, Results 126 to 141 of 141">
+				<table id="searchresults" class="searchResults full table table-striped table-hover" cellpadding="0" cellspacing="0" aria-label="Search results for intern AND Canada. Page 6 of 6, Results 126 to 144 of 144">
 					<thead>
                             <tr id="search-results-header">
 											<th id="hdrTitle" aria-sort="none" scope="col" width="30%">
@@ -449,6 +449,114 @@
                             </tr>
                     </thead>
                     <tbody>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
+														<a href="/job/Halifax-Electrical-Engineer-EPCM-NS/1413845800/" class="jobTitle-link">Electrical Engineer- EPCM</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/Halifax-Electrical-Engineer-EPCM-NS/1413845800/">Electrical Engineer- EPCM</a>
+                                                                    </span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            Halifax, NS, CA
+            
+        </span></span>
+                                                    </div>
+                                                </td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            Halifax, NS, CA
+            
+        </span>
+											</td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Engineering</span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Aug 27, 2026
+												</span>
+											</td>
+											<td class="colFacility hidden-phone" headers="hdrFacility">
+												<span class="jobFacility">101110</span>
+											</td>
+                            </tr>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
+														<a href="/job/St_-John&amp;apos;s-Geotechnical-Engineer-NL/1386595200/" class="jobTitle-link">Geotechnical Engineer</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/St_-John&amp;apos;s-Geotechnical-Engineer-NL/1386595200/">Geotechnical Engineer</a>
+                                                                    </span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            St. John's, NL, CA
+            
+        </span></span>
+                                                    </div>
+                                                </td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            St. John's, NL, CA
+            
+        </span>
+											</td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Engineering</span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Aug 23, 2026
+												</span>
+											</td>
+											<td class="colFacility hidden-phone" headers="hdrFacility">
+												<span class="jobFacility">99089</span>
+											</td>
+                            </tr>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
+														<a href="/job/Trail-Mechanical-Designer-Technician-BC/1405028100/" class="jobTitle-link">Mechanical Designer / Technician</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/Trail-Mechanical-Designer-Technician-BC/1405028100/">Mechanical Designer / Technician</a>
+                                                                    </span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            Trail, BC, CA
+            
+        </span></span>
+                                                    </div>
+                                                </td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            Trail, BC, CA
+            
+        </span>
+											</td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Campus</span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Aug 28, 2026
+												</span>
+											</td>
+											<td class="colFacility hidden-phone" headers="hdrFacility">
+												<span class="jobFacility">100443</span>
+											</td>
+                            </tr>
 
                             <tr class="data-row">
                                                 <td class="colTitle" headers="hdrTitle">
@@ -561,11 +669,11 @@
                             <tr class="data-row">
                                                 <td class="colTitle" headers="hdrTitle">
 													<span class="jobTitle hidden-phone">
-														<a href="/job/Montr%C3%A9al-Concepteur%28trice%29-s%C3%A9nior-en-g%C3%A9nie-civil-QC/1416817800/" class="jobTitle-link">Concepteur(trice) sénior en génie civil</a>
+														<a href="/job/Montr%C3%A9al-Inspecteur%28trice%29-principal%28e%29-en-assurance-qualit%C3%A9-Fabrication-d&amp;apos;autobus-QC/1409534300/" class="jobTitle-link">Inspecteur(trice) principal(e) en assurance qualité - Fabrication d'autobus</a>
 													</span>
                                                     <div class="jobdetail-phone visible-phone">
                                                                     <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Montr%C3%A9al-Concepteur%28trice%29-s%C3%A9nior-en-g%C3%A9nie-civil-QC/1416817800/">Concepteur(trice) sénior en génie civil</a>
+                                                                        <a class="jobTitle-link" href="/job/Montr%C3%A9al-Inspecteur%28trice%29-principal%28e%29-en-assurance-qualit%C3%A9-Fabrication-d&amp;apos;autobus-QC/1409534300/">Inspecteur(trice) principal(e) en assurance qualité - Fabrication d'autobus</a>
                                                                     </span>
                                                                     <span class="jobLocation visible-phone">
         
@@ -583,14 +691,14 @@
         </span>
 											</td>
 											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Ingénierie</span>
+												<span class="jobDepartment">Infrastructures</span>
 											</td>
 											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 6, 2026
+												<span class="jobDate">Aug 14, 2026
 												</span>
 											</td>
 											<td class="colFacility hidden-phone" headers="hdrFacility">
-												<span class="jobFacility">99053</span>
+												<span class="jobFacility">100744</span>
 											</td>
                             </tr>
 
@@ -633,11 +741,11 @@
                             <tr class="data-row">
                                                 <td class="colTitle" headers="hdrTitle">
 													<span class="jobTitle hidden-phone">
-														<a href="/job/Montr%C3%A9al-Inspecteur%28trice%29-principal%28e%29-en-assurance-qualit%C3%A9-Fabrication-d&amp;apos;autobus-QC/1409534300/" class="jobTitle-link">Inspecteur(trice) principal(e) en assurance qualité - Fabrication d'autobus</a>
+														<a href="/job/Montr%C3%A9al-Concepteur%28trice%29-s%C3%A9nior-en-g%C3%A9nie-civil-QC/1416817800/" class="jobTitle-link">Concepteur(trice) sénior en génie civil</a>
 													</span>
                                                     <div class="jobdetail-phone visible-phone">
                                                                     <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Montr%C3%A9al-Inspecteur%28trice%29-principal%28e%29-en-assurance-qualit%C3%A9-Fabrication-d&amp;apos;autobus-QC/1409534300/">Inspecteur(trice) principal(e) en assurance qualité - Fabrication d'autobus</a>
+                                                                        <a class="jobTitle-link" href="/job/Montr%C3%A9al-Concepteur%28trice%29-s%C3%A9nior-en-g%C3%A9nie-civil-QC/1416817800/">Concepteur(trice) sénior en génie civil</a>
                                                                     </span>
                                                                     <span class="jobLocation visible-phone">
         
@@ -655,14 +763,14 @@
         </span>
 											</td>
 											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Infrastructures</span>
+												<span class="jobDepartment">Ingénierie</span>
 											</td>
 											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 14, 2026
+												<span class="jobDate">Aug 6, 2026
 												</span>
 											</td>
 											<td class="colFacility hidden-phone" headers="hdrFacility">
-												<span class="jobFacility">100744</span>
+												<span class="jobFacility">99053</span>
 											</td>
                             </tr>
 
@@ -705,42 +813,6 @@
                             <tr class="data-row">
                                                 <td class="colTitle" headers="hdrTitle">
 													<span class="jobTitle hidden-phone">
-														<a href="/job/Trois-Rivieres-Biologiste-s%C3%A9nior-QC/1348239700/" class="jobTitle-link">Biologiste sénior</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Trois-Rivieres-Biologiste-s%C3%A9nior-QC/1348239700/">Biologiste sénior</a>
-                                                                    </span>
-                                                                    <span class="jobLocation visible-phone">
-        
-        <span class="jobLocation">
-            Trois-Rivieres, QC, CA
-            
-        </span></span>
-                                                    </div>
-                                                </td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Trois-Rivieres, QC, CA
-            
-        </span>
-											</td>
-											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Environnement</span>
-											</td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 26, 2026
-												</span>
-											</td>
-											<td class="colFacility hidden-phone" headers="hdrFacility">
-												<span class="jobFacility">97313</span>
-											</td>
-                            </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
 														<a href="/job/Mississauga-Digital-Consultant%2C-Senior-ON/1403409100/" class="jobTitle-link">Digital Consultant, Senior</a>
 													</span>
                                                     <div class="jobdetail-phone visible-phone">
@@ -771,6 +843,42 @@
 											</td>
 											<td class="colFacility hidden-phone" headers="hdrFacility">
 												<span class="jobFacility">100358</span>
+											</td>
+                            </tr>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
+														<a href="/job/Trois-Rivieres-Biologiste-s%C3%A9nior-QC/1348239700/" class="jobTitle-link">Biologiste sénior</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/Trois-Rivieres-Biologiste-s%C3%A9nior-QC/1348239700/">Biologiste sénior</a>
+                                                                    </span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            Trois-Rivieres, QC, CA
+            
+        </span></span>
+                                                    </div>
+                                                </td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            Trois-Rivieres, QC, CA
+            
+        </span>
+											</td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Environnement</span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Aug 26, 2026
+												</span>
+											</td>
+											<td class="colFacility hidden-phone" headers="hdrFacility">
+												<span class="jobFacility">97313</span>
 											</td>
                             </tr>
 
@@ -957,42 +1065,6 @@
                             <tr class="data-row">
                                                 <td class="colTitle" headers="hdrTitle">
 													<span class="jobTitle hidden-phone">
-														<a href="/job/Montreal-Analyst-Management-Consulting-New-Graduate-2027-QC/1424410800/" class="jobTitle-link">Analyst - Management Consulting - New Graduate 2027</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Montreal-Analyst-Management-Consulting-New-Graduate-2027-QC/1424410800/">Analyst - Management Consulting - New Graduate 2027</a>
-                                                                    </span>
-                                                                    <span class="jobLocation visible-phone">
-        
-        <span class="jobLocation">
-            Montreal, QC, CA
-            
-        </span></span>
-                                                    </div>
-                                                </td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Montreal, QC, CA
-            
-        </span>
-											</td>
-											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Campus</span>
-											</td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 28, 2026
-												</span>
-											</td>
-											<td class="colFacility hidden-phone" headers="hdrFacility">
-												<span class="jobFacility">101644</span>
-											</td>
-                            </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
 														<a href="/job/Montr%C3%A9al-Directeur-r%C3%A9gional%2C-Mise-en-service-QC/1346386000/" class="jobTitle-link">Directeur régional, Mise en service</a>
 													</span>
                                                     <div class="jobdetail-phone visible-phone">
@@ -1025,6 +1097,42 @@
 												<span class="jobFacility">96940</span>
 											</td>
                             </tr>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
+														<a href="/job/Montreal-Analyst-Management-Consulting-New-Graduate-2027-QC/1424410800/" class="jobTitle-link">Analyst - Management Consulting - New Graduate 2027</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/Montreal-Analyst-Management-Consulting-New-Graduate-2027-QC/1424410800/">Analyst - Management Consulting - New Graduate 2027</a>
+                                                                    </span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            Montreal, QC, CA
+            
+        </span></span>
+                                                    </div>
+                                                </td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            Montreal, QC, CA
+            
+        </span>
+											</td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Campus</span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Aug 28, 2026
+												</span>
+											</td>
+											<td class="colFacility hidden-phone" headers="hdrFacility">
+												<span class="jobFacility">101644</span>
+											</td>
+                            </tr>
                     </tbody>
 
                 </table>
@@ -1034,7 +1142,7 @@
         <div class="paginationShell clearfix" xml:lang="en-US" lang="en-US">
                     <div class="well well-lg pagination-well pagination">
                         <div class="pagination-label-row">
-                            <span class="paginationLabel" aria-label="Results 126 – 141">Results <b>126 – 141</b> of <b>141</b></span>
+                            <span class="paginationLabel" aria-label="Results 126 – 144">Results <b>126 – 144</b> of <b>144</b></span>
                             <span class="srHelp" style="font-size:0px">Page 6 of 6</span>
                         </div>
                             <ul class="pagination">
@@ -1073,8 +1181,8 @@ $('#distance').watermark('');
                             <span class="alert-icon-frequency-error fa fa-exclamation-circle"></span><div class="frequency-error-message" aria-live="polite" id="frequency-error-feedback"></div>
                         </div>
         <span class="subscribe-frequency-label">
-            <label id="labelFrequencySpinBtn" for="j_idt1588" aria-hidden="true">Select how often (in days) to receive an alert:</label>
-            <input id="j_idt1588" type="number" class="form-control subscribe-frequency frequencySpinBtn" name="frequency" required="required" min="1" max="99" maxlength="2" value="7" oninput="j2w.Agent.setValidFrequency(this)" aria-labelledby="labelFrequencySpinBtn" />
+            <label id="labelFrequencySpinBtn" for="j_idt610" aria-hidden="true">Select how often (in days) to receive an alert:</label>
+            <input id="j_idt610" type="number" class="form-control subscribe-frequency frequencySpinBtn" name="frequency" required="required" min="1" max="99" maxlength="2" value="7" oninput="j2w.Agent.setValidFrequency(this)" aria-labelledby="labelFrequencySpinBtn" />
         </span>
                         <div class="savesearch-buttons-wrapper">
                                 <button class="btn savesearch-link" id="savesearch-link-clone" tabindex="0"><i class="icon-envelope glyphicon-envelope" aria-hidden="true"></i> Create Alert</button>
@@ -1094,8 +1202,8 @@ $('#distance').watermark('');
                         <div class="frequency-error-message" aria-live="polite"></div>
                     </div>
         <span class="subscribe-frequency-label">
-            <label id="labelFrequencySpinBtn" for="j_idt1599" aria-hidden="true">Select how often (in days) to receive an alert:</label>
-            <input id="j_idt1599" type="number" class="form-control subscribe-frequency frequencySpinBtn" name="frequency" required="required" min="1" max="99" maxlength="2" value="7" oninput="j2w.Agent.setValidFrequency(this)" aria-labelledby="labelFrequencySpinBtn" />
+            <label id="labelFrequencySpinBtn" for="j_idt621" aria-hidden="true">Select how often (in days) to receive an alert:</label>
+            <input id="j_idt621" type="number" class="form-control subscribe-frequency frequencySpinBtn" name="frequency" required="required" min="1" max="99" maxlength="2" value="7" oninput="j2w.Agent.setValidFrequency(this)" aria-labelledby="labelFrequencySpinBtn" />
         </span>
                     <input id="emailsubscribe-button-clone" class="btn emailsubscribe-button" title="Create Alert" value="Create Alert" type="submit" style="float: none" />
                 </div>
@@ -1155,7 +1263,7 @@ $('#distance').watermark('');
 		//<![CDATA[
 			$(function() 
 			{
-				var ctid = '910201fc-3935-4e53-80b8-076d77b03ba8';
+				var ctid = 'a0ade6d8-d9d1-46c9-b290-ee4e38392771';
 				var referrer = '';
 				var landing = document.location.href;
 				var brand = '';
@@ -1218,7 +1326,7 @@ $('#distance').watermark('');
 				$.ajaxSetup({
 					cache   : false,
 					headers : {
-						"X-CSRF-Token" : "68b60104-a382-409b-91f8-7cb0c827940f"
+						"X-CSRF-Token" : "31ae61dd-436a-4ab0-8d26-6a55a203013d"
 					}
 				});
 			//]]>
@@ -1230,7 +1338,7 @@ $('#distance').watermark('');
         <script type="text/javascript" src="/platform/js/jquery/js.cookie-2.2.1.min.js"></script>
         <script type="text/javascript" src="/platform/js/jquery/jquery.lightbox_me.js"></script>
         <script type="text/javascript" src="/platform/js/jquery/jquery.placeholder.2.0.7.min.js"></script>
-        <script type="text/javascript" src="/js/override.js?locale=en_US&amp;i=818312874"></script>
+        <script type="text/javascript" src="/js/override.js?locale=en_US&amp;i=123528461"></script>
         <script type="text/javascript">
             const jobAlertSpans = document.querySelectorAll("[data-testid=jobAlertSpanText]");
             jobAlertSpans?.forEach((jobEl) => {

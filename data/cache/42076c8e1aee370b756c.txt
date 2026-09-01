@@ -372,7 +372,7 @@
 		//<![CDATA[
 			$(function() 
 			{
-				var ctid = '4887f479-6f1d-4bb9-8a6b-8157d8b49251';
+				var ctid = 'df397c6e-a546-456e-acc6-156a4c0d9533';
 				var referrer = '';
 				var landing = document.location.href;
 				var brand = '';
@@ -435,7 +435,7 @@
 				$.ajaxSetup({
 					cache   : false,
 					headers : {
-						"X-CSRF-Token" : "e53b436b-3fb9-42d0-834d-7b19d62cdf21"
+						"X-CSRF-Token" : "8b12b598-137e-4338-ad33-c579d2447af5"
 					}
 				});
 			//]]>

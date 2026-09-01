@@ -78,7 +78,7 @@
       "Distance" : 1.7775072E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : true,
-      "Relevancy" : 55.179012298583984,
+      "Relevancy" : 55.06303405761719,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,

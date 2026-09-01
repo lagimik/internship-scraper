@@ -395,7 +395,7 @@
         <div class="paginationShell clearfix" xml:lang="en-US" lang="en-US">
                     <div class="well well-lg pagination-well pagination">
                         <div class="pagination-label-row">
-                            <span class="paginationLabel" aria-label="Results 51 – 75">Results <b>51 – 75</b> of <b>141</b></span>
+                            <span class="paginationLabel" aria-label="Results 51 – 75">Results <b>51 – 75</b> of <b>144</b></span>
                             <span class="srHelp" style="font-size:0px">Page 3 of 6</span>
                         </div>
                             <ul class="pagination">
@@ -413,7 +413,7 @@
                 </div>
 
             <div class="searchResultsShell">
-				<table id="searchresults" class="searchResults full table table-striped table-hover" cellpadding="0" cellspacing="0" aria-label="Search results for intern AND Canada. Page 3 of 6, Results 51 to 75 of 141">
+				<table id="searchresults" class="searchResults full table table-striped table-hover" cellpadding="0" cellspacing="0" aria-label="Search results for intern AND Canada. Page 3 of 6, Results 51 to 75 of 144">
 					<thead>
                             <tr id="search-results-header">
 											<th id="hdrTitle" aria-sort="none" scope="col" width="30%">
@@ -449,42 +449,6 @@
                             </tr>
                     </thead>
                     <tbody>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
-														<a href="/job/Vancouver-Civil-Coastal-Engineer-Senior-BC/1297596100/" class="jobTitle-link">Civil Coastal Engineer - Senior</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Vancouver-Civil-Coastal-Engineer-Senior-BC/1297596100/">Civil Coastal Engineer - Senior</a>
-                                                                    </span>
-                                                                    <span class="jobLocation visible-phone">
-        
-        <span class="jobLocation">
-            Vancouver, BC, CA
-            
-        </span></span>
-                                                    </div>
-                                                </td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Vancouver, BC, CA
-            
-        </span>
-											</td>
-											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Infrastructure</span>
-											</td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 18, 2026
-												</span>
-											</td>
-											<td class="colFacility hidden-phone" headers="hdrFacility">
-												<span class="jobFacility">95377</span>
-											</td>
-                            </tr>
 
                             <tr class="data-row">
                                                 <td class="colTitle" headers="hdrTitle">
@@ -555,6 +519,42 @@
 											</td>
 											<td class="colFacility hidden-phone" headers="hdrFacility">
 												<span class="jobFacility">100965</span>
+											</td>
+                            </tr>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
+														<a href="/job/Mississauga-Process-Engineer-Metals-ON/1425098900/" class="jobTitle-link">Process Engineer - Metals</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/Mississauga-Process-Engineer-Metals-ON/1425098900/">Process Engineer - Metals</a>
+                                                                    </span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            Mississauga, ON, CA
+            
+        </span></span>
+                                                    </div>
+                                                </td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            Mississauga, ON, CA
+            
+        </span>
+											</td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Engineering</span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Aug 31, 2026
+												</span>
+											</td>
+											<td class="colFacility hidden-phone" headers="hdrFacility">
+												<span class="jobFacility">101314</span>
 											</td>
                             </tr>
 
@@ -669,6 +669,42 @@
                             <tr class="data-row">
                                                 <td class="colTitle" headers="hdrTitle">
 													<span class="jobTitle hidden-phone">
+														<a href="/job/Mississauga-Project-Engineer%2C-Metals-Project-Development-ON/1425097900/" class="jobTitle-link">Project Engineer, Metals Project Development</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/Mississauga-Project-Engineer%2C-Metals-Project-Development-ON/1425097900/">Project Engineer, Metals Project Development</a>
+                                                                    </span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            Mississauga, ON, CA
+            
+        </span></span>
+                                                    </div>
+                                                </td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            Mississauga, ON, CA
+            
+        </span>
+											</td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Engineering</span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Aug 31, 2026
+												</span>
+											</td>
+											<td class="colFacility hidden-phone" headers="hdrFacility">
+												<span class="jobFacility">101092</span>
+											</td>
+                            </tr>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
 														<a href="/job/Montr%C3%A9al-Responsable-en-pr%C3%A9paration-op%C3%A9rationnelle-QC/1422638100/" class="jobTitle-link">Responsable en préparation opérationnelle</a>
 													</span>
                                                     <div class="jobdetail-phone visible-phone">
@@ -705,42 +741,6 @@
                             <tr class="data-row">
                                                 <td class="colTitle" headers="hdrTitle">
 													<span class="jobTitle hidden-phone">
-														<a href="/job/Thunder-Bay-Senior-Highway-Engineer-ON/1418892200/" class="jobTitle-link">Senior Highway Engineer</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Thunder-Bay-Senior-Highway-Engineer-ON/1418892200/">Senior Highway Engineer</a>
-                                                                    </span>
-                                                                    <span class="jobLocation visible-phone">
-        
-        <span class="jobLocation">
-            Thunder Bay, ON, CA
-            
-        </span></span>
-                                                    </div>
-                                                </td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Thunder Bay, ON, CA
-            
-        </span>
-											</td>
-											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Engineering</span>
-											</td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 12, 2026
-												</span>
-											</td>
-											<td class="colFacility hidden-phone" headers="hdrFacility">
-												<span class="jobFacility">100395</span>
-											</td>
-                            </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
 														<a href="/job/Vancouver-Design-Manager-Bus-Rapid-Transit-%28BRT%29-BC/1416596600/" class="jobTitle-link">Design Manager - Bus Rapid Transit (BRT)</a>
 													</span>
                                                     <div class="jobdetail-phone visible-phone">
@@ -771,6 +771,42 @@
 											</td>
 											<td class="colFacility hidden-phone" headers="hdrFacility">
 												<span class="jobFacility">100478</span>
+											</td>
+                            </tr>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
+														<a href="/job/Thunder-Bay-Senior-Highway-Engineer-ON/1418892200/" class="jobTitle-link">Senior Highway Engineer</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/Thunder-Bay-Senior-Highway-Engineer-ON/1418892200/">Senior Highway Engineer</a>
+                                                                    </span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            Thunder Bay, ON, CA
+            
+        </span></span>
+                                                    </div>
+                                                </td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            Thunder Bay, ON, CA
+            
+        </span>
+											</td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Engineering</span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Aug 12, 2026
+												</span>
+											</td>
+											<td class="colFacility hidden-phone" headers="hdrFacility">
+												<span class="jobFacility">100395</span>
 											</td>
                             </tr>
 
@@ -1313,42 +1349,6 @@
 												<span class="jobFacility">100404</span>
 											</td>
                             </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
-														<a href="/job/Vancouver-Planner-BC/1417883800/" class="jobTitle-link">Planner</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Vancouver-Planner-BC/1417883800/">Planner</a>
-                                                                    </span>
-                                                                    <span class="jobLocation visible-phone">
-        
-        <span class="jobLocation">
-            Vancouver, BC, CA
-            
-        </span></span>
-                                                    </div>
-                                                </td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Vancouver, BC, CA
-            
-        </span>
-											</td>
-											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Project Controls</span>
-											</td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 10, 2026
-												</span>
-											</td>
-											<td class="colFacility hidden-phone" headers="hdrFacility">
-												<span class="jobFacility">98811</span>
-											</td>
-                            </tr>
                     </tbody>
 
                 </table>
@@ -1358,7 +1358,7 @@
         <div class="paginationShell clearfix" xml:lang="en-US" lang="en-US">
                     <div class="well well-lg pagination-well pagination">
                         <div class="pagination-label-row">
-                            <span class="paginationLabel" aria-label="Results 51 – 75">Results <b>51 – 75</b> of <b>141</b></span>
+                            <span class="paginationLabel" aria-label="Results 51 – 75">Results <b>51 – 75</b> of <b>144</b></span>
                             <span class="srHelp" style="font-size:0px">Page 3 of 6</span>
                         </div>
                             <ul class="pagination">
@@ -1479,7 +1479,7 @@ $('#distance').watermark('');
 		//<![CDATA[
 			$(function() 
 			{
-				var ctid = '0a7a236a-d493-48d9-ad47-149c066b61b6';
+				var ctid = '5522074e-1fb7-407d-8290-fc1b92cb003f';
 				var referrer = '';
 				var landing = document.location.href;
 				var brand = '';
@@ -1542,7 +1542,7 @@ $('#distance').watermark('');
 				$.ajaxSetup({
 					cache   : false,
 					headers : {
-						"X-CSRF-Token" : "1d6797d7-751d-4e80-918a-819d532fb99a"
+						"X-CSRF-Token" : "4554ccbc-1719-4f45-8855-84770c0467f0"
 					}
 				});
 			//]]>

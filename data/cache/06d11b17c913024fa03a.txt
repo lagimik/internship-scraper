@@ -493,7 +493,7 @@
         <div class="paginationShell clearfix" xml:lang="en-US" lang="en-US">
                     <div class="well well-lg pagination-well pagination">
                         <div class="pagination-label-row">
-                            <span class="paginationLabel" aria-label="Results 26 – 50">Results <b>26 – 50</b> of <b>447</b></span>
+                            <span class="paginationLabel" aria-label="Results 26 – 50">Results <b>26 – 50</b> of <b>446</b></span>
                             <span class="srHelp" style="font-size:0px">Page 2 of 18</span>
                         </div>
                             <ul class="pagination">
@@ -510,7 +510,7 @@
                 </div>
 
             <div class="searchResultsShell">
-				<table id="searchresults" class="searchResults full table table-striped table-hover" cellpadding="0" cellspacing="0" aria-label="Search results for intern AND Canada. Page 2 of 18, Results 26 to 50 of 447">
+				<table id="searchresults" class="searchResults full table table-striped table-hover" cellpadding="0" cellspacing="0" aria-label="Search results for intern AND Canada. Page 2 of 18, Results 26 to 50 of 446">
 					<thead>
                             <tr id="search-results-header">
 											<th id="hdrTitle" aria-sort="none" scope="col" width="25%">
@@ -638,43 +638,6 @@
                             <tr class="data-row">
                                                 <td class="colTitle" headers="hdrTitle">
 													<span class="jobTitle hidden-phone">
-														<a href="/job/Vancouver-Finance-Manager-Brit/602105017/" class="jobTitle-link">Finance Manager</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Vancouver-Finance-Manager-Brit/602105017/">Finance Manager</a>
-                                                                    </span>
-                                                                    <span class="jobFacility visible-phone">Finance</span>
-                                                                    <span class="jobLocation visible-phone">
-        
-        <span class="jobLocation">
-            Vancouver, British Columbia, CA
-            
-        </span></span>
-                                                                    <span class="jobDate visible-phone">Aug 25, 2026
-													                </span>
-                                                    </div>
-                                                </td>
-											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Finance</span>
-											</td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Vancouver, British Columbia, CA
-            
-        </span>
-											</td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 25, 2026
-												</span>
-											</td>
-									<td class="hidden-phone"></td>
-                            </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
 														<a href="/job/Cambridge-Project-Accountant-ON/603415717/" class="jobTitle-link">Project Accountant</a>
 													</span>
                                                     <div class="jobdetail-phone visible-phone">
@@ -704,6 +667,43 @@
 											</td>
 											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
 												<span class="jobDate">Aug 9, 2026
+												</span>
+											</td>
+									<td class="hidden-phone"></td>
+                            </tr>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
+														<a href="/job/Vancouver-Finance-Manager-Brit/602105017/" class="jobTitle-link">Finance Manager</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/Vancouver-Finance-Manager-Brit/602105017/">Finance Manager</a>
+                                                                    </span>
+                                                                    <span class="jobFacility visible-phone">Finance</span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            Vancouver, British Columbia, CA
+            
+        </span></span>
+                                                                    <span class="jobDate visible-phone">Aug 25, 2026
+													                </span>
+                                                    </div>
+                                                </td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Finance</span>
+											</td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            Vancouver, British Columbia, CA
+            
+        </span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Aug 25, 2026
 												</span>
 											</td>
 									<td class="hidden-phone"></td>
@@ -926,43 +926,6 @@
 											</td>
 											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
 												<span class="jobDate">Aug 20, 2026
-												</span>
-											</td>
-									<td class="hidden-phone"></td>
-                            </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
-														<a href="/ONxpress/job/Toronto-Project-Manager%2C-Stations-ON/604668517/" class="jobTitle-link">Project Manager, Stations</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/ONxpress/job/Toronto-Project-Manager%2C-Stations-ON/604668517/">Project Manager, Stations</a>
-                                                                    </span>
-                                                                    <span class="jobFacility visible-phone">Professionals</span>
-                                                                    <span class="jobLocation visible-phone">
-        
-        <span class="jobLocation">
-            Toronto, ON, CA
-            
-        </span></span>
-                                                                    <span class="jobDate visible-phone">Aug 22, 2026
-													                </span>
-                                                    </div>
-                                                </td>
-											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Professionals</span>
-											</td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Toronto, ON, CA
-            
-        </span>
-											</td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 22, 2026
 												</span>
 											</td>
 									<td class="hidden-phone"></td>
@@ -1526,6 +1489,43 @@
 											</td>
 									<td class="hidden-phone"></td>
                             </tr>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
+														<a href="/job/Cambridge-Jr_-Project-Coordinator-ON/605651817/" class="jobTitle-link">Jr. Project Coordinator</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/Cambridge-Jr_-Project-Coordinator-ON/605651817/">Jr. Project Coordinator</a>
+                                                                    </span>
+                                                                    <span class="jobFacility visible-phone">Construction</span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            Cambridge, ON, CA
+            
+        </span></span>
+                                                                    <span class="jobDate visible-phone">Aug 28, 2026
+													                </span>
+                                                    </div>
+                                                </td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Construction</span>
+											</td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            Cambridge, ON, CA
+            
+        </span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Aug 28, 2026
+												</span>
+											</td>
+									<td class="hidden-phone"></td>
+                            </tr>
                     </tbody>
 
                 </table>
@@ -1535,7 +1535,7 @@
         <div class="paginationShell clearfix" xml:lang="en-US" lang="en-US">
                     <div class="well well-lg pagination-well pagination">
                         <div class="pagination-label-row">
-                            <span class="paginationLabel" aria-label="Results 26 – 50">Results <b>26 – 50</b> of <b>447</b></span>
+                            <span class="paginationLabel" aria-label="Results 26 – 50">Results <b>26 – 50</b> of <b>446</b></span>
                             <span class="srHelp" style="font-size:0px">Page 2 of 18</span>
                         </div>
                             <ul class="pagination">
@@ -1634,7 +1634,7 @@ $('#distance').watermark('');
 		//<![CDATA[
 			$(function() 
 			{
-				var ctid = 'ee245072-5a3a-4ff3-adf6-7f4ff2cff0eb';
+				var ctid = '41baa159-d1d1-42f6-b8d3-3f108404a4ce';
 				var referrer = '';
 				var landing = document.location.href;
 				var brand = '';
@@ -1697,7 +1697,7 @@ $('#distance').watermark('');
 				$.ajaxSetup({
 					cache   : false,
 					headers : {
-						"X-CSRF-Token" : "d2553507-6754-44bc-8a5f-8d0e6c2b485f"
+						"X-CSRF-Token" : "8887fd05-ff63-405f-9503-b8de062a7463"
 					}
 				});
 			//]]>

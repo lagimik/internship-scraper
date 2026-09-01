@@ -1360,7 +1360,7 @@
               resultStyles.jobResultsCard.fieldConfigurationExternal.resultCardFooter = jobResultsCardFields;
             }
             //<![CDATA[
-            var CSRFToken = "a9637b58-ec16-4948-be8d-9361ec84247d";
+            var CSRFToken = "aff827b4-b531-49c2-a854-0caef292d689";
             var appParams = {
                 locale:  "en_US",
                 categoryId: "",
@@ -1715,7 +1715,7 @@ Our website may include links to other websites and social plugins. Social plugi
 		//<![CDATA[
 			$(function() 
 			{
-				var ctid = 'e5e65759-18d4-40cf-834d-df4e7a4e848b';
+				var ctid = '1ef6d0b0-570c-4538-b862-8a265d013f1a';
 				var referrer = '';
 				var landing = document.location.href;
 				var brand = '';
@@ -1778,7 +1778,7 @@ Our website may include links to other websites and social plugins. Social plugi
 				$.ajaxSetup({
 					cache   : false,
 					headers : {
-						"X-CSRF-Token" : "a9637b58-ec16-4948-be8d-9361ec84247d"
+						"X-CSRF-Token" : "aff827b4-b531-49c2-a854-0caef292d689"
 					}
 				});
 			//]]>
@@ -1794,7 +1794,7 @@ Our website may include links to other websites and social plugins. Social plugi
         <script type="text/javascript" src="/platform/js/jquery/js.cookie-2.2.1.min.js"></script>
         <script type="text/javascript" src="/platform/js/jquery/jquery.lightbox_me.js"></script>
         <script type="text/javascript" src="/platform/js/jquery/jquery.placeholder.2.0.7.min.js"></script>
-        <script type="text/javascript" src="/js/override.js?locale=en_US&amp;i=1786743009"></script>
+        <script type="text/javascript" src="/js/override.js?locale=en_US&amp;i=137086999"></script>
         <script type="text/javascript">
             const jobAlertSpans = document.querySelectorAll("[data-testid=jobAlertSpanText]");
             jobAlertSpans?.forEach((jobEl) => {

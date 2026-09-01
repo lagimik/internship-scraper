@@ -41,6 +41,67 @@
     "SelectedWorkplaceTypesFacet" : null,
     "BotQRShortCode" : null,
     "requisitionList" : [ {
+      "Id" : "225644",
+      "Title" : "Representative, Inside Sales - Branch Support",
+      "PostedDate" : "2026-08-31",
+      "PostingEndDate" : null,
+      "Language" : "US",
+      "PrimaryLocationCountry" : "US",
+      "GeographyId" : 300000040309501,
+      "HotJobFlag" : false,
+      "WorkplaceTypeCode" : null,
+      "JobFamily" : null,
+      "JobFunction" : null,
+      "WorkerType" : null,
+      "ContractType" : null,
+      "ManagerLevel" : null,
+      "JobSchedule" : null,
+      "JobShift" : null,
+      "JobType" : null,
+      "StudyLevel" : null,
+      "DomesticTravelRequired" : null,
+      "InternationalTravelRequired" : null,
+      "WorkDurationYears" : null,
+      "WorkDurationMonths" : null,
+      "WorkHours" : null,
+      "WorkDays" : null,
+      "LegalEmployer" : null,
+      "BusinessUnit" : null,
+      "Department" : null,
+      "Organization" : null,
+      "BusinessUnitId" : 300000044309728,
+      "LegalEmployerId" : 300000040270931,
+      "OrganizationId" : 300000044309728,
+      "MediaThumbURL" : null,
+      "ShortDescriptionStr" : "The Inside Sales Representative – Branch Support is responsible for supporting customer accounts, order management, inventory coordination, purchasing support activities, and branch operations. This position works closely with customers, suppliers, and internal teams to ensure material availability, inventory accuracy, and exceptional customer service while developing a broad understanding of branch operations.",
+      "PrimaryLocation" : "Imperial, PA, United States",
+      "Distance" : 1.7881344E+12,
+      "TrendingFlag" : false,
+      "BeFirstToApplyFlag" : false,
+      "Relevancy" : 12.062265396118164,
+      "WorkplaceType" : "",
+      "ExternalQualificationsStr" : null,
+      "ExternalResponsibilitiesStr" : null,
+      "secondaryLocations" : [ ],
+      "otherWorkLocations" : [ ],
+      "workLocation" : [ {
+        "LocationId" : 300001233471948,
+        "LocationName" : "PA - Imperial Service Center",
+        "AddressLine1" : "200 Charles Staub Drive",
+        "AddressLine2" : null,
+        "AddressLine3" : null,
+        "AddressLine4" : null,
+        "Building" : null,
+        "TownOrCity" : "Imperial",
+        "PostalCode" : "15126",
+        "Country" : "US",
+        "Region1" : "Allegheny",
+        "Region2" : "PA",
+        "Region3" : null,
+        "Latitude" : 40.45186,
+        "Longitude" : -80.26229
+      } ]
+    }, {
       "Id" : "225749",
       "Title" : "Millwright",
       "PostedDate" : "2026-08-31",
@@ -78,7 +139,7 @@
       "Distance" : 1.7881344E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : true,
-      "Relevancy" : 8.877217292785645,
+      "Relevancy" : 8.847786903381348,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -139,7 +200,7 @@
       "Distance" : 1.7878752E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 9.026199340820312,
+      "Relevancy" : 6.991854667663574,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -200,7 +261,7 @@
       "Distance" : 1.7877888E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : true,
-      "Relevancy" : 7.161097526550293,
+      "Relevancy" : 7.122605800628662,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -261,7 +322,7 @@
       "Distance" : 1.7877888E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 7.042943954467773,
+      "Relevancy" : 7.008412837982178,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -322,7 +383,7 @@
       "Distance" : 1.7877888E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : true,
-      "Relevancy" : 6.877216815948486,
+      "Relevancy" : 6.847787380218506,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -383,7 +444,7 @@
       "Distance" : 1.7877024E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 7.018882751464844,
+      "Relevancy" : 6.985083103179932,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -444,7 +505,7 @@
       "Distance" : 1.7875296E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 7.23081636428833,
+      "Relevancy" : 4.1899824142456055,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -505,7 +566,7 @@
       "Distance" : 1.787184E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 23.558948516845703,
+      "Relevancy" : 22.922563552856445,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -566,7 +627,7 @@
       "Distance" : 1.787184E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 20.936771392822266,
+      "Relevancy" : 20.41656494140625,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -627,7 +688,7 @@
       "Distance" : 1.787184E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 3.9739437103271484,
+      "Relevancy" : 3.941518545150757,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -736,7 +797,7 @@
       "Distance" : 1.787184E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 3.7318501472473145,
+      "Relevancy" : 3.7070155143737793,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -797,7 +858,7 @@
       "Distance" : 1.7870976E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : true,
-      "Relevancy" : 4.516005992889404,
+      "Relevancy" : 4.466660022735596,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -858,7 +919,7 @@
       "Distance" : 1.7870976E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 4.165833950042725,
+      "Relevancy" : 4.12699031829834,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -919,7 +980,7 @@
       "Distance" : 1.7870976E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 4.054488182067871,
+      "Relevancy" : 4.019096374511719,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -980,7 +1041,7 @@
       "Distance" : 1.7870976E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 4.042943954467773,
+      "Relevancy" : 4.008412837982178,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1041,7 +1102,7 @@
       "Distance" : 1.7870976E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 3.610457181930542,
+      "Relevancy" : 3.589545249938965,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1102,28 +1163,28 @@
       "Distance" : 1.7870112E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 3.8772168159484863,
+      "Relevancy" : 3.8477871417999268,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
       "secondaryLocations" : [ ],
       "otherWorkLocations" : [ ],
       "workLocation" : [ {
-        "LocationId" : 300000002731009,
-        "LocationName" : "ON - Nelson Pickling Facility",
-        "AddressLine1" : "400 Glover Road",
+        "LocationId" : 300000002730959,
+        "LocationName" : "ON - Nash (Hamilton) Service Centre",
+        "AddressLine1" : "410 Nash Road North",
         "AddressLine2" : null,
         "AddressLine3" : null,
         "AddressLine4" : null,
         "Building" : null,
-        "TownOrCity" : "Stoney Creek",
-        "PostalCode" : "L8E 5X1",
+        "TownOrCity" : "Hamilton",
+        "PostalCode" : "L8H 7R9",
         "Country" : "CA",
         "Region1" : null,
         "Region2" : null,
         "Region3" : "ON",
-        "Latitude" : 43.22324,
-        "Longitude" : -79.67652
+        "Latitude" : 43.24685,
+        "Longitude" : -79.76619
       } ]
     }, {
       "Id" : "225720",
@@ -1163,7 +1224,7 @@
       "Distance" : 1.7869248E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 3.9328012466430664,
+      "Relevancy" : 1.901644229888916,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1224,7 +1285,7 @@
       "Distance" : 1.7869248E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 3.9135067462921143,
+      "Relevancy" : 1.8829474449157715,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1285,7 +1346,7 @@
       "Distance" : 1.7869248E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 3.6863551139831543,
+      "Relevancy" : 1.6629812717437744,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1346,7 +1407,7 @@
       "Distance" : 1.7865792E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : true,
-      "Relevancy" : 2.5160059928894043,
+      "Relevancy" : 2.4666600227355957,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1407,7 +1468,7 @@
       "Distance" : 1.7865792E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 1.9328012466430664,
+      "Relevancy" : 1.901644229888916,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1468,7 +1529,7 @@
       "Distance" : 1.7864064E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 2.225538492202759,
+      "Relevancy" : 2.18509578704834,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1529,7 +1590,7 @@
       "Distance" : 1.7864064E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 2.161097764968872,
+      "Relevancy" : 2.122605800628662,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1552,60 +1613,15 @@
         "Latitude" : 43.51448,
         "Longitude" : -80.52786
       } ]
-    }, {
-      "Id" : "225522",
-      "Title" : "Account Manager - Automation Solutions",
-      "PostedDate" : "2026-08-10",
-      "PostingEndDate" : null,
-      "Language" : "US",
-      "PrimaryLocationCountry" : "US",
-      "GeographyId" : 300000000258626,
-      "HotJobFlag" : false,
-      "WorkplaceTypeCode" : null,
-      "JobFamily" : null,
-      "JobFunction" : null,
-      "WorkerType" : null,
-      "ContractType" : null,
-      "ManagerLevel" : null,
-      "JobSchedule" : null,
-      "JobShift" : null,
-      "JobType" : null,
-      "StudyLevel" : null,
-      "DomesticTravelRequired" : null,
-      "InternationalTravelRequired" : null,
-      "WorkDurationYears" : null,
-      "WorkDurationMonths" : null,
-      "WorkHours" : null,
-      "WorkDays" : null,
-      "LegalEmployer" : null,
-      "BusinessUnit" : null,
-      "Department" : null,
-      "Organization" : null,
-      "BusinessUnitId" : 300000099758080,
-      "LegalEmployerId" : 300001725907042,
-      "OrganizationId" : 300000099758080,
-      "MediaThumbURL" : null,
-      "ShortDescriptionStr" : "",
-      "PrimaryLocation" : "United States",
-      "Distance" : 1.78632E+12,
-      "TrendingFlag" : false,
-      "BeFirstToApplyFlag" : false,
-      "Relevancy" : 1.7838051319122314,
-      "WorkplaceType" : "",
-      "ExternalQualificationsStr" : null,
-      "ExternalResponsibilitiesStr" : null,
-      "secondaryLocations" : [ ],
-      "otherWorkLocations" : [ ],
-      "workLocation" : [ ]
     } ],
     "categoriesFacet" : [ {
       "Id" : 300000002743949,
       "Name" : "Production",
-      "TotalCount" : 19
+      "TotalCount" : 18
     }, {
       "Id" : 300000002743958,
       "Name" : "Sales",
-      "TotalCount" : 10
+      "TotalCount" : 11
     }, {
       "Id" : 300000002743922,
       "Name" : "Engineering",
@@ -1650,7 +1666,7 @@
     }, {
       "Id" : 300000040289005,
       "Name" : "CA, United States",
-      "TotalCount" : 18
+      "TotalCount" : 17
     }, {
       "Id" : 100000000310021,
       "Name" : "ON, Canada",
@@ -1658,7 +1674,7 @@
     }, {
       "Id" : 300000040328893,
       "Name" : "Riverside, CA, United States",
-      "TotalCount" : 10
+      "TotalCount" : 9
     }, {
       "Id" : 100000000314086,
       "Name" : "Waterloo, ON, Canada",
@@ -1680,6 +1696,10 @@
       "Name" : "Laval, QC, Canada",
       "TotalCount" : 3
     }, {
+      "Id" : 300000040289039,
+      "Name" : "PA, United States",
+      "TotalCount" : 2
+    }, {
       "Id" : 300000040289014,
       "Name" : "IL, United States",
       "TotalCount" : 2
@@ -1699,10 +1719,6 @@
       "Id" : 300000040338319,
       "Name" : "Elk Grove Village, IL, United States",
       "TotalCount" : 2
-    }, {
-      "Id" : 300000040289039,
-      "Name" : "PA, United States",
-      "TotalCount" : 1
     }, {
       "Id" : 300000040289011,
       "Name" : "GA, United States",
@@ -1742,6 +1758,10 @@
     }, {
       "Id" : 300000040309268,
       "Name" : "Toledo, OH, United States",
+      "TotalCount" : 1
+    }, {
+      "Id" : 300000040309501,
+      "Name" : "Imperial, PA, United States",
       "TotalCount" : 1
     }, {
       "Id" : 300000040309599,
@@ -1803,15 +1823,15 @@
     "postingDatesFacet" : [ {
       "Id" : 7,
       "Name" : "Less than 7 days",
-      "TotalCount" : 6
+      "TotalCount" : 7
     }, {
       "Id" : 30,
       "Name" : "Less than 30 days",
-      "TotalCount" : 32
+      "TotalCount" : 33
     }, {
       "Id" : 31,
       "Name" : "Greater than 30 days",
-      "TotalCount" : 16
+      "TotalCount" : 15
     } ],
     "titlesFacet" : [ {
       "Id" : "OPS",
@@ -1820,7 +1840,7 @@
     }, {
       "Id" : "TS",
       "Name" : "Territory Sales",
-      "TotalCount" : 7
+      "TotalCount" : 8
     }, {
       "Id" : "GENGG",
       "Name" : "General Engineers",
@@ -1828,7 +1848,7 @@
     }, {
       "Id" : "SKILT",
       "Name" : "Skilled Trade",
-      "TotalCount" : 6
+      "TotalCount" : 5
     }, {
       "Id" : "CSR",
       "Name" : "Customer Service",
@@ -1889,7 +1909,7 @@
     "workLocationsFacet" : [ {
       "Id" : 300000045412971,
       "Name" : "CA - Sierra Riverside Building",
-      "TotalCount" : 10
+      "TotalCount" : 9
     }, {
       "Id" : 300000099806840,
       "Name" : "ON - Waterloo (815 Bridge Street)",
@@ -1898,6 +1918,10 @@
       "Id" : 300000002731029,
       "Name" : "ON - Markham Tube Plant",
       "TotalCount" : 4
+    }, {
+      "Id" : 300000002730959,
+      "Name" : "ON - Nash (Hamilton) Service Centre",
+      "TotalCount" : 3
     }, {
       "Id" : 300000002731149,
       "Name" : "QC - Laval Service Centre",
@@ -1911,17 +1935,9 @@
       "Name" : "CA - Sierra Finishing  Building",
       "TotalCount" : 3
     }, {
-      "Id" : 300000002730959,
-      "Name" : "ON - Nash (Hamilton) Service Centre",
-      "TotalCount" : 2
-    }, {
       "Id" : 300000045412931,
       "Name" : "CA - Sierra Bonanza Building",
       "TotalCount" : 2
-    }, {
-      "Id" : 300000002731009,
-      "Name" : "ON - Nelson Pickling Facility",
-      "TotalCount" : 1
     }, {
       "Id" : 300000002731109,
       "Name" : "ON - Vaughan (21 Corrine Court)",
@@ -1974,16 +1990,20 @@
       "Id" : 300000053701467,
       "Name" : "ON - Oakville Corporate Office",
       "TotalCount" : 1
+    }, {
+      "Id" : 300001233471948,
+      "Name" : "PA - Imperial Service Center",
+      "TotalCount" : 1
     } ],
     "flexFieldsFacet" : [ ],
     "organizationsFacet" : [ {
       "Id" : 300000044309562,
       "Name" : "Extrusion (Sierra)",
-      "TotalCount" : 16
+      "TotalCount" : 15
     }, {
       "Id" : 300000044309728,
       "Name" : "Service Center USA",
-      "TotalCount" : 8
+      "TotalCount" : 9
     }, {
       "Id" : 300000099758080,
       "Name" : "Automation Solutions Group",

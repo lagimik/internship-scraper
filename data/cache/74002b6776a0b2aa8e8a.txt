@@ -419,8 +419,8 @@
                             <span class="alert-icon-frequency-error fa fa-exclamation-circle"></span><div class="frequency-error-message" aria-live="polite" id="frequency-error-feedback"></div>
                         </div>
         <span class="subscribe-frequency-label">
-            <label id="labelFrequencySpinBtn" for="j_idt1509" aria-hidden="true">Select how often (in days) to receive an alert:</label>
-            <input id="j_idt1509" type="number" class="form-control subscribe-frequency frequencySpinBtn" name="frequency" required="required" min="1" max="99" maxlength="2" value="7" oninput="j2w.Agent.setValidFrequency(this)" aria-labelledby="labelFrequencySpinBtn" />
+            <label id="labelFrequencySpinBtn" for="j_idt1200" aria-hidden="true">Select how often (in days) to receive an alert:</label>
+            <input id="j_idt1200" type="number" class="form-control subscribe-frequency frequencySpinBtn" name="frequency" required="required" min="1" max="99" maxlength="2" value="7" oninput="j2w.Agent.setValidFrequency(this)" aria-labelledby="labelFrequencySpinBtn" />
         </span>
                         <div class="savesearch-buttons-wrapper">
                                 <button class="btn savesearch-link" id="savesearch-link" tabindex="0"><i class="icon-envelope glyphicon-envelope" aria-hidden="true"></i> Create Alert</button>
@@ -440,8 +440,8 @@
                         <div class="frequency-error-message" aria-live="polite"></div>
                     </div>
         <span class="subscribe-frequency-label">
-            <label id="labelFrequencySpinBtn" for="j_idt1520" aria-hidden="true">Select how often (in days) to receive an alert:</label>
-            <input id="j_idt1520" type="number" class="form-control subscribe-frequency frequencySpinBtn" name="frequency" required="required" min="1" max="99" maxlength="2" value="7" oninput="j2w.Agent.setValidFrequency(this)" aria-labelledby="labelFrequencySpinBtn" />
+            <label id="labelFrequencySpinBtn" for="j_idt1211" aria-hidden="true">Select how often (in days) to receive an alert:</label>
+            <input id="j_idt1211" type="number" class="form-control subscribe-frequency frequencySpinBtn" name="frequency" required="required" min="1" max="99" maxlength="2" value="7" oninput="j2w.Agent.setValidFrequency(this)" aria-labelledby="labelFrequencySpinBtn" />
         </span>
                     <input id="emailsubscribe-button" class="btn emailsubscribe-button" title="Create Alert" value="Create Alert" type="submit" style="float: none" />
                 </div>
@@ -464,8 +464,8 @@
                 Showing 1 to 10 of 10 Jobs
                 Use the Tab key to navigate the Job List. Select to view the full details of the job.
             </label>
-            <ul id="job-tile-list" class="container job-list" aria-rowcount="150" data-wrap-cols="true" data-per-page="10" aria-labelledby="searchresultslabel" data-record-returned="10">
-            <li class="job-tile job-id-1401412733 job-row-index-1 linkhovercolor7782677e6a26ef68" data-url="/job/Woodbridge-Services-Project-Coordinator-ON-L4L-8K9/1401412733/" data-row-index="1" data-focus-tile=".job-id-1401412733">
+            <ul id="job-tile-list" class="container job-list" aria-rowcount="148" data-wrap-cols="true" data-per-page="10" aria-labelledby="searchresultslabel" data-record-returned="10">
+            <li class="job-tile job-id-1418125133 job-row-index-1 linkhovercolor7782677e6a26ef68" data-url="/PA/job/Prague-Head-of-IT-Operations-%28mfd%29-The-102-19/1418125133/" data-row-index="1" data-focus-tile=".job-id-1418125133">
                 <div class="job-tile-cell">
                     <div class="row job job-row backgroundcolor72228158  shadowcolorc7018e06885e9d61 shadowhovercolorc7018e06885e9d61 bordercolorc7018e06885e9d61" style="border-radius:0px;">
                         
@@ -474,48 +474,55 @@
         <div class="tiletitle">
             <span class="sr-only">Title</span>
             <span style="font-family:custom51628f194e314a97865ab; font-size:16px;" class="col-md-12 section-title title" role="heading" aria-level="2">
-                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1401412733" aria-describedby="jobSearchTileHelpText-1401412733" href="/job/Woodbridge-Services-Project-Coordinator-ON-L4L-8K9/1401412733/">
-                    Services Project Coordinator
+                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1418125133" aria-describedby="jobSearchTileHelpText-1418125133" href="/PA/job/Prague-Head-of-IT-Operations-%28mfd%29-The-102-19/1418125133/">
+                    Head of IT Operations (m/f/d)
                 </a>
             </span>
         </div>
                             </div>
                             <div class="oneline">
-            <div id="job-1401412733-desktop-section-country" data-focus-tile=".job-id-1401412733" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401412733-desktop-section-country-label" aria-describedby="job-1401412733-desktop-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1418125133-desktop-section-country" data-focus-tile=".job-id-1418125133" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1418125133-desktop-section-country-label" aria-describedby="job-1418125133-desktop-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Country/Region
                 </span>
-                <div id="job-1401412733-desktop-section-country-value">CA
+                <div id="job-1418125133-desktop-section-country-value">CZ
                 </div>
             </div>
-            <div id="job-1401412733-desktop-section-department" data-focus-tile=".job-id-1401412733" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401412733-desktop-section-department-label" aria-describedby="job-1401412733-desktop-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1418125133-desktop-section-department" data-focus-tile=".job-id-1418125133" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1418125133-desktop-section-department-label" aria-describedby="job-1418125133-desktop-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Department
                 </span>
-                <div id="job-1401412733-desktop-section-department-value">
-                Engineering and Design
+                <div id="job-1418125133-desktop-section-department-value">
+                IT
             
                 </div>
             </div>
-            <div id="job-1401412733-desktop-section-location" data-focus-tile=".job-id-1401412733" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401412733-desktop-section-location-label" aria-describedby="job-1401412733-desktop-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1418125133-desktop-section-location" data-focus-tile=".job-id-1418125133" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1418125133-desktop-section-location-label" aria-describedby="job-1418125133-desktop-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Location
                 </span>
-                <div id="job-1401412733-desktop-section-location-value">Woodbridge, ON, CA, L4L 8K9
+                <div id="job-1418125133-desktop-section-location-value">Prague, The City of Prague, CZ, 102 19
                 </div>
             </div>
-            <div id="job-1401412733-desktop-section-multilocation" data-focus-tile=".job-id-1401412733" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401412733-desktop-section-multilocation-label" aria-describedby="job-1401412733-desktop-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1418125133-desktop-section-multilocation" data-focus-tile=".job-id-1418125133" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1418125133-desktop-section-multilocation-label" aria-describedby="job-1418125133-desktop-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Other Locations
                 </span>
-                <div id="job-1401412733-desktop-section-multilocation-value">Woodbridge, ON, CA, L4L 8K9
+                <div id="job-1418125133-desktop-section-multilocation-value">Berlin, BE, DE, 10623 • Melsele, Antwerp, BE, 9120 • Brno, South Moravian Region , CZ, 602 00 • Antwerp, Antwerp, BE, 2600 • Dresden, SN, DE, 01139 • Berlin, BE, DE, 12109 • Amsterdam, NH, NL, 4823 • Lovosice, Usti nad Labem Region, CZ, 410 17 • Vienna, Vienna, AT, 1110 • Leuven, Flemish-Brabant, BE, 3001 • Hannover, NI, DE, 30659 • Prague, The City of Prague, CZ, 102 19
                 </div>
             </div>
-            <div id="job-1401412733-desktop-section-date" data-focus-tile=".job-id-1401412733" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401412733-desktop-section-date-label" aria-describedby="job-1401412733-desktop-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1418125133-desktop-section-date" data-focus-tile=".job-id-1418125133" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1418125133-desktop-section-date-label" aria-describedby="job-1418125133-desktop-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Date
                 </span>
-                <div id="job-1401412733-desktop-section-date-value">Aug 31, 2026
+                <div id="job-1418125133-desktop-section-date-value">Sep 1, 2026
+                </div>
+            </div>
+            <div id="job-1418125133-desktop-section-brand" data-focus-tile=".job-id-1418125133" class="section-field brand fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1418125133-desktop-section-brand-label" aria-describedby="job-1418125133-desktop-section-brand-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Brand
+                </span>
+                <div id="job-1418125133-desktop-section-brand-value">PA
                 </div>
             </div>
                             </div>
@@ -526,48 +533,55 @@
         <div class="tiletitle">
             <span class="sr-only">Title</span>
             <span style="font-family:custom51628f194e314a97865ab; font-size:16px;" class="col-md-12 section-title title" role="heading" aria-level="2">
-                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1401412733" aria-describedby="jobSearchTileHelpText-1401412733" href="/job/Woodbridge-Services-Project-Coordinator-ON-L4L-8K9/1401412733/">
-                    Services Project Coordinator
+                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1418125133" aria-describedby="jobSearchTileHelpText-1418125133" href="/PA/job/Prague-Head-of-IT-Operations-%28mfd%29-The-102-19/1418125133/">
+                    Head of IT Operations (m/f/d)
                 </a>
             </span>
         </div>
                             </div>
                             <div class="oneline">
-            <div id="job-1401412733-tablet-section-country" data-focus-tile=".job-id-1401412733" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401412733-tablet-section-country-label" aria-describedby="job-1401412733-tablet-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1418125133-tablet-section-country" data-focus-tile=".job-id-1418125133" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1418125133-tablet-section-country-label" aria-describedby="job-1418125133-tablet-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Country/Region
                 </span>
-                <div id="job-1401412733-tablet-section-country-value">CA
+                <div id="job-1418125133-tablet-section-country-value">CZ
                 </div>
             </div>
-            <div id="job-1401412733-tablet-section-department" data-focus-tile=".job-id-1401412733" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401412733-tablet-section-department-label" aria-describedby="job-1401412733-tablet-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1418125133-tablet-section-department" data-focus-tile=".job-id-1418125133" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1418125133-tablet-section-department-label" aria-describedby="job-1418125133-tablet-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Department
                 </span>
-                <div id="job-1401412733-tablet-section-department-value">
-                Engineering and Design
+                <div id="job-1418125133-tablet-section-department-value">
+                IT
             
                 </div>
             </div>
-            <div id="job-1401412733-tablet-section-location" data-focus-tile=".job-id-1401412733" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401412733-tablet-section-location-label" aria-describedby="job-1401412733-tablet-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1418125133-tablet-section-location" data-focus-tile=".job-id-1418125133" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1418125133-tablet-section-location-label" aria-describedby="job-1418125133-tablet-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Location
                 </span>
-                <div id="job-1401412733-tablet-section-location-value">Woodbridge, ON, CA, L4L 8K9
+                <div id="job-1418125133-tablet-section-location-value">Prague, The City of Prague, CZ, 102 19
                 </div>
             </div>
-            <div id="job-1401412733-tablet-section-multilocation" data-focus-tile=".job-id-1401412733" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401412733-tablet-section-multilocation-label" aria-describedby="job-1401412733-tablet-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1418125133-tablet-section-multilocation" data-focus-tile=".job-id-1418125133" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1418125133-tablet-section-multilocation-label" aria-describedby="job-1418125133-tablet-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Other Locations
                 </span>
-                <div id="job-1401412733-tablet-section-multilocation-value">Woodbridge, ON, CA, L4L 8K9
+                <div id="job-1418125133-tablet-section-multilocation-value">Berlin, BE, DE, 10623 • Melsele, Antwerp, BE, 9120 • Brno, South Moravian Region , CZ, 602 00 • Antwerp, Antwerp, BE, 2600 • Dresden, SN, DE, 01139 • Berlin, BE, DE, 12109 • Amsterdam, NH, NL, 4823 • Lovosice, Usti nad Labem Region, CZ, 410 17 • Vienna, Vienna, AT, 1110 • Leuven, Flemish-Brabant, BE, 3001 • Hannover, NI, DE, 30659 • Prague, The City of Prague, CZ, 102 19
                 </div>
             </div>
-            <div id="job-1401412733-tablet-section-date" data-focus-tile=".job-id-1401412733" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401412733-tablet-section-date-label" aria-describedby="job-1401412733-tablet-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1418125133-tablet-section-date" data-focus-tile=".job-id-1418125133" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1418125133-tablet-section-date-label" aria-describedby="job-1418125133-tablet-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Date
                 </span>
-                <div id="job-1401412733-tablet-section-date-value">Aug 31, 2026
+                <div id="job-1418125133-tablet-section-date-value">Sep 1, 2026
+                </div>
+            </div>
+            <div id="job-1418125133-tablet-section-brand" data-focus-tile=".job-id-1418125133" class="section-field brand fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1418125133-tablet-section-brand-label" aria-describedby="job-1418125133-tablet-section-brand-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Brand
+                </span>
+                <div id="job-1418125133-tablet-section-brand-value">PA
                 </div>
             </div>
                             </div>
@@ -577,55 +591,222 @@
         <div class="tiletitle">
             <span class="sr-only">Title</span>
             <span style="font-family:custom51628f194e314a97865ab; font-size:16px;" class="col-md-12 section-title title" role="heading" aria-level="2">
-                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1401412733" aria-describedby="jobSearchTileHelpText-1401412733" href="/job/Woodbridge-Services-Project-Coordinator-ON-L4L-8K9/1401412733/">
-                    Services Project Coordinator
+                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1418125133" aria-describedby="jobSearchTileHelpText-1418125133" href="/PA/job/Prague-Head-of-IT-Operations-%28mfd%29-The-102-19/1418125133/">
+                    Head of IT Operations (m/f/d)
                 </a>
             </span>
         </div>
-            <div id="job-1401412733-mobile-section-country" data-focus-tile=".job-id-1401412733" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401412733-mobile-section-country-label" aria-describedby="job-1401412733-mobile-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1418125133-mobile-section-country" data-focus-tile=".job-id-1418125133" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1418125133-mobile-section-country-label" aria-describedby="job-1418125133-mobile-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Country/Region
                 </span>
-                <div id="job-1401412733-mobile-section-country-value">CA
+                <div id="job-1418125133-mobile-section-country-value">CZ
                 </div>
             </div>
-            <div id="job-1401412733-mobile-section-department" data-focus-tile=".job-id-1401412733" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401412733-mobile-section-department-label" aria-describedby="job-1401412733-mobile-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1418125133-mobile-section-department" data-focus-tile=".job-id-1418125133" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1418125133-mobile-section-department-label" aria-describedby="job-1418125133-mobile-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Department
                 </span>
-                <div id="job-1401412733-mobile-section-department-value">
-                Engineering and Design
+                <div id="job-1418125133-mobile-section-department-value">
+                IT
             
                 </div>
             </div>
-            <div id="job-1401412733-mobile-section-location" data-focus-tile=".job-id-1401412733" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401412733-mobile-section-location-label" aria-describedby="job-1401412733-mobile-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1418125133-mobile-section-location" data-focus-tile=".job-id-1418125133" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1418125133-mobile-section-location-label" aria-describedby="job-1418125133-mobile-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Location
                 </span>
-                <div id="job-1401412733-mobile-section-location-value">Woodbridge, ON, CA, L4L 8K9
+                <div id="job-1418125133-mobile-section-location-value">Prague, The City of Prague, CZ, 102 19
                 </div>
             </div>
-            <div id="job-1401412733-mobile-section-multilocation" data-focus-tile=".job-id-1401412733" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401412733-mobile-section-multilocation-label" aria-describedby="job-1401412733-mobile-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1418125133-mobile-section-multilocation" data-focus-tile=".job-id-1418125133" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1418125133-mobile-section-multilocation-label" aria-describedby="job-1418125133-mobile-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Other Locations
                 </span>
-                <div id="job-1401412733-mobile-section-multilocation-value">Woodbridge, ON, CA, L4L 8K9
+                <div id="job-1418125133-mobile-section-multilocation-value">Berlin, BE, DE, 10623 • Melsele, Antwerp, BE, 9120 • Brno, South Moravian Region , CZ, 602 00 • Antwerp, Antwerp, BE, 2600 • Dresden, SN, DE, 01139 • Berlin, BE, DE, 12109 • Amsterdam, NH, NL, 4823 • Lovosice, Usti nad Labem Region, CZ, 410 17 • Vienna, Vienna, AT, 1110 • Leuven, Flemish-Brabant, BE, 3001 • Hannover, NI, DE, 30659 • Prague, The City of Prague, CZ, 102 19
                 </div>
             </div>
-            <div id="job-1401412733-mobile-section-date" data-focus-tile=".job-id-1401412733" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401412733-mobile-section-date-label" aria-describedby="job-1401412733-mobile-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1418125133-mobile-section-date" data-focus-tile=".job-id-1418125133" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1418125133-mobile-section-date-label" aria-describedby="job-1418125133-mobile-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Date
                 </span>
-                <div id="job-1401412733-mobile-section-date-value">Aug 31, 2026
+                <div id="job-1418125133-mobile-section-date-value">Sep 1, 2026
+                </div>
+            </div>
+            <div id="job-1418125133-mobile-section-brand" data-focus-tile=".job-id-1418125133" class="section-field brand fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1418125133-mobile-section-brand-label" aria-describedby="job-1418125133-mobile-section-brand-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Brand
+                </span>
+                <div id="job-1418125133-mobile-section-brand-value">PA
                 </div>
             </div>
                         </span>
 
-                        <span class="sr-only" id="jobSearchTileHelpText-1401412733">Select with space bar to view the full contents of the job information.</span>
+                        <span class="sr-only" id="jobSearchTileHelpText-1418125133">Select with space bar to view the full contents of the job information.</span>
                     </div>
                 </div>
             </li>
-            <li class="job-tile job-id-1371975933 job-row-index-2 linkhovercolor7782677e6a26ef68" data-url="/Comecer/job/Joure-Field-Service-Engineers-Belgium-FR-8501-XC/1371975933/" data-row-index="2" data-focus-tile=".job-id-1371975933">
+            <li class="job-tile job-id-1422327533 job-row-index-2 linkhovercolor7782677e6a26ef68" data-url="/job/Parma-Travel-Support-Intern-PR-43122/1422327533/" data-row-index="2" data-focus-tile=".job-id-1422327533">
+                <div class="job-tile-cell">
+                    <div class="row job job-row backgroundcolor72228158  shadowcolorc7018e06885e9d61 shadowhovercolorc7018e06885e9d61 bordercolorc7018e06885e9d61" style="border-radius:0px;">
+                        
+                        <div class="col-md-12 sub-section sub-section-desktop hidden-xs hidden-sm">
+                            <div class="oneline">
+        <div class="tiletitle">
+            <span class="sr-only">Title</span>
+            <span style="font-family:custom51628f194e314a97865ab; font-size:16px;" class="col-md-12 section-title title" role="heading" aria-level="2">
+                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1422327533" aria-describedby="jobSearchTileHelpText-1422327533" href="/job/Parma-Travel-Support-Intern-PR-43122/1422327533/">
+                    Travel Support Intern
+                </a>
+            </span>
+        </div>
+                            </div>
+                            <div class="oneline">
+            <div id="job-1422327533-desktop-section-country" data-focus-tile=".job-id-1422327533" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1422327533-desktop-section-country-label" aria-describedby="job-1422327533-desktop-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Country/Region
+                </span>
+                <div id="job-1422327533-desktop-section-country-value">IT
+                </div>
+            </div>
+            <div id="job-1422327533-desktop-section-department" data-focus-tile=".job-id-1422327533" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1422327533-desktop-section-department-label" aria-describedby="job-1422327533-desktop-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Department
+                </span>
+                <div id="job-1422327533-desktop-section-department-value">
+                Human Resources
+            
+                </div>
+            </div>
+            <div id="job-1422327533-desktop-section-location" data-focus-tile=".job-id-1422327533" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1422327533-desktop-section-location-label" aria-describedby="job-1422327533-desktop-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Location
+                </span>
+                <div id="job-1422327533-desktop-section-location-value">Parma, PR, IT, 43122
+                </div>
+            </div>
+            <div id="job-1422327533-desktop-section-multilocation" data-focus-tile=".job-id-1422327533" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1422327533-desktop-section-multilocation-label" aria-describedby="job-1422327533-desktop-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Other Locations
+                </span>
+                <div id="job-1422327533-desktop-section-multilocation-value">Parma, PR, IT, 43122
+                </div>
+            </div>
+            <div id="job-1422327533-desktop-section-date" data-focus-tile=".job-id-1422327533" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1422327533-desktop-section-date-label" aria-describedby="job-1422327533-desktop-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Date
+                </span>
+                <div id="job-1422327533-desktop-section-date-value">Sep 1, 2026
+                </div>
+            </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-12 sub-section sub-section-tablet hidden-xs hidden-md hidden-lg">
+                            <div class="oneline">
+        <div class="tiletitle">
+            <span class="sr-only">Title</span>
+            <span style="font-family:custom51628f194e314a97865ab; font-size:16px;" class="col-md-12 section-title title" role="heading" aria-level="2">
+                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1422327533" aria-describedby="jobSearchTileHelpText-1422327533" href="/job/Parma-Travel-Support-Intern-PR-43122/1422327533/">
+                    Travel Support Intern
+                </a>
+            </span>
+        </div>
+                            </div>
+                            <div class="oneline">
+            <div id="job-1422327533-tablet-section-country" data-focus-tile=".job-id-1422327533" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1422327533-tablet-section-country-label" aria-describedby="job-1422327533-tablet-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Country/Region
+                </span>
+                <div id="job-1422327533-tablet-section-country-value">IT
+                </div>
+            </div>
+            <div id="job-1422327533-tablet-section-department" data-focus-tile=".job-id-1422327533" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1422327533-tablet-section-department-label" aria-describedby="job-1422327533-tablet-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Department
+                </span>
+                <div id="job-1422327533-tablet-section-department-value">
+                Human Resources
+            
+                </div>
+            </div>
+            <div id="job-1422327533-tablet-section-location" data-focus-tile=".job-id-1422327533" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1422327533-tablet-section-location-label" aria-describedby="job-1422327533-tablet-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Location
+                </span>
+                <div id="job-1422327533-tablet-section-location-value">Parma, PR, IT, 43122
+                </div>
+            </div>
+            <div id="job-1422327533-tablet-section-multilocation" data-focus-tile=".job-id-1422327533" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1422327533-tablet-section-multilocation-label" aria-describedby="job-1422327533-tablet-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Other Locations
+                </span>
+                <div id="job-1422327533-tablet-section-multilocation-value">Parma, PR, IT, 43122
+                </div>
+            </div>
+            <div id="job-1422327533-tablet-section-date" data-focus-tile=".job-id-1422327533" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1422327533-tablet-section-date-label" aria-describedby="job-1422327533-tablet-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Date
+                </span>
+                <div id="job-1422327533-tablet-section-date-value">Sep 1, 2026
+                </div>
+            </div>
+                            </div>
+                        </div>
+                        
+                        <span class="col-md-12 sub-section sub-section-mobile hidden-sm hidden-md hidden-lg">
+        <div class="tiletitle">
+            <span class="sr-only">Title</span>
+            <span style="font-family:custom51628f194e314a97865ab; font-size:16px;" class="col-md-12 section-title title" role="heading" aria-level="2">
+                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1422327533" aria-describedby="jobSearchTileHelpText-1422327533" href="/job/Parma-Travel-Support-Intern-PR-43122/1422327533/">
+                    Travel Support Intern
+                </a>
+            </span>
+        </div>
+            <div id="job-1422327533-mobile-section-country" data-focus-tile=".job-id-1422327533" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1422327533-mobile-section-country-label" aria-describedby="job-1422327533-mobile-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Country/Region
+                </span>
+                <div id="job-1422327533-mobile-section-country-value">IT
+                </div>
+            </div>
+            <div id="job-1422327533-mobile-section-department" data-focus-tile=".job-id-1422327533" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1422327533-mobile-section-department-label" aria-describedby="job-1422327533-mobile-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Department
+                </span>
+                <div id="job-1422327533-mobile-section-department-value">
+                Human Resources
+            
+                </div>
+            </div>
+            <div id="job-1422327533-mobile-section-location" data-focus-tile=".job-id-1422327533" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1422327533-mobile-section-location-label" aria-describedby="job-1422327533-mobile-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Location
+                </span>
+                <div id="job-1422327533-mobile-section-location-value">Parma, PR, IT, 43122
+                </div>
+            </div>
+            <div id="job-1422327533-mobile-section-multilocation" data-focus-tile=".job-id-1422327533" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1422327533-mobile-section-multilocation-label" aria-describedby="job-1422327533-mobile-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Other Locations
+                </span>
+                <div id="job-1422327533-mobile-section-multilocation-value">Parma, PR, IT, 43122
+                </div>
+            </div>
+            <div id="job-1422327533-mobile-section-date" data-focus-tile=".job-id-1422327533" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1422327533-mobile-section-date-label" aria-describedby="job-1422327533-mobile-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Date
+                </span>
+                <div id="job-1422327533-mobile-section-date-value">Sep 1, 2026
+                </div>
+            </div>
+                        </span>
+
+                        <span class="sr-only" id="jobSearchTileHelpText-1422327533">Select with space bar to view the full contents of the job information.</span>
+                    </div>
+                </div>
+            </li>
+            <li class="job-tile job-id-1371975933 job-row-index-3 linkhovercolor7782677e6a26ef68" data-url="/Comecer/job/Joure-Field-Service-Engineers-Belgium-FR-8501-XC/1371975933/" data-row-index="3" data-focus-tile=".job-id-1371975933">
                 <div class="job-tile-cell">
                     <div class="row job job-row backgroundcolor72228158  shadowcolorc7018e06885e9d61 shadowhovercolorc7018e06885e9d61 bordercolorc7018e06885e9d61" style="border-radius:0px;">
                         
@@ -806,7 +987,7 @@
                     </div>
                 </div>
             </li>
-            <li class="job-tile job-id-1391422333 job-row-index-3 linkhovercolor7782677e6a26ef68" data-url="/PA/job/Dublin-Automation-Engineer-%28mfd%29-L-D11-TK4C/1391422333/" data-row-index="3" data-focus-tile=".job-id-1391422333">
+            <li class="job-tile job-id-1391422333 job-row-index-4 linkhovercolor7782677e6a26ef68" data-url="/PA/job/Dublin-Automation-Engineer-%28mfd%29-L-D11-TK4C/1391422333/" data-row-index="4" data-focus-tile=".job-id-1391422333">
                 <div class="job-tile-cell">
                     <div class="row job job-row backgroundcolor72228158  shadowcolorc7018e06885e9d61 shadowhovercolorc7018e06885e9d61 bordercolorc7018e06885e9d61" style="border-radius:0px;">
                         
@@ -987,668 +1168,7 @@
                     </div>
                 </div>
             </li>
-            <li class="job-tile job-id-1291803201 job-row-index-4 linkhovercolor7782677e6a26ef68" data-url="/PA/job/Hannover-Ingenieur-%28mwd%29-Automatisierungstechnik-NI-30659/1291803201/" data-row-index="4" data-focus-tile=".job-id-1291803201">
-                <div class="job-tile-cell">
-                    <div class="row job job-row backgroundcolor72228158  shadowcolorc7018e06885e9d61 shadowhovercolorc7018e06885e9d61 bordercolorc7018e06885e9d61" style="border-radius:0px;">
-                        
-                        <div class="col-md-12 sub-section sub-section-desktop hidden-xs hidden-sm">
-                            <div class="oneline">
-        <div class="tiletitle">
-            <span class="sr-only">Title</span>
-            <span style="font-family:custom51628f194e314a97865ab; font-size:16px;" class="col-md-12 section-title title" role="heading" aria-level="2">
-                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1291803201" aria-describedby="jobSearchTileHelpText-1291803201" href="/PA/job/Hannover-Ingenieur-%28mwd%29-Automatisierungstechnik-NI-30659/1291803201/">
-                    Ingenieur (m/w/d) Automatisierungstechnik
-                </a>
-            </span>
-        </div>
-                            </div>
-                            <div class="oneline">
-            <div id="job-1291803201-desktop-section-country" data-focus-tile=".job-id-1291803201" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1291803201-desktop-section-country-label" aria-describedby="job-1291803201-desktop-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Country/Region
-                </span>
-                <div id="job-1291803201-desktop-section-country-value">DE
-                </div>
-            </div>
-            <div id="job-1291803201-desktop-section-department" data-focus-tile=".job-id-1291803201" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1291803201-desktop-section-department-label" aria-describedby="job-1291803201-desktop-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Department
-                </span>
-                <div id="job-1291803201-desktop-section-department-value">
-                Engineering and Design
-            
-                </div>
-            </div>
-            <div id="job-1291803201-desktop-section-location" data-focus-tile=".job-id-1291803201" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1291803201-desktop-section-location-label" aria-describedby="job-1291803201-desktop-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Location
-                </span>
-                <div id="job-1291803201-desktop-section-location-value">Hannover, NI, DE, 30659
-                </div>
-            </div>
-            <div id="job-1291803201-desktop-section-multilocation" data-focus-tile=".job-id-1291803201" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1291803201-desktop-section-multilocation-label" aria-describedby="job-1291803201-desktop-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Other Locations
-                </span>
-                <div id="job-1291803201-desktop-section-multilocation-value">Hannover, NI, DE, 30659
-                </div>
-            </div>
-            <div id="job-1291803201-desktop-section-date" data-focus-tile=".job-id-1291803201" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1291803201-desktop-section-date-label" aria-describedby="job-1291803201-desktop-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Date
-                </span>
-                <div id="job-1291803201-desktop-section-date-value">Aug 31, 2026
-                </div>
-            </div>
-            <div id="job-1291803201-desktop-section-brand" data-focus-tile=".job-id-1291803201" class="section-field brand fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1291803201-desktop-section-brand-label" aria-describedby="job-1291803201-desktop-section-brand-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Brand
-                </span>
-                <div id="job-1291803201-desktop-section-brand-value">PA
-                </div>
-            </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-12 sub-section sub-section-tablet hidden-xs hidden-md hidden-lg">
-                            <div class="oneline">
-        <div class="tiletitle">
-            <span class="sr-only">Title</span>
-            <span style="font-family:custom51628f194e314a97865ab; font-size:16px;" class="col-md-12 section-title title" role="heading" aria-level="2">
-                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1291803201" aria-describedby="jobSearchTileHelpText-1291803201" href="/PA/job/Hannover-Ingenieur-%28mwd%29-Automatisierungstechnik-NI-30659/1291803201/">
-                    Ingenieur (m/w/d) Automatisierungstechnik
-                </a>
-            </span>
-        </div>
-                            </div>
-                            <div class="oneline">
-            <div id="job-1291803201-tablet-section-country" data-focus-tile=".job-id-1291803201" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1291803201-tablet-section-country-label" aria-describedby="job-1291803201-tablet-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Country/Region
-                </span>
-                <div id="job-1291803201-tablet-section-country-value">DE
-                </div>
-            </div>
-            <div id="job-1291803201-tablet-section-department" data-focus-tile=".job-id-1291803201" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1291803201-tablet-section-department-label" aria-describedby="job-1291803201-tablet-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Department
-                </span>
-                <div id="job-1291803201-tablet-section-department-value">
-                Engineering and Design
-            
-                </div>
-            </div>
-            <div id="job-1291803201-tablet-section-location" data-focus-tile=".job-id-1291803201" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1291803201-tablet-section-location-label" aria-describedby="job-1291803201-tablet-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Location
-                </span>
-                <div id="job-1291803201-tablet-section-location-value">Hannover, NI, DE, 30659
-                </div>
-            </div>
-            <div id="job-1291803201-tablet-section-multilocation" data-focus-tile=".job-id-1291803201" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1291803201-tablet-section-multilocation-label" aria-describedby="job-1291803201-tablet-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Other Locations
-                </span>
-                <div id="job-1291803201-tablet-section-multilocation-value">Hannover, NI, DE, 30659
-                </div>
-            </div>
-            <div id="job-1291803201-tablet-section-date" data-focus-tile=".job-id-1291803201" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1291803201-tablet-section-date-label" aria-describedby="job-1291803201-tablet-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Date
-                </span>
-                <div id="job-1291803201-tablet-section-date-value">Aug 31, 2026
-                </div>
-            </div>
-            <div id="job-1291803201-tablet-section-brand" data-focus-tile=".job-id-1291803201" class="section-field brand fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1291803201-tablet-section-brand-label" aria-describedby="job-1291803201-tablet-section-brand-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Brand
-                </span>
-                <div id="job-1291803201-tablet-section-brand-value">PA
-                </div>
-            </div>
-                            </div>
-                        </div>
-                        
-                        <span class="col-md-12 sub-section sub-section-mobile hidden-sm hidden-md hidden-lg">
-        <div class="tiletitle">
-            <span class="sr-only">Title</span>
-            <span style="font-family:custom51628f194e314a97865ab; font-size:16px;" class="col-md-12 section-title title" role="heading" aria-level="2">
-                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1291803201" aria-describedby="jobSearchTileHelpText-1291803201" href="/PA/job/Hannover-Ingenieur-%28mwd%29-Automatisierungstechnik-NI-30659/1291803201/">
-                    Ingenieur (m/w/d) Automatisierungstechnik
-                </a>
-            </span>
-        </div>
-            <div id="job-1291803201-mobile-section-country" data-focus-tile=".job-id-1291803201" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1291803201-mobile-section-country-label" aria-describedby="job-1291803201-mobile-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Country/Region
-                </span>
-                <div id="job-1291803201-mobile-section-country-value">DE
-                </div>
-            </div>
-            <div id="job-1291803201-mobile-section-department" data-focus-tile=".job-id-1291803201" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1291803201-mobile-section-department-label" aria-describedby="job-1291803201-mobile-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Department
-                </span>
-                <div id="job-1291803201-mobile-section-department-value">
-                Engineering and Design
-            
-                </div>
-            </div>
-            <div id="job-1291803201-mobile-section-location" data-focus-tile=".job-id-1291803201" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1291803201-mobile-section-location-label" aria-describedby="job-1291803201-mobile-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Location
-                </span>
-                <div id="job-1291803201-mobile-section-location-value">Hannover, NI, DE, 30659
-                </div>
-            </div>
-            <div id="job-1291803201-mobile-section-multilocation" data-focus-tile=".job-id-1291803201" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1291803201-mobile-section-multilocation-label" aria-describedby="job-1291803201-mobile-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Other Locations
-                </span>
-                <div id="job-1291803201-mobile-section-multilocation-value">Hannover, NI, DE, 30659
-                </div>
-            </div>
-            <div id="job-1291803201-mobile-section-date" data-focus-tile=".job-id-1291803201" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1291803201-mobile-section-date-label" aria-describedby="job-1291803201-mobile-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Date
-                </span>
-                <div id="job-1291803201-mobile-section-date-value">Aug 31, 2026
-                </div>
-            </div>
-            <div id="job-1291803201-mobile-section-brand" data-focus-tile=".job-id-1291803201" class="section-field brand fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1291803201-mobile-section-brand-label" aria-describedby="job-1291803201-mobile-section-brand-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Brand
-                </span>
-                <div id="job-1291803201-mobile-section-brand-value">PA
-                </div>
-            </div>
-                        </span>
-
-                        <span class="sr-only" id="jobSearchTileHelpText-1291803201">Select with space bar to view the full contents of the job information.</span>
-                    </div>
-                </div>
-            </li>
-            <li class="job-tile job-id-1401462133 job-row-index-5 linkhovercolor7782677e6a26ef68" data-url="/job/Cambridge-Intermediate-Machine-Tool-Builder-&amp;-Integrator-ON-N3H-4R7/1401462133/" data-row-index="5" data-focus-tile=".job-id-1401462133">
-                <div class="job-tile-cell">
-                    <div class="row job job-row backgroundcolor72228158  shadowcolorc7018e06885e9d61 shadowhovercolorc7018e06885e9d61 bordercolorc7018e06885e9d61" style="border-radius:0px;">
-                        
-                        <div class="col-md-12 sub-section sub-section-desktop hidden-xs hidden-sm">
-                            <div class="oneline">
-        <div class="tiletitle">
-            <span class="sr-only">Title</span>
-            <span style="font-family:custom51628f194e314a97865ab; font-size:16px;" class="col-md-12 section-title title" role="heading" aria-level="2">
-                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1401462133" aria-describedby="jobSearchTileHelpText-1401462133" href="/job/Cambridge-Intermediate-Machine-Tool-Builder-&amp;-Integrator-ON-N3H-4R7/1401462133/">
-                    Intermediate Machine Tool Builder &amp; Integrator
-                </a>
-            </span>
-        </div>
-                            </div>
-                            <div class="oneline">
-            <div id="job-1401462133-desktop-section-country" data-focus-tile=".job-id-1401462133" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401462133-desktop-section-country-label" aria-describedby="job-1401462133-desktop-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Country/Region
-                </span>
-                <div id="job-1401462133-desktop-section-country-value">CA
-                </div>
-            </div>
-            <div id="job-1401462133-desktop-section-department" data-focus-tile=".job-id-1401462133" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401462133-desktop-section-department-label" aria-describedby="job-1401462133-desktop-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Department
-                </span>
-                <div id="job-1401462133-desktop-section-department-value">
-                Production &amp; Skilled Trades
-            
-                </div>
-            </div>
-            <div id="job-1401462133-desktop-section-location" data-focus-tile=".job-id-1401462133" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401462133-desktop-section-location-label" aria-describedby="job-1401462133-desktop-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Location
-                </span>
-                <div id="job-1401462133-desktop-section-location-value">Cambridge, ON, CA, N3H 4R7
-                </div>
-            </div>
-            <div id="job-1401462133-desktop-section-multilocation" data-focus-tile=".job-id-1401462133" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401462133-desktop-section-multilocation-label" aria-describedby="job-1401462133-desktop-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Other Locations
-                </span>
-                <div id="job-1401462133-desktop-section-multilocation-value">Cambridge, ON, CA, N3H 4R7
-                </div>
-            </div>
-            <div id="job-1401462133-desktop-section-date" data-focus-tile=".job-id-1401462133" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401462133-desktop-section-date-label" aria-describedby="job-1401462133-desktop-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Date
-                </span>
-                <div id="job-1401462133-desktop-section-date-value">Aug 31, 2026
-                </div>
-            </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-12 sub-section sub-section-tablet hidden-xs hidden-md hidden-lg">
-                            <div class="oneline">
-        <div class="tiletitle">
-            <span class="sr-only">Title</span>
-            <span style="font-family:custom51628f194e314a97865ab; font-size:16px;" class="col-md-12 section-title title" role="heading" aria-level="2">
-                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1401462133" aria-describedby="jobSearchTileHelpText-1401462133" href="/job/Cambridge-Intermediate-Machine-Tool-Builder-&amp;-Integrator-ON-N3H-4R7/1401462133/">
-                    Intermediate Machine Tool Builder &amp; Integrator
-                </a>
-            </span>
-        </div>
-                            </div>
-                            <div class="oneline">
-            <div id="job-1401462133-tablet-section-country" data-focus-tile=".job-id-1401462133" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401462133-tablet-section-country-label" aria-describedby="job-1401462133-tablet-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Country/Region
-                </span>
-                <div id="job-1401462133-tablet-section-country-value">CA
-                </div>
-            </div>
-            <div id="job-1401462133-tablet-section-department" data-focus-tile=".job-id-1401462133" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401462133-tablet-section-department-label" aria-describedby="job-1401462133-tablet-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Department
-                </span>
-                <div id="job-1401462133-tablet-section-department-value">
-                Production &amp; Skilled Trades
-            
-                </div>
-            </div>
-            <div id="job-1401462133-tablet-section-location" data-focus-tile=".job-id-1401462133" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401462133-tablet-section-location-label" aria-describedby="job-1401462133-tablet-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Location
-                </span>
-                <div id="job-1401462133-tablet-section-location-value">Cambridge, ON, CA, N3H 4R7
-                </div>
-            </div>
-            <div id="job-1401462133-tablet-section-multilocation" data-focus-tile=".job-id-1401462133" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401462133-tablet-section-multilocation-label" aria-describedby="job-1401462133-tablet-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Other Locations
-                </span>
-                <div id="job-1401462133-tablet-section-multilocation-value">Cambridge, ON, CA, N3H 4R7
-                </div>
-            </div>
-            <div id="job-1401462133-tablet-section-date" data-focus-tile=".job-id-1401462133" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401462133-tablet-section-date-label" aria-describedby="job-1401462133-tablet-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Date
-                </span>
-                <div id="job-1401462133-tablet-section-date-value">Aug 31, 2026
-                </div>
-            </div>
-                            </div>
-                        </div>
-                        
-                        <span class="col-md-12 sub-section sub-section-mobile hidden-sm hidden-md hidden-lg">
-        <div class="tiletitle">
-            <span class="sr-only">Title</span>
-            <span style="font-family:custom51628f194e314a97865ab; font-size:16px;" class="col-md-12 section-title title" role="heading" aria-level="2">
-                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1401462133" aria-describedby="jobSearchTileHelpText-1401462133" href="/job/Cambridge-Intermediate-Machine-Tool-Builder-&amp;-Integrator-ON-N3H-4R7/1401462133/">
-                    Intermediate Machine Tool Builder &amp; Integrator
-                </a>
-            </span>
-        </div>
-            <div id="job-1401462133-mobile-section-country" data-focus-tile=".job-id-1401462133" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401462133-mobile-section-country-label" aria-describedby="job-1401462133-mobile-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Country/Region
-                </span>
-                <div id="job-1401462133-mobile-section-country-value">CA
-                </div>
-            </div>
-            <div id="job-1401462133-mobile-section-department" data-focus-tile=".job-id-1401462133" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401462133-mobile-section-department-label" aria-describedby="job-1401462133-mobile-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Department
-                </span>
-                <div id="job-1401462133-mobile-section-department-value">
-                Production &amp; Skilled Trades
-            
-                </div>
-            </div>
-            <div id="job-1401462133-mobile-section-location" data-focus-tile=".job-id-1401462133" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401462133-mobile-section-location-label" aria-describedby="job-1401462133-mobile-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Location
-                </span>
-                <div id="job-1401462133-mobile-section-location-value">Cambridge, ON, CA, N3H 4R7
-                </div>
-            </div>
-            <div id="job-1401462133-mobile-section-multilocation" data-focus-tile=".job-id-1401462133" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401462133-mobile-section-multilocation-label" aria-describedby="job-1401462133-mobile-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Other Locations
-                </span>
-                <div id="job-1401462133-mobile-section-multilocation-value">Cambridge, ON, CA, N3H 4R7
-                </div>
-            </div>
-            <div id="job-1401462133-mobile-section-date" data-focus-tile=".job-id-1401462133" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401462133-mobile-section-date-label" aria-describedby="job-1401462133-mobile-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Date
-                </span>
-                <div id="job-1401462133-mobile-section-date-value">Aug 31, 2026
-                </div>
-            </div>
-                        </span>
-
-                        <span class="sr-only" id="jobSearchTileHelpText-1401462133">Select with space bar to view the full contents of the job information.</span>
-                    </div>
-                </div>
-            </li>
-            <li class="job-tile job-id-1401456933 job-row-index-6 linkhovercolor7782677e6a26ef68" data-url="/job/Cambridge-Key-Account-Manager%2C-Nuclear-ON-N3H-4R7/1401456933/" data-row-index="6" data-focus-tile=".job-id-1401456933">
-                <div class="job-tile-cell">
-                    <div class="row job job-row backgroundcolor72228158  shadowcolorc7018e06885e9d61 shadowhovercolorc7018e06885e9d61 bordercolorc7018e06885e9d61" style="border-radius:0px;">
-                        
-                        <div class="col-md-12 sub-section sub-section-desktop hidden-xs hidden-sm">
-                            <div class="oneline">
-        <div class="tiletitle">
-            <span class="sr-only">Title</span>
-            <span style="font-family:custom51628f194e314a97865ab; font-size:16px;" class="col-md-12 section-title title" role="heading" aria-level="2">
-                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1401456933" aria-describedby="jobSearchTileHelpText-1401456933" href="/job/Cambridge-Key-Account-Manager%2C-Nuclear-ON-N3H-4R7/1401456933/">
-                    Key Account Manager, Nuclear
-                </a>
-            </span>
-        </div>
-                            </div>
-                            <div class="oneline">
-            <div id="job-1401456933-desktop-section-country" data-focus-tile=".job-id-1401456933" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401456933-desktop-section-country-label" aria-describedby="job-1401456933-desktop-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Country/Region
-                </span>
-                <div id="job-1401456933-desktop-section-country-value">CA
-                </div>
-            </div>
-            <div id="job-1401456933-desktop-section-department" data-focus-tile=".job-id-1401456933" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401456933-desktop-section-department-label" aria-describedby="job-1401456933-desktop-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Department
-                </span>
-                <div id="job-1401456933-desktop-section-department-value">
-                Sales, Marketing, &amp; Product Management
-            
-                </div>
-            </div>
-            <div id="job-1401456933-desktop-section-location" data-focus-tile=".job-id-1401456933" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401456933-desktop-section-location-label" aria-describedby="job-1401456933-desktop-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Location
-                </span>
-                <div id="job-1401456933-desktop-section-location-value">Cambridge, ON, CA, N3H 4R7
-                </div>
-            </div>
-            <div id="job-1401456933-desktop-section-multilocation" data-focus-tile=".job-id-1401456933" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401456933-desktop-section-multilocation-label" aria-describedby="job-1401456933-desktop-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Other Locations
-                </span>
-                <div id="job-1401456933-desktop-section-multilocation-value">Cambridge, ON, CA, N3H 4R7
-                </div>
-            </div>
-            <div id="job-1401456933-desktop-section-date" data-focus-tile=".job-id-1401456933" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401456933-desktop-section-date-label" aria-describedby="job-1401456933-desktop-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Date
-                </span>
-                <div id="job-1401456933-desktop-section-date-value">Aug 31, 2026
-                </div>
-            </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-12 sub-section sub-section-tablet hidden-xs hidden-md hidden-lg">
-                            <div class="oneline">
-        <div class="tiletitle">
-            <span class="sr-only">Title</span>
-            <span style="font-family:custom51628f194e314a97865ab; font-size:16px;" class="col-md-12 section-title title" role="heading" aria-level="2">
-                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1401456933" aria-describedby="jobSearchTileHelpText-1401456933" href="/job/Cambridge-Key-Account-Manager%2C-Nuclear-ON-N3H-4R7/1401456933/">
-                    Key Account Manager, Nuclear
-                </a>
-            </span>
-        </div>
-                            </div>
-                            <div class="oneline">
-            <div id="job-1401456933-tablet-section-country" data-focus-tile=".job-id-1401456933" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401456933-tablet-section-country-label" aria-describedby="job-1401456933-tablet-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Country/Region
-                </span>
-                <div id="job-1401456933-tablet-section-country-value">CA
-                </div>
-            </div>
-            <div id="job-1401456933-tablet-section-department" data-focus-tile=".job-id-1401456933" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401456933-tablet-section-department-label" aria-describedby="job-1401456933-tablet-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Department
-                </span>
-                <div id="job-1401456933-tablet-section-department-value">
-                Sales, Marketing, &amp; Product Management
-            
-                </div>
-            </div>
-            <div id="job-1401456933-tablet-section-location" data-focus-tile=".job-id-1401456933" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401456933-tablet-section-location-label" aria-describedby="job-1401456933-tablet-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Location
-                </span>
-                <div id="job-1401456933-tablet-section-location-value">Cambridge, ON, CA, N3H 4R7
-                </div>
-            </div>
-            <div id="job-1401456933-tablet-section-multilocation" data-focus-tile=".job-id-1401456933" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401456933-tablet-section-multilocation-label" aria-describedby="job-1401456933-tablet-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Other Locations
-                </span>
-                <div id="job-1401456933-tablet-section-multilocation-value">Cambridge, ON, CA, N3H 4R7
-                </div>
-            </div>
-            <div id="job-1401456933-tablet-section-date" data-focus-tile=".job-id-1401456933" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401456933-tablet-section-date-label" aria-describedby="job-1401456933-tablet-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Date
-                </span>
-                <div id="job-1401456933-tablet-section-date-value">Aug 31, 2026
-                </div>
-            </div>
-                            </div>
-                        </div>
-                        
-                        <span class="col-md-12 sub-section sub-section-mobile hidden-sm hidden-md hidden-lg">
-        <div class="tiletitle">
-            <span class="sr-only">Title</span>
-            <span style="font-family:custom51628f194e314a97865ab; font-size:16px;" class="col-md-12 section-title title" role="heading" aria-level="2">
-                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1401456933" aria-describedby="jobSearchTileHelpText-1401456933" href="/job/Cambridge-Key-Account-Manager%2C-Nuclear-ON-N3H-4R7/1401456933/">
-                    Key Account Manager, Nuclear
-                </a>
-            </span>
-        </div>
-            <div id="job-1401456933-mobile-section-country" data-focus-tile=".job-id-1401456933" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401456933-mobile-section-country-label" aria-describedby="job-1401456933-mobile-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Country/Region
-                </span>
-                <div id="job-1401456933-mobile-section-country-value">CA
-                </div>
-            </div>
-            <div id="job-1401456933-mobile-section-department" data-focus-tile=".job-id-1401456933" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401456933-mobile-section-department-label" aria-describedby="job-1401456933-mobile-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Department
-                </span>
-                <div id="job-1401456933-mobile-section-department-value">
-                Sales, Marketing, &amp; Product Management
-            
-                </div>
-            </div>
-            <div id="job-1401456933-mobile-section-location" data-focus-tile=".job-id-1401456933" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401456933-mobile-section-location-label" aria-describedby="job-1401456933-mobile-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Location
-                </span>
-                <div id="job-1401456933-mobile-section-location-value">Cambridge, ON, CA, N3H 4R7
-                </div>
-            </div>
-            <div id="job-1401456933-mobile-section-multilocation" data-focus-tile=".job-id-1401456933" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401456933-mobile-section-multilocation-label" aria-describedby="job-1401456933-mobile-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Other Locations
-                </span>
-                <div id="job-1401456933-mobile-section-multilocation-value">Cambridge, ON, CA, N3H 4R7
-                </div>
-            </div>
-            <div id="job-1401456933-mobile-section-date" data-focus-tile=".job-id-1401456933" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401456933-mobile-section-date-label" aria-describedby="job-1401456933-mobile-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Date
-                </span>
-                <div id="job-1401456933-mobile-section-date-value">Aug 31, 2026
-                </div>
-            </div>
-                        </span>
-
-                        <span class="sr-only" id="jobSearchTileHelpText-1401456933">Select with space bar to view the full contents of the job information.</span>
-                    </div>
-                </div>
-            </li>
-            <li class="job-tile job-id-1401400133 job-row-index-7 linkhovercolor7782677e6a26ef68" data-url="/job/Cambridge-Data-Scientist-ON-N3H-4R7/1401400133/" data-row-index="7" data-focus-tile=".job-id-1401400133">
-                <div class="job-tile-cell">
-                    <div class="row job job-row backgroundcolor72228158  shadowcolorc7018e06885e9d61 shadowhovercolorc7018e06885e9d61 bordercolorc7018e06885e9d61" style="border-radius:0px;">
-                        
-                        <div class="col-md-12 sub-section sub-section-desktop hidden-xs hidden-sm">
-                            <div class="oneline">
-        <div class="tiletitle">
-            <span class="sr-only">Title</span>
-            <span style="font-family:custom51628f194e314a97865ab; font-size:16px;" class="col-md-12 section-title title" role="heading" aria-level="2">
-                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1401400133" aria-describedby="jobSearchTileHelpText-1401400133" href="/job/Cambridge-Data-Scientist-ON-N3H-4R7/1401400133/">
-                    Data Scientist
-                </a>
-            </span>
-        </div>
-                            </div>
-                            <div class="oneline">
-            <div id="job-1401400133-desktop-section-country" data-focus-tile=".job-id-1401400133" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401400133-desktop-section-country-label" aria-describedby="job-1401400133-desktop-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Country/Region
-                </span>
-                <div id="job-1401400133-desktop-section-country-value">CA
-                </div>
-            </div>
-            <div id="job-1401400133-desktop-section-department" data-focus-tile=".job-id-1401400133" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401400133-desktop-section-department-label" aria-describedby="job-1401400133-desktop-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Department
-                </span>
-                <div id="job-1401400133-desktop-section-department-value">
-                Engineering and Design
-            
-                </div>
-            </div>
-            <div id="job-1401400133-desktop-section-location" data-focus-tile=".job-id-1401400133" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401400133-desktop-section-location-label" aria-describedby="job-1401400133-desktop-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Location
-                </span>
-                <div id="job-1401400133-desktop-section-location-value">Cambridge, ON, CA, N3H 4R7
-                </div>
-            </div>
-            <div id="job-1401400133-desktop-section-multilocation" data-focus-tile=".job-id-1401400133" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401400133-desktop-section-multilocation-label" aria-describedby="job-1401400133-desktop-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Other Locations
-                </span>
-                <div id="job-1401400133-desktop-section-multilocation-value">Cambridge, ON, CA, N3H 4R7
-                </div>
-            </div>
-            <div id="job-1401400133-desktop-section-date" data-focus-tile=".job-id-1401400133" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401400133-desktop-section-date-label" aria-describedby="job-1401400133-desktop-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Date
-                </span>
-                <div id="job-1401400133-desktop-section-date-value">Aug 31, 2026
-                </div>
-            </div>
-                            </div>
-                        </div>
-                        
-                        <div class="col-md-12 sub-section sub-section-tablet hidden-xs hidden-md hidden-lg">
-                            <div class="oneline">
-        <div class="tiletitle">
-            <span class="sr-only">Title</span>
-            <span style="font-family:custom51628f194e314a97865ab; font-size:16px;" class="col-md-12 section-title title" role="heading" aria-level="2">
-                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1401400133" aria-describedby="jobSearchTileHelpText-1401400133" href="/job/Cambridge-Data-Scientist-ON-N3H-4R7/1401400133/">
-                    Data Scientist
-                </a>
-            </span>
-        </div>
-                            </div>
-                            <div class="oneline">
-            <div id="job-1401400133-tablet-section-country" data-focus-tile=".job-id-1401400133" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401400133-tablet-section-country-label" aria-describedby="job-1401400133-tablet-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Country/Region
-                </span>
-                <div id="job-1401400133-tablet-section-country-value">CA
-                </div>
-            </div>
-            <div id="job-1401400133-tablet-section-department" data-focus-tile=".job-id-1401400133" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401400133-tablet-section-department-label" aria-describedby="job-1401400133-tablet-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Department
-                </span>
-                <div id="job-1401400133-tablet-section-department-value">
-                Engineering and Design
-            
-                </div>
-            </div>
-            <div id="job-1401400133-tablet-section-location" data-focus-tile=".job-id-1401400133" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401400133-tablet-section-location-label" aria-describedby="job-1401400133-tablet-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Location
-                </span>
-                <div id="job-1401400133-tablet-section-location-value">Cambridge, ON, CA, N3H 4R7
-                </div>
-            </div>
-            <div id="job-1401400133-tablet-section-multilocation" data-focus-tile=".job-id-1401400133" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401400133-tablet-section-multilocation-label" aria-describedby="job-1401400133-tablet-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Other Locations
-                </span>
-                <div id="job-1401400133-tablet-section-multilocation-value">Cambridge, ON, CA, N3H 4R7
-                </div>
-            </div>
-            <div id="job-1401400133-tablet-section-date" data-focus-tile=".job-id-1401400133" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401400133-tablet-section-date-label" aria-describedby="job-1401400133-tablet-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Date
-                </span>
-                <div id="job-1401400133-tablet-section-date-value">Aug 31, 2026
-                </div>
-            </div>
-                            </div>
-                        </div>
-                        
-                        <span class="col-md-12 sub-section sub-section-mobile hidden-sm hidden-md hidden-lg">
-        <div class="tiletitle">
-            <span class="sr-only">Title</span>
-            <span style="font-family:custom51628f194e314a97865ab; font-size:16px;" class="col-md-12 section-title title" role="heading" aria-level="2">
-                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1401400133" aria-describedby="jobSearchTileHelpText-1401400133" href="/job/Cambridge-Data-Scientist-ON-N3H-4R7/1401400133/">
-                    Data Scientist
-                </a>
-            </span>
-        </div>
-            <div id="job-1401400133-mobile-section-country" data-focus-tile=".job-id-1401400133" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401400133-mobile-section-country-label" aria-describedby="job-1401400133-mobile-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Country/Region
-                </span>
-                <div id="job-1401400133-mobile-section-country-value">CA
-                </div>
-            </div>
-            <div id="job-1401400133-mobile-section-department" data-focus-tile=".job-id-1401400133" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401400133-mobile-section-department-label" aria-describedby="job-1401400133-mobile-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Department
-                </span>
-                <div id="job-1401400133-mobile-section-department-value">
-                Engineering and Design
-            
-                </div>
-            </div>
-            <div id="job-1401400133-mobile-section-location" data-focus-tile=".job-id-1401400133" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401400133-mobile-section-location-label" aria-describedby="job-1401400133-mobile-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Location
-                </span>
-                <div id="job-1401400133-mobile-section-location-value">Cambridge, ON, CA, N3H 4R7
-                </div>
-            </div>
-            <div id="job-1401400133-mobile-section-multilocation" data-focus-tile=".job-id-1401400133" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401400133-mobile-section-multilocation-label" aria-describedby="job-1401400133-mobile-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Other Locations
-                </span>
-                <div id="job-1401400133-mobile-section-multilocation-value">Cambridge, ON, CA, N3H 4R7
-                </div>
-            </div>
-            <div id="job-1401400133-mobile-section-date" data-focus-tile=".job-id-1401400133" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1401400133-mobile-section-date-label" aria-describedby="job-1401400133-mobile-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                    Date
-                </span>
-                <div id="job-1401400133-mobile-section-date-value">Aug 31, 2026
-                </div>
-            </div>
-                        </span>
-
-                        <span class="sr-only" id="jobSearchTileHelpText-1401400133">Select with space bar to view the full contents of the job information.</span>
-                    </div>
-                </div>
-            </li>
-            <li class="job-tile job-id-1381860033 job-row-index-8 linkhovercolor7782677e6a26ef68" data-url="/PA/job/Montreal-Digital-Asset-Consultant-%28AVEVA-PI%29-Queb-H2Y-2H7/1381860033/" data-row-index="8" data-focus-tile=".job-id-1381860033">
+            <li class="job-tile job-id-1381860033 job-row-index-5 linkhovercolor7782677e6a26ef68" data-url="/PA/job/Montreal-Digital-Asset-Consultant-%28AVEVA-PI%29-Queb-H2Y-2H7/1381860033/" data-row-index="5" data-focus-tile=".job-id-1381860033">
                 <div class="job-tile-cell">
                     <div class="row job job-row backgroundcolor72228158  shadowcolorc7018e06885e9d61 shadowhovercolorc7018e06885e9d61 bordercolorc7018e06885e9d61" style="border-radius:0px;">
                         
@@ -1829,7 +1349,7 @@
                     </div>
                 </div>
             </li>
-            <li class="job-tile job-id-1431730533 job-row-index-9 linkhovercolor7782677e6a26ef68" data-url="/job/Bangplee-Service-Technician-Samu-10540/1431730533/" data-row-index="9" data-focus-tile=".job-id-1431730533">
+            <li class="job-tile job-id-1401412733 job-row-index-6 linkhovercolor7782677e6a26ef68" data-url="/job/Woodbridge-Services-Project-Coordinator-ON-L4L-8K9/1401412733/" data-row-index="6" data-focus-tile=".job-id-1401412733">
                 <div class="job-tile-cell">
                     <div class="row job job-row backgroundcolor72228158  shadowcolorc7018e06885e9d61 shadowhovercolorc7018e06885e9d61 bordercolorc7018e06885e9d61" style="border-radius:0px;">
                         
@@ -1838,48 +1358,48 @@
         <div class="tiletitle">
             <span class="sr-only">Title</span>
             <span style="font-family:custom51628f194e314a97865ab; font-size:16px;" class="col-md-12 section-title title" role="heading" aria-level="2">
-                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1431730533" aria-describedby="jobSearchTileHelpText-1431730533" href="/job/Bangplee-Service-Technician-Samu-10540/1431730533/">
-                    Service Technician
+                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1401412733" aria-describedby="jobSearchTileHelpText-1401412733" href="/job/Woodbridge-Services-Project-Coordinator-ON-L4L-8K9/1401412733/">
+                    Services Project Coordinator
                 </a>
             </span>
         </div>
                             </div>
                             <div class="oneline">
-            <div id="job-1431730533-desktop-section-country" data-focus-tile=".job-id-1431730533" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1431730533-desktop-section-country-label" aria-describedby="job-1431730533-desktop-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1401412733-desktop-section-country" data-focus-tile=".job-id-1401412733" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401412733-desktop-section-country-label" aria-describedby="job-1401412733-desktop-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Country/Region
                 </span>
-                <div id="job-1431730533-desktop-section-country-value">TH
+                <div id="job-1401412733-desktop-section-country-value">CA
                 </div>
             </div>
-            <div id="job-1431730533-desktop-section-department" data-focus-tile=".job-id-1431730533" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1431730533-desktop-section-department-label" aria-describedby="job-1431730533-desktop-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1401412733-desktop-section-department" data-focus-tile=".job-id-1401412733" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401412733-desktop-section-department-label" aria-describedby="job-1401412733-desktop-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Department
                 </span>
-                <div id="job-1431730533-desktop-section-department-value">
-                Technical Services
+                <div id="job-1401412733-desktop-section-department-value">
+                Engineering and Design
             
                 </div>
             </div>
-            <div id="job-1431730533-desktop-section-location" data-focus-tile=".job-id-1431730533" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1431730533-desktop-section-location-label" aria-describedby="job-1431730533-desktop-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1401412733-desktop-section-location" data-focus-tile=".job-id-1401412733" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401412733-desktop-section-location-label" aria-describedby="job-1401412733-desktop-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Location
                 </span>
-                <div id="job-1431730533-desktop-section-location-value">Bangplee, Samut Prakan , TH, 10540
+                <div id="job-1401412733-desktop-section-location-value">Woodbridge, ON, CA, L4L 8K9
                 </div>
             </div>
-            <div id="job-1431730533-desktop-section-multilocation" data-focus-tile=".job-id-1431730533" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1431730533-desktop-section-multilocation-label" aria-describedby="job-1431730533-desktop-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1401412733-desktop-section-multilocation" data-focus-tile=".job-id-1401412733" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401412733-desktop-section-multilocation-label" aria-describedby="job-1401412733-desktop-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Other Locations
                 </span>
-                <div id="job-1431730533-desktop-section-multilocation-value">Bangplee, Samut Prakan , TH, 10540
+                <div id="job-1401412733-desktop-section-multilocation-value">Woodbridge, ON, CA, L4L 8K9
                 </div>
             </div>
-            <div id="job-1431730533-desktop-section-date" data-focus-tile=".job-id-1431730533" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1431730533-desktop-section-date-label" aria-describedby="job-1431730533-desktop-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1401412733-desktop-section-date" data-focus-tile=".job-id-1401412733" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401412733-desktop-section-date-label" aria-describedby="job-1401412733-desktop-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Date
                 </span>
-                <div id="job-1431730533-desktop-section-date-value">Aug 31, 2026
+                <div id="job-1401412733-desktop-section-date-value">Aug 31, 2026
                 </div>
             </div>
                             </div>
@@ -1890,48 +1410,48 @@
         <div class="tiletitle">
             <span class="sr-only">Title</span>
             <span style="font-family:custom51628f194e314a97865ab; font-size:16px;" class="col-md-12 section-title title" role="heading" aria-level="2">
-                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1431730533" aria-describedby="jobSearchTileHelpText-1431730533" href="/job/Bangplee-Service-Technician-Samu-10540/1431730533/">
-                    Service Technician
+                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1401412733" aria-describedby="jobSearchTileHelpText-1401412733" href="/job/Woodbridge-Services-Project-Coordinator-ON-L4L-8K9/1401412733/">
+                    Services Project Coordinator
                 </a>
             </span>
         </div>
                             </div>
                             <div class="oneline">
-            <div id="job-1431730533-tablet-section-country" data-focus-tile=".job-id-1431730533" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1431730533-tablet-section-country-label" aria-describedby="job-1431730533-tablet-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1401412733-tablet-section-country" data-focus-tile=".job-id-1401412733" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401412733-tablet-section-country-label" aria-describedby="job-1401412733-tablet-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Country/Region
                 </span>
-                <div id="job-1431730533-tablet-section-country-value">TH
+                <div id="job-1401412733-tablet-section-country-value">CA
                 </div>
             </div>
-            <div id="job-1431730533-tablet-section-department" data-focus-tile=".job-id-1431730533" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1431730533-tablet-section-department-label" aria-describedby="job-1431730533-tablet-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1401412733-tablet-section-department" data-focus-tile=".job-id-1401412733" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401412733-tablet-section-department-label" aria-describedby="job-1401412733-tablet-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Department
                 </span>
-                <div id="job-1431730533-tablet-section-department-value">
-                Technical Services
+                <div id="job-1401412733-tablet-section-department-value">
+                Engineering and Design
             
                 </div>
             </div>
-            <div id="job-1431730533-tablet-section-location" data-focus-tile=".job-id-1431730533" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1431730533-tablet-section-location-label" aria-describedby="job-1431730533-tablet-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1401412733-tablet-section-location" data-focus-tile=".job-id-1401412733" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401412733-tablet-section-location-label" aria-describedby="job-1401412733-tablet-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Location
                 </span>
-                <div id="job-1431730533-tablet-section-location-value">Bangplee, Samut Prakan , TH, 10540
+                <div id="job-1401412733-tablet-section-location-value">Woodbridge, ON, CA, L4L 8K9
                 </div>
             </div>
-            <div id="job-1431730533-tablet-section-multilocation" data-focus-tile=".job-id-1431730533" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1431730533-tablet-section-multilocation-label" aria-describedby="job-1431730533-tablet-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1401412733-tablet-section-multilocation" data-focus-tile=".job-id-1401412733" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401412733-tablet-section-multilocation-label" aria-describedby="job-1401412733-tablet-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Other Locations
                 </span>
-                <div id="job-1431730533-tablet-section-multilocation-value">Bangplee, Samut Prakan , TH, 10540
+                <div id="job-1401412733-tablet-section-multilocation-value">Woodbridge, ON, CA, L4L 8K9
                 </div>
             </div>
-            <div id="job-1431730533-tablet-section-date" data-focus-tile=".job-id-1431730533" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1431730533-tablet-section-date-label" aria-describedby="job-1431730533-tablet-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1401412733-tablet-section-date" data-focus-tile=".job-id-1401412733" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401412733-tablet-section-date-label" aria-describedby="job-1401412733-tablet-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Date
                 </span>
-                <div id="job-1431730533-tablet-section-date-value">Aug 31, 2026
+                <div id="job-1401412733-tablet-section-date-value">Aug 31, 2026
                 </div>
             </div>
                             </div>
@@ -1941,55 +1461,55 @@
         <div class="tiletitle">
             <span class="sr-only">Title</span>
             <span style="font-family:custom51628f194e314a97865ab; font-size:16px;" class="col-md-12 section-title title" role="heading" aria-level="2">
-                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1431730533" aria-describedby="jobSearchTileHelpText-1431730533" href="/job/Bangplee-Service-Technician-Samu-10540/1431730533/">
-                    Service Technician
+                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1401412733" aria-describedby="jobSearchTileHelpText-1401412733" href="/job/Woodbridge-Services-Project-Coordinator-ON-L4L-8K9/1401412733/">
+                    Services Project Coordinator
                 </a>
             </span>
         </div>
-            <div id="job-1431730533-mobile-section-country" data-focus-tile=".job-id-1431730533" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1431730533-mobile-section-country-label" aria-describedby="job-1431730533-mobile-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1401412733-mobile-section-country" data-focus-tile=".job-id-1401412733" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401412733-mobile-section-country-label" aria-describedby="job-1401412733-mobile-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Country/Region
                 </span>
-                <div id="job-1431730533-mobile-section-country-value">TH
+                <div id="job-1401412733-mobile-section-country-value">CA
                 </div>
             </div>
-            <div id="job-1431730533-mobile-section-department" data-focus-tile=".job-id-1431730533" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1431730533-mobile-section-department-label" aria-describedby="job-1431730533-mobile-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1401412733-mobile-section-department" data-focus-tile=".job-id-1401412733" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401412733-mobile-section-department-label" aria-describedby="job-1401412733-mobile-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Department
                 </span>
-                <div id="job-1431730533-mobile-section-department-value">
-                Technical Services
+                <div id="job-1401412733-mobile-section-department-value">
+                Engineering and Design
             
                 </div>
             </div>
-            <div id="job-1431730533-mobile-section-location" data-focus-tile=".job-id-1431730533" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1431730533-mobile-section-location-label" aria-describedby="job-1431730533-mobile-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1401412733-mobile-section-location" data-focus-tile=".job-id-1401412733" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401412733-mobile-section-location-label" aria-describedby="job-1401412733-mobile-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Location
                 </span>
-                <div id="job-1431730533-mobile-section-location-value">Bangplee, Samut Prakan , TH, 10540
+                <div id="job-1401412733-mobile-section-location-value">Woodbridge, ON, CA, L4L 8K9
                 </div>
             </div>
-            <div id="job-1431730533-mobile-section-multilocation" data-focus-tile=".job-id-1431730533" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1431730533-mobile-section-multilocation-label" aria-describedby="job-1431730533-mobile-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1401412733-mobile-section-multilocation" data-focus-tile=".job-id-1401412733" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401412733-mobile-section-multilocation-label" aria-describedby="job-1401412733-mobile-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Other Locations
                 </span>
-                <div id="job-1431730533-mobile-section-multilocation-value">Bangplee, Samut Prakan , TH, 10540
+                <div id="job-1401412733-mobile-section-multilocation-value">Woodbridge, ON, CA, L4L 8K9
                 </div>
             </div>
-            <div id="job-1431730533-mobile-section-date" data-focus-tile=".job-id-1431730533" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1431730533-mobile-section-date-label" aria-describedby="job-1431730533-mobile-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1401412733-mobile-section-date" data-focus-tile=".job-id-1401412733" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401412733-mobile-section-date-label" aria-describedby="job-1401412733-mobile-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Date
                 </span>
-                <div id="job-1431730533-mobile-section-date-value">Aug 31, 2026
+                <div id="job-1401412733-mobile-section-date-value">Aug 31, 2026
                 </div>
             </div>
                         </span>
 
-                        <span class="sr-only" id="jobSearchTileHelpText-1431730533">Select with space bar to view the full contents of the job information.</span>
+                        <span class="sr-only" id="jobSearchTileHelpText-1401412733">Select with space bar to view the full contents of the job information.</span>
                     </div>
                 </div>
             </li>
-            <li class="job-tile job-id-1432064933 job-row-index-10 linkhovercolor7782677e6a26ef68" data-url="/job/Pocomoke-Calibration-Specialist-MD-21851/1432064933/" data-row-index="10" data-focus-tile=".job-id-1432064933">
+            <li class="job-tile job-id-1401456933 job-row-index-7 linkhovercolor7782677e6a26ef68" data-url="/job/Cambridge-Key-Account-Manager%2C-Nuclear-ON-N3H-4R7/1401456933/" data-row-index="7" data-focus-tile=".job-id-1401456933">
                 <div class="job-tile-cell">
                     <div class="row job job-row backgroundcolor72228158  shadowcolorc7018e06885e9d61 shadowhovercolorc7018e06885e9d61 bordercolorc7018e06885e9d61" style="border-radius:0px;">
                         
@@ -1998,48 +1518,48 @@
         <div class="tiletitle">
             <span class="sr-only">Title</span>
             <span style="font-family:custom51628f194e314a97865ab; font-size:16px;" class="col-md-12 section-title title" role="heading" aria-level="2">
-                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1432064933" aria-describedby="jobSearchTileHelpText-1432064933" href="/job/Pocomoke-Calibration-Specialist-MD-21851/1432064933/">
-                    Calibration Specialist
+                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1401456933" aria-describedby="jobSearchTileHelpText-1401456933" href="/job/Cambridge-Key-Account-Manager%2C-Nuclear-ON-N3H-4R7/1401456933/">
+                    Key Account Manager, Nuclear
                 </a>
             </span>
         </div>
                             </div>
                             <div class="oneline">
-            <div id="job-1432064933-desktop-section-country" data-focus-tile=".job-id-1432064933" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1432064933-desktop-section-country-label" aria-describedby="job-1432064933-desktop-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1401456933-desktop-section-country" data-focus-tile=".job-id-1401456933" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401456933-desktop-section-country-label" aria-describedby="job-1401456933-desktop-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Country/Region
                 </span>
-                <div id="job-1432064933-desktop-section-country-value">US
+                <div id="job-1401456933-desktop-section-country-value">CA
                 </div>
             </div>
-            <div id="job-1432064933-desktop-section-department" data-focus-tile=".job-id-1432064933" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1432064933-desktop-section-department-label" aria-describedby="job-1432064933-desktop-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1401456933-desktop-section-department" data-focus-tile=".job-id-1401456933" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401456933-desktop-section-department-label" aria-describedby="job-1401456933-desktop-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Department
                 </span>
-                <div id="job-1432064933-desktop-section-department-value">
-                Production &amp; Skilled Trades
+                <div id="job-1401456933-desktop-section-department-value">
+                Sales, Marketing, &amp; Product Management
             
                 </div>
             </div>
-            <div id="job-1432064933-desktop-section-location" data-focus-tile=".job-id-1432064933" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1432064933-desktop-section-location-label" aria-describedby="job-1432064933-desktop-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1401456933-desktop-section-location" data-focus-tile=".job-id-1401456933" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401456933-desktop-section-location-label" aria-describedby="job-1401456933-desktop-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Location
                 </span>
-                <div id="job-1432064933-desktop-section-location-value">Pocomoke, MD, US, 21851
+                <div id="job-1401456933-desktop-section-location-value">Cambridge, ON, CA, N3H 4R7
                 </div>
             </div>
-            <div id="job-1432064933-desktop-section-multilocation" data-focus-tile=".job-id-1432064933" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1432064933-desktop-section-multilocation-label" aria-describedby="job-1432064933-desktop-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1401456933-desktop-section-multilocation" data-focus-tile=".job-id-1401456933" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401456933-desktop-section-multilocation-label" aria-describedby="job-1401456933-desktop-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Other Locations
                 </span>
-                <div id="job-1432064933-desktop-section-multilocation-value">Pocomoke, MD, US, 21851
+                <div id="job-1401456933-desktop-section-multilocation-value">Cambridge, ON, CA, N3H 4R7
                 </div>
             </div>
-            <div id="job-1432064933-desktop-section-date" data-focus-tile=".job-id-1432064933" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1432064933-desktop-section-date-label" aria-describedby="job-1432064933-desktop-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1401456933-desktop-section-date" data-focus-tile=".job-id-1401456933" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401456933-desktop-section-date-label" aria-describedby="job-1401456933-desktop-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Date
                 </span>
-                <div id="job-1432064933-desktop-section-date-value">Aug 31, 2026
+                <div id="job-1401456933-desktop-section-date-value">Aug 31, 2026
                 </div>
             </div>
                             </div>
@@ -2050,48 +1570,48 @@
         <div class="tiletitle">
             <span class="sr-only">Title</span>
             <span style="font-family:custom51628f194e314a97865ab; font-size:16px;" class="col-md-12 section-title title" role="heading" aria-level="2">
-                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1432064933" aria-describedby="jobSearchTileHelpText-1432064933" href="/job/Pocomoke-Calibration-Specialist-MD-21851/1432064933/">
-                    Calibration Specialist
+                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1401456933" aria-describedby="jobSearchTileHelpText-1401456933" href="/job/Cambridge-Key-Account-Manager%2C-Nuclear-ON-N3H-4R7/1401456933/">
+                    Key Account Manager, Nuclear
                 </a>
             </span>
         </div>
                             </div>
                             <div class="oneline">
-            <div id="job-1432064933-tablet-section-country" data-focus-tile=".job-id-1432064933" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1432064933-tablet-section-country-label" aria-describedby="job-1432064933-tablet-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1401456933-tablet-section-country" data-focus-tile=".job-id-1401456933" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401456933-tablet-section-country-label" aria-describedby="job-1401456933-tablet-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Country/Region
                 </span>
-                <div id="job-1432064933-tablet-section-country-value">US
+                <div id="job-1401456933-tablet-section-country-value">CA
                 </div>
             </div>
-            <div id="job-1432064933-tablet-section-department" data-focus-tile=".job-id-1432064933" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1432064933-tablet-section-department-label" aria-describedby="job-1432064933-tablet-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1401456933-tablet-section-department" data-focus-tile=".job-id-1401456933" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401456933-tablet-section-department-label" aria-describedby="job-1401456933-tablet-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Department
                 </span>
-                <div id="job-1432064933-tablet-section-department-value">
-                Production &amp; Skilled Trades
+                <div id="job-1401456933-tablet-section-department-value">
+                Sales, Marketing, &amp; Product Management
             
                 </div>
             </div>
-            <div id="job-1432064933-tablet-section-location" data-focus-tile=".job-id-1432064933" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1432064933-tablet-section-location-label" aria-describedby="job-1432064933-tablet-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1401456933-tablet-section-location" data-focus-tile=".job-id-1401456933" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401456933-tablet-section-location-label" aria-describedby="job-1401456933-tablet-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Location
                 </span>
-                <div id="job-1432064933-tablet-section-location-value">Pocomoke, MD, US, 21851
+                <div id="job-1401456933-tablet-section-location-value">Cambridge, ON, CA, N3H 4R7
                 </div>
             </div>
-            <div id="job-1432064933-tablet-section-multilocation" data-focus-tile=".job-id-1432064933" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1432064933-tablet-section-multilocation-label" aria-describedby="job-1432064933-tablet-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1401456933-tablet-section-multilocation" data-focus-tile=".job-id-1401456933" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401456933-tablet-section-multilocation-label" aria-describedby="job-1401456933-tablet-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Other Locations
                 </span>
-                <div id="job-1432064933-tablet-section-multilocation-value">Pocomoke, MD, US, 21851
+                <div id="job-1401456933-tablet-section-multilocation-value">Cambridge, ON, CA, N3H 4R7
                 </div>
             </div>
-            <div id="job-1432064933-tablet-section-date" data-focus-tile=".job-id-1432064933" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1432064933-tablet-section-date-label" aria-describedby="job-1432064933-tablet-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1401456933-tablet-section-date" data-focus-tile=".job-id-1401456933" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401456933-tablet-section-date-label" aria-describedby="job-1401456933-tablet-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Date
                 </span>
-                <div id="job-1432064933-tablet-section-date-value">Aug 31, 2026
+                <div id="job-1401456933-tablet-section-date-value">Aug 31, 2026
                 </div>
             </div>
                             </div>
@@ -2101,51 +1621,552 @@
         <div class="tiletitle">
             <span class="sr-only">Title</span>
             <span style="font-family:custom51628f194e314a97865ab; font-size:16px;" class="col-md-12 section-title title" role="heading" aria-level="2">
-                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1432064933" aria-describedby="jobSearchTileHelpText-1432064933" href="/job/Pocomoke-Calibration-Specialist-MD-21851/1432064933/">
-                    Calibration Specialist
+                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1401456933" aria-describedby="jobSearchTileHelpText-1401456933" href="/job/Cambridge-Key-Account-Manager%2C-Nuclear-ON-N3H-4R7/1401456933/">
+                    Key Account Manager, Nuclear
                 </a>
             </span>
         </div>
-            <div id="job-1432064933-mobile-section-country" data-focus-tile=".job-id-1432064933" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1432064933-mobile-section-country-label" aria-describedby="job-1432064933-mobile-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1401456933-mobile-section-country" data-focus-tile=".job-id-1401456933" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401456933-mobile-section-country-label" aria-describedby="job-1401456933-mobile-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Country/Region
                 </span>
-                <div id="job-1432064933-mobile-section-country-value">US
+                <div id="job-1401456933-mobile-section-country-value">CA
                 </div>
             </div>
-            <div id="job-1432064933-mobile-section-department" data-focus-tile=".job-id-1432064933" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1432064933-mobile-section-department-label" aria-describedby="job-1432064933-mobile-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1401456933-mobile-section-department" data-focus-tile=".job-id-1401456933" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401456933-mobile-section-department-label" aria-describedby="job-1401456933-mobile-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Department
                 </span>
-                <div id="job-1432064933-mobile-section-department-value">
-                Production &amp; Skilled Trades
+                <div id="job-1401456933-mobile-section-department-value">
+                Sales, Marketing, &amp; Product Management
             
                 </div>
             </div>
-            <div id="job-1432064933-mobile-section-location" data-focus-tile=".job-id-1432064933" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1432064933-mobile-section-location-label" aria-describedby="job-1432064933-mobile-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1401456933-mobile-section-location" data-focus-tile=".job-id-1401456933" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401456933-mobile-section-location-label" aria-describedby="job-1401456933-mobile-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Location
                 </span>
-                <div id="job-1432064933-mobile-section-location-value">Pocomoke, MD, US, 21851
+                <div id="job-1401456933-mobile-section-location-value">Cambridge, ON, CA, N3H 4R7
                 </div>
             </div>
-            <div id="job-1432064933-mobile-section-multilocation" data-focus-tile=".job-id-1432064933" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1432064933-mobile-section-multilocation-label" aria-describedby="job-1432064933-mobile-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1401456933-mobile-section-multilocation" data-focus-tile=".job-id-1401456933" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401456933-mobile-section-multilocation-label" aria-describedby="job-1401456933-mobile-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Other Locations
                 </span>
-                <div id="job-1432064933-mobile-section-multilocation-value">Pocomoke, MD, US, 21851
+                <div id="job-1401456933-mobile-section-multilocation-value">Cambridge, ON, CA, N3H 4R7
                 </div>
             </div>
-            <div id="job-1432064933-mobile-section-date" data-focus-tile=".job-id-1432064933" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
-                <span id="job-1432064933-mobile-section-date-label" aria-describedby="job-1432064933-mobile-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+            <div id="job-1401456933-mobile-section-date" data-focus-tile=".job-id-1401456933" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401456933-mobile-section-date-label" aria-describedby="job-1401456933-mobile-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
                     Date
                 </span>
-                <div id="job-1432064933-mobile-section-date-value">Aug 31, 2026
+                <div id="job-1401456933-mobile-section-date-value">Aug 31, 2026
                 </div>
             </div>
                         </span>
 
-                        <span class="sr-only" id="jobSearchTileHelpText-1432064933">Select with space bar to view the full contents of the job information.</span>
+                        <span class="sr-only" id="jobSearchTileHelpText-1401456933">Select with space bar to view the full contents of the job information.</span>
+                    </div>
+                </div>
+            </li>
+            <li class="job-tile job-id-1401462133 job-row-index-8 linkhovercolor7782677e6a26ef68" data-url="/job/Cambridge-Intermediate-Machine-Tool-Builder-&amp;-Integrator-ON-N3H-4R7/1401462133/" data-row-index="8" data-focus-tile=".job-id-1401462133">
+                <div class="job-tile-cell">
+                    <div class="row job job-row backgroundcolor72228158  shadowcolorc7018e06885e9d61 shadowhovercolorc7018e06885e9d61 bordercolorc7018e06885e9d61" style="border-radius:0px;">
+                        
+                        <div class="col-md-12 sub-section sub-section-desktop hidden-xs hidden-sm">
+                            <div class="oneline">
+        <div class="tiletitle">
+            <span class="sr-only">Title</span>
+            <span style="font-family:custom51628f194e314a97865ab; font-size:16px;" class="col-md-12 section-title title" role="heading" aria-level="2">
+                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1401462133" aria-describedby="jobSearchTileHelpText-1401462133" href="/job/Cambridge-Intermediate-Machine-Tool-Builder-&amp;-Integrator-ON-N3H-4R7/1401462133/">
+                    Intermediate Machine Tool Builder &amp; Integrator
+                </a>
+            </span>
+        </div>
+                            </div>
+                            <div class="oneline">
+            <div id="job-1401462133-desktop-section-country" data-focus-tile=".job-id-1401462133" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401462133-desktop-section-country-label" aria-describedby="job-1401462133-desktop-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Country/Region
+                </span>
+                <div id="job-1401462133-desktop-section-country-value">CA
+                </div>
+            </div>
+            <div id="job-1401462133-desktop-section-department" data-focus-tile=".job-id-1401462133" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401462133-desktop-section-department-label" aria-describedby="job-1401462133-desktop-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Department
+                </span>
+                <div id="job-1401462133-desktop-section-department-value">
+                Production &amp; Skilled Trades
+            
+                </div>
+            </div>
+            <div id="job-1401462133-desktop-section-location" data-focus-tile=".job-id-1401462133" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401462133-desktop-section-location-label" aria-describedby="job-1401462133-desktop-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Location
+                </span>
+                <div id="job-1401462133-desktop-section-location-value">Cambridge, ON, CA, N3H 4R7
+                </div>
+            </div>
+            <div id="job-1401462133-desktop-section-multilocation" data-focus-tile=".job-id-1401462133" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401462133-desktop-section-multilocation-label" aria-describedby="job-1401462133-desktop-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Other Locations
+                </span>
+                <div id="job-1401462133-desktop-section-multilocation-value">Cambridge, ON, CA, N3H 4R7
+                </div>
+            </div>
+            <div id="job-1401462133-desktop-section-date" data-focus-tile=".job-id-1401462133" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401462133-desktop-section-date-label" aria-describedby="job-1401462133-desktop-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Date
+                </span>
+                <div id="job-1401462133-desktop-section-date-value">Aug 31, 2026
+                </div>
+            </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-12 sub-section sub-section-tablet hidden-xs hidden-md hidden-lg">
+                            <div class="oneline">
+        <div class="tiletitle">
+            <span class="sr-only">Title</span>
+            <span style="font-family:custom51628f194e314a97865ab; font-size:16px;" class="col-md-12 section-title title" role="heading" aria-level="2">
+                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1401462133" aria-describedby="jobSearchTileHelpText-1401462133" href="/job/Cambridge-Intermediate-Machine-Tool-Builder-&amp;-Integrator-ON-N3H-4R7/1401462133/">
+                    Intermediate Machine Tool Builder &amp; Integrator
+                </a>
+            </span>
+        </div>
+                            </div>
+                            <div class="oneline">
+            <div id="job-1401462133-tablet-section-country" data-focus-tile=".job-id-1401462133" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401462133-tablet-section-country-label" aria-describedby="job-1401462133-tablet-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Country/Region
+                </span>
+                <div id="job-1401462133-tablet-section-country-value">CA
+                </div>
+            </div>
+            <div id="job-1401462133-tablet-section-department" data-focus-tile=".job-id-1401462133" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401462133-tablet-section-department-label" aria-describedby="job-1401462133-tablet-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Department
+                </span>
+                <div id="job-1401462133-tablet-section-department-value">
+                Production &amp; Skilled Trades
+            
+                </div>
+            </div>
+            <div id="job-1401462133-tablet-section-location" data-focus-tile=".job-id-1401462133" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401462133-tablet-section-location-label" aria-describedby="job-1401462133-tablet-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Location
+                </span>
+                <div id="job-1401462133-tablet-section-location-value">Cambridge, ON, CA, N3H 4R7
+                </div>
+            </div>
+            <div id="job-1401462133-tablet-section-multilocation" data-focus-tile=".job-id-1401462133" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401462133-tablet-section-multilocation-label" aria-describedby="job-1401462133-tablet-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Other Locations
+                </span>
+                <div id="job-1401462133-tablet-section-multilocation-value">Cambridge, ON, CA, N3H 4R7
+                </div>
+            </div>
+            <div id="job-1401462133-tablet-section-date" data-focus-tile=".job-id-1401462133" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401462133-tablet-section-date-label" aria-describedby="job-1401462133-tablet-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Date
+                </span>
+                <div id="job-1401462133-tablet-section-date-value">Aug 31, 2026
+                </div>
+            </div>
+                            </div>
+                        </div>
+                        
+                        <span class="col-md-12 sub-section sub-section-mobile hidden-sm hidden-md hidden-lg">
+        <div class="tiletitle">
+            <span class="sr-only">Title</span>
+            <span style="font-family:custom51628f194e314a97865ab; font-size:16px;" class="col-md-12 section-title title" role="heading" aria-level="2">
+                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1401462133" aria-describedby="jobSearchTileHelpText-1401462133" href="/job/Cambridge-Intermediate-Machine-Tool-Builder-&amp;-Integrator-ON-N3H-4R7/1401462133/">
+                    Intermediate Machine Tool Builder &amp; Integrator
+                </a>
+            </span>
+        </div>
+            <div id="job-1401462133-mobile-section-country" data-focus-tile=".job-id-1401462133" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401462133-mobile-section-country-label" aria-describedby="job-1401462133-mobile-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Country/Region
+                </span>
+                <div id="job-1401462133-mobile-section-country-value">CA
+                </div>
+            </div>
+            <div id="job-1401462133-mobile-section-department" data-focus-tile=".job-id-1401462133" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401462133-mobile-section-department-label" aria-describedby="job-1401462133-mobile-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Department
+                </span>
+                <div id="job-1401462133-mobile-section-department-value">
+                Production &amp; Skilled Trades
+            
+                </div>
+            </div>
+            <div id="job-1401462133-mobile-section-location" data-focus-tile=".job-id-1401462133" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401462133-mobile-section-location-label" aria-describedby="job-1401462133-mobile-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Location
+                </span>
+                <div id="job-1401462133-mobile-section-location-value">Cambridge, ON, CA, N3H 4R7
+                </div>
+            </div>
+            <div id="job-1401462133-mobile-section-multilocation" data-focus-tile=".job-id-1401462133" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401462133-mobile-section-multilocation-label" aria-describedby="job-1401462133-mobile-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Other Locations
+                </span>
+                <div id="job-1401462133-mobile-section-multilocation-value">Cambridge, ON, CA, N3H 4R7
+                </div>
+            </div>
+            <div id="job-1401462133-mobile-section-date" data-focus-tile=".job-id-1401462133" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401462133-mobile-section-date-label" aria-describedby="job-1401462133-mobile-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Date
+                </span>
+                <div id="job-1401462133-mobile-section-date-value">Aug 31, 2026
+                </div>
+            </div>
+                        </span>
+
+                        <span class="sr-only" id="jobSearchTileHelpText-1401462133">Select with space bar to view the full contents of the job information.</span>
+                    </div>
+                </div>
+            </li>
+            <li class="job-tile job-id-1401400133 job-row-index-9 linkhovercolor7782677e6a26ef68" data-url="/job/Cambridge-Data-Scientist-ON-N3H-4R7/1401400133/" data-row-index="9" data-focus-tile=".job-id-1401400133">
+                <div class="job-tile-cell">
+                    <div class="row job job-row backgroundcolor72228158  shadowcolorc7018e06885e9d61 shadowhovercolorc7018e06885e9d61 bordercolorc7018e06885e9d61" style="border-radius:0px;">
+                        
+                        <div class="col-md-12 sub-section sub-section-desktop hidden-xs hidden-sm">
+                            <div class="oneline">
+        <div class="tiletitle">
+            <span class="sr-only">Title</span>
+            <span style="font-family:custom51628f194e314a97865ab; font-size:16px;" class="col-md-12 section-title title" role="heading" aria-level="2">
+                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1401400133" aria-describedby="jobSearchTileHelpText-1401400133" href="/job/Cambridge-Data-Scientist-ON-N3H-4R7/1401400133/">
+                    Data Scientist
+                </a>
+            </span>
+        </div>
+                            </div>
+                            <div class="oneline">
+            <div id="job-1401400133-desktop-section-country" data-focus-tile=".job-id-1401400133" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401400133-desktop-section-country-label" aria-describedby="job-1401400133-desktop-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Country/Region
+                </span>
+                <div id="job-1401400133-desktop-section-country-value">CA
+                </div>
+            </div>
+            <div id="job-1401400133-desktop-section-department" data-focus-tile=".job-id-1401400133" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401400133-desktop-section-department-label" aria-describedby="job-1401400133-desktop-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Department
+                </span>
+                <div id="job-1401400133-desktop-section-department-value">
+                Engineering and Design
+            
+                </div>
+            </div>
+            <div id="job-1401400133-desktop-section-location" data-focus-tile=".job-id-1401400133" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401400133-desktop-section-location-label" aria-describedby="job-1401400133-desktop-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Location
+                </span>
+                <div id="job-1401400133-desktop-section-location-value">Cambridge, ON, CA, N3H 4R7
+                </div>
+            </div>
+            <div id="job-1401400133-desktop-section-multilocation" data-focus-tile=".job-id-1401400133" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401400133-desktop-section-multilocation-label" aria-describedby="job-1401400133-desktop-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Other Locations
+                </span>
+                <div id="job-1401400133-desktop-section-multilocation-value">Cambridge, ON, CA, N3H 4R7
+                </div>
+            </div>
+            <div id="job-1401400133-desktop-section-date" data-focus-tile=".job-id-1401400133" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401400133-desktop-section-date-label" aria-describedby="job-1401400133-desktop-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Date
+                </span>
+                <div id="job-1401400133-desktop-section-date-value">Aug 31, 2026
+                </div>
+            </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-12 sub-section sub-section-tablet hidden-xs hidden-md hidden-lg">
+                            <div class="oneline">
+        <div class="tiletitle">
+            <span class="sr-only">Title</span>
+            <span style="font-family:custom51628f194e314a97865ab; font-size:16px;" class="col-md-12 section-title title" role="heading" aria-level="2">
+                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1401400133" aria-describedby="jobSearchTileHelpText-1401400133" href="/job/Cambridge-Data-Scientist-ON-N3H-4R7/1401400133/">
+                    Data Scientist
+                </a>
+            </span>
+        </div>
+                            </div>
+                            <div class="oneline">
+            <div id="job-1401400133-tablet-section-country" data-focus-tile=".job-id-1401400133" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401400133-tablet-section-country-label" aria-describedby="job-1401400133-tablet-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Country/Region
+                </span>
+                <div id="job-1401400133-tablet-section-country-value">CA
+                </div>
+            </div>
+            <div id="job-1401400133-tablet-section-department" data-focus-tile=".job-id-1401400133" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401400133-tablet-section-department-label" aria-describedby="job-1401400133-tablet-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Department
+                </span>
+                <div id="job-1401400133-tablet-section-department-value">
+                Engineering and Design
+            
+                </div>
+            </div>
+            <div id="job-1401400133-tablet-section-location" data-focus-tile=".job-id-1401400133" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401400133-tablet-section-location-label" aria-describedby="job-1401400133-tablet-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Location
+                </span>
+                <div id="job-1401400133-tablet-section-location-value">Cambridge, ON, CA, N3H 4R7
+                </div>
+            </div>
+            <div id="job-1401400133-tablet-section-multilocation" data-focus-tile=".job-id-1401400133" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401400133-tablet-section-multilocation-label" aria-describedby="job-1401400133-tablet-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Other Locations
+                </span>
+                <div id="job-1401400133-tablet-section-multilocation-value">Cambridge, ON, CA, N3H 4R7
+                </div>
+            </div>
+            <div id="job-1401400133-tablet-section-date" data-focus-tile=".job-id-1401400133" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401400133-tablet-section-date-label" aria-describedby="job-1401400133-tablet-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Date
+                </span>
+                <div id="job-1401400133-tablet-section-date-value">Aug 31, 2026
+                </div>
+            </div>
+                            </div>
+                        </div>
+                        
+                        <span class="col-md-12 sub-section sub-section-mobile hidden-sm hidden-md hidden-lg">
+        <div class="tiletitle">
+            <span class="sr-only">Title</span>
+            <span style="font-family:custom51628f194e314a97865ab; font-size:16px;" class="col-md-12 section-title title" role="heading" aria-level="2">
+                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1401400133" aria-describedby="jobSearchTileHelpText-1401400133" href="/job/Cambridge-Data-Scientist-ON-N3H-4R7/1401400133/">
+                    Data Scientist
+                </a>
+            </span>
+        </div>
+            <div id="job-1401400133-mobile-section-country" data-focus-tile=".job-id-1401400133" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401400133-mobile-section-country-label" aria-describedby="job-1401400133-mobile-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Country/Region
+                </span>
+                <div id="job-1401400133-mobile-section-country-value">CA
+                </div>
+            </div>
+            <div id="job-1401400133-mobile-section-department" data-focus-tile=".job-id-1401400133" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401400133-mobile-section-department-label" aria-describedby="job-1401400133-mobile-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Department
+                </span>
+                <div id="job-1401400133-mobile-section-department-value">
+                Engineering and Design
+            
+                </div>
+            </div>
+            <div id="job-1401400133-mobile-section-location" data-focus-tile=".job-id-1401400133" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401400133-mobile-section-location-label" aria-describedby="job-1401400133-mobile-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Location
+                </span>
+                <div id="job-1401400133-mobile-section-location-value">Cambridge, ON, CA, N3H 4R7
+                </div>
+            </div>
+            <div id="job-1401400133-mobile-section-multilocation" data-focus-tile=".job-id-1401400133" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401400133-mobile-section-multilocation-label" aria-describedby="job-1401400133-mobile-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Other Locations
+                </span>
+                <div id="job-1401400133-mobile-section-multilocation-value">Cambridge, ON, CA, N3H 4R7
+                </div>
+            </div>
+            <div id="job-1401400133-mobile-section-date" data-focus-tile=".job-id-1401400133" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1401400133-mobile-section-date-label" aria-describedby="job-1401400133-mobile-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Date
+                </span>
+                <div id="job-1401400133-mobile-section-date-value">Aug 31, 2026
+                </div>
+            </div>
+                        </span>
+
+                        <span class="sr-only" id="jobSearchTileHelpText-1401400133">Select with space bar to view the full contents of the job information.</span>
+                    </div>
+                </div>
+            </li>
+            <li class="job-tile job-id-1291803201 job-row-index-10 linkhovercolor7782677e6a26ef68" data-url="/PA/job/Hannover-Ingenieur-%28mwd%29-Automatisierungstechnik-NI-30659/1291803201/" data-row-index="10" data-focus-tile=".job-id-1291803201">
+                <div class="job-tile-cell">
+                    <div class="row job job-row backgroundcolor72228158  shadowcolorc7018e06885e9d61 shadowhovercolorc7018e06885e9d61 bordercolorc7018e06885e9d61" style="border-radius:0px;">
+                        
+                        <div class="col-md-12 sub-section sub-section-desktop hidden-xs hidden-sm">
+                            <div class="oneline">
+        <div class="tiletitle">
+            <span class="sr-only">Title</span>
+            <span style="font-family:custom51628f194e314a97865ab; font-size:16px;" class="col-md-12 section-title title" role="heading" aria-level="2">
+                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1291803201" aria-describedby="jobSearchTileHelpText-1291803201" href="/PA/job/Hannover-Ingenieur-%28mwd%29-Automatisierungstechnik-NI-30659/1291803201/">
+                    Ingenieur (m/w/d) Automatisierungstechnik
+                </a>
+            </span>
+        </div>
+                            </div>
+                            <div class="oneline">
+            <div id="job-1291803201-desktop-section-country" data-focus-tile=".job-id-1291803201" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1291803201-desktop-section-country-label" aria-describedby="job-1291803201-desktop-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Country/Region
+                </span>
+                <div id="job-1291803201-desktop-section-country-value">DE
+                </div>
+            </div>
+            <div id="job-1291803201-desktop-section-department" data-focus-tile=".job-id-1291803201" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1291803201-desktop-section-department-label" aria-describedby="job-1291803201-desktop-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Department
+                </span>
+                <div id="job-1291803201-desktop-section-department-value">
+                Engineering and Design
+            
+                </div>
+            </div>
+            <div id="job-1291803201-desktop-section-location" data-focus-tile=".job-id-1291803201" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1291803201-desktop-section-location-label" aria-describedby="job-1291803201-desktop-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Location
+                </span>
+                <div id="job-1291803201-desktop-section-location-value">Hannover, NI, DE, 30659
+                </div>
+            </div>
+            <div id="job-1291803201-desktop-section-multilocation" data-focus-tile=".job-id-1291803201" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1291803201-desktop-section-multilocation-label" aria-describedby="job-1291803201-desktop-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Other Locations
+                </span>
+                <div id="job-1291803201-desktop-section-multilocation-value">Hannover, NI, DE, 30659
+                </div>
+            </div>
+            <div id="job-1291803201-desktop-section-date" data-focus-tile=".job-id-1291803201" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1291803201-desktop-section-date-label" aria-describedby="job-1291803201-desktop-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Date
+                </span>
+                <div id="job-1291803201-desktop-section-date-value">Aug 31, 2026
+                </div>
+            </div>
+            <div id="job-1291803201-desktop-section-brand" data-focus-tile=".job-id-1291803201" class="section-field brand fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1291803201-desktop-section-brand-label" aria-describedby="job-1291803201-desktop-section-brand-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Brand
+                </span>
+                <div id="job-1291803201-desktop-section-brand-value">PA
+                </div>
+            </div>
+                            </div>
+                        </div>
+                        
+                        <div class="col-md-12 sub-section sub-section-tablet hidden-xs hidden-md hidden-lg">
+                            <div class="oneline">
+        <div class="tiletitle">
+            <span class="sr-only">Title</span>
+            <span style="font-family:custom51628f194e314a97865ab; font-size:16px;" class="col-md-12 section-title title" role="heading" aria-level="2">
+                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1291803201" aria-describedby="jobSearchTileHelpText-1291803201" href="/PA/job/Hannover-Ingenieur-%28mwd%29-Automatisierungstechnik-NI-30659/1291803201/">
+                    Ingenieur (m/w/d) Automatisierungstechnik
+                </a>
+            </span>
+        </div>
+                            </div>
+                            <div class="oneline">
+            <div id="job-1291803201-tablet-section-country" data-focus-tile=".job-id-1291803201" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1291803201-tablet-section-country-label" aria-describedby="job-1291803201-tablet-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Country/Region
+                </span>
+                <div id="job-1291803201-tablet-section-country-value">DE
+                </div>
+            </div>
+            <div id="job-1291803201-tablet-section-department" data-focus-tile=".job-id-1291803201" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1291803201-tablet-section-department-label" aria-describedby="job-1291803201-tablet-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Department
+                </span>
+                <div id="job-1291803201-tablet-section-department-value">
+                Engineering and Design
+            
+                </div>
+            </div>
+            <div id="job-1291803201-tablet-section-location" data-focus-tile=".job-id-1291803201" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1291803201-tablet-section-location-label" aria-describedby="job-1291803201-tablet-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Location
+                </span>
+                <div id="job-1291803201-tablet-section-location-value">Hannover, NI, DE, 30659
+                </div>
+            </div>
+            <div id="job-1291803201-tablet-section-multilocation" data-focus-tile=".job-id-1291803201" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1291803201-tablet-section-multilocation-label" aria-describedby="job-1291803201-tablet-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Other Locations
+                </span>
+                <div id="job-1291803201-tablet-section-multilocation-value">Hannover, NI, DE, 30659
+                </div>
+            </div>
+            <div id="job-1291803201-tablet-section-date" data-focus-tile=".job-id-1291803201" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1291803201-tablet-section-date-label" aria-describedby="job-1291803201-tablet-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Date
+                </span>
+                <div id="job-1291803201-tablet-section-date-value">Aug 31, 2026
+                </div>
+            </div>
+            <div id="job-1291803201-tablet-section-brand" data-focus-tile=".job-id-1291803201" class="section-field brand fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1291803201-tablet-section-brand-label" aria-describedby="job-1291803201-tablet-section-brand-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Brand
+                </span>
+                <div id="job-1291803201-tablet-section-brand-value">PA
+                </div>
+            </div>
+                            </div>
+                        </div>
+                        
+                        <span class="col-md-12 sub-section sub-section-mobile hidden-sm hidden-md hidden-lg">
+        <div class="tiletitle">
+            <span class="sr-only">Title</span>
+            <span style="font-family:custom51628f194e314a97865ab; font-size:16px;" class="col-md-12 section-title title" role="heading" aria-level="2">
+                <a class="jobTitle-link fontcolorf591371a23cfb5f3" data-focus-tile=".job-id-1291803201" aria-describedby="jobSearchTileHelpText-1291803201" href="/PA/job/Hannover-Ingenieur-%28mwd%29-Automatisierungstechnik-NI-30659/1291803201/">
+                    Ingenieur (m/w/d) Automatisierungstechnik
+                </a>
+            </span>
+        </div>
+            <div id="job-1291803201-mobile-section-country" data-focus-tile=".job-id-1291803201" class="section-field country fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1291803201-mobile-section-country-label" aria-describedby="job-1291803201-mobile-section-country-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Country/Region
+                </span>
+                <div id="job-1291803201-mobile-section-country-value">DE
+                </div>
+            </div>
+            <div id="job-1291803201-mobile-section-department" data-focus-tile=".job-id-1291803201" class="section-field department fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1291803201-mobile-section-department-label" aria-describedby="job-1291803201-mobile-section-department-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Department
+                </span>
+                <div id="job-1291803201-mobile-section-department-value">
+                Engineering and Design
+            
+                </div>
+            </div>
+            <div id="job-1291803201-mobile-section-location" data-focus-tile=".job-id-1291803201" class="section-field location fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1291803201-mobile-section-location-label" aria-describedby="job-1291803201-mobile-section-location-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Location
+                </span>
+                <div id="job-1291803201-mobile-section-location-value">Hannover, NI, DE, 30659
+                </div>
+            </div>
+            <div id="job-1291803201-mobile-section-multilocation" data-focus-tile=".job-id-1291803201" class="section-field multilocation fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1291803201-mobile-section-multilocation-label" aria-describedby="job-1291803201-mobile-section-multilocation-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Other Locations
+                </span>
+                <div id="job-1291803201-mobile-section-multilocation-value">Hannover, NI, DE, 30659
+                </div>
+            </div>
+            <div id="job-1291803201-mobile-section-date" data-focus-tile=".job-id-1291803201" class="section-field date fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1291803201-mobile-section-date-label" aria-describedby="job-1291803201-mobile-section-date-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Date
+                </span>
+                <div id="job-1291803201-mobile-section-date-value">Aug 31, 2026
+                </div>
+            </div>
+            <div id="job-1291803201-mobile-section-brand" data-focus-tile=".job-id-1291803201" class="section-field brand fontcolorc7018e06885e9d61" style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                <span id="job-1291803201-mobile-section-brand-label" aria-describedby="job-1291803201-mobile-section-brand-value" class="section-label fontcolorc7018e06885e9d61 " style="font-family:custom51628f194e314a97865ab; font-size:14px;">
+                    Brand
+                </span>
+                <div id="job-1291803201-mobile-section-brand-value">PA
+                </div>
+            </div>
+                        </span>
+
+                        <span class="sr-only" id="jobSearchTileHelpText-1291803201">Select with space bar to view the full contents of the job information.</span>
                     </div>
                 </div>
             </li>
@@ -2288,7 +2309,7 @@
 		//<![CDATA[
 			$(function() 
 			{
-				var ctid = '498f8a9f-d305-49d3-8f08-d793457eadb6';
+				var ctid = '4526f687-0e1b-4579-a801-fa33cf5d3789';
 				var referrer = '';
 				var landing = document.location.href;
 				var brand = '';
@@ -2351,7 +2372,7 @@
 				$.ajaxSetup({
 					cache   : false,
 					headers : {
-						"X-CSRF-Token" : "65ef0907-68c2-4fa3-b77b-b7907da7b54b"
+						"X-CSRF-Token" : "9b1c44a8-ac42-44bf-9662-8f2fc9693fb1"
 					}
 				});
 			//]]>
@@ -2364,7 +2385,7 @@
         <script type="text/javascript" src="/platform/js/jquery/js.cookie-2.2.1.min.js"></script>
         <script type="text/javascript" src="/platform/js/jquery/jquery.lightbox_me.js"></script>
         <script type="text/javascript" src="/platform/js/jquery/jquery.placeholder.2.0.7.min.js"></script>
-        <script type="text/javascript" src="/js/override.js?locale=en_US&amp;i=2121447341"></script>
+        <script type="text/javascript" src="/js/override.js?locale=en_US&amp;i=1751728051"></script>
         <script type="text/javascript">
             const jobAlertSpans = document.querySelectorAll("[data-testid=jobAlertSpanText]");
             jobAlertSpans?.forEach((jobEl) => {

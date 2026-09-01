@@ -493,7 +493,7 @@
         <div class="paginationShell clearfix" xml:lang="en-US" lang="en-US">
                     <div class="well well-lg pagination-well pagination">
                         <div class="pagination-label-row">
-                            <span class="paginationLabel" aria-label="Results 76 – 100">Results <b>76 – 100</b> of <b>447</b></span>
+                            <span class="paginationLabel" aria-label="Results 76 – 100">Results <b>76 – 100</b> of <b>446</b></span>
                             <span class="srHelp" style="font-size:0px">Page 4 of 18</span>
                         </div>
                             <ul class="pagination">
@@ -510,7 +510,7 @@
                 </div>
 
             <div class="searchResultsShell">
-				<table id="searchresults" class="searchResults full table table-striped table-hover" cellpadding="0" cellspacing="0" aria-label="Search results for intern AND Canada. Page 4 of 18, Results 76 to 100 of 447">
+				<table id="searchresults" class="searchResults full table table-striped table-hover" cellpadding="0" cellspacing="0" aria-label="Search results for intern AND Canada. Page 4 of 18, Results 76 to 100 of 446">
 					<thead>
                             <tr id="search-results-header">
 											<th id="hdrTitle" aria-sort="none" scope="col" width="25%">
@@ -601,45 +601,6 @@
                             <tr class="data-row">
                                                 <td class="colTitle" headers="hdrTitle">
 													<span class="jobTitle hidden-phone">
-														<a href="/job/Kawartha-Lakes-Foreperson-%28Unionized%29-ON/605365717/" class="jobTitle-link">Foreperson (Unionized)</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Kawartha-Lakes-Foreperson-%28Unionized%29-ON/605365717/">Foreperson (Unionized)</a>
-                                                                    </span>
-                                                                    <span class="jobFacility visible-phone">Trade</span>
-                                                                    <span class="jobLocation visible-phone">
-        
-        <span class="jobLocation">
-            Kawartha Lakes, ON, CA
-            
-                <small class="nobr">+1 more&hellip;</small>
-        </span></span>
-                                                                    <span class="jobDate visible-phone">Aug 19, 2026
-													                </span>
-                                                    </div>
-                                                </td>
-											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Trade</span>
-											</td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Kawartha Lakes, ON, CA
-            
-                <small class="nobr">+1 more&hellip;</small>
-        </span>
-											</td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 19, 2026
-												</span>
-											</td>
-									<td class="hidden-phone"></td>
-                            </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
 														<a href="/job/Toronto-Sr_-Coordinator%2C-Proposals-ON/605198517/" class="jobTitle-link">Sr. Coordinator, Proposals</a>
 													</span>
                                                     <div class="jobdetail-phone visible-phone">
@@ -718,43 +679,6 @@
                             <tr class="data-row">
                                                 <td class="colTitle" headers="hdrTitle">
 													<span class="jobTitle hidden-phone">
-														<a href="/job/Cambridge-Welding-Robot-Technician-ON/605115917/" class="jobTitle-link">Welding Robot Technician</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Cambridge-Welding-Robot-Technician-ON/605115917/">Welding Robot Technician</a>
-                                                                    </span>
-                                                                    <span class="jobFacility visible-phone">Construction</span>
-                                                                    <span class="jobLocation visible-phone">
-        
-        <span class="jobLocation">
-            Cambridge, ON, CA
-            
-        </span></span>
-                                                                    <span class="jobDate visible-phone">Aug 11, 2026
-													                </span>
-                                                    </div>
-                                                </td>
-											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Construction</span>
-											</td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Cambridge, ON, CA
-            
-        </span>
-											</td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 11, 2026
-												</span>
-											</td>
-									<td class="hidden-phone"></td>
-                            </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
 														<a href="/job/Toronto-Modeler%2C-BIM-ON/605265717/" class="jobTitle-link">Modeler, BIM</a>
 													</span>
                                                     <div class="jobdetail-phone visible-phone">
@@ -784,6 +708,43 @@
 											</td>
 											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
 												<span class="jobDate">Aug 17, 2026
+												</span>
+											</td>
+									<td class="hidden-phone"></td>
+                            </tr>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
+														<a href="/job/Cambridge-Welding-Robot-Technician-ON/605115917/" class="jobTitle-link">Welding Robot Technician</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/Cambridge-Welding-Robot-Technician-ON/605115917/">Welding Robot Technician</a>
+                                                                    </span>
+                                                                    <span class="jobFacility visible-phone">Construction</span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            Cambridge, ON, CA
+            
+        </span></span>
+                                                                    <span class="jobDate visible-phone">Aug 11, 2026
+													                </span>
+                                                    </div>
+                                                </td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Construction</span>
+											</td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            Cambridge, ON, CA
+            
+        </span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Aug 11, 2026
 												</span>
 											</td>
 									<td class="hidden-phone"></td>
@@ -979,43 +940,6 @@
                             <tr class="data-row">
                                                 <td class="colTitle" headers="hdrTitle">
 													<span class="jobTitle hidden-phone">
-														<a href="/job/Toronto-Planner-ON/604568217/" class="jobTitle-link">Planner</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Toronto-Planner-ON/604568217/">Planner</a>
-                                                                    </span>
-                                                                    <span class="jobFacility visible-phone">Construction</span>
-                                                                    <span class="jobLocation visible-phone">
-        
-        <span class="jobLocation">
-            Toronto, ON, CA
-            
-        </span></span>
-                                                                    <span class="jobDate visible-phone">Aug 20, 2026
-													                </span>
-                                                    </div>
-                                                </td>
-											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Construction</span>
-											</td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Toronto, ON, CA
-            
-        </span>
-											</td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 20, 2026
-												</span>
-											</td>
-									<td class="hidden-phone"></td>
-                            </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
 														<a href="/job/Bowmanville-Quality-Control-Inspector%2C-Electrical-ON/597044617/" class="jobTitle-link">Quality Control Inspector, Electrical</a>
 													</span>
                                                     <div class="jobdetail-phone visible-phone">
@@ -1127,43 +1051,6 @@
                             <tr class="data-row">
                                                 <td class="colTitle" headers="hdrTitle">
 													<span class="jobTitle hidden-phone">
-														<a href="/job/Bowmanville-Project-Manager-Mechanical-ON/604760117/" class="jobTitle-link">Project Manager - Mechanical</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Bowmanville-Project-Manager-Mechanical-ON/604760117/">Project Manager - Mechanical</a>
-                                                                    </span>
-                                                                    <span class="jobFacility visible-phone">Construction</span>
-                                                                    <span class="jobLocation visible-phone">
-        
-        <span class="jobLocation">
-            Bowmanville, ON, CA
-            
-        </span></span>
-                                                                    <span class="jobDate visible-phone">Aug 26, 2026
-													                </span>
-                                                    </div>
-                                                </td>
-											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Construction</span>
-											</td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Bowmanville, ON, CA
-            
-        </span>
-											</td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 26, 2026
-												</span>
-											</td>
-									<td class="hidden-phone"></td>
-                            </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
 														<a href="/job/Hamilton-Construction-Manager%2C-Structures-ON/601488017/" class="jobTitle-link">Construction Manager, Structures</a>
 													</span>
                                                     <div class="jobdetail-phone visible-phone">
@@ -1193,6 +1080,80 @@
 											</td>
 											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
 												<span class="jobDate">Aug 7, 2026
+												</span>
+											</td>
+									<td class="hidden-phone"></td>
+                            </tr>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
+														<a href="/job/Toronto-Planner-ON/604568217/" class="jobTitle-link">Planner</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/Toronto-Planner-ON/604568217/">Planner</a>
+                                                                    </span>
+                                                                    <span class="jobFacility visible-phone">Construction</span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            Toronto, ON, CA
+            
+        </span></span>
+                                                                    <span class="jobDate visible-phone">Aug 20, 2026
+													                </span>
+                                                    </div>
+                                                </td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Construction</span>
+											</td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            Toronto, ON, CA
+            
+        </span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Aug 20, 2026
+												</span>
+											</td>
+									<td class="hidden-phone"></td>
+                            </tr>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
+														<a href="/job/Bowmanville-Project-Manager-Mechanical-ON/604760117/" class="jobTitle-link">Project Manager - Mechanical</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/Bowmanville-Project-Manager-Mechanical-ON/604760117/">Project Manager - Mechanical</a>
+                                                                    </span>
+                                                                    <span class="jobFacility visible-phone">Construction</span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            Bowmanville, ON, CA
+            
+        </span></span>
+                                                                    <span class="jobDate visible-phone">Aug 26, 2026
+													                </span>
+                                                    </div>
+                                                </td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Construction</span>
+											</td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            Bowmanville, ON, CA
+            
+        </span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Aug 26, 2026
 												</span>
 											</td>
 									<td class="hidden-phone"></td>
@@ -1238,20 +1199,20 @@
                             <tr class="data-row">
                                                 <td class="colTitle" headers="hdrTitle">
 													<span class="jobTitle hidden-phone">
-														<a href="/job/Cambridge-Change-Coordinator-ON/605271917/" class="jobTitle-link">Change Coordinator</a>
+														<a href="/job/Abbotsford-Project-Coordinator-%28Abbotsford%29-Brit/604285917/" class="jobTitle-link">Project Coordinator (Abbotsford)</a>
 													</span>
                                                     <div class="jobdetail-phone visible-phone">
                                                                     <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Cambridge-Change-Coordinator-ON/605271917/">Change Coordinator</a>
+                                                                        <a class="jobTitle-link" href="/job/Abbotsford-Project-Coordinator-%28Abbotsford%29-Brit/604285917/">Project Coordinator (Abbotsford)</a>
                                                                     </span>
                                                                     <span class="jobFacility visible-phone">Construction</span>
                                                                     <span class="jobLocation visible-phone">
         
         <span class="jobLocation">
-            Cambridge, ON, CA
+            Abbotsford, British Columbia, CA
             
         </span></span>
-                                                                    <span class="jobDate visible-phone">Aug 17, 2026
+                                                                    <span class="jobDate visible-phone">Aug 11, 2026
 													                </span>
                                                     </div>
                                                 </td>
@@ -1261,12 +1222,12 @@
 											<td class="colLocation hidden-phone" headers="hdrLocation">
         
         <span class="jobLocation">
-            Cambridge, ON, CA
+            Abbotsford, British Columbia, CA
             
         </span>
 											</td>
 											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 17, 2026
+												<span class="jobDate">Aug 11, 2026
 												</span>
 											</td>
 									<td class="hidden-phone"></td>
@@ -1312,20 +1273,20 @@
                             <tr class="data-row">
                                                 <td class="colTitle" headers="hdrTitle">
 													<span class="jobTitle hidden-phone">
-														<a href="/job/Abbotsford-Project-Coordinator-%28Abbotsford%29-Brit/604285917/" class="jobTitle-link">Project Coordinator (Abbotsford)</a>
+														<a href="/job/Cambridge-Change-Coordinator-ON/605271917/" class="jobTitle-link">Change Coordinator</a>
 													</span>
                                                     <div class="jobdetail-phone visible-phone">
                                                                     <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Abbotsford-Project-Coordinator-%28Abbotsford%29-Brit/604285917/">Project Coordinator (Abbotsford)</a>
+                                                                        <a class="jobTitle-link" href="/job/Cambridge-Change-Coordinator-ON/605271917/">Change Coordinator</a>
                                                                     </span>
                                                                     <span class="jobFacility visible-phone">Construction</span>
                                                                     <span class="jobLocation visible-phone">
         
         <span class="jobLocation">
-            Abbotsford, British Columbia, CA
+            Cambridge, ON, CA
             
         </span></span>
-                                                                    <span class="jobDate visible-phone">Aug 11, 2026
+                                                                    <span class="jobDate visible-phone">Aug 17, 2026
 													                </span>
                                                     </div>
                                                 </td>
@@ -1335,12 +1296,12 @@
 											<td class="colLocation hidden-phone" headers="hdrLocation">
         
         <span class="jobLocation">
-            Abbotsford, British Columbia, CA
+            Cambridge, ON, CA
             
         </span>
 											</td>
 											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 11, 2026
+												<span class="jobDate">Aug 17, 2026
 												</span>
 											</td>
 									<td class="hidden-phone"></td>
@@ -1534,6 +1495,43 @@
 											</td>
 									<td class="hidden-phone"></td>
                             </tr>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
+														<a href="/job/Toronto-Sr_-Coordinator%2C-BIM-ON/604839517/" class="jobTitle-link">Sr. Coordinator, BIM</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/Toronto-Sr_-Coordinator%2C-BIM-ON/604839517/">Sr. Coordinator, BIM</a>
+                                                                    </span>
+                                                                    <span class="jobFacility visible-phone">Engineering</span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            Toronto, ON, CA
+            
+        </span></span>
+                                                                    <span class="jobDate visible-phone">Aug 28, 2026
+													                </span>
+                                                    </div>
+                                                </td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Engineering</span>
+											</td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            Toronto, ON, CA
+            
+        </span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Aug 28, 2026
+												</span>
+											</td>
+									<td class="hidden-phone"></td>
+                            </tr>
                     </tbody>
 
                 </table>
@@ -1543,7 +1541,7 @@
         <div class="paginationShell clearfix" xml:lang="en-US" lang="en-US">
                     <div class="well well-lg pagination-well pagination">
                         <div class="pagination-label-row">
-                            <span class="paginationLabel" aria-label="Results 76 – 100">Results <b>76 – 100</b> of <b>447</b></span>
+                            <span class="paginationLabel" aria-label="Results 76 – 100">Results <b>76 – 100</b> of <b>446</b></span>
                             <span class="srHelp" style="font-size:0px">Page 4 of 18</span>
                         </div>
                             <ul class="pagination">
@@ -1642,7 +1640,7 @@ $('#distance').watermark('');
 		//<![CDATA[
 			$(function() 
 			{
-				var ctid = 'f46646b6-b6de-49f8-9283-b6b138fe5ecc';
+				var ctid = 'adbe5464-9c53-426b-abff-56f7915be732';
 				var referrer = '';
 				var landing = document.location.href;
 				var brand = '';
@@ -1705,7 +1703,7 @@ $('#distance').watermark('');
 				$.ajaxSetup({
 					cache   : false,
 					headers : {
-						"X-CSRF-Token" : "76f02cbe-1eca-49b8-a7d4-4b770d259be7"
+						"X-CSRF-Token" : "01db8e7a-0236-4f10-bb7d-95fdffbd2eee"
 					}
 				});
 			//]]>
@@ -1717,7 +1715,7 @@ $('#distance').watermark('');
         <script type="text/javascript" src="/platform/js/jquery/js.cookie-2.2.1.min.js"></script>
         <script type="text/javascript" src="/platform/js/jquery/jquery.lightbox_me.js"></script>
         <script type="text/javascript" src="/platform/js/jquery/jquery.placeholder.2.0.7.min.js"></script>
-        <script type="text/javascript" src="/js/override.js?locale=en_US&amp;i=462283480"></script>
+        <script type="text/javascript" src="/js/override.js?locale=en_US&amp;i=499622358"></script>
         <script type="text/javascript">
             const jobAlertSpans = document.querySelectorAll("[data-testid=jobAlertSpanText]");
             jobAlertSpans?.forEach((jobEl) => {

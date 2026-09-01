@@ -412,8 +412,8 @@
                             <span class="alert-icon-frequency-error fa fa-exclamation-circle"></span><div class="frequency-error-message" aria-live="polite" id="frequency-error-feedback"></div>
                         </div>
         <span class="subscribe-frequency-label">
-            <label id="labelFrequencySpinBtn" for="j_idt322" aria-hidden="true">Select how often (in days) to receive an alert:</label>
-            <input id="j_idt322" type="number" class="form-control subscribe-frequency frequencySpinBtn" name="frequency" required="required" min="1" max="99" maxlength="2" value="7" oninput="j2w.Agent.setValidFrequency(this)" aria-labelledby="labelFrequencySpinBtn" />
+            <label id="labelFrequencySpinBtn" for="j_idt1509" aria-hidden="true">Select how often (in days) to receive an alert:</label>
+            <input id="j_idt1509" type="number" class="form-control subscribe-frequency frequencySpinBtn" name="frequency" required="required" min="1" max="99" maxlength="2" value="7" oninput="j2w.Agent.setValidFrequency(this)" aria-labelledby="labelFrequencySpinBtn" />
         </span>
                         <div class="savesearch-buttons-wrapper">
                                 <button class="btn savesearch-link" id="savesearch-link" tabindex="0"><i class="icon-envelope glyphicon-envelope" aria-hidden="true"></i> Create Alert</button>
@@ -433,8 +433,8 @@
                         <div class="frequency-error-message" aria-live="polite"></div>
                     </div>
         <span class="subscribe-frequency-label">
-            <label id="labelFrequencySpinBtn" for="j_idt333" aria-hidden="true">Select how often (in days) to receive an alert:</label>
-            <input id="j_idt333" type="number" class="form-control subscribe-frequency frequencySpinBtn" name="frequency" required="required" min="1" max="99" maxlength="2" value="7" oninput="j2w.Agent.setValidFrequency(this)" aria-labelledby="labelFrequencySpinBtn" />
+            <label id="labelFrequencySpinBtn" for="j_idt1520" aria-hidden="true">Select how often (in days) to receive an alert:</label>
+            <input id="j_idt1520" type="number" class="form-control subscribe-frequency frequencySpinBtn" name="frequency" required="required" min="1" max="99" maxlength="2" value="7" oninput="j2w.Agent.setValidFrequency(this)" aria-labelledby="labelFrequencySpinBtn" />
         </span>
                     <input id="emailsubscribe-button" class="btn emailsubscribe-button" title="Create Alert" value="Create Alert" type="submit" style="float: none" />
                 </div>
@@ -1077,7 +1077,7 @@
 		//<![CDATA[
 			$(function() 
 			{
-				var ctid = '6335e28d-086f-4e99-9890-7c6e09439841';
+				var ctid = '444db4cd-741f-4e30-aa7d-25e1f10ab324';
 				var referrer = '';
 				var landing = document.location.href;
 				var brand = '';
@@ -1140,7 +1140,7 @@
 				$.ajaxSetup({
 					cache   : false,
 					headers : {
-						"X-CSRF-Token" : "e734d55d-18f0-4901-a829-16e522658627"
+						"X-CSRF-Token" : "518f2435-6d2b-4027-b3e0-9ee96146d01e"
 					}
 				});
 			//]]>
@@ -1153,7 +1153,7 @@
         <script type="text/javascript" src="/platform/js/jquery/js.cookie-2.2.1.min.js"></script>
         <script type="text/javascript" src="/platform/js/jquery/jquery.lightbox_me.js"></script>
         <script type="text/javascript" src="/platform/js/jquery/jquery.placeholder.2.0.7.min.js"></script>
-        <script type="text/javascript" src="/js/override.js?locale=en_US&amp;i=207359193"></script>
+        <script type="text/javascript" src="/js/override.js?locale=en_US&amp;i=2121447341"></script>
         <script type="text/javascript">
             const jobAlertSpans = document.querySelectorAll("[data-testid=jobAlertSpanText]");
             jobAlertSpans?.forEach((jobEl) => {

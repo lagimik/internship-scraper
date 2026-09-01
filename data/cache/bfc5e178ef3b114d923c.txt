@@ -395,7 +395,7 @@
         <div class="paginationShell clearfix" xml:lang="en-US" lang="en-US">
                     <div class="well well-lg pagination-well pagination">
                         <div class="pagination-label-row">
-                            <span class="paginationLabel" aria-label="Results 1 – 25">Results <b>1 – 25</b> of <b>141</b></span>
+                            <span class="paginationLabel" aria-label="Results 1 – 25">Results <b>1 – 25</b> of <b>144</b></span>
                             <span class="srHelp" style="font-size:0px">Page 1 of 6</span>
                         </div>
                             <ul class="pagination">
@@ -413,7 +413,7 @@
                 </div>
 
             <div class="searchResultsShell">
-				<table id="searchresults" class="searchResults full table table-striped table-hover" cellpadding="0" cellspacing="0" aria-label="Search results for intern AND Canada. Page 1 of 6, Results 1 to 25 of 141">
+				<table id="searchresults" class="searchResults full table table-striped table-hover" cellpadding="0" cellspacing="0" aria-label="Search results for intern AND Canada. Page 1 of 6, Results 1 to 25 of 144">
 					<thead>
                             <tr id="search-results-header">
 											<th id="hdrTitle" aria-sort="none" scope="col" width="30%">
@@ -843,42 +843,6 @@
 											</td>
 											<td class="colFacility hidden-phone" headers="hdrFacility">
 												<span class="jobFacility">98892</span>
-											</td>
-                            </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
-														<a href="/job/Mississauga-Client-Engagement-Director-ON/1397780100/" class="jobTitle-link">Client Engagement Director</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Mississauga-Client-Engagement-Director-ON/1397780100/">Client Engagement Director</a>
-                                                                    </span>
-                                                                    <span class="jobLocation visible-phone">
-        
-        <span class="jobLocation">
-            Mississauga, ON, CA
-            
-        </span></span>
-                                                    </div>
-                                                </td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Mississauga, ON, CA
-            
-        </span>
-											</td>
-											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Administration/Support</span>
-											</td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 5, 2026
-												</span>
-											</td>
-											<td class="colFacility hidden-phone" headers="hdrFacility">
-												<span class="jobFacility">100041</span>
 											</td>
                             </tr>
 
@@ -1349,6 +1313,42 @@
 												<span class="jobFacility">97720</span>
 											</td>
                             </tr>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
+														<a href="/job/Mississauga-Structural-Engineer-ON/1419774800/" class="jobTitle-link">Structural Engineer</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/Mississauga-Structural-Engineer-ON/1419774800/">Structural Engineer</a>
+                                                                    </span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            Mississauga, ON, CA
+            
+        </span></span>
+                                                    </div>
+                                                </td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            Mississauga, ON, CA
+            
+        </span>
+											</td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Engineering</span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Aug 14, 2026
+												</span>
+											</td>
+											<td class="colFacility hidden-phone" headers="hdrFacility">
+												<span class="jobFacility">101171</span>
+											</td>
+                            </tr>
                     </tbody>
 
                 </table>
@@ -1358,7 +1358,7 @@
         <div class="paginationShell clearfix" xml:lang="en-US" lang="en-US">
                     <div class="well well-lg pagination-well pagination">
                         <div class="pagination-label-row">
-                            <span class="paginationLabel" aria-label="Results 1 – 25">Results <b>1 – 25</b> of <b>141</b></span>
+                            <span class="paginationLabel" aria-label="Results 1 – 25">Results <b>1 – 25</b> of <b>144</b></span>
                             <span class="srHelp" style="font-size:0px">Page 1 of 6</span>
                         </div>
                             <ul class="pagination">
@@ -1479,7 +1479,7 @@ $('#distance').watermark('');
 		//<![CDATA[
 			$(function() 
 			{
-				var ctid = '41f9461d-bd5d-4677-8463-4648b6c8d322';
+				var ctid = '0cdf2b72-6364-4d68-81c0-182527ff700a';
 				var referrer = '';
 				var landing = document.location.href;
 				var brand = '';
@@ -1542,7 +1542,7 @@ $('#distance').watermark('');
 				$.ajaxSetup({
 					cache   : false,
 					headers : {
-						"X-CSRF-Token" : "71a1d57a-7e2c-4e35-a05c-582392b5afcc"
+						"X-CSRF-Token" : "c534db44-65cc-44a6-b2d9-a1bbfcfe2fc9"
 					}
 				});
 			//]]>

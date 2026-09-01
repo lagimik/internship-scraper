@@ -358,8 +358,8 @@
                             <span class="alert-icon-frequency-error fa fa-exclamation-circle"></span><div class="frequency-error-message" aria-live="polite" id="frequency-error-feedback"></div>
                         </div>
         <span class="subscribe-frequency-label">
-            <label id="labelFrequencySpinBtn" for="j_idt784" aria-hidden="true">Select how often (in days) to receive an alert:</label>
-            <input id="j_idt784" type="number" class="form-control subscribe-frequency frequencySpinBtn" name="frequency" required="required" min="1" max="99" maxlength="2" value="7" oninput="j2w.Agent.setValidFrequency(this)" aria-labelledby="labelFrequencySpinBtn" />
+            <label id="labelFrequencySpinBtn" for="j_idt903" aria-hidden="true">Select how often (in days) to receive an alert:</label>
+            <input id="j_idt903" type="number" class="form-control subscribe-frequency frequencySpinBtn" name="frequency" required="required" min="1" max="99" maxlength="2" value="7" oninput="j2w.Agent.setValidFrequency(this)" aria-labelledby="labelFrequencySpinBtn" />
         </span>
                         <div class="savesearch-buttons-wrapper">
                                 <button class="btn savesearch-link" id="savesearch-link" tabindex="0"><i class="icon-envelope glyphicon-envelope" aria-hidden="true"></i> Create Alert</button>
@@ -379,8 +379,8 @@
                         <div class="frequency-error-message" aria-live="polite"></div>
                     </div>
         <span class="subscribe-frequency-label">
-            <label id="labelFrequencySpinBtn" for="j_idt795" aria-hidden="true">Select how often (in days) to receive an alert:</label>
-            <input id="j_idt795" type="number" class="form-control subscribe-frequency frequencySpinBtn" name="frequency" required="required" min="1" max="99" maxlength="2" value="7" oninput="j2w.Agent.setValidFrequency(this)" aria-labelledby="labelFrequencySpinBtn" />
+            <label id="labelFrequencySpinBtn" for="j_idt914" aria-hidden="true">Select how often (in days) to receive an alert:</label>
+            <input id="j_idt914" type="number" class="form-control subscribe-frequency frequencySpinBtn" name="frequency" required="required" min="1" max="99" maxlength="2" value="7" oninput="j2w.Agent.setValidFrequency(this)" aria-labelledby="labelFrequencySpinBtn" />
         </span>
                     <input id="emailsubscribe-button" class="btn emailsubscribe-button" title="Create Alert" value="Create Alert" type="submit" style="float: none" />
                 </div>
@@ -395,7 +395,7 @@
         <div class="paginationShell clearfix" xml:lang="en-US" lang="en-US">
                     <div class="well well-lg pagination-well pagination">
                         <div class="pagination-label-row">
-                            <span class="paginationLabel" aria-label="Results 76 – 100">Results <b>76 – 100</b> of <b>141</b></span>
+                            <span class="paginationLabel" aria-label="Results 76 – 100">Results <b>76 – 100</b> of <b>144</b></span>
                             <span class="srHelp" style="font-size:0px">Page 4 of 6</span>
                         </div>
                             <ul class="pagination">
@@ -413,7 +413,7 @@
                 </div>
 
             <div class="searchResultsShell">
-				<table id="searchresults" class="searchResults full table table-striped table-hover" cellpadding="0" cellspacing="0" aria-label="Search results for intern AND Canada. Page 4 of 6, Results 76 to 100 of 141">
+				<table id="searchresults" class="searchResults full table table-striped table-hover" cellpadding="0" cellspacing="0" aria-label="Search results for intern AND Canada. Page 4 of 6, Results 76 to 100 of 144">
 					<thead>
                             <tr id="search-results-header">
 											<th id="hdrTitle" aria-sort="none" scope="col" width="30%">
@@ -449,6 +449,42 @@
                             </tr>
                     </thead>
                     <tbody>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
+														<a href="/job/Vancouver-Planner-BC/1417883800/" class="jobTitle-link">Planner</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/Vancouver-Planner-BC/1417883800/">Planner</a>
+                                                                    </span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            Vancouver, BC, CA
+            
+        </span></span>
+                                                    </div>
+                                                </td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            Vancouver, BC, CA
+            
+        </span>
+											</td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Project Controls</span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Aug 10, 2026
+												</span>
+											</td>
+											<td class="colFacility hidden-phone" headers="hdrFacility">
+												<span class="jobFacility">98811</span>
+											</td>
+                            </tr>
 
                             <tr class="data-row">
                                                 <td class="colTitle" headers="hdrTitle">
@@ -885,78 +921,6 @@
                             <tr class="data-row">
                                                 <td class="colTitle" headers="hdrTitle">
 													<span class="jobTitle hidden-phone">
-														<a href="/job/Calgary-Rail-Engineer%2C-Senior-AB/1387072700/" class="jobTitle-link">Rail Engineer, Senior</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Calgary-Rail-Engineer%2C-Senior-AB/1387072700/">Rail Engineer, Senior</a>
-                                                                    </span>
-                                                                    <span class="jobLocation visible-phone">
-        
-        <span class="jobLocation">
-            Calgary, AB, CA
-            
-        </span></span>
-                                                    </div>
-                                                </td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Calgary, AB, CA
-            
-        </span>
-											</td>
-											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Infrastructure</span>
-											</td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 24, 2026
-												</span>
-											</td>
-											<td class="colFacility hidden-phone" headers="hdrFacility">
-												<span class="jobFacility">99397</span>
-											</td>
-                            </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
-														<a href="/job/Mississauga-Intermediate-Planner-ON/1421202900/" class="jobTitle-link">Intermediate Planner</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Mississauga-Intermediate-Planner-ON/1421202900/">Intermediate Planner</a>
-                                                                    </span>
-                                                                    <span class="jobLocation visible-phone">
-        
-        <span class="jobLocation">
-            Mississauga, ON, CA
-            
-        </span></span>
-                                                    </div>
-                                                </td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Mississauga, ON, CA
-            
-        </span>
-											</td>
-											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Project Controls</span>
-											</td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 19, 2026
-												</span>
-											</td>
-											<td class="colFacility hidden-phone" headers="hdrFacility">
-												<span class="jobFacility">101392</span>
-											</td>
-                            </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
 														<a href="/job/Calgary-Project-Procurement-Manager-AB/1385100900/" class="jobTitle-link">Project Procurement Manager</a>
 													</span>
                                                     <div class="jobdetail-phone visible-phone">
@@ -1349,6 +1313,42 @@
 												<span class="jobFacility">100664</span>
 											</td>
                             </tr>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
+														<a href="/job/Mississauga-Director%2C-Client-Engagement-Training-&amp;-Development-ON/1397780100/" class="jobTitle-link">Director, Client Engagement - Training &amp; Development</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/Mississauga-Director%2C-Client-Engagement-Training-&amp;-Development-ON/1397780100/">Director, Client Engagement - Training &amp; Development</a>
+                                                                    </span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            Mississauga, ON, CA
+            
+        </span></span>
+                                                    </div>
+                                                </td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            Mississauga, ON, CA
+            
+        </span>
+											</td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Administration/Support</span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Aug 5, 2026
+												</span>
+											</td>
+											<td class="colFacility hidden-phone" headers="hdrFacility">
+												<span class="jobFacility">100041</span>
+											</td>
+                            </tr>
                     </tbody>
 
                 </table>
@@ -1358,7 +1358,7 @@
         <div class="paginationShell clearfix" xml:lang="en-US" lang="en-US">
                     <div class="well well-lg pagination-well pagination">
                         <div class="pagination-label-row">
-                            <span class="paginationLabel" aria-label="Results 76 – 100">Results <b>76 – 100</b> of <b>141</b></span>
+                            <span class="paginationLabel" aria-label="Results 76 – 100">Results <b>76 – 100</b> of <b>144</b></span>
                             <span class="srHelp" style="font-size:0px">Page 4 of 6</span>
                         </div>
                             <ul class="pagination">
@@ -1397,8 +1397,8 @@ $('#distance').watermark('');
                             <span class="alert-icon-frequency-error fa fa-exclamation-circle"></span><div class="frequency-error-message" aria-live="polite" id="frequency-error-feedback"></div>
                         </div>
         <span class="subscribe-frequency-label">
-            <label id="labelFrequencySpinBtn" for="j_idt1588" aria-hidden="true">Select how often (in days) to receive an alert:</label>
-            <input id="j_idt1588" type="number" class="form-control subscribe-frequency frequencySpinBtn" name="frequency" required="required" min="1" max="99" maxlength="2" value="7" oninput="j2w.Agent.setValidFrequency(this)" aria-labelledby="labelFrequencySpinBtn" />
+            <label id="labelFrequencySpinBtn" for="j_idt2426" aria-hidden="true">Select how often (in days) to receive an alert:</label>
+            <input id="j_idt2426" type="number" class="form-control subscribe-frequency frequencySpinBtn" name="frequency" required="required" min="1" max="99" maxlength="2" value="7" oninput="j2w.Agent.setValidFrequency(this)" aria-labelledby="labelFrequencySpinBtn" />
         </span>
                         <div class="savesearch-buttons-wrapper">
                                 <button class="btn savesearch-link" id="savesearch-link-clone" tabindex="0"><i class="icon-envelope glyphicon-envelope" aria-hidden="true"></i> Create Alert</button>
@@ -1418,8 +1418,8 @@ $('#distance').watermark('');
                         <div class="frequency-error-message" aria-live="polite"></div>
                     </div>
         <span class="subscribe-frequency-label">
-            <label id="labelFrequencySpinBtn" for="j_idt1599" aria-hidden="true">Select how often (in days) to receive an alert:</label>
-            <input id="j_idt1599" type="number" class="form-control subscribe-frequency frequencySpinBtn" name="frequency" required="required" min="1" max="99" maxlength="2" value="7" oninput="j2w.Agent.setValidFrequency(this)" aria-labelledby="labelFrequencySpinBtn" />
+            <label id="labelFrequencySpinBtn" for="j_idt2437" aria-hidden="true">Select how often (in days) to receive an alert:</label>
+            <input id="j_idt2437" type="number" class="form-control subscribe-frequency frequencySpinBtn" name="frequency" required="required" min="1" max="99" maxlength="2" value="7" oninput="j2w.Agent.setValidFrequency(this)" aria-labelledby="labelFrequencySpinBtn" />
         </span>
                     <input id="emailsubscribe-button-clone" class="btn emailsubscribe-button" title="Create Alert" value="Create Alert" type="submit" style="float: none" />
                 </div>
@@ -1479,7 +1479,7 @@ $('#distance').watermark('');
 		//<![CDATA[
 			$(function() 
 			{
-				var ctid = '468d0ba7-e33f-48df-a48d-d137495a55dc';
+				var ctid = 'ab65e90d-9770-4be8-8dc0-deeb5265375b';
 				var referrer = '';
 				var landing = document.location.href;
 				var brand = '';
@@ -1542,7 +1542,7 @@ $('#distance').watermark('');
 				$.ajaxSetup({
 					cache   : false,
 					headers : {
-						"X-CSRF-Token" : "ba97513b-2594-4c78-b32e-08973cd470f6"
+						"X-CSRF-Token" : "8b40f9ac-b276-4c65-a518-a3a347f57b2d"
 					}
 				});
 			//]]>
@@ -1554,7 +1554,7 @@ $('#distance').watermark('');
         <script type="text/javascript" src="/platform/js/jquery/js.cookie-2.2.1.min.js"></script>
         <script type="text/javascript" src="/platform/js/jquery/jquery.lightbox_me.js"></script>
         <script type="text/javascript" src="/platform/js/jquery/jquery.placeholder.2.0.7.min.js"></script>
-        <script type="text/javascript" src="/js/override.js?locale=en_US&amp;i=818312874"></script>
+        <script type="text/javascript" src="/js/override.js?locale=en_US&amp;i=934469703"></script>
         <script type="text/javascript">
             const jobAlertSpans = document.querySelectorAll("[data-testid=jobAlertSpanText]");
             jobAlertSpans?.forEach((jobEl) => {

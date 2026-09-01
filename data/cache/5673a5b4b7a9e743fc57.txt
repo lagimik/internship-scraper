@@ -19,7 +19,7 @@
     "Offset" : 25,
     "Limit" : 25,
     "SortBy" : "POSTING_DATES_DESC",
-    "TotalJobsCount" : 46,
+    "TotalJobsCount" : 45,
     "Latitude" : null,
     "Longitude" : null,
     "SiteNumber" : "CX_2001",
@@ -41,118 +41,6 @@
     "SelectedWorkplaceTypesFacet" : null,
     "BotQRShortCode" : null,
     "requisitionList" : [ {
-      "Id" : "92214",
-      "Title" : "Experienced Field Control Specialist",
-      "PostedDate" : "2026-07-31",
-      "PostingEndDate" : null,
-      "Language" : "US",
-      "PrimaryLocationCountry" : "US",
-      "GeographyId" : 100008498641085,
-      "HotJobFlag" : false,
-      "WorkplaceTypeCode" : null,
-      "JobFamily" : null,
-      "JobFunction" : null,
-      "WorkerType" : null,
-      "ContractType" : null,
-      "ManagerLevel" : null,
-      "JobSchedule" : null,
-      "JobShift" : null,
-      "JobType" : null,
-      "StudyLevel" : null,
-      "DomesticTravelRequired" : null,
-      "InternationalTravelRequired" : null,
-      "WorkDurationYears" : null,
-      "WorkDurationMonths" : null,
-      "WorkHours" : null,
-      "WorkDays" : null,
-      "LegalEmployer" : null,
-      "BusinessUnit" : null,
-      "Department" : null,
-      "Organization" : null,
-      "BusinessUnitId" : 300004258861528,
-      "LegalEmployerId" : 300004260087516,
-      "OrganizationId" : 300004260087516,
-      "MediaThumbURL" : "https://globalerp.blob.core.windows.net/images/WSPCareer_Landscape.jpg",
-      "ShortDescriptionStr" : "",
-      "PrimaryLocation" : "Overland Park, KS, United States",
-      "Distance" : 1.785456E+12,
-      "TrendingFlag" : false,
-      "BeFirstToApplyFlag" : false,
-      "Relevancy" : 8.48314094543457,
-      "WorkplaceType" : "",
-      "ExternalQualificationsStr" : null,
-      "ExternalResponsibilitiesStr" : null,
-      "secondaryLocations" : [ ],
-      "otherWorkLocations" : [ {
-        "LocationId" : 300005985385892,
-        "RequisitionWorkLocationId" : 300019310413363,
-        "LocationName" : "US/KS/Topeka (SE 9th Street)",
-        "AddressLine1" : "100 SE 9th Street",
-        "AddressLine2" : "Suite 400",
-        "AddressLine3" : null,
-        "AddressLine4" : null,
-        "Building" : null,
-        "TownOrCity" : "Topeka",
-        "PostalCode" : "66612",
-        "Country" : "US",
-        "Region1" : "Shawnee",
-        "Region2" : "KS",
-        "Region3" : "KS",
-        "Latitude" : 39.04095,
-        "Longitude" : -95.68014
-      }, {
-        "LocationId" : 300005985385215,
-        "RequisitionWorkLocationId" : 300019310413364,
-        "LocationName" : "US/MO/Kansas City (Wyandotte Street)",
-        "AddressLine1" : "300 Wyandotte Street",
-        "AddressLine2" : "Suite 200",
-        "AddressLine3" : null,
-        "AddressLine4" : null,
-        "Building" : null,
-        "TownOrCity" : "Kansas City",
-        "PostalCode" : "64105",
-        "Country" : "US",
-        "Region1" : "Jackson",
-        "Region2" : "MO",
-        "Region3" : "MO",
-        "Latitude" : 39.10358,
-        "Longitude" : -94.58921
-      }, {
-        "LocationId" : 300005985379730,
-        "RequisitionWorkLocationId" : 300019310413365,
-        "LocationName" : "US/MO/St Louis (North Broadway)",
-        "AddressLine1" : "211 North Broadway",
-        "AddressLine2" : "Suite 2800",
-        "AddressLine3" : null,
-        "AddressLine4" : null,
-        "Building" : null,
-        "TownOrCity" : "Saint Louis",
-        "PostalCode" : "63102",
-        "Country" : "US",
-        "Region1" : "Saint Louis City",
-        "Region2" : "MO",
-        "Region3" : "MO",
-        "Latitude" : 38.63171,
-        "Longitude" : -90.18925
-      } ],
-      "workLocation" : [ {
-        "LocationId" : 300015264858435,
-        "LocationName" : "US/KS/Overland Park (Foster)",
-        "AddressLine1" : "16041 Foster",
-        "AddressLine2" : null,
-        "AddressLine3" : null,
-        "AddressLine4" : null,
-        "Building" : null,
-        "TownOrCity" : "Overland Park",
-        "PostalCode" : "66085",
-        "Country" : "US",
-        "Region1" : "Johnson",
-        "Region2" : "KS",
-        "Region3" : null,
-        "Latitude" : 38.80936,
-        "Longitude" : -94.64979
-      } ]
-    }, {
       "Id" : "92157",
       "Title" : "Associate Mechanical Engineer - Buildings",
       "PostedDate" : "2026-07-29",
@@ -190,7 +78,7 @@
       "Distance" : 1.7852832E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 9.070714950561523,
+      "Relevancy" : 9.030656814575195,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -251,7 +139,7 @@
       "Distance" : 1.7851968E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 10.042594909667969,
+      "Relevancy" : 9.995046615600586,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -312,7 +200,7 @@
       "Distance" : 1.7851104E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 9.525405883789062,
+      "Relevancy" : 9.481903076171875,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -373,7 +261,7 @@
       "Distance" : 1.7851104E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 9.29097843170166,
+      "Relevancy" : 9.249263763427734,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -434,7 +322,7 @@
       "Distance" : 1.7851104E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 8.863369941711426,
+      "Relevancy" : 8.824847221374512,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -519,7 +407,7 @@
       "Distance" : 1.7846784E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 7.5592041015625,
+      "Relevancy" : 7.529841899871826,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -628,7 +516,7 @@
       "Distance" : 1.784592E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 9.775409698486328,
+      "Relevancy" : 9.729968070983887,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -689,7 +577,7 @@
       "Distance" : 1.784592E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 6.86576509475708,
+      "Relevancy" : 6.84092378616333,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -750,7 +638,7 @@
       "Distance" : 1.7845056E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 10.114408493041992,
+      "Relevancy" : 10.069725036621094,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -811,7 +699,7 @@
       "Distance" : 1.7838144E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 7.5592041015625,
+      "Relevancy" : 7.529841899871826,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -920,7 +808,7 @@
       "Distance" : 1.7835552E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 6.86576509475708,
+      "Relevancy" : 6.84092378616333,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1029,7 +917,7 @@
       "Distance" : 1.7835552E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 6.86576509475708,
+      "Relevancy" : 6.84092378616333,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1138,7 +1026,7 @@
       "Distance" : 1.7830368E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 44.08134841918945,
+      "Relevancy" : 44.09104919433594,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1224,7 +1112,7 @@
       "Distance" : 1.7829504E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 6.86576509475708,
+      "Relevancy" : 6.84092378616333,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1301,7 +1189,7 @@
       "Distance" : 1.7821728E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 8.48314094543457,
+      "Relevancy" : 8.447378158569336,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1362,7 +1250,7 @@
       "Distance" : 1.781136E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 7.5592041015625,
+      "Relevancy" : 7.529841899871826,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1447,7 +1335,7 @@
       "Distance" : 1.7781984E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 8.863369941711426,
+      "Relevancy" : 8.824847221374512,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1508,7 +1396,7 @@
       "Distance" : 1.7779392E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 6.67152738571167,
+      "Relevancy" : 6.647908687591553,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1617,7 +1505,7 @@
       "Distance" : 1.7767296E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 7.5592041015625,
+      "Relevancy" : 7.529841899871826,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1726,7 +1614,7 @@
       "Distance" : 1.77552E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 43.31830978393555,
+      "Relevancy" : 43.282779693603516,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1753,7 +1641,7 @@
     "categoriesFacet" : [ {
       "Id" : 300000018364005,
       "Name" : "Engineering",
-      "TotalCount" : 21
+      "TotalCount" : 20
     }, {
       "Id" : 300000018364044,
       "Name" : "Project and Program Management",
@@ -1778,7 +1666,7 @@
     }, {
       "Id" : 300000000314850,
       "Name" : "Canada",
-      "TotalCount" : 12
+      "TotalCount" : 11
     }, {
       "Id" : 100008498577884,
       "Name" : "TX, United States",
@@ -1791,10 +1679,6 @@
       "Id" : 100008498664861,
       "Name" : "Saint Louis, MO, United States",
       "TotalCount" : 7
-    }, {
-      "Id" : 100000012804592,
-      "Name" : "ON, Canada",
-      "TotalCount" : 6
     }, {
       "Id" : 100008498577882,
       "Name" : "LA, United States",
@@ -1811,15 +1695,19 @@
       "Id" : 300000000317312,
       "Name" : "Saudi Arabia",
       "TotalCount" : 5
+    }, {
+      "Id" : 100000012804592,
+      "Name" : "ON, Canada",
+      "TotalCount" : 5
     } ],
     "postingDatesFacet" : [ {
       "Id" : 7,
       "Name" : "Less than 7 days",
-      "TotalCount" : 8
+      "TotalCount" : 7
     }, {
       "Id" : 30,
       "Name" : "Less than 30 days",
-      "TotalCount" : 25
+      "TotalCount" : 24
     }, {
       "Id" : 31,
       "Name" : "Greater than 30 days",
@@ -1836,7 +1724,7 @@
     }, {
       "Id" : "ENG_MECHANICAL",
       "Name" : "Mechanical Engineering",
-      "TotalCount" : 6
+      "TotalCount" : 5
     }, {
       "Id" : "TEC_DESIGN",
       "Name" : "Design Support",
@@ -1879,10 +1767,6 @@
       "Name" : "US/LA/New Orleans (Poydras Street)",
       "TotalCount" : 3
     }, {
-      "Id" : 300000018391957,
-      "Name" : "CA/ON/Thornhill (Commerce Valley Drive West)",
-      "TotalCount" : 2
-    }, {
       "Id" : 300000018520565,
       "Name" : "CA/ON/Whitby (Scotia Court)",
       "TotalCount" : 2
@@ -1906,6 +1790,10 @@
       "Id" : 300000018338476,
       "Name" : "CA/ON/London (309 Exeter Road)",
       "TotalCount" : 1
+    }, {
+      "Id" : 300000018338592,
+      "Name" : "CA/QC/Montréal (Boulevard René-Lévesque Ouest)",
+      "TotalCount" : 1
     } ],
     "flexFieldsFacet" : [ ],
     "organizationsFacet" : [ {
@@ -1915,7 +1803,7 @@
     }, {
       "Id" : 300000008011168,
       "Name" : "WSP Canada Inc.",
-      "TotalCount" : 12
+      "TotalCount" : 11
     }, {
       "Id" : 300012705674496,
       "Name" : "WSP Middle East for Engineering Consulting Company",
@@ -1932,7 +1820,7 @@
     "workplaceTypesFacet" : [ {
       "Id" : "ORA_ON_SITE",
       "Name" : "On-site",
-      "TotalCount" : 46
+      "TotalCount" : 45
     } ]
   } ],
   "count" : 1,

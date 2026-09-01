@@ -309,7 +309,7 @@
         <div class="paginationShell clearfix" xml:lang="en-US" lang="en-US">
                     <div class="well well-lg pagination-well pagination">
                         <div class="pagination-label-row">
-                            <span class="paginationLabel" aria-label="Results 1 – 2">Results <b>1 – 2</b> of <b>2</b></span>
+                            <span class="paginationLabel" aria-label="Results 1 – 1">Results <b>1 – 1</b> of <b>1</b></span>
                             <span class="srHelp" style="font-size:0px">Page 1 of 1</span>
                         </div>
                     </div>
@@ -317,7 +317,7 @@
                 </div>
 
             <div class="searchResultsShell">
-				<table id="searchresults" class="searchResults full table table-striped table-hover" cellpadding="0" cellspacing="0" aria-label="Search results for co-op AND Canada. Page 1 of 1, Results 1 to 2 of 2">
+				<table id="searchresults" class="searchResults full table table-striped table-hover" cellpadding="0" cellspacing="0" aria-label="Search results for co-op AND Canada. Page 1 of 1, Results 1 to 1 of 1">
 					<thead>
                             <tr id="search-results-header">
 											<th id="hdrTitle" aria-sort="none" scope="col" width="40%">
@@ -418,34 +418,6 @@
 											</td>
 									<td class="hidden-phone"></td>
                             </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
-														<a href="/job/Toronto-Mechanical-Technologist-Onta/605285917/" class="jobTitle-link">Mechanical Technologist</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Toronto-Mechanical-Technologist-Onta/605285917/">Mechanical Technologist</a>
-                                                                    </span>
-                                                                    <span class="jobDate visible-phone">Aug 17, 2026
-													                </span>
-                                                                    <span class="jobDistance visible-phone">0.00 mi</span>
-                                                    </div>
-                                                </td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 17, 2026
-												</span>
-											</td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Toronto, Ontario, Canada
-            
-        </span>
-											</td>
-									<td class="hidden-phone"></td>
-                            </tr>
                     </tbody>
 
                 </table>
@@ -521,7 +493,7 @@ $('#distance').watermark('');
 		//<![CDATA[
 			$(function() 
 			{
-				var ctid = '58b21e31-9c3b-473f-9d9e-56a551576e0a';
+				var ctid = '27b1c3d3-9ade-4431-a384-819b5c28b700';
 				var referrer = '';
 				var landing = document.location.href;
 				var brand = '';
@@ -584,7 +556,7 @@ $('#distance').watermark('');
 				$.ajaxSetup({
 					cache   : false,
 					headers : {
-						"X-CSRF-Token" : "7115a79b-f0d5-42ac-b27c-335532f4d230"
+						"X-CSRF-Token" : "2eb61dd1-081f-4464-9289-9dd77b3f2592"
 					}
 				});
 			//]]>

@@ -493,7 +493,7 @@
         <div class="paginationShell clearfix" xml:lang="en-US" lang="en-US">
                     <div class="well well-lg pagination-well pagination">
                         <div class="pagination-label-row">
-                            <span class="paginationLabel" aria-label="Results 1 – 25">Results <b>1 – 25</b> of <b>447</b></span>
+                            <span class="paginationLabel" aria-label="Results 1 – 25">Results <b>1 – 25</b> of <b>446</b></span>
                             <span class="srHelp" style="font-size:0px">Page 1 of 18</span>
                         </div>
                             <ul class="pagination">
@@ -510,7 +510,7 @@
                 </div>
 
             <div class="searchResultsShell">
-				<table id="searchresults" class="searchResults full table table-striped table-hover" cellpadding="0" cellspacing="0" aria-label="Search results for intern AND Canada. Page 1 of 18, Results 1 to 25 of 447">
+				<table id="searchresults" class="searchResults full table table-striped table-hover" cellpadding="0" cellspacing="0" aria-label="Search results for intern AND Canada. Page 1 of 18, Results 1 to 25 of 446">
 					<thead>
                             <tr id="search-results-header">
 											<th id="hdrTitle" aria-sort="none" scope="col" width="25%">
@@ -1421,43 +1421,6 @@
                             <tr class="data-row">
                                                 <td class="colTitle" headers="hdrTitle">
 													<span class="jobTitle hidden-phone">
-														<a href="/job/Toronto-Analyst%2C-Learning-ON/605065517/" class="jobTitle-link">Analyst, Learning</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Toronto-Analyst%2C-Learning-ON/605065517/">Analyst, Learning</a>
-                                                                    </span>
-                                                                    <span class="jobFacility visible-phone">Human Resources</span>
-                                                                    <span class="jobLocation visible-phone">
-        
-        <span class="jobLocation">
-            Toronto, ON, CA
-            
-        </span></span>
-                                                                    <span class="jobDate visible-phone">Aug 10, 2026
-													                </span>
-                                                    </div>
-                                                </td>
-											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Human Resources</span>
-											</td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Toronto, ON, CA
-            
-        </span>
-											</td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 10, 2026
-												</span>
-											</td>
-									<td class="hidden-phone"></td>
-                            </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
 														<a href="/job/Bowmanville-Project-Manager-Temporary-Power-&amp;-Fix-Electrical-ON/605398817/" class="jobTitle-link">Project Manager - Temporary Power &amp; Fix - Electrical</a>
 													</span>
                                                     <div class="jobdetail-phone visible-phone">
@@ -1487,6 +1450,43 @@
 											</td>
 											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
 												<span class="jobDate">Aug 20, 2026
+												</span>
+											</td>
+									<td class="hidden-phone"></td>
+                            </tr>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
+														<a href="/job/Toronto-Analyst%2C-Learning-ON/605065517/" class="jobTitle-link">Analyst, Learning</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/Toronto-Analyst%2C-Learning-ON/605065517/">Analyst, Learning</a>
+                                                                    </span>
+                                                                    <span class="jobFacility visible-phone">Human Resources</span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            Toronto, ON, CA
+            
+        </span></span>
+                                                                    <span class="jobDate visible-phone">Aug 10, 2026
+													                </span>
+                                                    </div>
+                                                </td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Human Resources</span>
+											</td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            Toronto, ON, CA
+            
+        </span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Aug 10, 2026
 												</span>
 											</td>
 									<td class="hidden-phone"></td>
@@ -1537,7 +1537,7 @@
         <div class="paginationShell clearfix" xml:lang="en-US" lang="en-US">
                     <div class="well well-lg pagination-well pagination">
                         <div class="pagination-label-row">
-                            <span class="paginationLabel" aria-label="Results 1 – 25">Results <b>1 – 25</b> of <b>447</b></span>
+                            <span class="paginationLabel" aria-label="Results 1 – 25">Results <b>1 – 25</b> of <b>446</b></span>
                             <span class="srHelp" style="font-size:0px">Page 1 of 18</span>
                         </div>
                             <ul class="pagination">
@@ -1636,7 +1636,7 @@ $('#distance').watermark('');
 		//<![CDATA[
 			$(function() 
 			{
-				var ctid = '75854d6c-39e2-413e-9451-81ce3c5fdc72';
+				var ctid = '332f087b-6aeb-40d3-b8bf-3e10579e374b';
 				var referrer = '';
 				var landing = document.location.href;
 				var brand = '';
@@ -1699,7 +1699,7 @@ $('#distance').watermark('');
 				$.ajaxSetup({
 					cache   : false,
 					headers : {
-						"X-CSRF-Token" : "e5976413-e771-41bc-be01-5e701ccd4eb3"
+						"X-CSRF-Token" : "f543f709-82ae-4d29-a38e-b1fc6bc1765f"
 					}
 				});
 			//]]>
@@ -1711,7 +1711,7 @@ $('#distance').watermark('');
         <script type="text/javascript" src="/platform/js/jquery/js.cookie-2.2.1.min.js"></script>
         <script type="text/javascript" src="/platform/js/jquery/jquery.lightbox_me.js"></script>
         <script type="text/javascript" src="/platform/js/jquery/jquery.placeholder.2.0.7.min.js"></script>
-        <script type="text/javascript" src="/js/override.js?locale=en_US&amp;i=2030207316"></script>
+        <script type="text/javascript" src="/js/override.js?locale=en_US&amp;i=462283480"></script>
         <script type="text/javascript">
             const jobAlertSpans = document.querySelectorAll("[data-testid=jobAlertSpanText]");
             jobAlertSpans?.forEach((jobEl) => {
