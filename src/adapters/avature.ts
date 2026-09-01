@@ -17,9 +17,15 @@ export interface AvatureBoard {
   name: string;
   /** Used when a result says only "Multiple Locations". */
   country?: string;
+  
 }
 
-export const AVATURE_BOARDS: AvatureBoard[] = [];
+export const AVATURE_BOARDS: AvatureBoard[] = [
+  {
+    url: 'https://jobs.siemens.com',
+    name: 'Siemens',
+  }
+];
 
 export interface ParsedAvaturePage {
   jobs: RawJob[];

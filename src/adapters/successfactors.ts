@@ -42,6 +42,10 @@ export const SUCCESSFACTORS_BOARDS: SuccessFactorsBoard[] = [
   {
     url: 'https://jobs.aecon.com/go/Aecon-Engineering/2609417/',
     name: 'Aecon',
+  },
+  {
+    url: 'https://jobs.opg.com/search/?searchby=location&createNewAlert=false&q=&locationsearch=&geolocation=&searchResultView=LIST',
+    name: 'OPG',
   }
 ];
 
