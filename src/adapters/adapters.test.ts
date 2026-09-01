@@ -9,6 +9,11 @@ import { parseDayforceResponse, parseDayforceUrl } from './dayforce.js';
 import { parseBambooHrPosting, parseBambooHrUrl } from './bamboohr.js';
 import { parseTeslaCareersState } from './tesla.js';
 import {
+  parseEightfoldResponse,
+  parseEightfoldTimestamp,
+  parseEightfoldUrl,
+} from './eightfold.js';
+import {
   discoverCyberRecruiterPages,
   parseConfiguredHtml,
   parseCyberRecruiterJobs,
@@ -108,6 +113,46 @@ test('workday: relative postedOn becomes a date', () => {
   assert.equal(parseWorkdayPostedOn('Posted 11 Days Ago', now)?.slice(0, 10), '2026-07-23');
   assert.equal(parseWorkdayPostedOn('Posted 30+ Days Ago', now)?.slice(0, 10), '2026-07-04');
   assert.equal(parseWorkdayPostedOn(undefined), null);
+});
+
+test('eightfold: careers URL decomposes into public API parts', () => {
+  assert.deepEqual(parseEightfoldUrl(
+    'https://bostonscientific.eightfold.ai/careers?start=0&pid=563602813456340',
+  ), {
+    origin: 'https://bostonscientific.eightfold.ai',
+    tenant: 'bostonscientific',
+  });
+  assert.equal(parseEightfoldUrl('https://example.com/careers'), null);
+  assert.equal(parseEightfoldUrl('https://example.eightfold.ai/profile'), null);
+});
+
+test('eightfold: public search positions map location, salary and URL', () => {
+  const board = {
+    url: 'https://lockheedmartin.eightfold.ai/careers',
+    domain: 'lockheedmartin.com',
+    name: 'Lockheed Martin',
+  };
+  const parsed = parseEightfoldUrl(board.url);
+  assert.ok(parsed);
+  const [job] = parseEightfoldResponse({ data: { positions: [{
+    id: 996476544556,
+    name: ' Mechanical Design Engineering Intern ',
+    locations: ['Halifax CA-NS, Canada | CA-NS-Halifax'],
+    standardizedLocations: ['Halifax, NS, CA'],
+    postedTs: 1788134400,
+    workLocationOption: 'hybrid',
+    positionUrl: '/careers/job/996476544556',
+    department: 'Engineering',
+    efcustomTextCustpayrange: 'C$55,000 - C$70,000',
+  }] } }, board, parsed);
+
+  assert.ok(job);
+  assert.equal(job.title, 'Mechanical Design Engineering Intern');
+  assert.equal(job.location, 'Halifax CA-NS, Canada');
+  assert.equal(job.url, 'https://lockheedmartin.eightfold.ai/careers/job/996476544556');
+  assert.equal(job.salaryRaw, 'C$55,000 - C$70,000');
+  assert.equal(job.salaryCurrency, 'CAD');
+  assert.equal(job.postedAt, parseEightfoldTimestamp(1788134400));
 });
 
 test('dayforce: careers URL decomposes into public API identifiers', () => {

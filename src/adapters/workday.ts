@@ -53,6 +53,7 @@ export const WORKDAY_BOARDS: WorkdayBoard[] = [
  { url: 'https://curtisswright.wd1.myworkdayjobs.com/CW_External_Career_Site', name: 'Curtiss-Wright' },
  { url: 'https://toyota.wd503.myworkdayjobs.com/en-US/Toyota_CA', name: 'Toyota' },
  { url: 'https://multimatic.wd10.myworkdayjobs.com/MMEC', name: 'Multimatic' },
+ { url: 'https://irvingoil.wd3.myworkdayjobs.com/en-US/IOL_Careers_Primary', name: 'Irving Oil' },
  
 
 

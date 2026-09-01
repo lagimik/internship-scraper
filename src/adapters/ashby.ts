@@ -23,6 +23,7 @@ export interface AshbyBoard {
 
 /** Verified live Ashby boards (checked against the API, not guessed). */
 export const ASHBY_BOARDS: AshbyBoard[] = [
+  { token: 'gradientrobotics', name: 'Gradient Robotics' },
   { token: 'miovision', name: 'Miovision' },
   { token: 'trexo%20robotics', name: 'Trexo Robotics' },
   { token: 'cohere', name: 'Cohere' },

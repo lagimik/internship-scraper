@@ -66,6 +66,19 @@ export const CUSTOM_BOARDS: CustomBoard[] = [
     },
     maxPages: 5,
   },
+  {
+    kind: 'html',
+    name: 'CSMC',
+    url: 'https://csmc.bamboohr.com/careers',
+    selectors: {
+      card: '.job-listing',
+      titleLink: 'a.job-title',
+      location: '.job-location',
+      postedDate: '.job-posted-date',
+      nextPage: 'a[rel="next"]',
+    },
+    maxPages: 5,
+  }
 ];
 
 interface PrevueJob {
