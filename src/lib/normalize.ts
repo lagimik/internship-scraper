@@ -1,14 +1,16 @@
-/** Applies all three filters (student + Canada + role) and fills in bookkeeping fields. */
+/** Applies student, country, four-month-term, and role filters. */
 
 import type { JobPosting, RawJob } from '../types.js';
-import { matchCanada } from './canada.js';
+import { matchLocations } from './location.js';
 import { matchRole, isStudentType } from './roles.js';
 import { jobId } from './db.js';
+import { isFourMonthEligible, matchWorkTerm } from './work-term.js';
 
 export interface NormalizeStats {
   total: number;
   keptJobs: JobPosting[];
-  droppedNotCanada: number;
+  droppedNotTargetCountry: number;
+  droppedWrongTerm: number;
   droppedNotRole: number;
   droppedNotStudent: number;
   droppedStale: number;
@@ -47,7 +49,8 @@ export function parseSalary(raw: string | null): {
 export function normalize(raw: RawJob[]): NormalizeStats {
   const keptJobs: JobPosting[] = [];
   const seen = new Set<string>();
-  let droppedNotCanada = 0;
+  let droppedNotTargetCountry = 0;
+  let droppedWrongTerm = 0;
   let droppedNotRole = 0;
   let droppedNotStudent = 0;
   let droppedStale = 0;
@@ -80,37 +83,49 @@ export function normalize(raw: RawJob[]): NormalizeStats {
       }
     }
 
-    const ca = matchCanada(j.location);
-    if (!ca.isCanada) {
-      droppedNotCanada++;
+    const locations = matchLocations(j.location);
+    if (locations.length === 0) {
+      droppedNotTargetCountry++;
       continue;
     }
 
-    const id = jobId(j.company, j.title, ca.province);
-    if (seen.has(id)) continue; // dedupe within a single source's batch
-    seen.add(id);
+    const term = matchWorkTerm(j.title, j.description);
+    if (!isFourMonthEligible(term)) {
+      droppedWrongTerm++;
+      continue;
+    }
 
     const salary = parseSalary(j.salaryRaw);
+    for (const location of locations) {
+      const id = jobId(j.company, j.title, location.country, location.region);
+      if (seen.has(id)) continue; // dedupe within a single source's batch
+      seen.add(id);
 
-    keptJobs.push({
-      ...j,
-      id,
-      province: ca.province,
-      remote: j.remote || ca.remote,
-      firstSeenAt: now,
-      salaryMin: j.salaryMin ?? salary.min,
-      salaryMax: j.salaryMax ?? salary.max,
-      salaryCurrency: j.salaryCurrency ?? salary.currency,
-      type,
-      roleCategory: role.category,
-      matchedBy: role.matchedBy,
-      canadaConfidence: ca.confidence,
-      canadaMatchedBy: ca.matchedBy,
-      status: 'new',
-    });
+      keptJobs.push({
+        ...j,
+        id,
+        country: location.country,
+        region: location.region,
+        remote: j.remote || location.remote,
+        firstSeenAt: now,
+        salaryMin: j.salaryMin ?? salary.min,
+        salaryMax: j.salaryMax ?? salary.max,
+        salaryCurrency: j.salaryCurrency ?? salary.currency,
+        type,
+        roleCategory: role.category,
+        matchedBy: role.matchedBy,
+        locationConfidence: location.confidence,
+        locationMatchedBy: location.matchedBy,
+        workTermMonths: term.months,
+        workTermConfidence: term.confidence,
+        workTermMatchedBy: term.matchedBy,
+        status: 'new',
+      });
+    }
   }
 
   return {
-    total: raw.length, keptJobs, droppedNotCanada, droppedNotRole, droppedNotStudent, droppedStale,
+    total: raw.length, keptJobs, droppedNotTargetCountry, droppedWrongTerm,
+    droppedNotRole, droppedNotStudent, droppedStale,
   };
 }

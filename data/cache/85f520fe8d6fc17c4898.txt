@@ -19,7 +19,7 @@
     "Offset" : 0,
     "Limit" : 25,
     "SortBy" : "POSTING_DATES_DESC",
-    "TotalJobsCount" : 7,
+    "TotalJobsCount" : 8,
     "Latitude" : null,
     "Longitude" : null,
     "SiteNumber" : "CX_4001",
@@ -41,6 +41,51 @@
     "SelectedWorkplaceTypesFacet" : null,
     "BotQRShortCode" : null,
     "requisitionList" : [ {
+      "Id" : "41016",
+      "Title" : "Recruiter with Dutch",
+      "PostedDate" : "2026-09-01",
+      "PostingEndDate" : null,
+      "Language" : "US",
+      "PrimaryLocationCountry" : "PL",
+      "GeographyId" : 300000006461489,
+      "HotJobFlag" : false,
+      "WorkplaceTypeCode" : null,
+      "JobFamily" : null,
+      "JobFunction" : null,
+      "WorkerType" : null,
+      "ContractType" : null,
+      "ManagerLevel" : null,
+      "JobSchedule" : null,
+      "JobShift" : null,
+      "JobType" : null,
+      "StudyLevel" : null,
+      "DomesticTravelRequired" : null,
+      "InternationalTravelRequired" : null,
+      "WorkDurationYears" : null,
+      "WorkDurationMonths" : null,
+      "WorkHours" : null,
+      "WorkDays" : null,
+      "LegalEmployer" : null,
+      "BusinessUnit" : null,
+      "Department" : null,
+      "Organization" : null,
+      "BusinessUnitId" : 300000002107141,
+      "LegalEmployerId" : 300000006882456,
+      "OrganizationId" : 300000230892308,
+      "MediaThumbURL" : null,
+      "ShortDescriptionStr" : "",
+      "PrimaryLocation" : "Dąbrowa Górnicza, Woj. Śląskie, Poland",
+      "Distance" : 1.7882208E+12,
+      "TrendingFlag" : false,
+      "BeFirstToApplyFlag" : true,
+      "Relevancy" : 15.3334379196167,
+      "WorkplaceType" : "",
+      "ExternalQualificationsStr" : null,
+      "ExternalResponsibilitiesStr" : null,
+      "secondaryLocations" : [ ],
+      "otherWorkLocations" : [ ],
+      "workLocation" : [ ]
+    }, {
       "Id" : "40873",
       "Title" : "Internship – Market Intelligence & Growth Analysis",
       "PostedDate" : "2026-08-26",
@@ -78,7 +123,7 @@
       "Distance" : 1.7877024E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 11.642081260681152,
+      "Relevancy" : 11.229087829589844,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -139,7 +184,7 @@
       "Distance" : 1.7875296E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 15.834615707397461,
+      "Relevancy" : 15.20451545715332,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -200,7 +245,7 @@
       "Distance" : 1.7840736E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : true,
-      "Relevancy" : 5.926608562469482,
+      "Relevancy" : 5.55220890045166,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -245,7 +290,7 @@
       "Distance" : 1.783296E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 8.38485336303711,
+      "Relevancy" : 7.895122528076172,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -290,7 +335,7 @@
       "Distance" : 1.7715456E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : true,
-      "Relevancy" : 6.311494827270508,
+      "Relevancy" : 5.915825366973877,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -351,7 +396,7 @@
       "Distance" : 1.7622144E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 7.368802547454834,
+      "Relevancy" : 6.920814514160156,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -412,7 +457,7 @@
       "Distance" : 1.6638048E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : true,
-      "Relevancy" : 7.368802547454834,
+      "Relevancy" : 6.920814514160156,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -443,7 +488,7 @@
     }, {
       "Id" : 300000004888104,
       "Name" : "Human Resources",
-      "TotalCount" : 2
+      "TotalCount" : 3
     }, {
       "Id" : 300000002220530,
       "Name" : "Traineeships",
@@ -454,6 +499,18 @@
       "TotalCount" : 1
     } ],
     "locationsFacet" : [ {
+      "Id" : 300000000317270,
+      "Name" : "Poland",
+      "TotalCount" : 3
+    }, {
+      "Id" : 300000006456145,
+      "Name" : "Woj. Śląskie, Poland",
+      "TotalCount" : 3
+    }, {
+      "Id" : 300000006461489,
+      "Name" : "Dąbrowa Górnicza, Woj. Śląskie, Poland",
+      "TotalCount" : 3
+    }, {
       "Id" : 300000000314799,
       "Name" : "Belgium",
       "TotalCount" : 2
@@ -462,20 +519,8 @@
       "Name" : "Germany",
       "TotalCount" : 2
     }, {
-      "Id" : 300000000317270,
-      "Name" : "Poland",
-      "TotalCount" : 2
-    }, {
-      "Id" : 300000006456145,
-      "Name" : "Woj. Śląskie, Poland",
-      "TotalCount" : 2
-    }, {
       "Id" : 300000026418354,
       "Name" : "Oost-Vlaanderen, Belgium",
-      "TotalCount" : 2
-    }, {
-      "Id" : 300000006461489,
-      "Name" : "Dąbrowa Górnicza, Woj. Śląskie, Poland",
       "TotalCount" : 2
     }, {
       "Id" : 300000026419163,
@@ -497,11 +542,11 @@
     "postingDatesFacet" : [ {
       "Id" : 7,
       "Name" : "Less than 7 days",
-      "TotalCount" : 1
+      "TotalCount" : 2
     }, {
       "Id" : 30,
       "Name" : "Less than 30 days",
-      "TotalCount" : 2
+      "TotalCount" : 3
     }, {
       "Id" : 31,
       "Name" : "Greater than 30 days",
@@ -527,6 +572,10 @@
       "Name" : "Cluster Belgium EU BE",
       "TotalCount" : 2
     }, {
+      "Id" : 300000230892308,
+      "Name" : "BCOE Human Resources AMFCE",
+      "TotalCount" : 2
+    }, {
       "Id" : 300000006445740,
       "Name" : "CMO Auto.Packaging.Electr Steel & AMTB AMFCE",
       "TotalCount" : 1
@@ -539,10 +588,6 @@
       "Name" : "AMGS BCOE",
       "TotalCount" : 1
     }, {
-      "Id" : 300000230892308,
-      "Name" : "BCOE Human Resources AMFCE",
-      "TotalCount" : 1
-    }, {
       "Id" : 300000318785560,
       "Name" : "BDR Recycling Germany",
       "TotalCount" : 1
@@ -550,7 +595,7 @@
     "workplaceTypesFacet" : [ {
       "Id" : "ORA_ON_SITE",
       "Name" : "On-site",
-      "TotalCount" : 7
+      "TotalCount" : 8
     } ]
   } ],
   "count" : 1,

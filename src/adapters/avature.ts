@@ -19,14 +19,7 @@ export interface AvatureBoard {
   country?: string;
 }
 
-export const AVATURE_BOARDS: AvatureBoard[] = [
-  {
-    // 42386=[812214] is Siemens' Canada facet. Avature facet IDs are portal-specific.
-    url: 'https://jobs.siemens.com/en_US/externaljobs/SearchJobs/?42386=%5B812214%5D&42386_format=17546&listFilterMode=1&folderRecordsPerPage=6',
-    name: 'Siemens',
-    country: 'Canada',
-  },
-];
+export const AVATURE_BOARDS: AvatureBoard[] = [];
 
 export interface ParsedAvaturePage {
   jobs: RawJob[];

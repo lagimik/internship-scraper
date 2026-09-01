@@ -65,10 +65,23 @@ test('normalize: postings older than the cutoff never enter the database', () =>
   assert.deepEqual(keptJobs.map((j) => j.company).sort(), ['Acme', 'B', 'E']);
 });
 
-test('normalize: non-Canadian internships are still dropped', () => {
-  const { keptJobs, droppedNotCanada } = normalize([
-    raw({ title: 'Mechanical Engineer Intern', location: 'Austin, TX', url: 'https://x/6' }),
+test('normalize: keeps Canadian and US internships as separate country listings', () => {
+  const { keptJobs, droppedNotTargetCountry } = normalize([
+    raw({ title: 'Mechanical Engineer Intern - 4 months', location: 'Austin, TX', url: 'https://x/6' }),
+    raw({ title: 'Mechanical Engineer Intern', location: 'Toronto, ON', company: 'B', url: 'https://x/7' }),
+    raw({ title: 'Mechanical Engineer Intern', location: 'Berlin, Germany', company: 'C', url: 'https://x/8' }),
   ]);
-  assert.equal(keptJobs.length, 0);
-  assert.equal(droppedNotCanada, 1);
+  assert.deepEqual(keptJobs.map((job) => [job.country, job.region]), [['US', 'TX'], ['CA', 'ON']]);
+  assert.equal(keptJobs[0]?.workTermMonths, 4);
+  assert.equal(droppedNotTargetCountry, 1);
+});
+
+test('normalize: rejects explicitly incompatible work terms but keeps unspecified terms', () => {
+  const { keptJobs, droppedWrongTerm } = normalize([
+    raw({ title: 'Mechanical Engineer Intern - 8 months', url: 'https://x/9' }),
+    raw({ title: 'Mechanical Engineer Intern', company: 'B', url: 'https://x/10' }),
+  ]);
+  assert.equal(keptJobs.length, 1);
+  assert.equal(keptJobs[0]?.workTermConfidence, 'unspecified');
+  assert.equal(droppedWrongTerm, 1);
 });

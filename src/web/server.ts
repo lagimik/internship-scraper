@@ -17,11 +17,12 @@ const PORT = Number(process.env.PORT ?? 4000);
 const VALID_STATUS: JobStatus[] = ['new', 'applied', 'interview', 'rejected', 'offer'];
 
 interface JobRow {
-  id: string; title: string; company: string; location: string; province: string | null;
+  id: string; title: string; company: string; location: string; country: string; region: string | null;
   remote: number; url: string; source: string; sources: string; posted_at: string | null;
   first_seen_at: string; salary_raw: string | null; type: string | null;
-  role_category: string | null; matched_by: string | null; canada_confidence: string;
-  canada_matched_by: string | null; status: string;
+  role_category: string | null; matched_by: string | null; location_confidence: string;
+  location_matched_by: string | null; work_term_months: number | null;
+  work_term_confidence: string; status: string;
 }
 
 const db = openDb();
@@ -39,7 +40,7 @@ function buildFilter(params: URLSearchParams): { where: string[]; args: Array<st
     where.push('(title LIKE ? OR company LIKE ? OR location LIKE ?)');
     args.push(`%${q}%`, `%${q}%`, `%${q}%`);
   }
-  for (const [param, col] of [['source', 'source'], ['province', 'province'],
+  for (const [param, col] of [['source', 'source'], ['country', 'country'], ['region', 'region'],
                               ['category', 'role_category'],
                               ['status', 'status']] as const) {
     const v = params.get(param);
@@ -60,7 +61,7 @@ function buildFilter(params: URLSearchParams): { where: string[]; args: Array<st
     args.push(type);
   }
   if (params.get('remote') === '1') where.push('remote = 1');
-  if (params.get('confirmed') === '1') where.push("canada_confidence = 'confirmed'");
+  if (params.get('confirmed') === '1') where.push("location_confidence = 'confirmed'");
 
   // No age filter here on purpose: postings older than 30 days are deleted by the
   // scrape (see pruneStale), so everything in the table is current by construction.
@@ -73,10 +74,10 @@ function queryJobs(params: URLSearchParams): JobRow[] {
   const dir = params.get('sort') === 'oldest' ? 'ASC' : 'DESC';
   // Name the columns rather than SELECT *: `description` alone is ~32KB across the
   // table and the dashboard never renders it, so it was a third of every response.
-  const sql = `SELECT id, title, company, location, province, remote, url, source,
+  const sql = `SELECT id, title, company, location, country, region, remote, url, source,
                       sources, posted_at, first_seen_at, salary_raw, type,
-                      role_category, matched_by, canada_confidence, canada_matched_by,
-                      status
+                      role_category, matched_by, location_confidence, location_matched_by,
+                      work_term_months, work_term_confidence, status
                FROM jobs ${where.length ? `WHERE ${where.join(' AND ')}` : ''}
                ORDER BY COALESCE(posted_at, first_seen_at) ${dir}, company ASC
                LIMIT 500`;
@@ -113,7 +114,8 @@ function computeFacets() {
   const one = (sql: string) => (db.prepare(sql).get() as { n: number }).n;
   return {
     sources: col('source'),
-    provinces: col('province'),
+    countries: col('country'),
+    regions: col('region'),
     categories: col('role_category'),
     // Only intern and co-op exist in the db, the scrape drops everything else, so
     // this is a sub-filter between the two, not a way to reach other job types.

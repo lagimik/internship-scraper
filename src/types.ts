@@ -10,9 +10,9 @@ export type RoleCategory =
   | 'project-management'
   | 'program-management';
 export type JobStatus = 'new' | 'applied' | 'interview' | 'rejected' | 'offer';
-
-/** How confident we are that this posting is actually in Canada. */
-export type CanadaConfidence = 'confirmed' | 'ambiguous';
+export type CountryCode = 'CA' | 'US';
+export type LocationConfidence = 'confirmed' | 'ambiguous';
+export type WorkTermConfidence = 'confirmed' | 'inferred' | 'unspecified';
 
 export interface JobPosting {
   /** Stable hash of company+title+location, used for dedupe across sources. */
@@ -20,8 +20,9 @@ export interface JobPosting {
   title: string;
   company: string;
   location: string;
-  /** Two-letter province code when we could parse one, else null. */
-  province: string | null;
+  country: CountryCode;
+  /** Two-letter Canadian province or US state code, when available. */
+  region: string | null;
   remote: boolean;
   url: string;
   source: string;
@@ -37,9 +38,13 @@ export interface JobPosting {
   roleCategory: RoleCategory | null;
   /** Which title rule matched, so the filter can be tuned against real results. */
   matchedBy: string | null;
-  canadaConfidence: CanadaConfidence;
+  locationConfidence: LocationConfidence;
   /** Which location rule fired. */
-  canadaMatchedBy: string | null;
+  locationMatchedBy: string | null;
+  /** Parsed duration. Unknown terms remain eligible; explicit non-four-month terms do not. */
+  workTermMonths: number | null;
+  workTermConfidence: WorkTermConfidence;
+  workTermMatchedBy: string | null;
   sponsorship: string | null;
   description: string | null;
   status: JobStatus;
@@ -51,11 +56,15 @@ export type RawJob = Omit<
   | 'id'
   | 'firstSeenAt'
   | 'status'
-  | 'province'
+  | 'country'
+  | 'region'
   | 'roleCategory'
   | 'matchedBy'
-  | 'canadaConfidence'
-  | 'canadaMatchedBy'
+  | 'locationConfidence'
+  | 'locationMatchedBy'
+  | 'workTermMonths'
+  | 'workTermConfidence'
+  | 'workTermMatchedBy'
 >;
 
 export interface Adapter {

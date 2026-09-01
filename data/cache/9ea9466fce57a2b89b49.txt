@@ -78,7 +78,7 @@
       "Distance" : 1.7790624E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 1.6930410861968994,
+      "Relevancy" : 1.7154515981674194,
       "WorkplaceType" : "On-site",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -139,7 +139,7 @@
       "Distance" : 1.7788032E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 1.8532471656799316,
+      "Relevancy" : 1.8814581632614136,
       "WorkplaceType" : "On-site",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -200,7 +200,7 @@
       "Distance" : 1.7781984E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 1.6392769813537598,
+      "Relevancy" : 1.6595449447631836,
       "WorkplaceType" : "On-site",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -261,7 +261,7 @@
       "Distance" : 1.7774208E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 1.924482822418213,
+      "Relevancy" : 1.9553481340408325,
       "WorkplaceType" : "On-site",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -339,7 +339,7 @@
       "Distance" : 1.7769888E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : true,
-      "Relevancy" : 1.6154061555862427,
+      "Relevancy" : 1.6347448825836182,
       "WorkplaceType" : "On-site",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -417,7 +417,7 @@
       "Distance" : 1.7744832E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : true,
-      "Relevancy" : 1.665074110031128,
+      "Relevancy" : 1.6863617897033691,
       "WorkplaceType" : "On-site",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -495,7 +495,7 @@
       "Distance" : 1.77336E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 1.6154061555862427,
+      "Relevancy" : 1.6347448825836182,
       "WorkplaceType" : "On-site",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -573,7 +573,7 @@
       "Distance" : 1.7713728E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 3.2719314098358154,
+      "Relevancy" : 3.3167262077331543,
       "WorkplaceType" : "On-site",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -634,7 +634,7 @@
       "Distance" : 1.7648928E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 2.04069185256958,
+      "Relevancy" : 2.0762505531311035,
       "WorkplaceType" : "On-site",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -661,11 +661,11 @@
     "categoriesFacet" : [ {
       "Id" : 300000002646038,
       "Name" : "Production (Hourly)",
-      "TotalCount" : 23
+      "TotalCount" : 22
     }, {
       "Id" : 300000002646044,
       "Name" : "Engineering",
-      "TotalCount" : 14
+      "TotalCount" : 15
     }, {
       "Id" : 300000002646065,
       "Name" : "Quality",
@@ -768,11 +768,15 @@
     }, {
       "Id" : "SC_ELECTRIC_LOGISTICS",
       "Name" : "Logistics",
-      "TotalCount" : 7
+      "TotalCount" : 6
     }, {
       "Id" : "SC_ELECTRIC_SOUR_SUPPLY_MGMT",
       "Name" : "Sourcing & Supply Management",
       "TotalCount" : 5
+    }, {
+      "Id" : "SC_ELECTRIC_MECHANICAL",
+      "Name" : "Mechanical",
+      "TotalCount" : 4
     }, {
       "Id" : "SC_ELECTRIC_PROJECT_MGMT",
       "Name" : "Project Management",
@@ -789,10 +793,6 @@
       "Id" : "SC_ELECTRIC_FIELD_SALES",
       "Name" : "Field Sales",
       "TotalCount" : 3
-    }, {
-      "Id" : "SC_ELECTRIC_LAB_SERVICES",
-      "Name" : "Lab Services",
-      "TotalCount" : 3
     } ],
     "workLocationsFacet" : [ {
       "Id" : 300000009279128,
@@ -801,11 +801,11 @@
     }, {
       "Id" : 300000009284429,
       "Name" : "Other +10%",
-      "TotalCount" : 32
+      "TotalCount" : 33
     }, {
       "Id" : 300000200644791,
       "Name" : "Chicago- No Geo",
-      "TotalCount" : 20
+      "TotalCount" : 19
     }, {
       "Id" : 300000030101383,
       "Name" : "Toronto",

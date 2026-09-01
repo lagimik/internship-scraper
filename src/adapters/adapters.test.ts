@@ -8,6 +8,9 @@ import { collectLocations, mapEmploymentType } from './ashby.js';
 import { parseDayforceResponse, parseDayforceUrl } from './dayforce.js';
 import { parseBambooHrPosting, parseBambooHrUrl } from './bamboohr.js';
 import { parseTeslaHtml } from './tesla.js';
+import { parseStantecResponse } from './stantec.js';
+import { parseSiemensSearchPage, siemensAdapter } from './siemens.js';
+import { appleAdapter, parseAppleSearchResponse } from './apple.js';
 import {
   parseEightfoldResponse,
   parseEightfoldTimestamp,
@@ -205,6 +208,76 @@ test('avature: country-filtered multi-location cards retain the country', () => 
   assert.equal(page.jobs[0]?.location, 'Multiple Locations, Canada');
 });
 
+test('siemens: dedicated adapter maps live result-card structure and source identity', () => {
+  assert.equal(siemensAdapter().name, 'siemens');
+  const page = parseSiemensSearchPage(`<article class="article article--result">
+    <h3><a href="/en_US/externaljobs/JobDetail/520001">Mechanical Engineering Intern</a></h3>
+    <span class="list-item-location"><span class="list-item-jobCity">Wendell</span>,
+      <span class="list-item-jobState">North Carolina</span>,
+      <span class="list-item-jobCountry">United States of America</span></span>
+    <span class="list-item-jobId">Job ID: 520001</span>
+    <span class="list-item-family">Engineering</span>
+  </article>
+  <a href="?folderOffset=6">Next</a>`);
+  assert.equal(page.jobs.length, 1);
+  assert.equal(page.jobs[0]?.company, 'Siemens');
+  assert.equal(page.jobs[0]?.source, 'siemens');
+  assert.equal(page.jobs[0]?.location, 'Wendell, North Carolina, United States of America');
+  assert.equal(page.jobs[0]?.url, 'https://jobs.siemens.com/en_US/externaljobs/JobDetail/520001');
+  assert.equal(page.nextOffset, 6);
+});
+
+test('apple: public search response maps location, date, detail URL and source', () => {
+  assert.equal(appleAdapter().name, 'apple');
+  const [job] = parseAppleSearchResponse({ res: { totalRecords: 1, searchResults: [{
+    id: '200680001',
+    positionId: '200680001',
+    postingTitle: ' Mechanical Engineering Intern ',
+    transformedPostingTitle: 'mechanical-engineering-intern',
+    postDateInGMT: '2026-08-31T12:30:00Z',
+    jobSummary: 'Design and test Apple hardware during a four-month work term.',
+    locations: [{
+      postLocationId: 'postLocation-3350',
+      city: 'Vancouver',
+      stateProvince: 'British Columbia',
+      countryName: 'Canada',
+      name: 'Vancouver',
+    }],
+    team: { teamName: 'Hardware', teamCode: 'HRDWR' },
+    homeOffice: false,
+    managedPipelineRole: false,
+  }] } }, 'en-ca');
+
+  assert.ok(job);
+  assert.equal(job.company, 'Apple');
+  assert.equal(job.source, 'apple');
+  assert.equal(job.title, 'Mechanical Engineering Intern');
+  assert.equal(job.location, 'Vancouver, British Columbia, Canada');
+  assert.equal(job.postedAt, '2026-08-31T12:30:00.000Z');
+  assert.equal(
+    job.url,
+    'https://jobs.apple.com/en-ca/details/200680001-3350/mechanical-engineering-intern?team=HRDWR',
+  );
+  assert.match(job.description ?? '', /Team: Hardware/);
+  assert.match(job.description ?? '', /four-month/);
+});
+
+test('apple: managed pipeline roles omit the country-level location suffix', () => {
+  const [job] = parseAppleSearchResponse({ res: { searchResults: [{
+    positionId: '114438004',
+    postingTitle: 'CA - Specialist: Seasonal, Part-time',
+    transformedPostingTitle: 'ca-specialist-seasonal-part-time',
+    postingDate: 'Sep 01, 2026',
+    locations: [{ postLocationId: 'postLocation-CANC', name: 'Canada' }],
+    team: { teamCode: 'APPST' },
+    managedPipelineRole: true,
+  }] } }, 'en-ca');
+  assert.equal(
+    job?.url,
+    'https://jobs.apple.com/en-ca/details/114438004/ca-specialist-seasonal-part-time?team=APPST',
+  );
+});
+
 test('dayforce: careers URL decomposes into public API identifiers', () => {
   const parsed = parseDayforceUrl('https://jobs.dayforcehcm.com/en-CA/eclipse/CANDIDATEPORTAL/jobs/4031');
   assert.deepEqual(parsed, {
@@ -293,6 +366,33 @@ test('tesla: saved search HTML returns visible result cards', () => {
   assert.equal(jobs[0]?.type, 'intern');
   assert.equal(jobs[0]?.url, 'https://www.tesla.com/en_CA/careers/search/job/software-developer-intern-123');
   assert.equal(jobs[0]?.description, 'Job category: Engineering & Information Technology');
+});
+
+test('stantec: public search response maps to a normalized adapter job', () => {
+  const [job] = parseStantecResponse({ jobs: [{
+    company_exact: 'Stantec',
+    title_exact: ' Mechanical Co-op Student - Fall 2026 ',
+    title_slug: 'mechanical-co-op-student-fall-2026',
+    location_exact: 'Dartmouth, NS',
+    city_exact: 'Dartmouth',
+    state_short_exact: 'NS',
+    country_exact: 'Canada',
+    date_new: '2026-08-31T20:04:43Z',
+    description: 'A four-month mechanical engineering work term.',
+    guid: '234BF34DE2B24383A43F82C98B97CB19',
+  }] });
+
+  assert.ok(job);
+  assert.equal(job.title, 'Mechanical Co-op Student - Fall 2026');
+  assert.equal(job.company, 'Stantec');
+  assert.equal(job.location, 'Dartmouth, NS, Canada');
+  assert.equal(job.source, 'stantec');
+  assert.equal(job.postedAt, '2026-08-31T20:04:43.000Z');
+  assert.match(job.description ?? '', /four-month/);
+  assert.equal(
+    job.url,
+    'https://stantec.jobs/dartmouth-ns/mechanical-co-op-student-fall-2026/234BF34DE2B24383A43F82C98B97CB19/job/',
+  );
 });
 
 test('ashby: secondary locations are kept so Canada-remote roles survive', () => {

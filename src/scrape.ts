@@ -25,7 +25,9 @@ import { dayforceAdapter } from './adapters/dayforce.js';
 import { bambooHrAdapter } from './adapters/bamboohr.js';
 import { teslaAdapter } from './adapters/tesla.js';
 import { eightfoldAdapter } from './adapters/eightfold.js';
-import { avatureAdapter } from './adapters/avature.js';
+import { stantecAdapter } from './adapters/stantec.js';
+import { siemensAdapter } from './adapters/siemens.js';
+import { appleAdapter } from './adapters/apple.js';
 
 /**
  * Sources cheap enough to poll often, the whole group finishes in ~10 seconds and
@@ -45,6 +47,7 @@ export function fastAdapters(): Adapter[] {
     dayforceAdapter(),
     bambooHrAdapter(),
     teslaAdapter(),
+    stantecAdapter(),
   ];
 }
 
@@ -54,7 +57,7 @@ export function fastAdapters(): Adapter[] {
  * boards also change far more slowly than the curated lists do.
  */
 export function slowAdapters(): Adapter[] {
-  return [workdayAdapter(), eightfoldAdapter(), avatureAdapter()];
+  return [workdayAdapter(), eightfoldAdapter(), siemensAdapter(), appleAdapter()];
 }
 
 /** Sources that run by default, fastest first. */
@@ -85,7 +88,8 @@ export async function runScrape(adapters: Adapter[]): Promise<SourceResult[]> {
     const started = Date.now();
     try {
       const raw = await adapter.fetch();
-      const { keptJobs, droppedNotCanada, droppedNotRole, droppedNotStudent, droppedStale } = normalize(raw);
+      const { keptJobs, droppedNotTargetCountry, droppedWrongTerm, droppedNotRole,
+        droppedNotStudent, droppedStale } = normalize(raw);
       const { inserted, updated, newJobs } = upsertJobs(db, keptJobs);
       // Push before the next adapter runs, so an alert lands as soon as its posting does.
       await notifyNewJobs(newJobs);
@@ -104,7 +108,9 @@ export async function runScrape(adapters: Adapter[]): Promise<SourceResult[]> {
         `✓ ${adapter.name.padEnd(11)} fetched ${String(raw.length).padStart(5)}  ` +
         `kept ${String(keptJobs.length).padStart(4)}  new ${String(inserted).padStart(4)}  ` +
         `seen-again ${String(updated).padStart(4)}  ` +
-        `(dropped: ${droppedNotStudent} non-intern, ${droppedStale} stale, ${droppedNotCanada} non-CA, ${droppedNotRole} off-role)  ${r.ms}ms`,
+        `(dropped: ${droppedNotStudent} non-intern, ${droppedStale} stale, ` +
+        `${droppedNotTargetCountry} outside CA/US, ${droppedWrongTerm} non-4-month, ` +
+        `${droppedNotRole} off-role)  ${r.ms}ms`,
       );
     } catch (err) {
       const msg = err instanceof Error ? err.message : String(err);

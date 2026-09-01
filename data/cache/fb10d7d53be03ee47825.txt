@@ -493,7 +493,7 @@
         <div class="paginationShell clearfix" xml:lang="en-US" lang="en-US">
                     <div class="well well-lg pagination-well pagination">
                         <div class="pagination-label-row">
-                            <span class="paginationLabel" aria-label="Results 1 – 8">Results <b>1 – 8</b> of <b>8</b></span>
+                            <span class="paginationLabel" aria-label="Results 1 – 9">Results <b>1 – 9</b> of <b>9</b></span>
                             <span class="srHelp" style="font-size:0px">Page 1 of 1</span>
                         </div>
                     </div>
@@ -501,7 +501,7 @@
                 </div>
 
             <div class="searchResultsShell">
-				<table id="searchresults" class="searchResults full table table-striped table-hover" cellpadding="0" cellspacing="0" aria-label="Search results for student AND Canada. Page 1 of 1, Results 1 to 8 of 8">
+				<table id="searchresults" class="searchResults full table table-striped table-hover" cellpadding="0" cellspacing="0" aria-label="Search results for student AND Canada. Page 1 of 1, Results 1 to 9 of 9">
 					<thead>
                             <tr id="search-results-header">
 											<th id="hdrTitle" aria-sort="none" scope="col" width="25%">
@@ -588,6 +588,43 @@
                             </tr>
                     </thead>
                     <tbody>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
+														<a href="/job/Toronto-Campus-Program-Specialist-ON/605710417/" class="jobTitle-link">Campus Program Specialist</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/Toronto-Campus-Program-Specialist-ON/605710417/">Campus Program Specialist</a>
+                                                                    </span>
+                                                                    <span class="jobFacility visible-phone">Human Resources</span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            Toronto, ON, CA
+            
+        </span></span>
+                                                                    <span class="jobDate visible-phone">Sep 1, 2026
+													                </span>
+                                                    </div>
+                                                </td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Human Resources</span>
+											</td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            Toronto, ON, CA
+            
+        </span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Sep 1, 2026
+												</span>
+											</td>
+									<td class="hidden-phone"></td>
+                            </tr>
 
                             <tr class="data-row">
                                                 <td class="colTitle" headers="hdrTitle">
@@ -970,7 +1007,7 @@ $('#distance').watermark('');
 		//<![CDATA[
 			$(function() 
 			{
-				var ctid = '48deb185-083f-4054-815e-bc0cd62b829b';
+				var ctid = 'ff6bc1c9-554e-4d2c-8b2e-56bbab4feb92';
 				var referrer = '';
 				var landing = document.location.href;
 				var brand = '';
@@ -1033,7 +1070,7 @@ $('#distance').watermark('');
 				$.ajaxSetup({
 					cache   : false,
 					headers : {
-						"X-CSRF-Token" : "eddbfc9c-b486-4d4d-a20f-c6f1277a368b"
+						"X-CSRF-Token" : "73397259-9a8a-4fff-96f1-755192f10036"
 					}
 				});
 			//]]>

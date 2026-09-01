@@ -1,4 +1,5 @@
 node_modules/
+data/cache/*
 scripts/_probe.ts
 *.log
 .DS_Store

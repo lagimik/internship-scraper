@@ -468,7 +468,7 @@
 												<span class="jobDepartment">Campus</span>
 											</td>
 											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 3, 2026
+												<span class="jobDate">Sep 1, 2026
 												</span>
 											</td>
 											<td class="colFacility hidden-phone" headers="hdrFacility">
@@ -504,7 +504,7 @@
 												<span class="jobDepartment">Nouvellement diplômé</span>
 											</td>
 											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 3, 2026
+												<span class="jobDate">Sep 1, 2026
 												</span>
 											</td>
 											<td class="colFacility hidden-phone" headers="hdrFacility">
@@ -581,7 +581,7 @@ $('#distance').watermark('');
 		//<![CDATA[
 			$(function() 
 			{
-				var ctid = '5a53657c-9948-4c76-b88b-72c410b235d7';
+				var ctid = '4e01fa15-76fb-456a-8bf0-302c44a4fc8a';
 				var referrer = '';
 				var landing = document.location.href;
 				var brand = '';
@@ -644,7 +644,7 @@ $('#distance').watermark('');
 				$.ajaxSetup({
 					cache   : false,
 					headers : {
-						"X-CSRF-Token" : "5aab8fbc-38df-40f5-ac85-f07a25927ba7"
+						"X-CSRF-Token" : "635c48ca-896c-4f42-8937-4216772deadc"
 					}
 				});
 			//]]>

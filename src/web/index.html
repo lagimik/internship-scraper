@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Internships - Canada</title>
+<title>4-Month Internships - Canada and US</title>
 <style>
   :root {
     --bg: #0f1115; --panel: #171a21; --panel-2: #1d212a; --line: #272c37;
@@ -37,6 +37,10 @@
   }
   input[type=search] { min-width: 260px; flex: 1 1 260px; }
   label.check { display: flex; gap: 6px; align-items: center; font-size: 13px; color: var(--muted); cursor: pointer; }
+  .country-toggle { display: inline-flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+  .country-toggle label { padding: 6px 10px; color: var(--muted); cursor: pointer; background: var(--panel-2); }
+  .country-toggle input { position: absolute; opacity: 0; pointer-events: none; }
+  .country-toggle label:has(input:checked) { color: #fff; background: var(--accent); }
   main { padding: 16px 20px 60px; max-width: 1200px; margin: 0 auto; }
   .job {
     background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
@@ -76,13 +80,17 @@
 <body>
 <header>
   <div class="row">
-    <h1>Internships ·<span style="color:var(--muted);font-weight:400"> Canada</span></h1>
+    <h1>4-Month Internships ·<span id="country-label" style="color:var(--muted);font-weight:400"> Canada</span></h1>
     <span class="pill" id="count">…</span>
+    <div class="country-toggle" role="group" aria-label="Listing country">
+      <label><input type="radio" name="country" value="CA" checked />Canada</label>
+      <label><input type="radio" name="country" value="US" />US</label>
+    </div>
     <input type="search" id="q" placeholder="Search title, company, location…" />
     <select id="source"><option value="">All sources</option></select>
     <select id="category"><option value="">All roles</option></select>
     <select id="type"><option value="">Intern + co-op</option></select>
-    <select id="province"><option value="">All provinces</option></select>
+    <select id="region"><option value="">All provinces/states</option></select>
     <select id="sort">
       <option value="newest">Newest posted</option>
       <option value="oldest">Oldest posted</option>
@@ -101,7 +109,7 @@ const $ = (id) => document.getElementById(id);
 const STATUSES = ['new', 'applied', 'interview', 'rejected', 'offer'];
 // Stored value -> button label, where the two differ.
 const STATUS_LABELS = { interview: 'interview scheduled' };
-const controls = ['q','source','category','type','province','sort','remote'];
+const controls = ['q','source','category','type','region','sort','remote'];
 let facetsLoaded = false;
 // Mirrored from the last load so a status click can adjust the header count locally.
 let total = 0;
@@ -111,6 +119,7 @@ let matching = 0;
 
 function params() {
   const p = new URLSearchParams();
+  p.set('country', document.querySelector('input[name="country"]:checked').value);
   for (const id of controls) {
     const el = $(id);
     const v = el.type === 'checkbox' ? (el.checked ? '1' : '') : el.value;
@@ -167,7 +176,7 @@ async function load() {
     fillSelect($('source'), facets.sources);
     fillSelect($('category'), facets.categories);
     fillSelect($('type'), facets.types);
-    fillSelect($('province'), facets.provinces);
+    fillSelect($('region'), facets.regions);
     facetsLoaded = true;
   }
 
@@ -176,9 +185,11 @@ async function load() {
     const tags = [
       j.role_category && `<span class="tag ${j.role_category}">${j.role_category}</span>`,
       j.type && `<span class="tag">${esc(j.type)}</span>`,
+      `<span class="tag">${esc(j.country)}${j.region ? ` · ${esc(j.region)}` : ''}</span>`,
+      j.work_term_months === 4 ? `<span class="tag">4 months${j.work_term_confidence === 'inferred' ? '?' : ''}</span>` : '',
       j.remote ? '<span class="tag">remote</span>' : '',
-      j.canada_confidence === 'ambiguous'
-        ? `<span class="tag amb" title="Location rule: ${esc(j.canada_matched_by)}">location?</span>` : '',
+      j.location_confidence === 'ambiguous'
+        ? `<span class="tag amb" title="Location rule: ${esc(j.location_matched_by)}">location?</span>` : '',
     ].filter(Boolean).join('');
 
     return `<article class="job">
@@ -253,6 +264,13 @@ for (const id of controls) {
   el.addEventListener(ev, () => {
     clearTimeout(t);
     t = setTimeout(load, ev === 'input' ? 220 : 0);
+  });
+}
+for (const input of document.querySelectorAll('input[name="country"]')) {
+  input.addEventListener('change', () => {
+    $('region').value = '';
+    $('country-label').textContent = input.value === 'CA' ? 'Canada' : 'United States';
+    load();
   });
 }
 

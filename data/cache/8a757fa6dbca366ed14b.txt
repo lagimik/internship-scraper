@@ -358,8 +358,8 @@
                             <span class="alert-icon-frequency-error fa fa-exclamation-circle"></span><div class="frequency-error-message" aria-live="polite" id="frequency-error-feedback"></div>
                         </div>
         <span class="subscribe-frequency-label">
-            <label id="labelFrequencySpinBtn" for="j_idt903" aria-hidden="true">Select how often (in days) to receive an alert:</label>
-            <input id="j_idt903" type="number" class="form-control subscribe-frequency frequencySpinBtn" name="frequency" required="required" min="1" max="99" maxlength="2" value="7" oninput="j2w.Agent.setValidFrequency(this)" aria-labelledby="labelFrequencySpinBtn" />
+            <label id="labelFrequencySpinBtn" for="j_idt546" aria-hidden="true">Select how often (in days) to receive an alert:</label>
+            <input id="j_idt546" type="number" class="form-control subscribe-frequency frequencySpinBtn" name="frequency" required="required" min="1" max="99" maxlength="2" value="7" oninput="j2w.Agent.setValidFrequency(this)" aria-labelledby="labelFrequencySpinBtn" />
         </span>
                         <div class="savesearch-buttons-wrapper">
                                 <button class="btn savesearch-link" id="savesearch-link" tabindex="0"><i class="icon-envelope glyphicon-envelope" aria-hidden="true"></i> Create Alert</button>
@@ -379,8 +379,8 @@
                         <div class="frequency-error-message" aria-live="polite"></div>
                     </div>
         <span class="subscribe-frequency-label">
-            <label id="labelFrequencySpinBtn" for="j_idt914" aria-hidden="true">Select how often (in days) to receive an alert:</label>
-            <input id="j_idt914" type="number" class="form-control subscribe-frequency frequencySpinBtn" name="frequency" required="required" min="1" max="99" maxlength="2" value="7" oninput="j2w.Agent.setValidFrequency(this)" aria-labelledby="labelFrequencySpinBtn" />
+            <label id="labelFrequencySpinBtn" for="j_idt557" aria-hidden="true">Select how often (in days) to receive an alert:</label>
+            <input id="j_idt557" type="number" class="form-control subscribe-frequency frequencySpinBtn" name="frequency" required="required" min="1" max="99" maxlength="2" value="7" oninput="j2w.Agent.setValidFrequency(this)" aria-labelledby="labelFrequencySpinBtn" />
         </span>
                     <input id="emailsubscribe-button" class="btn emailsubscribe-button" title="Create Alert" value="Create Alert" type="submit" style="float: none" />
                 </div>
@@ -489,11 +489,11 @@
                             <tr class="data-row">
                                                 <td class="colTitle" headers="hdrTitle">
 													<span class="jobTitle hidden-phone">
-														<a href="/job/Mississauga-Systems-Integration-Lead%2C-Rail-Systems-ON/1423690700/" class="jobTitle-link">Systems Integration Lead, Rail Systems</a>
+														<a href="/job/Mississauga-Principal-SignalTrain-Control-Engineering-Manager-ON/1393759600/" class="jobTitle-link">Principal Signal/Train Control Engineering Manager</a>
 													</span>
                                                     <div class="jobdetail-phone visible-phone">
                                                                     <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Mississauga-Systems-Integration-Lead%2C-Rail-Systems-ON/1423690700/">Systems Integration Lead, Rail Systems</a>
+                                                                        <a class="jobTitle-link" href="/job/Mississauga-Principal-SignalTrain-Control-Engineering-Manager-ON/1393759600/">Principal Signal/Train Control Engineering Manager</a>
                                                                     </span>
                                                                     <span class="jobLocation visible-phone">
         
@@ -514,11 +514,47 @@
 												<span class="jobDepartment">Infrastructure</span>
 											</td>
 											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 26, 2026
+												<span class="jobDate">Aug 21, 2026
 												</span>
 											</td>
 											<td class="colFacility hidden-phone" headers="hdrFacility">
-												<span class="jobFacility">101074</span>
+												<span class="jobFacility">98318</span>
+											</td>
+                            </tr>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
+														<a href="/job/Mississauga-Industrial-Clean-Tech-Engineering-Trainee-Mississauga-ON/1417815200/" class="jobTitle-link">Industrial Clean Tech Engineering Trainee - Mississauga</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/Mississauga-Industrial-Clean-Tech-Engineering-Trainee-Mississauga-ON/1417815200/">Industrial Clean Tech Engineering Trainee - Mississauga</a>
+                                                                    </span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            Mississauga, ON, CA
+            
+        </span></span>
+                                                    </div>
+                                                </td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            Mississauga, ON, CA
+            
+        </span>
+											</td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Metals</span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Aug 10, 2026
+												</span>
+											</td>
+											<td class="colFacility hidden-phone" headers="hdrFacility">
+												<span class="jobFacility">100757</span>
 											</td>
                             </tr>
 
@@ -561,42 +597,6 @@
                             <tr class="data-row">
                                                 <td class="colTitle" headers="hdrTitle">
 													<span class="jobTitle hidden-phone">
-														<a href="/job/Mississauga-Principal-SignalTrain-Control-Engineering-Manager-ON/1393759600/" class="jobTitle-link">Principal Signal/Train Control Engineering Manager</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Mississauga-Principal-SignalTrain-Control-Engineering-Manager-ON/1393759600/">Principal Signal/Train Control Engineering Manager</a>
-                                                                    </span>
-                                                                    <span class="jobLocation visible-phone">
-        
-        <span class="jobLocation">
-            Mississauga, ON, CA
-            
-        </span></span>
-                                                    </div>
-                                                </td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Mississauga, ON, CA
-            
-        </span>
-											</td>
-											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Infrastructure</span>
-											</td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 21, 2026
-												</span>
-											</td>
-											<td class="colFacility hidden-phone" headers="hdrFacility">
-												<span class="jobFacility">98318</span>
-											</td>
-                            </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
 														<a href="/job/Mississauga-Mechanical-Layout-Designer-ON/1398727800/" class="jobTitle-link">Mechanical Layout Designer</a>
 													</span>
                                                     <div class="jobdetail-phone visible-phone">
@@ -627,6 +627,78 @@
 											</td>
 											<td class="colFacility hidden-phone" headers="hdrFacility">
 												<span class="jobFacility">100033</span>
+											</td>
+                            </tr>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
+														<a href="/job/Mississauga-Systems-Integration-Lead%2C-Rail-Systems-ON/1423690700/" class="jobTitle-link">Systems Integration Lead, Rail Systems</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/Mississauga-Systems-Integration-Lead%2C-Rail-Systems-ON/1423690700/">Systems Integration Lead, Rail Systems</a>
+                                                                    </span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            Mississauga, ON, CA
+            
+        </span></span>
+                                                    </div>
+                                                </td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            Mississauga, ON, CA
+            
+        </span>
+											</td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Infrastructure</span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Aug 26, 2026
+												</span>
+											</td>
+											<td class="colFacility hidden-phone" headers="hdrFacility">
+												<span class="jobFacility">101074</span>
+											</td>
+                            </tr>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
+														<a href="/job/Mississauga-Construction-Manager-Municipal-WaterWastewater-ON/1422130300/" class="jobTitle-link">Construction Manager - Municipal Water/Wastewater</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/Mississauga-Construction-Manager-Municipal-WaterWastewater-ON/1422130300/">Construction Manager - Municipal Water/Wastewater</a>
+                                                                    </span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            Mississauga, ON, CA
+            
+        </span></span>
+                                                    </div>
+                                                </td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            Mississauga, ON, CA
+            
+        </span>
+											</td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Construction</span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Aug 21, 2026
+												</span>
+											</td>
+											<td class="colFacility hidden-phone" headers="hdrFacility">
+												<span class="jobFacility">101255</span>
 											</td>
                             </tr>
 
@@ -777,78 +849,6 @@
                             <tr class="data-row">
                                                 <td class="colTitle" headers="hdrTitle">
 													<span class="jobTitle hidden-phone">
-														<a href="/job/Mississauga-Construction-Manager-Municipal-WaterWastewater-ON/1422130300/" class="jobTitle-link">Construction Manager - Municipal Water/Wastewater</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Mississauga-Construction-Manager-Municipal-WaterWastewater-ON/1422130300/">Construction Manager - Municipal Water/Wastewater</a>
-                                                                    </span>
-                                                                    <span class="jobLocation visible-phone">
-        
-        <span class="jobLocation">
-            Mississauga, ON, CA
-            
-        </span></span>
-                                                    </div>
-                                                </td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Mississauga, ON, CA
-            
-        </span>
-											</td>
-											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Construction</span>
-											</td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 21, 2026
-												</span>
-											</td>
-											<td class="colFacility hidden-phone" headers="hdrFacility">
-												<span class="jobFacility">101255</span>
-											</td>
-                            </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
-														<a href="/job/Mississauga-Industrial-Clean-Tech-Engineering-Trainee-Mississauga-ON/1417815200/" class="jobTitle-link">Industrial Clean Tech Engineering Trainee - Mississauga</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Mississauga-Industrial-Clean-Tech-Engineering-Trainee-Mississauga-ON/1417815200/">Industrial Clean Tech Engineering Trainee - Mississauga</a>
-                                                                    </span>
-                                                                    <span class="jobLocation visible-phone">
-        
-        <span class="jobLocation">
-            Mississauga, ON, CA
-            
-        </span></span>
-                                                    </div>
-                                                </td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Mississauga, ON, CA
-            
-        </span>
-											</td>
-											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Metals</span>
-											</td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 10, 2026
-												</span>
-											</td>
-											<td class="colFacility hidden-phone" headers="hdrFacility">
-												<span class="jobFacility">100757</span>
-											</td>
-                            </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
 														<a href="/job/St_-John&amp;apos;s-Civil-Engineer-EPCM-NL/1417659100/" class="jobTitle-link">Civil Engineer- EPCM</a>
 													</span>
                                                     <div class="jobdetail-phone visible-phone">
@@ -921,11 +921,11 @@
                             <tr class="data-row">
                                                 <td class="colTitle" headers="hdrTitle">
 													<span class="jobTitle hidden-phone">
-														<a href="/job/Calgary-Project-Procurement-Manager-AB/1385100900/" class="jobTitle-link">Project Procurement Manager</a>
+														<a href="/job/Calgary-Rail-Engineer%2C-Senior-AB/1387072700/" class="jobTitle-link">Rail Engineer, Senior</a>
 													</span>
                                                     <div class="jobdetail-phone visible-phone">
                                                                     <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Calgary-Project-Procurement-Manager-AB/1385100900/">Project Procurement Manager</a>
+                                                                        <a class="jobTitle-link" href="/job/Calgary-Rail-Engineer%2C-Senior-AB/1387072700/">Rail Engineer, Senior</a>
                                                                     </span>
                                                                     <span class="jobLocation visible-phone">
         
@@ -943,14 +943,50 @@
         </span>
 											</td>
 											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Procurement</span>
+												<span class="jobDepartment">Infrastructure</span>
 											</td>
 											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 17, 2026
+												<span class="jobDate">Aug 24, 2026
 												</span>
 											</td>
 											<td class="colFacility hidden-phone" headers="hdrFacility">
-												<span class="jobFacility">98553</span>
+												<span class="jobFacility">99397</span>
+											</td>
+                            </tr>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
+														<a href="/job/Mississauga-Intermediate-Planner-ON/1421202900/" class="jobTitle-link">Intermediate Planner</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/Mississauga-Intermediate-Planner-ON/1421202900/">Intermediate Planner</a>
+                                                                    </span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            Mississauga, ON, CA
+            
+        </span></span>
+                                                    </div>
+                                                </td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            Mississauga, ON, CA
+            
+        </span>
+											</td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Project Controls</span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Aug 19, 2026
+												</span>
+											</td>
+											<td class="colFacility hidden-phone" headers="hdrFacility">
+												<span class="jobFacility">101392</span>
 											</td>
                             </tr>
 
@@ -993,47 +1029,11 @@
                             <tr class="data-row">
                                                 <td class="colTitle" headers="hdrTitle">
 													<span class="jobTitle hidden-phone">
-														<a href="/job/Sudbury-Industrial-Clean-Tech-Engineering-Trainee-Sudbury-ON/1417815800/" class="jobTitle-link">Industrial Clean Tech Engineering Trainee - Sudbury</a>
+														<a href="/job/Mississauga-Mechanical-Engineer%2C-Senior-ON/1398498700/" class="jobTitle-link">Mechanical Engineer, Senior</a>
 													</span>
                                                     <div class="jobdetail-phone visible-phone">
                                                                     <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Sudbury-Industrial-Clean-Tech-Engineering-Trainee-Sudbury-ON/1417815800/">Industrial Clean Tech Engineering Trainee - Sudbury</a>
-                                                                    </span>
-                                                                    <span class="jobLocation visible-phone">
-        
-        <span class="jobLocation">
-            Sudbury, ON, CA
-            
-        </span></span>
-                                                    </div>
-                                                </td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Sudbury, ON, CA
-            
-        </span>
-											</td>
-											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Metals</span>
-											</td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 10, 2026
-												</span>
-											</td>
-											<td class="colFacility hidden-phone" headers="hdrFacility">
-												<span class="jobFacility">100760</span>
-											</td>
-                            </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
-														<a href="/job/Mississauga-Electrical-Engineer%2C-Senior%2C-Nuclear-ON/1417209900/" class="jobTitle-link">Electrical Engineer, Senior, Nuclear</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Mississauga-Electrical-Engineer%2C-Senior%2C-Nuclear-ON/1417209900/">Electrical Engineer, Senior, Nuclear</a>
+                                                                        <a class="jobTitle-link" href="/job/Mississauga-Mechanical-Engineer%2C-Senior-ON/1398498700/">Mechanical Engineer, Senior</a>
                                                                     </span>
                                                                     <span class="jobLocation visible-phone">
         
@@ -1051,30 +1051,30 @@
         </span>
 											</td>
 											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Energy</span>
+												<span class="jobDepartment">Engineering</span>
 											</td>
 											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
 												<span class="jobDate">Aug 7, 2026
 												</span>
 											</td>
 											<td class="colFacility hidden-phone" headers="hdrFacility">
-												<span class="jobFacility">101226</span>
+												<span class="jobFacility">99653</span>
 											</td>
                             </tr>
 
                             <tr class="data-row">
                                                 <td class="colTitle" headers="hdrTitle">
 													<span class="jobTitle hidden-phone">
-														<a href="/job/Sudbury-Structural-Designer-ON/1410960700/" class="jobTitle-link">Structural Designer</a>
+														<a href="/job/Mississauga-Director%2C-Client-Engagement-Training-&amp;-Development-ON/1397780100/" class="jobTitle-link">Director, Client Engagement - Training &amp; Development</a>
 													</span>
                                                     <div class="jobdetail-phone visible-phone">
                                                                     <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Sudbury-Structural-Designer-ON/1410960700/">Structural Designer</a>
+                                                                        <a class="jobTitle-link" href="/job/Mississauga-Director%2C-Client-Engagement-Training-&amp;-Development-ON/1397780100/">Director, Client Engagement - Training &amp; Development</a>
                                                                     </span>
                                                                     <span class="jobLocation visible-phone">
         
         <span class="jobLocation">
-            Sudbury, ON, CA
+            Mississauga, ON, CA
             
         </span></span>
                                                     </div>
@@ -1082,19 +1082,19 @@
 											<td class="colLocation hidden-phone" headers="hdrLocation">
         
         <span class="jobLocation">
-            Sudbury, ON, CA
+            Mississauga, ON, CA
             
         </span>
 											</td>
 											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Campus</span>
+												<span class="jobDepartment">Administration/Support</span>
 											</td>
 											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 19, 2026
+												<span class="jobDate">Aug 5, 2026
 												</span>
 											</td>
 											<td class="colFacility hidden-phone" headers="hdrFacility">
-												<span class="jobFacility">100278</span>
+												<span class="jobFacility">100041</span>
 											</td>
                             </tr>
 
@@ -1137,6 +1137,114 @@
                             <tr class="data-row">
                                                 <td class="colTitle" headers="hdrTitle">
 													<span class="jobTitle hidden-phone">
+														<a href="/job/Sudbury-Industrial-Clean-Tech-Engineering-Trainee-Sudbury-ON/1417815800/" class="jobTitle-link">Industrial Clean Tech Engineering Trainee - Sudbury</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/Sudbury-Industrial-Clean-Tech-Engineering-Trainee-Sudbury-ON/1417815800/">Industrial Clean Tech Engineering Trainee - Sudbury</a>
+                                                                    </span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            Sudbury, ON, CA
+            
+        </span></span>
+                                                    </div>
+                                                </td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            Sudbury, ON, CA
+            
+        </span>
+											</td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Metals</span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Aug 10, 2026
+												</span>
+											</td>
+											<td class="colFacility hidden-phone" headers="hdrFacility">
+												<span class="jobFacility">100760</span>
+											</td>
+                            </tr>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
+														<a href="/job/Calgary-Project-Procurement-Manager-AB/1385100900/" class="jobTitle-link">Project Procurement Manager</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/Calgary-Project-Procurement-Manager-AB/1385100900/">Project Procurement Manager</a>
+                                                                    </span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            Calgary, AB, CA
+            
+        </span></span>
+                                                    </div>
+                                                </td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            Calgary, AB, CA
+            
+        </span>
+											</td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Procurement</span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Aug 17, 2026
+												</span>
+											</td>
+											<td class="colFacility hidden-phone" headers="hdrFacility">
+												<span class="jobFacility">98553</span>
+											</td>
+                            </tr>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
+														<a href="/job/Sudbury-Structural-Designer-ON/1410960700/" class="jobTitle-link">Structural Designer</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/Sudbury-Structural-Designer-ON/1410960700/">Structural Designer</a>
+                                                                    </span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            Sudbury, ON, CA
+            
+        </span></span>
+                                                    </div>
+                                                </td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            Sudbury, ON, CA
+            
+        </span>
+											</td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Campus</span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Aug 19, 2026
+												</span>
+											</td>
+											<td class="colFacility hidden-phone" headers="hdrFacility">
+												<span class="jobFacility">100278</span>
+											</td>
+                            </tr>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
 														<a href="/job/Bowmanville-Electrical-Engineer%2C-Senior-Nuclear%2C-Bowmanville-EOI-ON/1392188400/" class="jobTitle-link">Electrical Engineer, Senior - Nuclear, Bowmanville  EOI</a>
 													</span>
                                                     <div class="jobdetail-phone visible-phone">
@@ -1167,78 +1275,6 @@
 											</td>
 											<td class="colFacility hidden-phone" headers="hdrFacility">
 												<span class="jobFacility">99714</span>
-											</td>
-                            </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
-														<a href="/job/Mississauga-Mechanical-Engineer%2C-Senior-ON/1398498700/" class="jobTitle-link">Mechanical Engineer, Senior</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Mississauga-Mechanical-Engineer%2C-Senior-ON/1398498700/">Mechanical Engineer, Senior</a>
-                                                                    </span>
-                                                                    <span class="jobLocation visible-phone">
-        
-        <span class="jobLocation">
-            Mississauga, ON, CA
-            
-        </span></span>
-                                                    </div>
-                                                </td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Mississauga, ON, CA
-            
-        </span>
-											</td>
-											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Engineering</span>
-											</td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 7, 2026
-												</span>
-											</td>
-											<td class="colFacility hidden-phone" headers="hdrFacility">
-												<span class="jobFacility">99653</span>
-											</td>
-                            </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
-														<a href="/job/Mississauga-Senior-Electrical-Engineer-Water-and-Wastewater-ON/1411573100/" class="jobTitle-link">Senior Electrical Engineer - Water and Wastewater</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Mississauga-Senior-Electrical-Engineer-Water-and-Wastewater-ON/1411573100/">Senior Electrical Engineer - Water and Wastewater</a>
-                                                                    </span>
-                                                                    <span class="jobLocation visible-phone">
-        
-        <span class="jobLocation">
-            Mississauga, ON, CA
-            
-        </span></span>
-                                                    </div>
-                                                </td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Mississauga, ON, CA
-            
-        </span>
-											</td>
-											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Infrastructure</span>
-											</td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 20, 2026
-												</span>
-											</td>
-											<td class="colFacility hidden-phone" headers="hdrFacility">
-												<span class="jobFacility">100663</span>
 											</td>
                             </tr>
 
@@ -1281,11 +1317,11 @@
                             <tr class="data-row">
                                                 <td class="colTitle" headers="hdrTitle">
 													<span class="jobTitle hidden-phone">
-														<a href="/job/Mississauga-Structural-Engineer%2C-Junior-Water-and-Wastewater-ON/1412525700/" class="jobTitle-link">Structural Engineer, Junior - Water and Wastewater</a>
+														<a href="/job/Mississauga-Electrical-Engineer%2C-Senior%2C-Nuclear-ON/1417209900/" class="jobTitle-link">Electrical Engineer, Senior, Nuclear</a>
 													</span>
                                                     <div class="jobdetail-phone visible-phone">
                                                                     <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Mississauga-Structural-Engineer%2C-Junior-Water-and-Wastewater-ON/1412525700/">Structural Engineer, Junior - Water and Wastewater</a>
+                                                                        <a class="jobTitle-link" href="/job/Mississauga-Electrical-Engineer%2C-Senior%2C-Nuclear-ON/1417209900/">Electrical Engineer, Senior, Nuclear</a>
                                                                     </span>
                                                                     <span class="jobLocation visible-phone">
         
@@ -1303,50 +1339,14 @@
         </span>
 											</td>
 											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Infrastructure</span>
+												<span class="jobDepartment">Energy</span>
 											</td>
 											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 22, 2026
+												<span class="jobDate">Aug 7, 2026
 												</span>
 											</td>
 											<td class="colFacility hidden-phone" headers="hdrFacility">
-												<span class="jobFacility">100664</span>
-											</td>
-                            </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
-														<a href="/job/Mississauga-Director%2C-Client-Engagement-Training-&amp;-Development-ON/1397780100/" class="jobTitle-link">Director, Client Engagement - Training &amp; Development</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Mississauga-Director%2C-Client-Engagement-Training-&amp;-Development-ON/1397780100/">Director, Client Engagement - Training &amp; Development</a>
-                                                                    </span>
-                                                                    <span class="jobLocation visible-phone">
-        
-        <span class="jobLocation">
-            Mississauga, ON, CA
-            
-        </span></span>
-                                                    </div>
-                                                </td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Mississauga, ON, CA
-            
-        </span>
-											</td>
-											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Administration/Support</span>
-											</td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 5, 2026
-												</span>
-											</td>
-											<td class="colFacility hidden-phone" headers="hdrFacility">
-												<span class="jobFacility">100041</span>
+												<span class="jobFacility">101226</span>
 											</td>
                             </tr>
                     </tbody>
@@ -1397,8 +1397,8 @@ $('#distance').watermark('');
                             <span class="alert-icon-frequency-error fa fa-exclamation-circle"></span><div class="frequency-error-message" aria-live="polite" id="frequency-error-feedback"></div>
                         </div>
         <span class="subscribe-frequency-label">
-            <label id="labelFrequencySpinBtn" for="j_idt2426" aria-hidden="true">Select how often (in days) to receive an alert:</label>
-            <input id="j_idt2426" type="number" class="form-control subscribe-frequency frequencySpinBtn" name="frequency" required="required" min="1" max="99" maxlength="2" value="7" oninput="j2w.Agent.setValidFrequency(this)" aria-labelledby="labelFrequencySpinBtn" />
+            <label id="labelFrequencySpinBtn" for="j_idt1877" aria-hidden="true">Select how often (in days) to receive an alert:</label>
+            <input id="j_idt1877" type="number" class="form-control subscribe-frequency frequencySpinBtn" name="frequency" required="required" min="1" max="99" maxlength="2" value="7" oninput="j2w.Agent.setValidFrequency(this)" aria-labelledby="labelFrequencySpinBtn" />
         </span>
                         <div class="savesearch-buttons-wrapper">
                                 <button class="btn savesearch-link" id="savesearch-link-clone" tabindex="0"><i class="icon-envelope glyphicon-envelope" aria-hidden="true"></i> Create Alert</button>
@@ -1418,8 +1418,8 @@ $('#distance').watermark('');
                         <div class="frequency-error-message" aria-live="polite"></div>
                     </div>
         <span class="subscribe-frequency-label">
-            <label id="labelFrequencySpinBtn" for="j_idt2437" aria-hidden="true">Select how often (in days) to receive an alert:</label>
-            <input id="j_idt2437" type="number" class="form-control subscribe-frequency frequencySpinBtn" name="frequency" required="required" min="1" max="99" maxlength="2" value="7" oninput="j2w.Agent.setValidFrequency(this)" aria-labelledby="labelFrequencySpinBtn" />
+            <label id="labelFrequencySpinBtn" for="j_idt1889" aria-hidden="true">Select how often (in days) to receive an alert:</label>
+            <input id="j_idt1889" type="number" class="form-control subscribe-frequency frequencySpinBtn" name="frequency" required="required" min="1" max="99" maxlength="2" value="7" oninput="j2w.Agent.setValidFrequency(this)" aria-labelledby="labelFrequencySpinBtn" />
         </span>
                     <input id="emailsubscribe-button-clone" class="btn emailsubscribe-button" title="Create Alert" value="Create Alert" type="submit" style="float: none" />
                 </div>
@@ -1479,7 +1479,7 @@ $('#distance').watermark('');
 		//<![CDATA[
 			$(function() 
 			{
-				var ctid = 'ab65e90d-9770-4be8-8dc0-deeb5265375b';
+				var ctid = '528c9c0d-9e72-497c-9743-1e1ba0fab79e';
 				var referrer = '';
 				var landing = document.location.href;
 				var brand = '';
@@ -1542,7 +1542,7 @@ $('#distance').watermark('');
 				$.ajaxSetup({
 					cache   : false,
 					headers : {
-						"X-CSRF-Token" : "8b40f9ac-b276-4c65-a518-a3a347f57b2d"
+						"X-CSRF-Token" : "4abfaef4-da51-4614-906a-4c2aa81dae85"
 					}
 				});
 			//]]>
@@ -1554,7 +1554,7 @@ $('#distance').watermark('');
         <script type="text/javascript" src="/platform/js/jquery/js.cookie-2.2.1.min.js"></script>
         <script type="text/javascript" src="/platform/js/jquery/jquery.lightbox_me.js"></script>
         <script type="text/javascript" src="/platform/js/jquery/jquery.placeholder.2.0.7.min.js"></script>
-        <script type="text/javascript" src="/js/override.js?locale=en_US&amp;i=934469703"></script>
+        <script type="text/javascript" src="/js/override.js?locale=en_US&amp;i=1038251993"></script>
         <script type="text/javascript">
             const jobAlertSpans = document.querySelectorAll("[data-testid=jobAlertSpanText]");
             jobAlertSpans?.forEach((jobEl) => {

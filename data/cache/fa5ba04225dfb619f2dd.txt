@@ -1,1 +1,1 @@
-{"total":0,"jobPostings":[{"title":"Bilingual Occupational Health Nurse","externalPath":"/job/Montreal-QC-CAN/Occupational-Health-Nurse_R0017225","locationsText":"Montreal, QC, CAN","postedOn":"Posted 13 Days Ago","bulletFields":["R0017225"]}],"facets":[],"userAuthenticated":false}
+{"total":0,"jobPostings":[{"title":"Bilingual Occupational Health Nurse","externalPath":"/job/Montreal-QC-CAN/Occupational-Health-Nurse_R0017225","locationsText":"Montreal, QC, CAN","postedOn":"Posted 14 Days Ago","bulletFields":["R0017225"]}],"facets":[],"userAuthenticated":false}

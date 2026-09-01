@@ -34,6 +34,7 @@ export interface WorkdayBoard {
 export const WORKDAY_BOARDS: WorkdayBoard[] = [
 
   //Mechanical Engineering ....
+  { url: 'https://boeing.wd1.myworkdayjobs.com/EXTERNAL_CAREERS', name: 'Boeing' },
  { url: 'https://magna.wd3.myworkdayjobs.com/en-US/Magna', name: 'Magna International' },
  { url: 'https://globalhr.wd5.myworkdayjobs.com/en-CA/REC_RTX_Ext_Gateway/', name: 'RTX' },
  { url: 'https://lumentum.wd5.myworkdayjobs.com/LITE', name: 'Lumentum' },

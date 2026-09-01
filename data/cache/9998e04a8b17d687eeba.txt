@@ -19,7 +19,7 @@
     "Offset" : 25,
     "Limit" : 25,
     "SortBy" : "POSTING_DATES_DESC",
-    "TotalJobsCount" : 48,
+    "TotalJobsCount" : 49,
     "Latitude" : null,
     "Longitude" : null,
     "SiteNumber" : "CX_3002",
@@ -41,6 +41,67 @@
     "SelectedWorkplaceTypesFacet" : null,
     "BotQRShortCode" : null,
     "requisitionList" : [ {
+      "Id" : "225672",
+      "Title" : "PLC Programmer/Controls Software Designer",
+      "PostedDate" : "2026-08-11",
+      "PostingEndDate" : null,
+      "Language" : "US",
+      "PrimaryLocationCountry" : "CA",
+      "GeographyId" : 100000000314086,
+      "HotJobFlag" : false,
+      "WorkplaceTypeCode" : null,
+      "JobFamily" : null,
+      "JobFunction" : null,
+      "WorkerType" : null,
+      "ContractType" : null,
+      "ManagerLevel" : null,
+      "JobSchedule" : null,
+      "JobShift" : null,
+      "JobType" : null,
+      "StudyLevel" : null,
+      "DomesticTravelRequired" : null,
+      "InternationalTravelRequired" : null,
+      "WorkDurationYears" : null,
+      "WorkDurationMonths" : null,
+      "WorkHours" : null,
+      "WorkDays" : null,
+      "LegalEmployer" : null,
+      "BusinessUnit" : null,
+      "Department" : null,
+      "Organization" : null,
+      "BusinessUnitId" : 300000099758080,
+      "LegalEmployerId" : 300000061979660,
+      "OrganizationId" : 300000099758080,
+      "MediaThumbURL" : null,
+      "ShortDescriptionStr" : "Designs, programs, commissions, installs and services automated machinery in accordance with customer requirements and external (CSA, ESA, OSHA, etc), company and department standards and policies. Generally, involves the application of the following technologies; PLCs, HMIs, vision systems, robots, servo systems, industrial networks, databases and PC based software applications.",
+      "PrimaryLocation" : "Waterloo, ON, Canada",
+      "Distance" : 1.7864064E+12,
+      "TrendingFlag" : true,
+      "BeFirstToApplyFlag" : false,
+      "Relevancy" : 2.16377854347229,
+      "WorkplaceType" : "",
+      "ExternalQualificationsStr" : null,
+      "ExternalResponsibilitiesStr" : null,
+      "secondaryLocations" : [ ],
+      "otherWorkLocations" : [ ],
+      "workLocation" : [ {
+        "LocationId" : 300000099806840,
+        "LocationName" : "ON - Waterloo (815 Bridge Street)",
+        "AddressLine1" : "815 Bridge Street West",
+        "AddressLine2" : null,
+        "AddressLine3" : null,
+        "AddressLine4" : null,
+        "Building" : null,
+        "TownOrCity" : "Waterloo",
+        "PostalCode" : "N2V 2M7",
+        "Country" : "CA",
+        "Region1" : null,
+        "Region2" : null,
+        "Region3" : "ON",
+        "Latitude" : 43.51448,
+        "Longitude" : -80.52786
+      } ]
+    }, {
       "Id" : "225522",
       "Title" : "Account Manager - Automation Solutions",
       "PostedDate" : "2026-08-10",
@@ -78,7 +139,7 @@
       "Distance" : 1.78632E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 1.7573151588439941,
+      "Relevancy" : 1.7852678298950195,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -123,7 +184,7 @@
       "Distance" : 1.7860608E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 1.985082983970642,
+      "Relevancy" : 2.0212197303771973,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -184,7 +245,7 @@
       "Distance" : 1.7860608E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 1.8477871417999268,
+      "Relevancy" : 1.8790030479431152,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -245,7 +306,7 @@
       "Distance" : 1.7860608E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 1.7070155143737793,
+      "Relevancy" : 1.7331469058990479,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -306,7 +367,7 @@
       "Distance" : 1.7860608E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 1.6629812717437744,
+      "Relevancy" : 1.6875141859054565,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -367,7 +428,7 @@
       "Distance" : 1.7858016E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 33.679752349853516,
+      "Relevancy" : 34.644866943359375,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -428,7 +489,7 @@
       "Distance" : 1.7858016E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 2.071876049041748,
+      "Relevancy" : 2.1111044883728027,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -489,7 +550,7 @@
       "Distance" : 1.7858016E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 1.558608055114746,
+      "Relevancy" : 1.5793366432189941,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -550,7 +611,7 @@
       "Distance" : 1.785456E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 1.558608055114746,
+      "Relevancy" : 1.5793366432189941,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -611,7 +672,7 @@
       "Distance" : 1.7853696E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : true,
-      "Relevancy" : 2.4666600227355957,
+      "Relevancy" : 2.5201315879821777,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -672,7 +733,7 @@
       "Distance" : 1.7853696E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 1.7313014268875122,
+      "Relevancy" : 1.7583128213882446,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -733,7 +794,7 @@
       "Distance" : 1.7852832E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 2.1530046463012695,
+      "Relevancy" : 2.1952617168426514,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -794,7 +855,7 @@
       "Distance" : 1.7851968E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 1.9211502075195312,
+      "Relevancy" : 1.9550001621246338,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -855,7 +916,7 @@
       "Distance" : 1.7848512E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : true,
-      "Relevancy" : 2.122605800628662,
+      "Relevancy" : 2.16377854347229,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -916,7 +977,7 @@
       "Distance" : 1.7848512E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 1.6629812717437744,
+      "Relevancy" : 1.6875141859054565,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -977,7 +1038,7 @@
       "Distance" : 1.7847648E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 1.8477871417999268,
+      "Relevancy" : 1.8790030479431152,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1038,7 +1099,7 @@
       "Distance" : 1.7846784E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 2.234279155731201,
+      "Relevancy" : 2.279484987258911,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1099,7 +1160,7 @@
       "Distance" : 1.7842464E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 1.7852479219436646,
+      "Relevancy" : 1.8142098188400269,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1160,7 +1221,7 @@
       "Distance" : 1.782864E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 1.7573151588439941,
+      "Relevancy" : 1.7852678298950195,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1221,7 +1282,7 @@
       "Distance" : 1.7805312E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 5.808063507080078,
+      "Relevancy" : 5.978107929229736,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1282,7 +1343,7 @@
       "Distance" : 1.7797536E+12,
       "TrendingFlag" : false,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 1.7313014268875122,
+      "Relevancy" : 1.7583128213882446,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1343,7 +1404,7 @@
       "Distance" : 1.779408E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 2.015510320663452,
+      "Relevancy" : 2.0528507232666016,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1404,7 +1465,7 @@
       "Distance" : 1.7760384E+12,
       "TrendingFlag" : true,
       "BeFirstToApplyFlag" : false,
-      "Relevancy" : 2.066375732421875,
+      "Relevancy" : 2.105539083480835,
       "WorkplaceType" : "",
       "ExternalQualificationsStr" : null,
       "ExternalResponsibilitiesStr" : null,
@@ -1431,7 +1492,7 @@
     "categoriesFacet" : [ {
       "Id" : 300000002743949,
       "Name" : "Production",
-      "TotalCount" : 18
+      "TotalCount" : 19
     }, {
       "Id" : 300000002743958,
       "Name" : "Sales",
@@ -1472,7 +1533,7 @@
     "locationsFacet" : [ {
       "Id" : 300000000258626,
       "Name" : "United States",
-      "TotalCount" : 30
+      "TotalCount" : 31
     }, {
       "Id" : 300000000258050,
       "Name" : "Canada",
@@ -1480,7 +1541,7 @@
     }, {
       "Id" : 300000040289005,
       "Name" : "CA, United States",
-      "TotalCount" : 17
+      "TotalCount" : 18
     }, {
       "Id" : 100000000310021,
       "Name" : "ON, Canada",
@@ -1496,7 +1557,7 @@
     }, {
       "Id" : 300000040337915,
       "Name" : "Fontana, CA, United States",
-      "TotalCount" : 6
+      "TotalCount" : 7
     }, {
       "Id" : 100000000314094,
       "Name" : "Markham, ON, Canada",
@@ -1637,11 +1698,11 @@
     "postingDatesFacet" : [ {
       "Id" : 7,
       "Name" : "Less than 7 days",
-      "TotalCount" : 7
+      "TotalCount" : 8
     }, {
       "Id" : 30,
       "Name" : "Less than 30 days",
-      "TotalCount" : 33
+      "TotalCount" : 34
     }, {
       "Id" : 31,
       "Name" : "Greater than 30 days",
@@ -1650,7 +1711,7 @@
     "titlesFacet" : [ {
       "Id" : "OPS",
       "Name" : "Operations",
-      "TotalCount" : 12
+      "TotalCount" : 13
     }, {
       "Id" : "TS",
       "Name" : "Territory Sales",
@@ -1751,7 +1812,7 @@
     }, {
       "Id" : 300000045412931,
       "Name" : "CA - Sierra Bonanza Building",
-      "TotalCount" : 2
+      "TotalCount" : 3
     }, {
       "Id" : 300000002731109,
       "Name" : "ON - Vaughan (21 Corrine Court)",
@@ -1813,7 +1874,7 @@
     "organizationsFacet" : [ {
       "Id" : 300000044309562,
       "Name" : "Extrusion (Sierra)",
-      "TotalCount" : 15
+      "TotalCount" : 16
     }, {
       "Id" : 300000044309728,
       "Name" : "Service Center USA",
@@ -1854,7 +1915,7 @@
     "workplaceTypesFacet" : [ {
       "Id" : "ORA_ON_SITE",
       "Name" : "On-site",
-      "TotalCount" : 48
+      "TotalCount" : 49
     } ]
   } ],
   "count" : 1,

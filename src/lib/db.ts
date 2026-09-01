@@ -1,7 +1,7 @@
 /**
  * Storage. Uses node:sqlite (built into Node 22+) so there is no native dep to compile.
  *
- * Dedupe strategy: a posting's identity is company+normalized-title+province. The same
+ * Dedupe strategy: a posting's identity is company+normalized-title+country+region. The same
  * job listed on Greenhouse and in a GitHub repo collapses to one row; `sources` records
  * every source that has seen it.
  */
@@ -29,9 +29,15 @@ function identityTitle(title: string): string {
     .trim();
 }
 
-export function jobId(company: string, title: string, province: string | null): string {
-  const key = [company.toLowerCase().trim(), identityTitle(title), province ?? ''].join('|');
+export function jobId(company: string, title: string, country: string, region: string | null): string {
+  // Preserve pre-country Canadian IDs so existing application statuses are retained.
+  const place = country === 'CA' ? (region ?? '') : `${country}:${region ?? ''}`;
+  const key = [company.toLowerCase().trim(), identityTitle(title), place].join('|');
   return createHash('sha256').update(key).digest('hex').slice(0, 16);
+}
+
+function addColumn(db: DatabaseSync, columns: Set<string>, name: string, definition: string): void {
+  if (!columns.has(name)) db.exec(`ALTER TABLE jobs ADD COLUMN ${name} ${definition}`);
 }
 
 export function openDb(path = DB_PATH): DatabaseSync {
@@ -44,7 +50,8 @@ export function openDb(path = DB_PATH): DatabaseSync {
       title             TEXT NOT NULL,
       company           TEXT NOT NULL,
       location          TEXT NOT NULL,
-      province          TEXT,
+      country           TEXT NOT NULL DEFAULT 'CA',
+      region            TEXT,
       remote            INTEGER NOT NULL DEFAULT 0,
       url               TEXT NOT NULL,
       source            TEXT NOT NULL,
@@ -59,8 +66,11 @@ export function openDb(path = DB_PATH): DatabaseSync {
       type              TEXT,
       role_category     TEXT,
       matched_by        TEXT,
-      canada_confidence TEXT NOT NULL DEFAULT 'confirmed',
-      canada_matched_by TEXT,
+      location_confidence TEXT NOT NULL DEFAULT 'confirmed',
+      location_matched_by TEXT,
+      work_term_months  INTEGER,
+      work_term_confidence TEXT NOT NULL DEFAULT 'unspecified',
+      work_term_matched_by TEXT,
       sponsorship       TEXT,
       description       TEXT,
       status            TEXT NOT NULL DEFAULT 'new',
@@ -69,8 +79,6 @@ export function openDb(path = DB_PATH): DatabaseSync {
     CREATE INDEX IF NOT EXISTS idx_jobs_first_seen ON jobs(first_seen_at DESC);
     CREATE INDEX IF NOT EXISTS idx_jobs_status     ON jobs(status);
     CREATE INDEX IF NOT EXISTS idx_jobs_category   ON jobs(role_category);
-    CREATE INDEX IF NOT EXISTS idx_jobs_province   ON jobs(province);
-
     CREATE TABLE IF NOT EXISTS runs (
       id        INTEGER PRIMARY KEY AUTOINCREMENT,
       started_at TEXT NOT NULL,
@@ -83,6 +91,30 @@ export function openDb(path = DB_PATH): DatabaseSync {
       ms        INTEGER NOT NULL DEFAULT 0,
       error     TEXT
     );
+  `);
+
+  // Databases created before country support are upgraded in place. Keeping the
+  // original IDs preserves status/notes and avoids re-announcing every Canadian job.
+  const columns = new Set(
+    (db.prepare('PRAGMA table_info(jobs)').all() as Array<{ name: string }>).map((column) => column.name),
+  );
+  addColumn(db, columns, 'country', "TEXT NOT NULL DEFAULT 'CA'");
+  addColumn(db, columns, 'region', 'TEXT');
+  addColumn(db, columns, 'location_confidence', "TEXT NOT NULL DEFAULT 'confirmed'");
+  addColumn(db, columns, 'location_matched_by', 'TEXT');
+  addColumn(db, columns, 'work_term_months', 'INTEGER');
+  addColumn(db, columns, 'work_term_confidence', "TEXT NOT NULL DEFAULT 'unspecified'");
+  addColumn(db, columns, 'work_term_matched_by', 'TEXT');
+  if (columns.has('province')) db.exec('UPDATE jobs SET region = COALESCE(region, province)');
+  if (columns.has('canada_confidence')) {
+    db.exec('UPDATE jobs SET location_confidence = COALESCE(canada_confidence, location_confidence)');
+  }
+  if (columns.has('canada_matched_by')) {
+    db.exec('UPDATE jobs SET location_matched_by = COALESCE(location_matched_by, canada_matched_by)');
+  }
+  db.exec(`
+    CREATE INDEX IF NOT EXISTS idx_jobs_country ON jobs(country);
+    CREATE INDEX IF NOT EXISTS idx_jobs_region ON jobs(region);
   `);
   return db;
 }
@@ -102,16 +134,23 @@ export function upsertJobs(db: DatabaseSync, jobs: JobPosting[]): UpsertResult {
   const existing = db.prepare('SELECT id, sources FROM jobs WHERE id = ?');
   const insert = db.prepare(`
     INSERT INTO jobs (
-      id, title, company, location, province, remote, url, source, sources,
+      id, title, company, location, country, region, remote, url, source, sources,
       posted_at, first_seen_at, last_seen_at, salary_raw, salary_min, salary_max,
-      salary_currency, type, role_category, matched_by, canada_confidence,
-      canada_matched_by, sponsorship, description, status
-    ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+      salary_currency, type, role_category, matched_by, location_confidence,
+      location_matched_by, work_term_months, work_term_confidence,
+      work_term_matched_by, sponsorship, description, status
+    ) VALUES (
+      ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+      ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
+      ?, ?, ?, ?, ?, ?, ?, ?
+    )
   `);
   const update = db.prepare(`
     UPDATE jobs SET last_seen_at = ?, sources = ?, url = COALESCE(NULLIF(url,''), ?),
       posted_at = COALESCE(posted_at, ?), salary_raw = COALESCE(salary_raw, ?),
-      description = COALESCE(description, ?)
+      description = COALESCE(description, ?), country = ?, region = ?,
+      location_confidence = ?, location_matched_by = ?, work_term_months = ?,
+      work_term_confidence = ?, work_term_matched_by = ?
     WHERE id = ?
   `);
 
@@ -133,15 +172,20 @@ export function upsertJobs(db: DatabaseSync, jobs: JobPosting[]): UpsertResult {
           sources = [];
         }
         if (!sources.includes(j.source)) sources.push(j.source);
-        update.run(now, JSON.stringify(sources), j.url, j.postedAt, j.salaryRaw, j.description, j.id);
+        update.run(
+          now, JSON.stringify(sources), j.url, j.postedAt, j.salaryRaw, j.description,
+          j.country, j.region, j.locationConfidence, j.locationMatchedBy, j.workTermMonths,
+          j.workTermConfidence, j.workTermMatchedBy, j.id,
+        );
         updated++;
       } else {
         insert.run(
-          j.id, j.title, j.company, j.location, j.province, j.remote ? 1 : 0, j.url,
+          j.id, j.title, j.company, j.location, j.country, j.region, j.remote ? 1 : 0, j.url,
           j.source, JSON.stringify([j.source]), j.postedAt, j.firstSeenAt, now,
           j.salaryRaw, j.salaryMin, j.salaryMax, j.salaryCurrency, j.type,
-          j.roleCategory, j.matchedBy, j.canadaConfidence, j.canadaMatchedBy,
-          j.sponsorship, j.description, j.status,
+          j.roleCategory, j.matchedBy, j.locationConfidence, j.locationMatchedBy,
+          j.workTermMonths, j.workTermConfidence, j.workTermMatchedBy, j.sponsorship,
+          j.description, j.status,
         );
         inserted++;
         newJobs.push(j);

@@ -493,7 +493,7 @@
         <div class="paginationShell clearfix" xml:lang="en-US" lang="en-US">
                     <div class="well well-lg pagination-well pagination">
                         <div class="pagination-label-row">
-                            <span class="paginationLabel" aria-label="Results 1 – 14">Results <b>1 – 14</b> of <b>14</b></span>
+                            <span class="paginationLabel" aria-label="Results 1 – 12">Results <b>1 – 12</b> of <b>12</b></span>
                             <span class="srHelp" style="font-size:0px">Page 1 of 1</span>
                         </div>
                     </div>
@@ -501,7 +501,7 @@
                 </div>
 
             <div class="searchResultsShell">
-				<table id="searchresults" class="searchResults full table table-striped table-hover" cellpadding="0" cellspacing="0" aria-label="Search results for co-op AND Canada. Page 1 of 1, Results 1 to 14 of 14">
+				<table id="searchresults" class="searchResults full table table-striped table-hover" cellpadding="0" cellspacing="0" aria-label="Search results for co-op AND Canada. Page 1 of 1, Results 1 to 12 of 12">
 					<thead>
                             <tr id="search-results-header">
 											<th id="hdrTitle" aria-sort="none" scope="col" width="25%">
@@ -851,43 +851,6 @@
                             <tr class="data-row">
                                                 <td class="colTitle" headers="hdrTitle">
 													<span class="jobTitle hidden-phone">
-														<a href="/ONxpress/job/Toronto-Senior-Project-Accountant-ON/600647517/" class="jobTitle-link">Senior Project Accountant</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/ONxpress/job/Toronto-Senior-Project-Accountant-ON/600647517/">Senior Project Accountant</a>
-                                                                    </span>
-                                                                    <span class="jobFacility visible-phone">Professionals</span>
-                                                                    <span class="jobLocation visible-phone">
-        
-        <span class="jobLocation">
-            Toronto, ON, CA
-            
-        </span></span>
-                                                                    <span class="jobDate visible-phone">Aug 5, 2026
-													                </span>
-                                                    </div>
-                                                </td>
-											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Professionals</span>
-											</td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Toronto, ON, CA
-            
-        </span>
-											</td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 5, 2026
-												</span>
-											</td>
-									<td class="hidden-phone"></td>
-                            </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
 														<a href="/job/Calgary-Coordinator%2C-Human-Resources-AB/605447717/" class="jobTitle-link">Coordinator, Human Resources</a>
 													</span>
                                                     <div class="jobdetail-phone visible-phone">
@@ -912,43 +875,6 @@
         
         <span class="jobLocation">
             Calgary, AB, CA
-            
-        </span>
-											</td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 21, 2026
-												</span>
-											</td>
-									<td class="hidden-phone"></td>
-                            </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
-														<a href="/job/Scarborough-Project-Administrator%2C-Co-op-ON/602844717/" class="jobTitle-link">Project Administrator, Co-op</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Scarborough-Project-Administrator%2C-Co-op-ON/602844717/">Project Administrator, Co-op</a>
-                                                                    </span>
-                                                                    <span class="jobFacility visible-phone">Business Support Services</span>
-                                                                    <span class="jobLocation visible-phone">
-        
-        <span class="jobLocation">
-            Scarborough, ON, CA
-            
-        </span></span>
-                                                                    <span class="jobDate visible-phone">Aug 21, 2026
-													                </span>
-                                                    </div>
-                                                </td>
-											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Business Support Services</span>
-											</td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Scarborough, ON, CA
             
         </span>
 											</td>
@@ -1110,17 +1036,6 @@
 
                 </table>
             </div>
-                <div class="pagination-bottom">
-
-        <div class="paginationShell clearfix" xml:lang="en-US" lang="en-US">
-                    <div class="well well-lg pagination-well pagination">
-                        <div class="pagination-label-row">
-                            <span class="paginationLabel" aria-label="Results 1 – 14">Results <b>1 – 14</b> of <b>14</b></span>
-                            <span class="srHelp" style="font-size:0px">Page 1 of 1</span>
-                        </div>
-                    </div>
-        </div>
-                </div>
 
             <script src="/platform/js/jquery/jquery.watermark.js" type="text/javascript"></script>
             <script type="text/javascript">jQuery(function($){$('#title').watermark('Title');
@@ -1205,7 +1120,7 @@ $('#distance').watermark('');
 		//<![CDATA[
 			$(function() 
 			{
-				var ctid = '16e6b98d-3f01-401f-b4bf-9a62b1df84e7';
+				var ctid = 'dac6c232-0463-4c69-9966-a0d13b481191';
 				var referrer = '';
 				var landing = document.location.href;
 				var brand = '';
@@ -1268,7 +1183,7 @@ $('#distance').watermark('');
 				$.ajaxSetup({
 					cache   : false,
 					headers : {
-						"X-CSRF-Token" : "d095cecf-f3e5-4fb3-a69a-55ad59aff245"
+						"X-CSRF-Token" : "a35c8268-3d80-48b7-aa2b-6b6c741c9253"
 					}
 				});
 			//]]>

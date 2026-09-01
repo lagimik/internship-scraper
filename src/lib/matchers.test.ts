@@ -1,45 +1,66 @@
 /** Run: npm test */
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { matchCanada } from './canada.js';
+import { matchLocations } from './location.js';
 import { matchRole, classifyType } from './roles.js';
+import { isFourMonthEligible, matchWorkTerm } from './work-term.js';
+
+const match = (location: string, country: 'CA' | 'US') =>
+  matchLocations(location).find((result) => result.country === country);
 
 test('canada: real location strings from live sources', () => {
   // Shapes observed in live Greenhouse + GitHub data.
-  assert.equal(matchCanada('Toronto').isCanada, true);
-  assert.equal(matchCanada('Toronto, Canada').confidence, 'confirmed');
-  assert.equal(matchCanada('Canada').confidence, 'confirmed');
-  assert.equal(matchCanada('Toronto, ON').province, 'ON');
+  assert.ok(match('Toronto', 'CA'));
+  assert.equal(match('Toronto, Canada', 'CA')?.confidence, 'confirmed');
+  assert.equal(match('Canada', 'CA')?.confidence, 'confirmed');
+  assert.equal(match('Toronto, ON', 'CA')?.region, 'ON');
   // Job Bank's parenthesized format, incl. towns not in the city list.
-  assert.equal(matchCanada('Havelock (ON)').province, 'ON');
-  assert.equal(matchCanada('Saint-Bruno (QC)').province, 'QC');
-  assert.equal(matchCanada('Vancouver, Canada +1').province, 'BC');
-  assert.equal(matchCanada('Montreal, Quebec').province, 'QC');
+  assert.equal(match('Havelock (ON)', 'CA')?.region, 'ON');
+  assert.equal(match('Saint-Bruno (QC)', 'CA')?.region, 'QC');
+  assert.equal(match('Vancouver, Canada +1', 'CA')?.region, 'BC');
+  assert.equal(match('Montreal, Quebec', 'CA')?.region, 'QC');
 
-  const multi = matchCanada('New York, San Francisco, Seattle, or Remote (US/Canada)');
-  assert.equal(multi.isCanada, true);
-  assert.equal(multi.remote, true);
+  const multi = matchLocations('New York, San Francisco, Seattle, or Remote (US/Canada)');
+  assert.deepEqual(new Set(multi.map((result) => result.country)), new Set(['CA', 'US']));
+  assert.ok(multi.every((result) => result.remote));
 });
 
-test('canada: rejects non-Canadian locations', () => {
-  for (const loc of ['San Francisco, CA', 'Bengaluru, India', 'Sydney, Australia',
-                     'Berlin, Germany', 'Dublin, Ireland', 'Cairo, Egypt', 'Riyadh, Saudi Arabia']) {
-    assert.equal(matchCanada(loc).isCanada, false, `should reject ${loc}`);
+test('locations: recognizes US locations and rejects other countries', () => {
+  const usLocations: Array<[string, string]> = [
+    ['San Francisco, CA', 'CA'], ['Austin, TX', 'TX'],
+    ['Seattle, Washington', 'WA'], ['Boston, MA, USA', 'MA'],
+  ];
+  for (const [location, region] of usLocations) {
+    assert.equal(match(location, 'US')?.region, region, `should match ${location}`);
+  }
+  for (const location of ['Bengaluru, India', 'Sydney, Australia', 'Berlin, Germany',
+                           'Dublin, Ireland', 'Cairo, Egypt', 'Riyadh, Saudi Arabia']) {
+    assert.equal(matchLocations(location).length, 0, `should reject ${location}`);
   }
 });
 
 test('canada: ambiguous city names are kept but flagged', () => {
   // London ON vs London UK; Vancouver BC vs Vancouver WA.
-  assert.equal(matchCanada('London').confidence, 'ambiguous');
-  assert.equal(matchCanada('London, United Kingdom').isCanada, false);
-  assert.equal(matchCanada('London, Ontario').confidence, 'confirmed');
-  assert.equal(matchCanada('Vancouver, WA, United States').isCanada, false);
+  assert.equal(match('London', 'CA')?.confidence, 'ambiguous');
+  assert.equal(match('London, United Kingdom', 'CA'), undefined);
+  assert.equal(match('London, Ontario', 'CA')?.confidence, 'confirmed');
+  assert.equal(match('Vancouver, WA, United States', 'CA'), undefined);
+  assert.equal(match('Vancouver, WA, United States', 'US')?.region, 'WA');
 });
 
 test('canada: remote handling', () => {
-  assert.equal(matchCanada('Remote - Canada').confidence, 'confirmed');
-  assert.equal(matchCanada('Remote - North America').confidence, 'ambiguous');
-  assert.equal(matchCanada('Remote - US only').isCanada, false);
+  assert.equal(match('Remote - Canada', 'CA')?.confidence, 'confirmed');
+  assert.deepEqual(matchLocations('Remote - North America').map((result) => result.country).sort(), ['CA', 'US']);
+  assert.equal(match('Remote - US only', 'CA'), undefined);
+  assert.equal(match('Remote - US only', 'US')?.confidence, 'confirmed');
+});
+
+test('work terms: accepts four months or unspecified and rejects explicit longer terms', () => {
+  assert.deepEqual(matchWorkTerm('Mechanical Intern - 4 months', null).months, 4);
+  assert.deepEqual(matchWorkTerm('Mechanical Intern', 'Term: 16 weeks').months, 4);
+  assert.equal(matchWorkTerm('Mechanical Intern - Summer 2027', null).confidence, 'inferred');
+  assert.equal(isFourMonthEligible(matchWorkTerm('Mechanical Intern', null)), true);
+  assert.equal(isFourMonthEligible(matchWorkTerm('Mechanical Intern - 8 months', null)), false);
 });
 
 test('roles: target titles match', () => {

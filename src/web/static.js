@@ -1,6 +1,6 @@
 const data = JSON.parse(document.getElementById('dashboard-data').textContent);
 const $ = (id) => document.getElementById(id);
-const controls = ['q', 'source', 'category', 'type', 'province', 'sort', 'remote'];
+const controls = ['q', 'source', 'category', 'type', 'region', 'sort', 'remote'];
 
 function esc(value) {
   return String(value ?? '').replace(/[&<>"']/g, (character) =>
@@ -37,7 +37,8 @@ function filteredJobs() {
   const source = $('source').value;
   const category = $('category').value;
   const type = $('type').value;
-  const province = $('province').value;
+  const country = document.querySelector('input[name="country"]:checked').value;
+  const region = $('region').value;
   const remoteOnly = $('remote').checked;
 
   const jobs = data.jobs.filter((job) => {
@@ -46,7 +47,8 @@ function filteredJobs() {
     if (source && job.source !== source) return false;
     if (category && job.role_category !== category) return false;
     if (type && job.type !== type) return false;
-    if (province && job.province !== province) return false;
+    if (job.country !== country) return false;
+    if (region && job.region !== region) return false;
     if (remoteOnly && !job.remote) return false;
     return true;
   });
@@ -58,16 +60,20 @@ function filteredJobs() {
 
 function render() {
   const jobs = filteredJobs();
-  $('count').textContent = `${jobs.length} of ${data.facets.total} jobs`;
+  const country = document.querySelector('input[name="country"]:checked').value;
+  $('country-label').textContent = country === 'CA' ? 'Canada' : 'United States';
+  $('count').textContent = `${jobs.length} ${country} jobs`;
   $('list').innerHTML = jobs.length ? jobs.map((job) => {
     let sources;
     try { sources = JSON.parse(job.sources); } catch { sources = [job.source]; }
     const tags = [
       job.role_category && `<span class="tag ${esc(job.role_category)}">${esc(job.role_category)}</span>`,
       job.type && `<span class="tag">${esc(job.type)}</span>`,
+      `<span class="tag">${esc(job.country)}${job.region ? ` · ${esc(job.region)}` : ''}</span>`,
+      job.work_term_months === 4 ? `<span class="tag">4 months${job.work_term_confidence === 'inferred' ? '?' : ''}</span>` : '',
       job.remote ? '<span class="tag">remote</span>' : '',
-      job.canada_confidence === 'ambiguous'
-        ? `<span class="tag amb" title="Location rule: ${esc(job.canada_matched_by)}">location?</span>` : '',
+      job.location_confidence === 'ambiguous'
+        ? `<span class="tag amb" title="Location rule: ${esc(job.location_matched_by)}">location?</span>` : '',
     ].filter(Boolean).join('');
 
     return `<article class="job">
@@ -89,7 +95,7 @@ function render() {
 fillSelect($('source'), data.facets.sources);
 fillSelect($('category'), data.facets.categories);
 fillSelect($('type'), data.facets.types);
-fillSelect($('province'), data.facets.provinces);
+fillSelect($('region'), data.facets.regions);
 
 const generated = new Date(data.generatedAt).toLocaleString();
 $('runs').innerHTML = `<strong>Static snapshot generated ${esc(generated)}.</strong> ` +
@@ -105,6 +111,9 @@ for (const id of controls) {
     clearTimeout(timer);
     timer = setTimeout(render, event === 'input' ? 220 : 0);
   });
+}
+for (const input of document.querySelectorAll('input[name="country"]')) {
+  input.addEventListener('change', () => { $('region').value = ''; render(); });
 }
 
 render();

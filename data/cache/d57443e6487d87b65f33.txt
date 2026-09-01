@@ -493,8 +493,8 @@
         <div class="paginationShell clearfix" xml:lang="en-US" lang="en-US">
                     <div class="well well-lg pagination-well pagination">
                         <div class="pagination-label-row">
-                            <span class="paginationLabel" aria-label="Results 1 – 25">Results <b>1 – 25</b> of <b>446</b></span>
-                            <span class="srHelp" style="font-size:0px">Page 1 of 18</span>
+                            <span class="paginationLabel" aria-label="Results 1 – 25">Results <b>1 – 25</b> of <b>424</b></span>
+                            <span class="srHelp" style="font-size:0px">Page 1 of 17</span>
                         </div>
                             <ul class="pagination">
                                 <li><a class="paginationItemFirst" href="?q=intern&amp;locationsearch=Canada&amp;searchby=location&amp;d=10" title="First Page"><span aria-hidden="true">«</span></a></li>
@@ -503,14 +503,14 @@
                                             <li class=" "><a href="?q=intern&amp;locationsearch=Canada&amp;searchby=location&amp;d=10&amp;startrow=50" rel="nofollow" title="Page 3">3</a></li>
                                             <li class=" "><a href="?q=intern&amp;locationsearch=Canada&amp;searchby=location&amp;d=10&amp;startrow=75" rel="nofollow" title="Page 4">4</a></li>
                                             <li class=" "><a href="?q=intern&amp;locationsearch=Canada&amp;searchby=location&amp;d=10&amp;startrow=100" rel="nofollow" title="Page 5">5</a></li>
-                                <li><a class="paginationItemLast" href="?q=intern&amp;locationsearch=Canada&amp;searchby=location&amp;d=10&amp;startrow=425" rel="nofollow" title="Last Page"><span aria-hidden="true">»</span></a></li>
+                                <li><a class="paginationItemLast" href="?q=intern&amp;locationsearch=Canada&amp;searchby=location&amp;d=10&amp;startrow=400" rel="nofollow" title="Last Page"><span aria-hidden="true">»</span></a></li>
                             </ul>
                     </div>
         </div>
                 </div>
 
             <div class="searchResultsShell">
-				<table id="searchresults" class="searchResults full table table-striped table-hover" cellpadding="0" cellspacing="0" aria-label="Search results for intern AND Canada. Page 1 of 18, Results 1 to 25 of 446">
+				<table id="searchresults" class="searchResults full table table-striped table-hover" cellpadding="0" cellspacing="0" aria-label="Search results for intern AND Canada. Page 1 of 17, Results 1 to 25 of 424">
 					<thead>
                             <tr id="search-results-header">
 											<th id="hdrTitle" aria-sort="none" scope="col" width="25%">
@@ -899,25 +899,25 @@
                             <tr class="data-row">
                                                 <td class="colTitle" headers="hdrTitle">
 													<span class="jobTitle hidden-phone">
-														<a href="/ONxpress/job/Toronto-Document-Manager-ON/602212017/" class="jobTitle-link">Document Manager</a>
+														<a href="/job/Toronto-Campus-Program-Specialist-ON/605710417/" class="jobTitle-link">Campus Program Specialist</a>
 													</span>
                                                     <div class="jobdetail-phone visible-phone">
                                                                     <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/ONxpress/job/Toronto-Document-Manager-ON/602212017/">Document Manager</a>
+                                                                        <a class="jobTitle-link" href="/job/Toronto-Campus-Program-Specialist-ON/605710417/">Campus Program Specialist</a>
                                                                     </span>
-                                                                    <span class="jobFacility visible-phone">Professionals</span>
+                                                                    <span class="jobFacility visible-phone">Human Resources</span>
                                                                     <span class="jobLocation visible-phone">
         
         <span class="jobLocation">
             Toronto, ON, CA
             
         </span></span>
-                                                                    <span class="jobDate visible-phone">Aug 30, 2026
+                                                                    <span class="jobDate visible-phone">Sep 1, 2026
 													                </span>
                                                     </div>
                                                 </td>
 											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Professionals</span>
+												<span class="jobDepartment">Human Resources</span>
 											</td>
 											<td class="colLocation hidden-phone" headers="hdrLocation">
         
@@ -927,7 +927,7 @@
         </span>
 											</td>
 											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 30, 2026
+												<span class="jobDate">Sep 1, 2026
 												</span>
 											</td>
 									<td class="hidden-phone"></td>
@@ -1004,43 +1004,6 @@
 											</td>
 											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
 												<span class="jobDate">Aug 19, 2026
-												</span>
-											</td>
-									<td class="hidden-phone"></td>
-                            </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
-														<a href="/ONxpress/job/Toronto-Manager%2C-Design-ON/603345517/" class="jobTitle-link">Manager, Design</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/ONxpress/job/Toronto-Manager%2C-Design-ON/603345517/">Manager, Design</a>
-                                                                    </span>
-                                                                    <span class="jobFacility visible-phone">Professionals</span>
-                                                                    <span class="jobLocation visible-phone">
-        
-        <span class="jobLocation">
-            Toronto, ON, CA
-            
-        </span></span>
-                                                                    <span class="jobDate visible-phone">Aug 7, 2026
-													                </span>
-                                                    </div>
-                                                </td>
-											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Professionals</span>
-											</td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Toronto, ON, CA
-            
-        </span>
-											</td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 7, 2026
 												</span>
 											</td>
 									<td class="hidden-phone"></td>
@@ -1347,43 +1310,6 @@
                             <tr class="data-row">
                                                 <td class="colTitle" headers="hdrTitle">
 													<span class="jobTitle hidden-phone">
-														<a href="/ONxpress/job/Toronto-Quality-Manager-ON/600657417/" class="jobTitle-link">Quality Manager</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/ONxpress/job/Toronto-Quality-Manager-ON/600657417/">Quality Manager</a>
-                                                                    </span>
-                                                                    <span class="jobFacility visible-phone">Professionals</span>
-                                                                    <span class="jobLocation visible-phone">
-        
-        <span class="jobLocation">
-            Toronto, ON, CA
-            
-        </span></span>
-                                                                    <span class="jobDate visible-phone">Aug 5, 2026
-													                </span>
-                                                    </div>
-                                                </td>
-											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Professionals</span>
-											</td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Toronto, ON, CA
-            
-        </span>
-											</td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 5, 2026
-												</span>
-											</td>
-									<td class="hidden-phone"></td>
-                            </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
 														<a href="/job/Toronto-Sr_-Planner-ON/604977817/" class="jobTitle-link">Sr. Planner</a>
 													</span>
                                                     <div class="jobdetail-phone visible-phone">
@@ -1528,6 +1454,80 @@
 											</td>
 									<td class="hidden-phone"></td>
                             </tr>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
+														<a href="/job/Pickering-Project-Coordinator-ON/605313617/" class="jobTitle-link">Project Coordinator</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/Pickering-Project-Coordinator-ON/605313617/">Project Coordinator</a>
+                                                                    </span>
+                                                                    <span class="jobFacility visible-phone">Construction</span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            Pickering, ON, CA
+            
+        </span></span>
+                                                                    <span class="jobDate visible-phone">Aug 18, 2026
+													                </span>
+                                                    </div>
+                                                </td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Construction</span>
+											</td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            Pickering, ON, CA
+            
+        </span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Aug 18, 2026
+												</span>
+											</td>
+									<td class="hidden-phone"></td>
+                            </tr>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
+														<a href="/job/Cambridge-Project-Accountant-ON/603415717/" class="jobTitle-link">Project Accountant</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/Cambridge-Project-Accountant-ON/603415717/">Project Accountant</a>
+                                                                    </span>
+                                                                    <span class="jobFacility visible-phone">Finance</span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            Cambridge, ON, CA
+            
+        </span></span>
+                                                                    <span class="jobDate visible-phone">Aug 9, 2026
+													                </span>
+                                                    </div>
+                                                </td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Finance</span>
+											</td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            Cambridge, ON, CA
+            
+        </span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Aug 9, 2026
+												</span>
+											</td>
+									<td class="hidden-phone"></td>
+                            </tr>
                     </tbody>
 
                 </table>
@@ -1537,8 +1537,8 @@
         <div class="paginationShell clearfix" xml:lang="en-US" lang="en-US">
                     <div class="well well-lg pagination-well pagination">
                         <div class="pagination-label-row">
-                            <span class="paginationLabel" aria-label="Results 1 – 25">Results <b>1 – 25</b> of <b>446</b></span>
-                            <span class="srHelp" style="font-size:0px">Page 1 of 18</span>
+                            <span class="paginationLabel" aria-label="Results 1 – 25">Results <b>1 – 25</b> of <b>424</b></span>
+                            <span class="srHelp" style="font-size:0px">Page 1 of 17</span>
                         </div>
                             <ul class="pagination">
                                 <li><a class="paginationItemFirst" href="?q=intern&amp;locationsearch=Canada&amp;searchby=location&amp;d=10" title="First Page"><span aria-hidden="true">«</span></a></li>
@@ -1547,7 +1547,7 @@
                                             <li class=" "><a href="?q=intern&amp;locationsearch=Canada&amp;searchby=location&amp;d=10&amp;startrow=50" rel="nofollow" title="Page 3">3</a></li>
                                             <li class=" "><a href="?q=intern&amp;locationsearch=Canada&amp;searchby=location&amp;d=10&amp;startrow=75" rel="nofollow" title="Page 4">4</a></li>
                                             <li class=" "><a href="?q=intern&amp;locationsearch=Canada&amp;searchby=location&amp;d=10&amp;startrow=100" rel="nofollow" title="Page 5">5</a></li>
-                                <li><a class="paginationItemLast" href="?q=intern&amp;locationsearch=Canada&amp;searchby=location&amp;d=10&amp;startrow=425" rel="nofollow" title="Last Page"><span aria-hidden="true">»</span></a></li>
+                                <li><a class="paginationItemLast" href="?q=intern&amp;locationsearch=Canada&amp;searchby=location&amp;d=10&amp;startrow=400" rel="nofollow" title="Last Page"><span aria-hidden="true">»</span></a></li>
                             </ul>
                     </div>
         </div>
@@ -1636,7 +1636,7 @@ $('#distance').watermark('');
 		//<![CDATA[
 			$(function() 
 			{
-				var ctid = '332f087b-6aeb-40d3-b8bf-3e10579e374b';
+				var ctid = '2bc14751-7aa0-41a1-be45-8cf631113ce6';
 				var referrer = '';
 				var landing = document.location.href;
 				var brand = '';
@@ -1699,7 +1699,7 @@ $('#distance').watermark('');
 				$.ajaxSetup({
 					cache   : false,
 					headers : {
-						"X-CSRF-Token" : "f543f709-82ae-4d29-a38e-b1fc6bc1765f"
+						"X-CSRF-Token" : "5f038f56-c2fa-4489-ba90-75ca4772f0e7"
 					}
 				});
 			//]]>

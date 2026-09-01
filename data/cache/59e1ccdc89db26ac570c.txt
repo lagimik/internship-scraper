@@ -493,8 +493,8 @@
         <div class="paginationShell clearfix" xml:lang="en-US" lang="en-US">
                     <div class="well well-lg pagination-well pagination">
                         <div class="pagination-label-row">
-                            <span class="paginationLabel" aria-label="Results 126 – 150">Results <b>126 – 150</b> of <b>446</b></span>
-                            <span class="srHelp" style="font-size:0px">Page 6 of 18</span>
+                            <span class="paginationLabel" aria-label="Results 126 – 150">Results <b>126 – 150</b> of <b>424</b></span>
+                            <span class="srHelp" style="font-size:0px">Page 6 of 17</span>
                         </div>
                             <ul class="pagination">
                                 <li><a class="paginationItemFirst" href="?q=intern&amp;locationsearch=Canada&amp;searchby=location&amp;d=10" title="First Page"><span aria-hidden="true">«</span></a></li>
@@ -503,14 +503,14 @@
                                             <li class="active"><a href="?q=intern&amp;locationsearch=Canada&amp;searchby=location&amp;d=10&amp;startrow=125" class="current-page" aria-current="page" rel="nofollow" title="Page 6">6</a></li>
                                             <li class=" "><a href="?q=intern&amp;locationsearch=Canada&amp;searchby=location&amp;d=10&amp;startrow=150" rel="nofollow" title="Page 7">7</a></li>
                                             <li class=" "><a href="?q=intern&amp;locationsearch=Canada&amp;searchby=location&amp;d=10&amp;startrow=175" rel="nofollow" title="Page 8">8</a></li>
-                                <li><a class="paginationItemLast" href="?q=intern&amp;locationsearch=Canada&amp;searchby=location&amp;d=10&amp;startrow=425" rel="nofollow" title="Last Page"><span aria-hidden="true">»</span></a></li>
+                                <li><a class="paginationItemLast" href="?q=intern&amp;locationsearch=Canada&amp;searchby=location&amp;d=10&amp;startrow=400" rel="nofollow" title="Last Page"><span aria-hidden="true">»</span></a></li>
                             </ul>
                     </div>
         </div>
                 </div>
 
             <div class="searchResultsShell">
-				<table id="searchresults" class="searchResults full table table-striped table-hover" cellpadding="0" cellspacing="0" aria-label="Search results for intern AND Canada. Page 6 of 18, Results 126 to 150 of 446">
+				<table id="searchresults" class="searchResults full table table-striped table-hover" cellpadding="0" cellspacing="0" aria-label="Search results for intern AND Canada. Page 6 of 17, Results 126 to 150 of 424">
 					<thead>
                             <tr id="search-results-header">
 											<th id="hdrTitle" aria-sort="none" scope="col" width="25%">
@@ -597,341 +597,6 @@
                             </tr>
                     </thead>
                     <tbody>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
-														<a href="/ONxpress/job/Toronto-Assistant-Surveyor-ON/603648017/" class="jobTitle-link">Assistant Surveyor</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/ONxpress/job/Toronto-Assistant-Surveyor-ON/603648017/">Assistant Surveyor</a>
-                                                                    </span>
-                                                                    <span class="jobFacility visible-phone">Professionals</span>
-                                                                    <span class="jobLocation visible-phone">
-        
-        <span class="jobLocation">
-            Toronto, ON, CA
-            
-        </span></span>
-                                                                    <span class="jobDate visible-phone">Aug 16, 2026
-													                </span>
-                                                    </div>
-                                                </td>
-											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Professionals</span>
-											</td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Toronto, ON, CA
-            
-        </span>
-											</td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 16, 2026
-												</span>
-											</td>
-									<td class="hidden-phone"></td>
-                            </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
-														<a href="/job/Cambridge-Locator-ON/597303117/" class="jobTitle-link">Locator</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Cambridge-Locator-ON/597303117/">Locator</a>
-                                                                    </span>
-                                                                    <span class="jobFacility visible-phone">Trade</span>
-                                                                    <span class="jobLocation visible-phone">
-        
-        <span class="jobLocation">
-            Cambridge, ON, CA
-            
-                <small class="nobr">+1 more&hellip;</small>
-        </span></span>
-                                                                    <span class="jobDate visible-phone">Aug 28, 2026
-													                </span>
-                                                    </div>
-                                                </td>
-											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Trade</span>
-											</td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Cambridge, ON, CA
-            
-                <small class="nobr">+1 more&hellip;</small>
-        </span>
-											</td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 28, 2026
-												</span>
-											</td>
-									<td class="hidden-phone"></td>
-                            </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
-														<a href="/job/Brossard-Electrician%2C-Master-%28Quebec%29-Queb/599970517/" class="jobTitle-link">Electrician, Master (Quebec)</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Brossard-Electrician%2C-Master-%28Quebec%29-Queb/599970517/">Electrician, Master (Quebec)</a>
-                                                                    </span>
-                                                                    <span class="jobFacility visible-phone">Trade</span>
-                                                                    <span class="jobLocation visible-phone">
-        
-        <span class="jobLocation">
-            Brossard, Quebec, CA
-            
-        </span></span>
-                                                                    <span class="jobDate visible-phone">Aug 15, 2026
-													                </span>
-                                                    </div>
-                                                </td>
-											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Trade</span>
-											</td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Brossard, Quebec, CA
-            
-        </span>
-											</td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 15, 2026
-												</span>
-											</td>
-									<td class="hidden-phone"></td>
-                            </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
-														<a href="/job/Toronto-Business-Partner%2C-Human-Resources-ON/604621417/" class="jobTitle-link">Business Partner, Human Resources</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Toronto-Business-Partner%2C-Human-Resources-ON/604621417/">Business Partner, Human Resources</a>
-                                                                    </span>
-                                                                    <span class="jobFacility visible-phone">Human Resources</span>
-                                                                    <span class="jobLocation visible-phone">
-        
-        <span class="jobLocation">
-            Toronto, ON, CA
-            
-        </span></span>
-                                                                    <span class="jobDate visible-phone">Aug 21, 2026
-													                </span>
-                                                    </div>
-                                                </td>
-											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Human Resources</span>
-											</td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Toronto, ON, CA
-            
-        </span>
-											</td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 21, 2026
-												</span>
-											</td>
-									<td class="hidden-phone"></td>
-                            </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
-														<a href="/job/Toronto-Manager%2C-Human-Resources-ON/604837117/" class="jobTitle-link">Manager, Human Resources</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Toronto-Manager%2C-Human-Resources-ON/604837117/">Manager, Human Resources</a>
-                                                                    </span>
-                                                                    <span class="jobFacility visible-phone">Human Resources</span>
-                                                                    <span class="jobLocation visible-phone">
-        
-        <span class="jobLocation">
-            Toronto, ON, CA
-            
-        </span></span>
-                                                                    <span class="jobDate visible-phone">Aug 28, 2026
-													                </span>
-                                                    </div>
-                                                </td>
-											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Human Resources</span>
-											</td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Toronto, ON, CA
-            
-        </span>
-											</td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 28, 2026
-												</span>
-											</td>
-									<td class="hidden-phone"></td>
-                            </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
-														<a href="/job/Cambridge-Director%2C-Nuclear-Quality-ON/601634417/" class="jobTitle-link">Director, Nuclear Quality</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Cambridge-Director%2C-Nuclear-Quality-ON/601634417/">Director, Nuclear Quality</a>
-                                                                    </span>
-                                                                    <span class="jobFacility visible-phone">Quality Management</span>
-                                                                    <span class="jobLocation visible-phone">
-        
-        <span class="jobLocation">
-            Cambridge, ON, CA
-            
-        </span></span>
-                                                                    <span class="jobDate visible-phone">Aug 11, 2026
-													                </span>
-                                                    </div>
-                                                </td>
-											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Quality Management</span>
-											</td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Cambridge, ON, CA
-            
-        </span>
-											</td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 11, 2026
-												</span>
-											</td>
-									<td class="hidden-phone"></td>
-                            </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
-														<a href="/job/Cambridge-Director%2C-Sr_-Fabrication-ON/604097817/" class="jobTitle-link">Director, Sr. Fabrication</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Cambridge-Director%2C-Sr_-Fabrication-ON/604097817/">Director, Sr. Fabrication</a>
-                                                                    </span>
-                                                                    <span class="jobFacility visible-phone">Construction</span>
-                                                                    <span class="jobLocation visible-phone">
-        
-        <span class="jobLocation">
-            Cambridge, ON, CA
-            
-        </span></span>
-                                                                    <span class="jobDate visible-phone">Aug 5, 2026
-													                </span>
-                                                    </div>
-                                                </td>
-											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Construction</span>
-											</td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Cambridge, ON, CA
-            
-        </span>
-											</td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 5, 2026
-												</span>
-											</td>
-									<td class="hidden-phone"></td>
-                            </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
-														<a href="/job/Brantford-Materials-Administrator-ON/601872917/" class="jobTitle-link">Materials Administrator</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Brantford-Materials-Administrator-ON/601872917/">Materials Administrator</a>
-                                                                    </span>
-                                                                    <span class="jobFacility visible-phone">Supply Chain, Equipment and Logistics</span>
-                                                                    <span class="jobLocation visible-phone">
-        
-        <span class="jobLocation">
-            Brantford, ON, CA
-            
-        </span></span>
-                                                                    <span class="jobDate visible-phone">Aug 18, 2026
-													                </span>
-                                                    </div>
-                                                </td>
-											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Supply Chain, Equipment and Logistics</span>
-											</td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Brantford, ON, CA
-            
-        </span>
-											</td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 18, 2026
-												</span>
-											</td>
-									<td class="hidden-phone"></td>
-                            </tr>
-
-                            <tr class="data-row">
-                                                <td class="colTitle" headers="hdrTitle">
-													<span class="jobTitle hidden-phone">
-														<a href="/job/Toronto-Business-Partner%2C-Talent-Acquisition-ON/601815317/" class="jobTitle-link">Business Partner, Talent Acquisition</a>
-													</span>
-                                                    <div class="jobdetail-phone visible-phone">
-                                                                    <span class="jobTitle visible-phone">
-                                                                        <a class="jobTitle-link" href="/job/Toronto-Business-Partner%2C-Talent-Acquisition-ON/601815317/">Business Partner, Talent Acquisition</a>
-                                                                    </span>
-                                                                    <span class="jobFacility visible-phone">Human Resources</span>
-                                                                    <span class="jobLocation visible-phone">
-        
-        <span class="jobLocation">
-            Toronto, ON, CA
-            
-        </span></span>
-                                                                    <span class="jobDate visible-phone">Aug 17, 2026
-													                </span>
-                                                    </div>
-                                                </td>
-											<td class="colDepartment hidden-phone" headers="hdrDepartment">
-												<span class="jobDepartment">Human Resources</span>
-											</td>
-											<td class="colLocation hidden-phone" headers="hdrLocation">
-        
-        <span class="jobLocation">
-            Toronto, ON, CA
-            
-        </span>
-											</td>
-											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
-												<span class="jobDate">Aug 17, 2026
-												</span>
-											</td>
-									<td class="hidden-phone"></td>
-                            </tr>
 
                             <tr class="data-row">
                                                 <td class="colTitle" headers="hdrTitle">
@@ -1534,6 +1199,339 @@
 											</td>
 									<td class="hidden-phone"></td>
                             </tr>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
+														<a href="/job/Toronto-Communications-Manager%2C-Corporate-Affairs-ON/604941917/" class="jobTitle-link">Communications Manager, Corporate Affairs</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/Toronto-Communications-Manager%2C-Corporate-Affairs-ON/604941917/">Communications Manager, Corporate Affairs</a>
+                                                                    </span>
+                                                                    <span class="jobFacility visible-phone">Marketing &amp; Brand Management</span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            Toronto, ON, CA
+            
+        </span></span>
+                                                                    <span class="jobDate visible-phone">Aug 5, 2026
+													                </span>
+                                                    </div>
+                                                </td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Marketing &amp; Brand Management</span>
+											</td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            Toronto, ON, CA
+            
+        </span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Aug 5, 2026
+												</span>
+											</td>
+									<td class="hidden-phone"></td>
+                            </tr>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
+														<a href="/job/Cambridge-Production-Supervisor-ON/604871517/" class="jobTitle-link">Production Supervisor</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/Cambridge-Production-Supervisor-ON/604871517/">Production Supervisor</a>
+                                                                    </span>
+                                                                    <span class="jobFacility visible-phone">Construction</span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            Cambridge, ON, CA
+            
+        </span></span>
+                                                                    <span class="jobDate visible-phone">Aug 29, 2026
+													                </span>
+                                                    </div>
+                                                </td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Construction</span>
+											</td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            Cambridge, ON, CA
+            
+        </span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Aug 29, 2026
+												</span>
+											</td>
+									<td class="hidden-phone"></td>
+                            </tr>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
+														<a href="/job/Toronto-Specialist%2C-US-Retirement-&amp;-Savings-Programs-ON/604571917/" class="jobTitle-link">Specialist, US Retirement &amp; Savings Programs</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/Toronto-Specialist%2C-US-Retirement-&amp;-Savings-Programs-ON/604571917/">Specialist, US Retirement &amp; Savings Programs</a>
+                                                                    </span>
+                                                                    <span class="jobFacility visible-phone">Human Resources</span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            Toronto, ON, CA
+            
+        </span></span>
+                                                                    <span class="jobDate visible-phone">Aug 20, 2026
+													                </span>
+                                                    </div>
+                                                </td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Human Resources</span>
+											</td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            Toronto, ON, CA
+            
+        </span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Aug 20, 2026
+												</span>
+											</td>
+									<td class="hidden-phone"></td>
+                            </tr>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
+														<a href="/job/Pickering-Occupational-Health-Nurse-Lead-ON/601695117/" class="jobTitle-link">Occupational Health Nurse Lead</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/Pickering-Occupational-Health-Nurse-Lead-ON/601695117/">Occupational Health Nurse Lead</a>
+                                                                    </span>
+                                                                    <span class="jobFacility visible-phone">Health and Safety</span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            Pickering, ON, CA
+            
+        </span></span>
+                                                                    <span class="jobDate visible-phone">Aug 14, 2026
+													                </span>
+                                                    </div>
+                                                </td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Health and Safety</span>
+											</td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            Pickering, ON, CA
+            
+        </span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Aug 14, 2026
+												</span>
+											</td>
+									<td class="hidden-phone"></td>
+                            </tr>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
+														<a href="/job/Hamilton-Manager%2C-Segment-%28Project%29-ON/602817617/" class="jobTitle-link">Manager, Segment (Project)</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/Hamilton-Manager%2C-Segment-%28Project%29-ON/602817617/">Manager, Segment (Project)</a>
+                                                                    </span>
+                                                                    <span class="jobFacility visible-phone">Construction</span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            Hamilton, ON, CA
+            
+        </span></span>
+                                                                    <span class="jobDate visible-phone">Aug 20, 2026
+													                </span>
+                                                    </div>
+                                                </td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Construction</span>
+											</td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            Hamilton, ON, CA
+            
+        </span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Aug 20, 2026
+												</span>
+											</td>
+									<td class="hidden-phone"></td>
+                            </tr>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
+														<a href="/job/Calgary-Superintendent%2C-Civil-%28AB%29-AB/603423817/" class="jobTitle-link">Superintendent, Civil (AB)</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/Calgary-Superintendent%2C-Civil-%28AB%29-AB/603423817/">Superintendent, Civil (AB)</a>
+                                                                    </span>
+                                                                    <span class="jobFacility visible-phone">Construction</span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            Calgary, AB, CA
+            
+        </span></span>
+                                                                    <span class="jobDate visible-phone">Aug 9, 2026
+													                </span>
+                                                    </div>
+                                                </td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Construction</span>
+											</td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            Calgary, AB, CA
+            
+        </span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Aug 9, 2026
+												</span>
+											</td>
+									<td class="hidden-phone"></td>
+                            </tr>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
+														<a href="/job/Pickering-Occupational-Health-Nurse-ON/604184317/" class="jobTitle-link">Occupational Health Nurse</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/Pickering-Occupational-Health-Nurse-ON/604184317/">Occupational Health Nurse</a>
+                                                                    </span>
+                                                                    <span class="jobFacility visible-phone">Health and Safety</span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            Pickering, ON, CA
+            
+        </span></span>
+                                                                    <span class="jobDate visible-phone">Aug 7, 2026
+													                </span>
+                                                    </div>
+                                                </td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Health and Safety</span>
+											</td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            Pickering, ON, CA
+            
+        </span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Aug 7, 2026
+												</span>
+											</td>
+									<td class="hidden-phone"></td>
+                            </tr>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
+														<a href="/job/Kincardine-Quality-Control-Inspector-ON/603719117/" class="jobTitle-link">Quality Control Inspector</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/Kincardine-Quality-Control-Inspector-ON/603719117/">Quality Control Inspector</a>
+                                                                    </span>
+                                                                    <span class="jobFacility visible-phone">Quality Management</span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            Kincardine, ON, CA
+            
+        </span></span>
+                                                                    <span class="jobDate visible-phone">Aug 20, 2026
+													                </span>
+                                                    </div>
+                                                </td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Quality Management</span>
+											</td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            Kincardine, ON, CA
+            
+        </span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Aug 20, 2026
+												</span>
+											</td>
+									<td class="hidden-phone"></td>
+                            </tr>
+
+                            <tr class="data-row">
+                                                <td class="colTitle" headers="hdrTitle">
+													<span class="jobTitle hidden-phone">
+														<a href="/job/Toronto-Bilingual-Human-Resources-Administrator-ON/604329617/" class="jobTitle-link">Bilingual Human Resources Administrator</a>
+													</span>
+                                                    <div class="jobdetail-phone visible-phone">
+                                                                    <span class="jobTitle visible-phone">
+                                                                        <a class="jobTitle-link" href="/job/Toronto-Bilingual-Human-Resources-Administrator-ON/604329617/">Bilingual Human Resources Administrator</a>
+                                                                    </span>
+                                                                    <span class="jobFacility visible-phone">Human Resources</span>
+                                                                    <span class="jobLocation visible-phone">
+        
+        <span class="jobLocation">
+            Toronto, ON, CA
+            
+        </span></span>
+                                                                    <span class="jobDate visible-phone">Aug 12, 2026
+													                </span>
+                                                    </div>
+                                                </td>
+											<td class="colDepartment hidden-phone" headers="hdrDepartment">
+												<span class="jobDepartment">Human Resources</span>
+											</td>
+											<td class="colLocation hidden-phone" headers="hdrLocation">
+        
+        <span class="jobLocation">
+            Toronto, ON, CA
+            
+        </span>
+											</td>
+											<td class="colDate hidden-phone" nowrap="nowrap" headers="hdrDate">
+												<span class="jobDate">Aug 12, 2026
+												</span>
+											</td>
+									<td class="hidden-phone"></td>
+                            </tr>
                     </tbody>
 
                 </table>
@@ -1543,8 +1541,8 @@
         <div class="paginationShell clearfix" xml:lang="en-US" lang="en-US">
                     <div class="well well-lg pagination-well pagination">
                         <div class="pagination-label-row">
-                            <span class="paginationLabel" aria-label="Results 126 – 150">Results <b>126 – 150</b> of <b>446</b></span>
-                            <span class="srHelp" style="font-size:0px">Page 6 of 18</span>
+                            <span class="paginationLabel" aria-label="Results 126 – 150">Results <b>126 – 150</b> of <b>424</b></span>
+                            <span class="srHelp" style="font-size:0px">Page 6 of 17</span>
                         </div>
                             <ul class="pagination">
                                 <li><a class="paginationItemFirst" href="?q=intern&amp;locationsearch=Canada&amp;searchby=location&amp;d=10" title="First Page"><span aria-hidden="true">«</span></a></li>
@@ -1553,7 +1551,7 @@
                                             <li class="active"><a href="?q=intern&amp;locationsearch=Canada&amp;searchby=location&amp;d=10&amp;startrow=125" class="current-page" aria-current="page" rel="nofollow" title="Page 6">6</a></li>
                                             <li class=" "><a href="?q=intern&amp;locationsearch=Canada&amp;searchby=location&amp;d=10&amp;startrow=150" rel="nofollow" title="Page 7">7</a></li>
                                             <li class=" "><a href="?q=intern&amp;locationsearch=Canada&amp;searchby=location&amp;d=10&amp;startrow=175" rel="nofollow" title="Page 8">8</a></li>
-                                <li><a class="paginationItemLast" href="?q=intern&amp;locationsearch=Canada&amp;searchby=location&amp;d=10&amp;startrow=425" rel="nofollow" title="Last Page"><span aria-hidden="true">»</span></a></li>
+                                <li><a class="paginationItemLast" href="?q=intern&amp;locationsearch=Canada&amp;searchby=location&amp;d=10&amp;startrow=400" rel="nofollow" title="Last Page"><span aria-hidden="true">»</span></a></li>
                             </ul>
                     </div>
         </div>
@@ -1642,7 +1640,7 @@ $('#distance').watermark('');
 		//<![CDATA[
 			$(function() 
 			{
-				var ctid = '2d160427-71a2-4e51-9964-df6e94c39522';
+				var ctid = 'c8af704a-afd1-40ef-865a-3b34a710f72c';
 				var referrer = '';
 				var landing = document.location.href;
 				var brand = '';
@@ -1705,7 +1703,7 @@ $('#distance').watermark('');
 				$.ajaxSetup({
 					cache   : false,
 					headers : {
-						"X-CSRF-Token" : "c7d0987f-27dc-40fb-94dd-eea29a76dcae"
+						"X-CSRF-Token" : "862ae6db-b287-4cea-a0a1-818fda068367"
 					}
 				});
 			//]]>

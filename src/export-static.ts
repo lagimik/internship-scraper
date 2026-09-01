@@ -18,7 +18,8 @@ interface StaticJob {
   title: string;
   company: string;
   location: string;
-  province: string | null;
+  country: string;
+  region: string | null;
   remote: number;
   url: string;
   source: string;
@@ -28,8 +29,10 @@ interface StaticJob {
   salary_raw: string | null;
   type: string | null;
   role_category: string | null;
-  canada_confidence: string;
-  canada_matched_by: string | null;
+  location_confidence: string;
+  location_matched_by: string | null;
+  work_term_months: number | null;
+  work_term_confidence: string;
 }
 
 interface Facet {
@@ -51,9 +54,10 @@ try {
   // Status and notes are intentionally excluded: the static dashboard is a job
   // discovery snapshot, not an application tracker.
   const jobs = db.prepare(`
-    SELECT title, company, location, province, remote, url, source, sources,
+        SELECT title, company, location, country, region, remote, url, source, sources,
            posted_at, first_seen_at, salary_raw, type, role_category,
-           canada_confidence, canada_matched_by
+          location_confidence, location_matched_by, work_term_months,
+          work_term_confidence
     FROM jobs
   `).all() as unknown as StaticJob[];
 
@@ -62,7 +66,8 @@ try {
     jobs,
     facets: {
       sources: countBy(jobs, 'source'),
-      provinces: countBy(jobs, 'province'),
+      countries: countBy(jobs, 'country'),
+      regions: countBy(jobs, 'region'),
       categories: countBy(jobs, 'role_category'),
       types: countBy(jobs, 'type'),
       total: jobs.length,

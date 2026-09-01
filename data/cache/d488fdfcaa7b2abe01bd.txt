@@ -30,7 +30,7 @@
             <meta name="robots" content="noindex" />
             <meta property="og:image" content="https://rmkcdn.successfactors.com/bf145f74/196bc81e-cb49-43ed-845b-5.jpg" />
             <meta property="twitter:image" content="https://rmkcdn.successfactors.com/bf145f74/196bc81e-cb49-43ed-845b-5.jpg" />
-                <link type="text/css" rel="stylesheet" href="//rmkcdn.successfactors.com/bf145f74/1bc40570-0f1c-436f-93a6-9.css" />
+                <link type="text/css" rel="stylesheet" href="//rmkcdn.successfactors.com/bf145f74/4edd02aa-21c2-4d43-ae87-8.css" />
                             <link type="text/css" rel="stylesheet" href="/platform/csb/css/customHeader.css?h=239e66d2" />
                             <link type="text/css" rel="stylesheet" href="/platform/css/j2w/min/sitebuilderframework.min.css?h=239e66d2" />
                             <link type="text/css" rel="stylesheet" href="/platform/css/j2w/min/sitebuilderframeworkunify.min.css?h=239e66d2" />
@@ -1360,7 +1360,7 @@
               resultStyles.jobResultsCard.fieldConfigurationExternal.resultCardFooter = jobResultsCardFields;
             }
             //<![CDATA[
-            var CSRFToken = "5f0f1d87-c661-49bd-9703-b9025e8dfd10";
+            var CSRFToken = "a8c4a225-4693-4b5f-9843-8a7a6167e76c";
             var appParams = {
                 locale:  "en_US",
                 categoryId: "",
@@ -1715,7 +1715,7 @@ Our website may include links to other websites and social plugins. Social plugi
 		//<![CDATA[
 			$(function() 
 			{
-				var ctid = '64085f89-856f-4976-a8ac-3bbb6390a89b';
+				var ctid = 'f153815a-a7b3-4b3e-833b-d664fd6df928';
 				var referrer = '';
 				var landing = document.location.href;
 				var brand = '';
@@ -1778,7 +1778,7 @@ Our website may include links to other websites and social plugins. Social plugi
 				$.ajaxSetup({
 					cache   : false,
 					headers : {
-						"X-CSRF-Token" : "5f0f1d87-c661-49bd-9703-b9025e8dfd10"
+						"X-CSRF-Token" : "a8c4a225-4693-4b5f-9843-8a7a6167e76c"
 					}
 				});
 			//]]>
@@ -1794,7 +1794,7 @@ Our website may include links to other websites and social plugins. Social plugi
         <script type="text/javascript" src="/platform/js/jquery/js.cookie-2.2.1.min.js"></script>
         <script type="text/javascript" src="/platform/js/jquery/jquery.lightbox_me.js"></script>
         <script type="text/javascript" src="/platform/js/jquery/jquery.placeholder.2.0.7.min.js"></script>
-        <script type="text/javascript" src="/js/override.js?locale=en_US&amp;i=951679795"></script>
+        <script type="text/javascript" src="/js/override.js?locale=en_US&amp;i=485770937"></script>
         <script type="text/javascript">
             const jobAlertSpans = document.querySelectorAll("[data-testid=jobAlertSpanText]");
             jobAlertSpans?.forEach((jobEl) => {
