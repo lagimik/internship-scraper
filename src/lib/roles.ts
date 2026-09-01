@@ -64,6 +64,16 @@ const CONCEPT_RULES: ConceptRule[] = [
   },
   {
     category: 'design-manufacturing',
+    name: 'product-engineering',
+    all: [/\bproduct\s+engineer(ing)?\b/],
+  },
+  {
+    category: 'design-manufacturing',
+    name: 'design-engineering',
+    all: [/\bdesign\s+engineer(ing)?\b/],
+  },
+  {
+    category: 'design-manufacturing',
     name: 'mechanical-manufacturing-design',
     all: [/\b(mechanical|manufacturing|product|machine|tooling|engineering)\b/, /\b(design|designer|cad|catia|solidworks|creo|tooling)\b/],
     any: [ENGINEERING_ROLE, STUDENT_MARKER],
