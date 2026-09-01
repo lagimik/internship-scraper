@@ -25,6 +25,7 @@ import { dayforceAdapter } from './adapters/dayforce.js';
 import { bambooHrAdapter } from './adapters/bamboohr.js';
 import { teslaAdapter } from './adapters/tesla.js';
 import { eightfoldAdapter } from './adapters/eightfold.js';
+import { avatureAdapter } from './adapters/avature.js';
 
 /**
  * Sources cheap enough to poll often, the whole group finishes in ~10 seconds and
@@ -53,7 +54,7 @@ export function fastAdapters(): Adapter[] {
  * boards also change far more slowly than the curated lists do.
  */
 export function slowAdapters(): Adapter[] {
-  return [workdayAdapter(), eightfoldAdapter()];
+  return [workdayAdapter(), eightfoldAdapter(), avatureAdapter()];
 }
 
 /** Sources that run by default, fastest first. */

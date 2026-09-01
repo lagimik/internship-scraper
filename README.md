@@ -1,6 +1,6 @@
 # Job Tracker: Internships in Canada
 
-A self-hosted job board for one person. It polls Greenhouse, Lever, Ashby, Workday, Eightfold,
+A self-hosted job board for one person. It polls Greenhouse, Lever, Ashby, Workday, Eightfold, Avature,
 curated GitHub internship lists and Job Bank on a schedule, keeps only Canadian
 **software / DevOps / AI internships and co-ops**, dedupes them across sources, and
 serves them as one filterable dashboard with per-job application tracking and push
@@ -105,7 +105,7 @@ Everything in [src/adapters/](src/adapters/) is a list you can edit:
 
 | To change | Edit |
 | --- | --- |
-| Which companies are polled | `GREENHOUSE_BOARDS` / `LEVER_BOARDS` in [ats.ts](src/adapters/ats.ts), `ASHBY_BOARDS` in [ashby.ts](src/adapters/ashby.ts), `WORKDAY_BOARDS` in [workday.ts](src/adapters/workday.ts), `EIGHTFOLD_BOARDS` in [eightfold.ts](src/adapters/eightfold.ts) |
+| Which companies are polled | `GREENHOUSE_BOARDS` / `LEVER_BOARDS` in [ats.ts](src/adapters/ats.ts), `ASHBY_BOARDS` in [ashby.ts](src/adapters/ashby.ts), `WORKDAY_BOARDS` in [workday.ts](src/adapters/workday.ts), `EIGHTFOLD_BOARDS` in [eightfold.ts](src/adapters/eightfold.ts), `AVATURE_BOARDS` in [avature.ts](src/adapters/avature.ts) |
 | Which job titles count | `INCLUSIONS` / `EXCLUSIONS` in [roles.ts](src/lib/roles.ts) |
 | Country / region filter | [canada.ts](src/lib/canada.ts), it's Canada-specific, so a different country means rewriting this |
 | Internships vs all jobs | the student-track filter in [normalize.ts](src/lib/normalize.ts) |
@@ -191,6 +191,7 @@ so the filters can be tuned against real results.
 | Ashby | Public JSON API | Cohere, Wealthsimple, 1Password, Jobber, states `employmentType` |
 | Workday | Public CXS JSON API | Banks/enterprises; boards configured by careers URL |
 | Eightfold | Public PCS JSON API | Boston Scientific and Lockheed Martin; searches Canadian postings |
+| Avature | Server-rendered search pages | Siemens; boards configured with verified country-filter URLs |
 | Job Bank Canada | HTML search results | No API/RSS exists; honours `Crawl-delay: 5` |
 
 ### Where internships actually come from

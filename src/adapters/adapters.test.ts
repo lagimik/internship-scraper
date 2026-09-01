@@ -13,6 +13,7 @@ import {
   parseEightfoldTimestamp,
   parseEightfoldUrl,
 } from './eightfold.js';
+import { parseAvatureSearchPage, parseAvatureUrl } from './avature.js';
 import {
   discoverCyberRecruiterPages,
   parseConfiguredHtml,
@@ -153,6 +154,55 @@ test('eightfold: public search positions map location, salary and URL', () => {
   assert.equal(job.salaryRaw, 'C$55,000 - C$70,000');
   assert.equal(job.salaryCurrency, 'CAD');
   assert.equal(job.postedAt, parseEightfoldTimestamp(1788134400));
+});
+
+test('avature: search URL and result cards map to jobs', () => {
+  const board = {
+    url: 'https://jobs.siemens.com/en_US/externaljobs/SearchJobs/?42386=%5B812214%5D',
+    name: 'Siemens',
+    country: 'Canada',
+  };
+  assert.deepEqual(parseAvatureUrl(board.url), {
+    origin: 'https://jobs.siemens.com',
+    searchPath: '/en_US/externaljobs/SearchJobs/',
+  });
+  assert.equal(parseAvatureUrl('https://jobs.siemens.com/en_US/externaljobs/JobDetail/1'), null);
+
+  const html = `<article class="article article--result 1">
+    <h3><a href="/en_US/externaljobs/JobDetail/123"> Mechanical Engineering Intern </a></h3>
+    <span class="list-item-location"><span class="list-item-jobCity">Oakville</span>,
+      <span class="list-item-jobState">Ontario</span>, <span class="list-item-jobCountry">Canada</span></span>
+    <span class="list-item-jobId">Job ID: 123</span>
+    <span class="list-item-family">Engineering</span>
+  </article>
+  <a href="/en_US/externaljobs/SearchJobs/?folderRecordsPerPage=6&amp;folderOffset=6">2</a>`;
+  const page = parseAvatureSearchPage(html, board);
+  assert.equal(page.nextOffset, 6);
+  assert.equal(page.jobs.length, 1);
+  assert.equal(page.jobs[0]?.title, 'Mechanical Engineering Intern');
+  assert.equal(page.jobs[0]?.location, 'Oakville, Ontario, Canada');
+  assert.equal(page.jobs[0]?.url, 'https://jobs.siemens.com/en_US/externaljobs/JobDetail/123');
+  assert.equal(page.jobs[0]?.description, 'Job family: Engineering');
+
+  const laterPage = parseAvatureSearchPage(
+    `${html}<a href="?folderOffset=0">1</a><a href="?folderOffset=12">3</a>`,
+    board,
+    6,
+  );
+  assert.equal(laterPage.nextOffset, 12);
+});
+
+test('avature: country-filtered multi-location cards retain the country', () => {
+  const board = {
+    url: 'https://jobs.siemens.com/en_US/externaljobs/SearchJobs/',
+    name: 'Siemens',
+    country: 'Canada',
+  };
+  const page = parseAvatureSearchPage(`<article class="article article--result">
+    <h3><a href="/en_US/externaljobs/JobDetail/456">Design Engineering Co-op</a></h3>
+    <span class="list-item-location">Multiple Locations</span>
+  </article>`, board);
+  assert.equal(page.jobs[0]?.location, 'Multiple Locations, Canada');
 });
 
 test('dayforce: careers URL decomposes into public API identifiers', () => {
