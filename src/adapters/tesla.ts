@@ -1,121 +1,75 @@
 /**
- * Tesla Canada careers adapter.
+ * Tesla careers adapter for a search-results page saved from a browser.
  *
- * Tesla's careers application downloads one compact state document containing all
- * current listings and lookup tables. Canadian location IDs are identified through
- * the `geo` tree, then joined to listings and their human-readable location/type:
- *
- *   GET https://www.tesla.com/cua-api/apps/careers/state
- *
- * This avoids rendering the React application and requests the state only once.
+ * Tesla's Akamai configuration blocks this application's server-side requests. Save
+ * the rendered careers search page as `input/tesla.html`; this adapter parses the
+ * visible result cards without making a network request.
  */
 
+import { readFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { load } from 'cheerio';
 import type { Adapter, JobType, RawJob } from '../types.js';
-import { fetchJson } from '../lib/fetch.js';
 
-const STATE_URL = 'https://www.tesla.com/cua-api/apps/careers/state';
-const CAREERS_URL = 'https://www.tesla.com/en_CA/careers/search/?site=CA';
-const JOB_URL = 'https://www.tesla.com/en_CA/careers/search/job';
-
-interface TeslaListing {
-  id?: string;
-  /** Title. */
-  t?: string;
-  /** Department lookup ID. */
-  dp?: string;
-  /** Function lookup ID. */
-  f?: string;
-  /** Location lookup ID. */
-  l?: string;
-  /** Job-type lookup ID. */
-  y?: number;
-  /** Unpublish date, not the posting date. */
-  pu?: string | null;
-}
-
-interface TeslaSite {
-  id?: string;
-  cities?: Record<string, string[]>;
-}
-
-interface TeslaRegion {
-  sites?: TeslaSite[];
-}
-
-export interface TeslaCareersState {
-  lookup?: {
-    locations?: Record<string, string>;
-    departments?: Record<string, string>;
-    types?: Record<string, string>;
-  };
-  geo?: TeslaRegion[];
-  listings?: TeslaListing[];
-}
+const INPUT_PATH = resolve(process.cwd(), 'input', 'tesla.html');
+const TESLA_ORIGIN = 'https://www.tesla.com';
 
 function mapType(type: string | undefined): JobType | null {
-  switch (type?.toLowerCase()) {
-    case 'intern': return 'intern';
-    case 'fulltime': return 'full-time';
-    case 'seasonal': return 'contract';
-    default: return null;
-  }
+  const normalized = type?.toLowerCase() ?? '';
+  if (/\bintern(ship)?\b|\bapprentice\b/.test(normalized)) return 'intern';
+  if (/\bco[ -]?op\b/.test(normalized)) return 'co-op';
+  if (/\bfull[ -]?time\b/.test(normalized)) return 'full-time';
+  if (/\bseasonal\b|\bcontract\b/.test(normalized)) return 'contract';
+  return null;
 }
 
-/** Map the careers state to Canadian jobs. Exported for deterministic fixture tests. */
-export function parseTeslaCareersState(state: TeslaCareersState): RawJob[] {
-  const canada = (state.geo ?? [])
-    .flatMap((region) => region.sites ?? [])
-    .find((site) => site.id === 'CA');
-  if (!canada) return [];
+const cleanText = (value: string): string => value.replace(/\s+/g, ' ').trim();
 
-  const canadianLocationIds = new Set(Object.values(canada.cities ?? {}).flat());
-  const locations = state.lookup?.locations ?? {};
-  const departments = state.lookup?.departments ?? {};
-  const types = state.lookup?.types ?? {};
+/** Parse rendered Tesla search-result cards. Exported for deterministic fixture tests. */
+export function parseTeslaHtml(html: string): RawJob[] {
+  const $ = load(html);
+  const jobs: RawJob[] = [];
 
-  return (state.listings ?? []).flatMap((listing) => {
-    const id = listing.id?.trim();
-    const title = listing.t?.trim();
-    const locationId = listing.l;
-    if (!id || !title || !locationId || !canadianLocationIds.has(locationId)) return [];
+  $('li[class*="SearchListItem"]').each((_index, element) => {
+    const card = $(element);
+    const link = card.find('a[href*="/careers/search/job/"]').first();
+    const title = cleanText(link.text());
+    const href = link.attr('href')?.trim();
+    const metadata = card.find('ul[class*="ListResultItemSublist"] > li').first();
+    const category = cleanText(metadata.find('strong').first().text());
+    const typeLabel = cleanText(metadata.find('strong').eq(1).text());
+    const location = cleanText(card.find('li[class*="ListResultItemSublistLocation"] strong').first().text());
+    if (!title || !href || !location) return;
 
-    const location = locations[locationId]?.trim() ?? '';
-    const department = listing.dp ? departments[listing.dp] : null;
-    return [{
+    jobs.push({
       title,
       company: 'Tesla',
       location,
       remote: /\bremote\b/i.test(`${title} ${location}`),
-      url: `${JOB_URL}/${encodeURIComponent(id)}`,
+      url: new URL(href, TESLA_ORIGIN).href,
       source: 'tesla',
-      // Tesla exposes an optional unpublish date, but not a reliable posted date.
+      // Search-result cards do not expose a reliable posting date.
       postedAt: null,
       salaryRaw: null,
       salaryMin: null,
       salaryMax: null,
       salaryCurrency: null,
-      type: mapType(listing.y == null ? undefined : types[String(listing.y)]),
+      type: mapType(typeLabel),
       sponsorship: null,
-      description: department ? `Job category: ${department}` : null,
-    }];
+      description: category ? `Job category: ${category}` : null,
+    });
   });
+
+  return jobs;
 }
 
-async function fetchTeslaCanada(): Promise<RawJob[]> {
-  const state = await fetchJson<TeslaCareersState>(STATE_URL, {
-    headers: {
-      referer: CAREERS_URL,
-      // Match the public careers client. Tesla's edge can still reject particular
-      // server IPs; the scrape runner isolates that failure from every other source.
-      'user-agent': 'Mozilla/5.0 (compatible; job-tracker/0.1; +personal-job-search)',
-    },
-  });
-  return parseTeslaCareersState(state);
+async function loadTeslaInput(): Promise<RawJob[]> {
+  return parseTeslaHtml(await readFile(INPUT_PATH, 'utf8'));
 }
 
 export function teslaAdapter(): Adapter {
   return {
     name: 'tesla',
-    fetch: fetchTeslaCanada,
+    fetch: loadTeslaInput,
   };
 }

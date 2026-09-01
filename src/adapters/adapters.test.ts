@@ -7,7 +7,7 @@ import { parseSimplifyListings } from './simplify.js';
 import { collectLocations, mapEmploymentType } from './ashby.js';
 import { parseDayforceResponse, parseDayforceUrl } from './dayforce.js';
 import { parseBambooHrPosting, parseBambooHrUrl } from './bamboohr.js';
-import { parseTeslaCareersState } from './tesla.js';
+import { parseTeslaHtml } from './tesla.js';
 import {
   parseEightfoldResponse,
   parseEightfoldTimestamp,
@@ -274,35 +274,25 @@ test('bamboohr: detail record maps structured location, date and description', (
   assert.match(job.description ?? '', /Build & test robots/);
 });
 
-test('tesla: careers state returns only Canadian listings', () => {
-  const jobs = parseTeslaCareersState({
-    lookup: {
-      locations: {
-        '552': 'Palo Alto, California',
-        '12422': 'Richmond Hill, Ontario',
-        '13939': 'Nepean, Ontario',
-      },
-      departments: { '1': 'Vehicle Service', '6': 'Energy Engineering' },
-      types: { '1': 'fulltime', '3': 'intern' },
-    },
-    geo: [{ sites: [
-      { id: 'US', cities: { 'Palo Alto': ['552'] } },
-      { id: 'CA', cities: { 'Richmond Hill': ['12422'], Nepean: ['13939'] } },
-    ] }],
-    listings: [
-      { id: '259435', t: 'Staff Site Reliability Engineer, Energy Software', dp: '6', l: '552', y: 1 },
-      { id: '259431', t: 'Staff Site Reliability Engineer, Energy Software', dp: '6', l: '12422', y: 1 },
-      { id: '280326', t: 'Internship, Service Technician Trainee (Fall 2026)', dp: '1', l: '13939', y: 3 },
-    ],
-  });
+test('tesla: saved search HTML returns visible result cards', () => {
+  const jobs = parseTeslaHtml(`
+    <li class="style_SearchListItem__hash">
+      <a class="style_TitleLink__hash" href="/en_CA/careers/search/job/software-developer-intern-123">
+        Software Developer <span>Intern</span>
+      </a>
+      <ul class="style_ListResultItemSublist__hash">
+        <li><strong>Engineering &amp; Information Technology</strong> ・ <strong>Intern/Apprentice</strong></li>
+        <li class="style_ListResultItemSublistLocation__hash"><strong>Toronto, Ontario</strong></li>
+      </ul>
+    </li>
+  `);
 
-  assert.equal(jobs.length, 2);
-  assert.equal(jobs[0]?.location, 'Richmond Hill, Ontario');
-  assert.equal(jobs[0]?.type, 'full-time');
-  assert.equal(jobs[0]?.url, 'https://www.tesla.com/en_CA/careers/search/job/259431');
-  assert.equal(jobs[0]?.description, 'Job category: Energy Engineering');
-  assert.equal(jobs[1]?.type, 'intern');
-  assert.ok(jobs.every((job) => !job.location.includes('California')));
+  assert.equal(jobs.length, 1);
+  assert.equal(jobs[0]?.title, 'Software Developer Intern');
+  assert.equal(jobs[0]?.location, 'Toronto, Ontario');
+  assert.equal(jobs[0]?.type, 'intern');
+  assert.equal(jobs[0]?.url, 'https://www.tesla.com/en_CA/careers/search/job/software-developer-intern-123');
+  assert.equal(jobs[0]?.description, 'Job category: Engineering & Information Technology');
 });
 
 test('ashby: secondary locations are kept so Canada-remote roles survive', () => {
