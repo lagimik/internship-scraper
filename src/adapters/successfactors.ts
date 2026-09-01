@@ -46,6 +46,14 @@ export const SUCCESSFACTORS_BOARDS: SuccessFactorsBoard[] = [
   {
     url: 'https://jobs.opg.com/search/?searchby=location&createNewAlert=false&q=&locationsearch=&geolocation=&searchResultView=LIST',
     name: 'OPG',
+  },
+  {
+    url: 'https://careers.magellan.aero/search/?createNewAlert=false&q=&locationsearch=&optionsFacetsDD_department=',
+    name: 'Magellan Aerospace',
+  },
+  {
+    url: 'https://careers.celestica.com/go/Engineering-Jobs/1280201/',
+    name: 'Celestica',
   }
 ];
 
