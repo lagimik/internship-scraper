@@ -7,19 +7,14 @@
  */
 
 import { load } from 'cheerio';
-import type { Adapter, JobType, RawJob } from '../types.js';
-import { fetchJson, fetchText } from '../lib/fetch.js';
+import type { Adapter, RawJob } from '../types.js';
+import { fetchText } from '../lib/fetch.js';
 
-type CustomBoard = PrevueBoard | CyberRecruiterBoard | HtmlBoard;
+type CustomBoard = CyberRecruiterBoard | HtmlBoard;
 
 interface BoardBase {
   name: string;
   url: string;
-}
-
-export interface PrevueBoard extends BoardBase {
-  kind: 'prevue-json';
-  siteId: number;
 }
 
 export interface CyberRecruiterBoard extends BoardBase {
@@ -43,12 +38,6 @@ export interface HtmlBoard extends BoardBase {
 
 export const CUSTOM_BOARDS: CustomBoard[] = [
   {
-    kind: 'prevue-json',
-    name: 'Martinrea International',
-    url: 'https://martinrea.prevueaps.com/jobs/',
-    siteId: 596,
-  },
-  {
     kind: 'cyber-recruiter',
     name: 'Brock Solutions',
     url: 'https://careers.brocksolutions.com/Careers.aspx?type=CAREERSMAIN',
@@ -66,51 +55,13 @@ export const CUSTOM_BOARDS: CustomBoard[] = [
     },
     maxPages: 5,
   },
-  {
-    kind: 'html',
-    name: 'CSMC',
-    url: 'https://csmc.bamboohr.com/careers',
-    selectors: {
-      card: '.job-listing',
-      titleLink: 'a.job-title',
-      location: '.job-location',
-      postedDate: '.job-posted-date',
-      nextPage: 'a[rel="next"]',
-    },
-    maxPages: 5,
-  }
+  
 ];
-
-interface PrevueJob {
-  id?: number | string;
-  title?: string;
-  startDateRef?: string;
-  jobLocation?: string;
-  workplaceType?: string | null;
-  employmentType?: string | null;
-  payRate?: string;
-  minSalary?: string;
-  maxSalary?: string;
-  payTypeFrame?: string | null;
-  jobUrl?: string;
-}
-
-interface PrevueResponse {
-  data?: { jobs?: PrevueJob[] };
-}
 
 function isoDate(value: string | undefined): string | null {
   if (!value) return null;
   const timestamp = Date.parse(value);
   return Number.isNaN(timestamp) ? null : new Date(timestamp).toISOString();
-}
-
-function studentType(value: string | null | undefined): JobType | null {
-  if (/co.?op/i.test(value ?? '')) return 'co-op';
-  if (/intern|student|stagiaire/i.test(value ?? '')) return 'intern';
-  // Do not force `full-time`: many student boards label fixed-term placements that
-  // way, and an adapter-supplied type deliberately outranks title classification.
-  return null;
 }
 
 function emptyFields(): Pick<RawJob,
@@ -122,32 +73,6 @@ function emptyFields(): Pick<RawJob,
     salaryCurrency: null,
     sponsorship: null,
   };
-}
-
-/** Map the structured public PrevueAPS listing response. */
-export function parsePrevueJobs(response: PrevueResponse, board: PrevueBoard): RawJob[] {
-  return (response.data?.jobs ?? []).flatMap((job): RawJob[] => {
-    const title = job.title?.trim();
-    const id = String(job.id ?? '');
-    if (!title || !id) return [];
-    const location = job.jobLocation?.trim() ?? '';
-    const salaryParts = [job.minSalary, job.maxSalary].filter(Boolean);
-    const salaryRaw = job.payRate?.trim()
-      || (salaryParts.length ? `${salaryParts.join(' - ')} ${job.payTypeFrame ?? ''}`.trim() : null);
-    return [{
-      title,
-      company: board.name,
-      location,
-      remote: /remote|home.?based/i.test(`${job.workplaceType ?? ''} ${location}`),
-      url: job.jobUrl || new URL(`/jobs/${id}`, board.url).toString(),
-      source: 'custom',
-      postedAt: isoDate(job.startDateRef),
-      ...emptyFields(),
-      salaryRaw,
-      type: studentType(job.employmentType),
-      description: null,
-    }];
-  });
 }
 
 /** Parse a conventional card-based HTML board using only configured selectors. */
@@ -240,12 +165,6 @@ export function parseCyberRecruiterJobs(
   return jobs;
 }
 
-async function fetchPrevue(board: PrevueBoard): Promise<RawJob[]> {
-  const origin = new URL(board.url).origin;
-  const endpoint = `${origin}/core/jobs/${board.siteId}?getParams=${encodeURIComponent('{}')}`;
-  return parsePrevueJobs(await fetchJson<PrevueResponse>(endpoint), board);
-}
-
 async function fetchCyberRecruiter(board: CyberRecruiterBoard): Promise<RawJob[]> {
   const index = await fetchText(board.url, { headers: { accept: 'text/html' } });
   const pages = discoverCyberRecruiterPages(index, board.url);
@@ -279,7 +198,6 @@ async function fetchHtml(board: HtmlBoard): Promise<RawJob[]> {
 }
 
 async function fetchBoard(board: CustomBoard): Promise<RawJob[]> {
-  if (board.kind === 'prevue-json') return fetchPrevue(board);
   if (board.kind === 'cyber-recruiter') return fetchCyberRecruiter(board);
   return fetchHtml(board);
 }

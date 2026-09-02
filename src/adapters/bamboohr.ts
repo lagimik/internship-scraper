@@ -24,7 +24,8 @@ export interface BambooHrBoard {
 export const BAMBOOHR_BOARDS: BambooHrBoard[] = [
   { url: 'https://acerta.bamboohr.com/careers', name: 'Acerta' },
   { url: 'https://avidbots.bamboohr.com/careers', name: 'Avidbots' },
-  { url: 'https://proslide.bamboohr.com/careers', name: 'Proslide' }
+  { url: 'https://proslide.bamboohr.com/careers', name: 'Proslide' },
+  { url: 'https://csmc.bamboohr.com/careers', name: 'CSMC' }
 ];
 
 export interface ParsedBambooHrUrl {

@@ -11,6 +11,12 @@ import { parseTeslaHtml } from './tesla.js';
 import { parseStantecResponse } from './stantec.js';
 import { parseSiemensSearchPage, siemensAdapter } from './siemens.js';
 import { appleAdapter, parseAppleSearchResponse } from './apple.js';
+import { doverAdapter, parseDoverJob, parseDoverUrl } from './dover.js';
+import {
+  applicantProAdapter,
+  parseApplicantProJobs,
+  parseApplicantProUrl,
+} from './applicantpro.js';
 import {
   parseEightfoldResponse,
   parseEightfoldTimestamp,
@@ -21,7 +27,6 @@ import {
   discoverCyberRecruiterPages,
   parseConfiguredHtml,
   parseCyberRecruiterJobs,
-  parsePrevueJobs,
 } from './custom.js';
 
 test('github: angle-bracket markdown links yield a clean URL', () => {
@@ -117,6 +122,62 @@ test('workday: relative postedOn becomes a date', () => {
   assert.equal(parseWorkdayPostedOn('Posted 11 Days Ago', now)?.slice(0, 10), '2026-07-23');
   assert.equal(parseWorkdayPostedOn('Posted 30+ Days Ago', now)?.slice(0, 10), '2026-07-04');
   assert.equal(parseWorkdayPostedOn(undefined), null);
+});
+
+test('dover: careers URL decomposes into public API identifiers', () => {
+  const parsed = parseDoverUrl(
+    'https://app.dover.com/Fabri/careers/4330a65c-241b-44e3-9524-1f8bb2f514d7',
+  );
+  assert.deepEqual(parsed, {
+    origin: 'https://app.dover.com',
+    slug: 'Fabri',
+    clientId: '4330a65c-241b-44e3-9524-1f8bb2f514d7',
+  });
+  assert.equal(parseDoverUrl('https://example.com/Fabri/careers/123'), null);
+  assert.equal(parseDoverUrl('https://app.dover.com/apply/Fabri/123'), null);
+});
+
+test('dover: detail response maps structured fields', () => {
+  assert.equal(doverAdapter().name, 'dover');
+  const board = {
+    url: 'https://app.dover.com/Fabri/careers/4330a65c-241b-44e3-9524-1f8bb2f514d7',
+    name: 'Fabri',
+  };
+  const parsed = parseDoverUrl(board.url);
+  assert.ok(parsed);
+  const job = parseDoverJob({
+    id: '69e29c52-4577-440e-a08c-e36c42d67a6f',
+    client_name: 'Fabri',
+    title: ' Mechanical Engineering Intern - Winter 2027 ',
+    user_provided_description: '<p>Complete a four-month work term.</p>',
+    locations: [{
+      name: 'Toronto, ON, Canada',
+      location_option: { display_name: 'Toronto, Ontario, Canada' },
+    }],
+    workplace_type: 'HYBRID',
+    compensation: {
+      lower_bound: 25,
+      upper_bound: 35,
+      currency_code: 'CAD',
+      salary_range_type: 'HOURLY',
+      employment_type: 'INTERNSHIP',
+    },
+    visa_support: false,
+    created: '2026-08-31T20:04:43Z',
+    active: true,
+    is_private: false,
+  }, board, parsed);
+
+  assert.ok(job);
+  assert.equal(job.title, 'Mechanical Engineering Intern - Winter 2027');
+  assert.equal(job.location, 'Toronto, ON, Canada');
+  assert.equal(job.type, 'intern');
+  assert.equal(job.salaryRaw, '25 - 35 CAD hourly');
+  assert.equal(job.salaryCurrency, 'CAD');
+  assert.equal(job.sponsorship, 'No visa sponsorship');
+  assert.equal(job.postedAt, '2026-08-31T20:04:43.000Z');
+  assert.equal(job.url, 'https://app.dover.com/apply/Fabri/69e29c52-4577-440e-a08c-e36c42d67a6f/');
+  assert.equal(job.description, 'Complete a four-month work term.');
 });
 
 test('eightfold: careers URL decomposes into public API parts', () => {
@@ -426,21 +487,51 @@ test('simplify: closed listings are dropped', () => {
   assert.equal(jobs[0]?.location, 'Toronto, ON, Canada');
 });
 
-test('custom: Prevue JSON maps structured jobs', () => {
-  const board = { kind: 'prevue-json' as const, name: 'Martinrea', url: 'https://example.com/jobs/', siteId: 596 };
-  const [job] = parsePrevueJobs({ data: { jobs: [{
+test('applicantpro: public API URL decomposes into board identifiers', () => {
+  assert.deepEqual(parseApplicantProUrl(
+    'https://martinrea.prevueaps.com/core/jobs/596?getParams=%7B%7D',
+  ), {
+    origin: 'https://martinrea.prevueaps.com',
+    tenant: 'martinrea',
+    siteId: 596,
+    endpoint: 'https://martinrea.prevueaps.com/core/jobs/596?getParams=%7B%7D',
+  });
+  assert.equal(parseApplicantProUrl('https://example.com/core/jobs/596'), null);
+  assert.equal(parseApplicantProUrl('https://martinrea.prevueaps.com/jobs/596'), null);
+});
+
+test('applicantpro: structured jobs map location, type, salary and date', () => {
+  assert.equal(applicantProAdapter().name, 'applicantpro');
+  const board = {
+    name: 'Martinrea',
+    url: 'https://martinrea.prevueaps.com/core/jobs/596?getParams=%7B%7D',
+  };
+  const parsed = parseApplicantProUrl(board.url);
+  assert.ok(parsed);
+  const [job] = parseApplicantProJobs({ data: { jobs: [{
     id: 332542,
     title: 'Mechanical Engineering Intern',
     startDateRef: 'Aug 20, 2026',
     jobLocation: 'Vaughan, ON, Canada',
     workplaceType: 'Onsite',
     employmentType: 'Intern',
-    jobUrl: 'https://example.com/jobs/332542',
-  }] } }, board);
+    minSalary: '25.50',
+    maxSalary: '32.00',
+    payTypeFrame: 'per hour',
+    iso3: 'CAN',
+    classification: 'Engineering',
+    jobUrl: 'https://martinrea.prevueaps.com/jobs/332542',
+  }] } }, board, parsed);
   assert.equal(job?.title, 'Mechanical Engineering Intern');
   assert.equal(job?.location, 'Vaughan, ON, Canada');
   assert.equal(job?.type, 'intern');
   assert.equal(job?.postedAt?.slice(0, 10), '2026-08-20');
+  assert.equal(job?.salaryRaw, '25.50 - 32.00 CAD per hour');
+  assert.equal(job?.salaryMin, 25.5);
+  assert.equal(job?.salaryMax, 32);
+  assert.equal(job?.salaryCurrency, 'CAD');
+  assert.equal(job?.source, 'applicantpro');
+  assert.equal(job?.description, 'Category: Engineering');
 });
 
 test('custom: configured HTML cards map title, location and date', () => {

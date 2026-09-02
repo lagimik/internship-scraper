@@ -36,7 +36,11 @@ export const ORACLE_BOARDS: OracleBoard[] = [
   {
     url: 'https://emfg.fa.em4.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_4001',
     name: 'Arcelor Mittal',
-  }
+  },
+  {
+    url: 'https://icfcjb.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/Aerospace',
+    name: 'Honeywell Aerospace',
+  },
 ];
 
 export interface ParsedOracleUrl {

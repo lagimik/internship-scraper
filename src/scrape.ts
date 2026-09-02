@@ -28,6 +28,8 @@ import { eightfoldAdapter } from './adapters/eightfold.js';
 import { stantecAdapter } from './adapters/stantec.js';
 import { siemensAdapter } from './adapters/siemens.js';
 import { appleAdapter } from './adapters/apple.js';
+import { doverAdapter } from './adapters/dover.js';
+import { applicantProAdapter } from './adapters/applicantpro.js';
 
 /**
  * Sources cheap enough to poll often, the whole group finishes in ~10 seconds and
@@ -48,6 +50,8 @@ export function fastAdapters(): Adapter[] {
     bambooHrAdapter(),
     teslaAdapter(),
     stantecAdapter(),
+    doverAdapter(),
+    applicantProAdapter(),
   ];
 }
 
