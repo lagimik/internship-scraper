@@ -30,6 +30,12 @@ import { siemensAdapter } from './adapters/siemens.js';
 import { appleAdapter } from './adapters/apple.js';
 import { doverAdapter } from './adapters/dover.js';
 import { applicantProAdapter } from './adapters/applicantpro.js';
+import { avatureAdapter } from './adapters/avature.js';
+import { talentBrewAdapter } from './adapters/talentbrew.js';
+import { cornerstoneAdapter } from './adapters/cornerstone.js';
+import { phenomAdapter } from './adapters/phenom.js';
+import { smartRecruitersAdapter } from './adapters/smartrecruiters.js';
+import { taleoAdapter } from './adapters/taleo.js';
 
 /**
  * Sources cheap enough to poll often, the whole group finishes in ~10 seconds and
@@ -52,6 +58,10 @@ export function fastAdapters(): Adapter[] {
     stantecAdapter(),
     doverAdapter(),
     applicantProAdapter(),
+    talentBrewAdapter(),
+    avatureAdapter(),
+    cornerstoneAdapter(),
+    taleoAdapter(),
   ];
 }
 
@@ -61,7 +71,7 @@ export function fastAdapters(): Adapter[] {
  * boards also change far more slowly than the curated lists do.
  */
 export function slowAdapters(): Adapter[] {
-  return [workdayAdapter(), eightfoldAdapter(), siemensAdapter(), appleAdapter()];
+  return [workdayAdapter(), eightfoldAdapter(), siemensAdapter(), appleAdapter(), smartRecruitersAdapter(), phenomAdapter()];
 }
 
 /** Sources that run by default, fastest first. */

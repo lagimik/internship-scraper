@@ -54,7 +54,11 @@ export const SUCCESSFACTORS_BOARDS: SuccessFactorsBoard[] = [
   {
     url: 'https://careers.celestica.com/go/Engineering-Jobs/1280201/',
     name: 'Celestica',
-  }
+  },
+  {
+    url: 'https://jobsearch.alstom.com/search/',
+    name: 'Alstom',
+  },
 ];
 
 export interface ParsedSuccessFactorsUrl {

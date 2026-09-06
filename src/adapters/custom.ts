@@ -10,7 +10,7 @@ import { load } from 'cheerio';
 import type { Adapter, RawJob } from '../types.js';
 import { fetchText } from '../lib/fetch.js';
 
-type CustomBoard = CyberRecruiterBoard | HtmlBoard;
+type CustomBoard = CyberRecruiterBoard | HtmlBoard | MelitronBoard;
 
 interface BoardBase {
   name: string;
@@ -19,6 +19,10 @@ interface BoardBase {
 
 export interface CyberRecruiterBoard extends BoardBase {
   kind: 'cyber-recruiter';
+}
+
+export interface MelitronBoard extends BoardBase {
+  kind: 'melitron';
 }
 
 export interface HtmlSelectors {
@@ -37,6 +41,11 @@ export interface HtmlBoard extends BoardBase {
 }
 
 export const CUSTOM_BOARDS: CustomBoard[] = [
+  {
+    kind: 'melitron',
+    name: 'Melitron',
+    url: 'https://www.melitron.com/careers/',
+  },
   {
     kind: 'cyber-recruiter',
     name: 'Brock Solutions',
@@ -103,6 +112,38 @@ export function parseConfiguredHtml(html: string, board: HtmlBoard, pageUrl = bo
       description: board.selectors.description
         ? card.find(board.selectors.description).first().text().replace(/\s+/g, ' ').trim() || null
         : null,
+    });
+  });
+  return jobs;
+}
+
+/** Parse Melitron's custom WordPress `our-job` rows. */
+export function parseMelitronJobs(
+  html: string,
+  board: MelitronBoard,
+  pageUrl = board.url,
+): RawJob[] {
+  const $ = load(html);
+  const jobs: RawJob[] = [];
+  $('a.jobID[href*="/our-job/"]').each((_, element) => {
+    const anchor = $(element);
+    const title = anchor.find('strong').first().text().replace(/\s+/g, ' ').trim();
+    const href = anchor.attr('href');
+    if (!title || !href) return;
+
+    const rowText = anchor.closest('p').text().replace(/\s+/g, ' ').trim();
+    const location = rowText.match(/Location:\s*(.+?)\s+Schedule:/i)?.[1]?.trim() ?? '';
+    jobs.push({
+      title,
+      company: board.name,
+      location,
+      remote: /remote|home.?based/i.test(`${title} ${location}`),
+      url: new URL(href, pageUrl).toString(),
+      source: 'custom',
+      postedAt: null,
+      ...emptyFields(),
+      type: null,
+      description: null,
     });
   });
   return jobs;
@@ -199,6 +240,10 @@ async function fetchHtml(board: HtmlBoard): Promise<RawJob[]> {
 
 async function fetchBoard(board: CustomBoard): Promise<RawJob[]> {
   if (board.kind === 'cyber-recruiter') return fetchCyberRecruiter(board);
+  if (board.kind === 'melitron') {
+    const html = await fetchText(board.url, { headers: { accept: 'text/html' } });
+    return parseMelitronJobs(html, board);
+  }
   return fetchHtml(board);
 }
 

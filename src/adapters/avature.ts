@@ -22,9 +22,10 @@ export interface AvatureBoard {
 
 export const AVATURE_BOARDS: AvatureBoard[] = [
   {
-    url: 'https://jobs.siemens.com',
-    name: 'Siemens',
-  }
+    url: 'https://jobs.siemens-energy.com/en_US/jobs/Jobs?29454=964508&29454_format=11381&listFilterMode=1&folderRecordsPerPage=20',
+    name: 'Siemens Energy',
+    country: 'Canada',
+  },
 ];
 
 export interface ParsedAvaturePage {
@@ -48,7 +49,7 @@ export function parseAvatureSearchPage(
   const jobs: RawJob[] = [];
 
   $('article.article--result').each((_, card) => {
-    const titleLink = $(card).find('a[href*="/JobDetail/"]').first();
+    const titleLink = $(card).find('a[href*="/JobDetail/"], a[href*="/FolderDetail/"]').first();
     const title = cleanText(titleLink.text());
     const href = titleLink.attr('href');
     if (!title || !href) return;
@@ -106,7 +107,7 @@ export function parseAvatureSearchPage(
 export function parseAvatureUrl(url: string): { origin: string; searchPath: string } | null {
   try {
     const parsed = new URL(url);
-    if (!/\/SearchJobs\/?$/i.test(parsed.pathname)) return null;
+    if (!/\/(?:SearchJobs|Jobs)\/?$/i.test(parsed.pathname)) return null;
     return { origin: parsed.origin, searchPath: parsed.pathname };
   } catch {
     return null;

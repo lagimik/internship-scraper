@@ -18,6 +18,10 @@ export interface OracleBoard {
 /** Oracle boards verified against the public recruitingCEJobRequisitions API. */
 export const ORACLE_BOARDS: OracleBoard[] = [
   {
+    url: 'https://hcpd.fa.ca2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/Careers',
+    name: 'J.D. Irving',
+  },
+  {
     url: 'https://fa-epmd-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_3001',
     name: 'Linamar',
   },
@@ -130,9 +134,9 @@ export function collectOracleLocations(job: OracleRequisition): string {
 }
 
 function mapOracleType(job: OracleRequisition): JobType | null {
-  const value = [job.WorkerType, job.ContractType, job.JobType].filter(Boolean).join(' ');
-  if (/intern|student|trainee|stagiaire/i.test(value)) return 'intern';
+  const value = [job.WorkerType, job.ContractType, job.JobType, job.Title].filter(Boolean).join(' ');
   if (/co.?op/i.test(value)) return 'co-op';
+  if (/intern|student|trainee|stagiaire/i.test(value)) return 'intern';
   if (/contract|temporary|fixed.?term/i.test(value)) return 'contract';
   if (/full.?time|regular/i.test(value)) return 'full-time';
   return null;
@@ -168,6 +172,36 @@ async function searchJobs(
   return response.items?.[0] ?? {};
 }
 
+export function mapOracleRequisition(
+  requisition: OracleRequisition,
+  board: OracleBoard,
+  parsed: ParsedOracleUrl,
+): RawJob | null {
+  const id = String(requisition.Id ?? '');
+  const title = requisition.Title?.trim() ?? '';
+  if (!id || !title) return null;
+
+  const location = collectOracleLocations(requisition);
+  return {
+    title,
+    company: board.name,
+    location,
+    remote: /remote/i.test(location)
+      || /remote/i.test(requisition.WorkplaceType ?? '')
+      || requisition.WorkplaceTypeCode === 'ORA_REMOTE',
+    url: `${parsed.origin}/hcmUI/CandidateExperience/${parsed.language}/sites/${parsed.site}/job/${encodeURIComponent(id)}`,
+    source: 'oracle',
+    postedAt: parseOraclePostedDate(requisition.PostedDate),
+    salaryRaw: null,
+    salaryMin: null,
+    salaryMax: null,
+    salaryCurrency: null,
+    type: mapOracleType(requisition),
+    sponsorship: null,
+    description: requisition.ShortDescriptionStr?.trim() || null,
+  };
+}
+
 async function fetchOracleBoard(board: OracleBoard): Promise<RawJob[]> {
   const parsed = parseOracleUrl(board.url);
   if (!parsed) throw new Error(`unparseable Oracle Candidate Experience URL: ${board.url}`);
@@ -188,29 +222,11 @@ async function fetchOracleBoard(board: OracleBoard): Promise<RawJob[]> {
 
       for (const requisition of requisitions) {
         const id = String(requisition.Id ?? '');
-        const title = requisition.Title?.trim() ?? '';
-        if (!id || !title || seen.has(id)) continue;
+        if (!id || seen.has(id)) continue;
+        const job = mapOracleRequisition(requisition, board, parsed);
+        if (!job) continue;
         seen.add(id);
-
-        const location = collectOracleLocations(requisition);
-        jobs.push({
-          title,
-          company: board.name,
-          location,
-          remote: /remote/i.test(location)
-            || /remote/i.test(requisition.WorkplaceType ?? '')
-            || requisition.WorkplaceTypeCode === 'ORA_REMOTE',
-          url: `${parsed.origin}/hcmUI/CandidateExperience/${parsed.language}/sites/${parsed.site}/job/${encodeURIComponent(id)}`,
-          source: 'oracle',
-          postedAt: parseOraclePostedDate(requisition.PostedDate),
-          salaryRaw: null,
-          salaryMin: null,
-          salaryMax: null,
-          salaryCurrency: null,
-          type: mapOracleType(requisition),
-          sponsorship: null,
-          description: requisition.ShortDescriptionStr?.trim() || null,
-        });
+        jobs.push(job);
       }
 
       if (requisitions.length < PAGE_SIZE) break;

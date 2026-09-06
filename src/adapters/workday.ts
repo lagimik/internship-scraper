@@ -33,8 +33,10 @@ export interface WorkdayBoard {
  */
 export const WORKDAY_BOARDS: WorkdayBoard[] = [
 
-  //Mechanical Engineering ....
-  { url: 'https://wd1-identity.myworkday.com/wday/authgwy/hitachi/upc/login', name: 'Hitachi' },
+  // Mechanical Engineering ....
+  { url: 'https://wd1.myworkdaysite.com/en-US/recruiting/abinbev/CAN/details/London-Ontario/Packaging-Intern_30102886?source=LinkedIn', name: 'Labatt' },
+  { url: 'https://aptiv.wd5.myworkdayjobs.com/APTIV_CAREERS', name: 'Aptiv' },
+  { url: 'https://hitachi.wd1.myworkdayjobs.com/hitachi', name: 'Hitachi' },
   { url: 'https://boeing.wd1.myworkdayjobs.com/EXTERNAL_CAREERS', name: 'Boeing' },
  { url: 'https://magna.wd3.myworkdayjobs.com/en-US/Magna', name: 'Magna International' },
  { url: 'https://globalhr.wd5.myworkdayjobs.com/en-CA/REC_RTX_Ext_Gateway/', name: 'RTX' },
@@ -108,7 +110,7 @@ export const WORKDAY_BOARDS: WorkdayBoard[] = [
    */
 ];
 
-interface WorkdayPosting {
+export interface WorkdayPosting {
   title: string;
   externalPath: string;
   locationsText?: string;
@@ -144,23 +146,54 @@ export interface ParsedWorkdayUrl {
 
 /**
  * Decompose a Workday careers URL into the pieces the CXS API needs.
- * Handles both `/en-US/<site>` and bare `/<site>` forms, plus deep job links.
+ * Handles tenant-hosted URLs and shared-host `/recruiting/<tenant>/<site>` URLs.
  */
 export function parseWorkdayUrl(url: string): ParsedWorkdayUrl | null {
-  const m = url.match(/^https?:\/\/([a-z0-9-]+)\.(wd\d+)\.myworkdayjobs\.com\/(.+)$/i);
-  if (!m) return null;
-  const [, host, dc, rest] = m;
-  if (!host || !dc || !rest) return null;
+  let parsedUrl: URL;
+  try {
+    parsedUrl = new URL(url);
+  } catch {
+    return null;
+  }
+
+  const segments = parsedUrl.pathname.split('/').filter(Boolean);
+  const sharedHost = parsedUrl.hostname.match(/^(wd\d+)\.myworkdaysite\.com$/i);
+  if (sharedHost) {
+    const dc = sharedHost[1];
+    const recruitingIndex = /^[a-z]{2}-[A-Z]{2}$/i.test(segments[0] ?? '') ? 1 : 0;
+    if (!dc || segments[recruitingIndex] !== 'recruiting') return null;
+    const tenant = segments[recruitingIndex + 1];
+    const site = segments[recruitingIndex + 2];
+    if (!tenant || !site) return null;
+    return {
+      host: dc,
+      dc,
+      tenant,
+      site,
+      origin: `${parsedUrl.protocol}//${parsedUrl.host}`,
+    };
+  }
+
+  const tenantHost = parsedUrl.hostname.match(/^([a-z0-9-]+)\.(wd\d+)\.myworkdayjobs\.com$/i);
+  if (!tenantHost) return null;
+  const [, host, dc] = tenantHost;
+  if (!host || !dc) return null;
 
   // Strip a locale segment (en-US, fr-CA, …) if present, then take the site id.
-  const segments = rest.split('/').filter(Boolean);
   const first = segments[0] ?? '';
-  const site = /^[a-z]{2}-[A-Z]{2}$/.test(first) ? segments[1] : first;
+  const site = /^[a-z]{2}-[A-Z]{2}$/i.test(first) ? segments[1] : first;
   if (!site) return null;
 
   // The tenant is the subdomain for every tenant checked (incl. host≠company cases
   // like Loblaw's `myview`), so derive it rather than asking for it separately.
-  return { host, dc, tenant: host, site, origin: `https://${host}.${dc}.myworkdayjobs.com` };
+  return { host, dc, tenant: host, site, origin: `${parsedUrl.protocol}//${parsedUrl.host}` };
+}
+
+function workdayJobBase(parsed: ParsedWorkdayUrl): string {
+  if (parsed.origin.endsWith('.myworkdaysite.com')) {
+    return `${parsed.origin}/en-US/recruiting/${parsed.tenant}/${parsed.site}`;
+  }
+  return `${parsed.origin}/en-US/${parsed.site}`;
 }
 
 /** "Posted 11 Days Ago" / "Posted 30+ Days Ago" / "Posted Today" → ISO date. */
@@ -174,6 +207,30 @@ export function parseWorkdayPostedOn(postedOn: string | undefined, now = new Dat
   const months = s.match(/(\d+)\+?\s*month/)?.[1];
   if (months) return new Date(now.getTime() - Number(months) * 30 * 86_400_000).toISOString();
   return null;
+}
+
+export function mapWorkdayPosting(
+  posting: WorkdayPosting,
+  board: WorkdayBoard,
+  parsed: ParsedWorkdayUrl,
+): RawJob {
+  const location = posting.locationsText ?? '';
+  return {
+    title: posting.title,
+    company: board.name,
+    location,
+    remote: /remote/i.test(location) || /remote/i.test(posting.title),
+    url: `${workdayJobBase(parsed)}${posting.externalPath}`,
+    source: 'workday',
+    postedAt: parseWorkdayPostedOn(posting.postedOn),
+    salaryRaw: null,
+    salaryMin: null,
+    salaryMax: null,
+    salaryCurrency: null,
+    type: null,
+    sponsorship: null,
+    description: null,
+  };
 }
 
 async function postJobs(
@@ -201,7 +258,7 @@ async function postJobs(
  * real title, so unlike Job Bank these actually surface internships.
  */
 const SEARCH_TERMS = (process.env.JT_WD_TERMS
-  ?? 'intern,co-op,stagiaire,software,developer,new grad,data scientist')
+  ?? 'intern,co-op,stagiaire,software,developer,new grad,data scientist,mechanical intern')
   .split(',')
   .map((t) => t.trim())
   .filter(Boolean);
@@ -276,23 +333,7 @@ async function fetchWorkdayBoard(board: WorkdayBoard): Promise<RawJob[]> {
         const path = j.externalPath ?? '';
         if (!path || seen.has(path)) continue;
         seen.add(path);
-        const location = j.locationsText ?? '';
-        out.push({
-          title: j.title,
-          company: board.name,
-          location,
-          remote: /remote/i.test(location) || /remote/i.test(j.title),
-          url: `${p.origin}/en-US/${p.site}${path}`,
-          source: 'workday',
-          postedAt: parseWorkdayPostedOn(j.postedOn),
-          salaryRaw: null,
-          salaryMin: null,
-          salaryMax: null,
-          salaryCurrency: null,
-          type: null,
-          sponsorship: null,
-          description: null,
-        });
+        out.push(mapWorkdayPosting(j, board, p));
       }
 
       // Last page for this term.
@@ -310,7 +351,7 @@ async function fetchWorkdayBoard(board: WorkdayBoard): Promise<RawJob[]> {
     if (!matchRole(job.title).matches) continue;
 
     lookups++;
-    const path = job.url.slice(`${p.origin}/en-US/${p.site}`.length);
+    const path = job.url.slice(workdayJobBase(p).length);
     try {
       const detail = await fetchLocations(p, path);
       if (detail.location) {
