@@ -17,6 +17,7 @@ test('canada: real location strings from live sources', () => {
   // Job Bank's parenthesized format, incl. towns not in the city list.
   assert.equal(match('Havelock (ON)', 'CA')?.region, 'ON');
   assert.equal(match('Saint-Bruno (QC)', 'CA')?.region, 'QC');
+  assert.deepEqual(matchLocations('Brossard, QC, CA').map((result) => result.country), ['CA']);
   assert.equal(match('Vancouver, Canada +1', 'CA')?.region, 'BC');
   assert.equal(match('Montreal, Quebec', 'CA')?.region, 'QC');
 
@@ -231,5 +232,6 @@ test('roles: French titles (Quebec postings)', () => {
   assert.equal(matchRole('Stagiaire en génie mécanique').category, 'mechanical-engineering');
   assert.equal(matchRole('Ingénieure en mécanique').matches, true);
   assert.equal(matchRole('Stage - Conception mécanique').category, 'design-manufacturing');
+  assert.equal(matchRole('Stagiaire Concepteur Mécanique Turbine').category, 'design-manufacturing');
   assert.equal(matchRole('Stagiaire DevOps - Automne 2026').matches, false);
 });

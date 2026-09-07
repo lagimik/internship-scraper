@@ -122,7 +122,7 @@ const CONCEPT_RULES: ConceptRule[] = [
 
   // French titles common in Quebec.
   { category: 'mechatronics', name: 'fr-mechatronics', all: [/\bmécatronique\b/] },
-  { category: 'design-manufacturing', name: 'fr-design', all: [/\bconception\s+(mécanique|pour\s+la\s+fabrication)\b/] },
+  { category: 'design-manufacturing', name: 'fr-design', all: [/\b(conception\s+(mécanique|pour\s+la\s+fabrication)|concepteurs?\s+mécanique|conceptrices?\s+mécanique)\b/] },
   { category: 'materials-engineering', name: 'fr-materials', all: [/\b(matériaux|métallurgie|composites?)\b/] },
   { category: 'mechanical-engineering', name: 'fr-mechanical', all: [/\b(ingénieur(e)?\s+(en\s+)?mécanique|génie\s+mécanique)\b/] },
   { category: 'manufacturing-engineering', name: 'fr-manufacturing', all: [/\b(fabrication|manufacturier|production|procédés?|qualité|assemblage)\b/], any: [/\b(ingénieur(e)?|ingénierie|spécialiste|technicien(ne)?)\b/, STUDENT_MARKER] },

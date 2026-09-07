@@ -99,6 +99,7 @@ export function matchLocations(rawLocation: string): LocationMatch[] {
     }
   }
   for (const code of US_CODES) {
+    if (code === 'CA' && matches.has('CA') && !usNamed) continue;
     const c = code.toLowerCase();
     if (new RegExp(`,\\s*${c}(?:\\s|,|$)`).test(loc) || new RegExp(`\\bus/${c}(?:/|\\b)`).test(loc)) {
       // ON and CA-style abbreviations can overlap other text; a known US city or
