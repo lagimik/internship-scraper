@@ -8,7 +8,7 @@ import { collectLocations, mapEmploymentType } from './ashby.js';
 import { mapOracleRequisition, parseOracleUrl } from './oracle.js';
 import { parseDayforceResponse, parseDayforceUrl } from './dayforce.js';
 import { parseBambooHrPosting, parseBambooHrUrl } from './bamboohr.js';
-import { parseTeslaHtml } from './tesla.js';
+import { parseTeslaJson } from './tesla.js';
 import { parseStantecResponse } from './stantec.js';
 import { parseSiemensSearchPage, siemensAdapter } from './siemens.js';
 import { appleAdapter, parseAppleSearchResponse } from './apple.js';
@@ -753,25 +753,31 @@ test('bamboohr: detail record maps structured location, date and description', (
   assert.match(job.description ?? '', /Build & test robots/);
 });
 
-test('tesla: saved search HTML returns visible result cards', () => {
-  const jobs = parseTeslaHtml(`
-    <li class="style_SearchListItem__hash">
-      <a class="style_TitleLink__hash" href="/en_CA/careers/search/job/software-developer-intern-123">
-        Software Developer <span>Intern</span>
-      </a>
-      <ul class="style_ListResultItemSublist__hash">
-        <li><strong>Engineering &amp; Information Technology</strong> ・ <strong>Intern/Apprentice</strong></li>
-        <li class="style_ListResultItemSublistLocation__hash"><strong>Toronto, Ontario</strong></li>
-      </ul>
-    </li>
-  `);
+test('tesla: saved search JSON resolves compact listing fields', () => {
+  const jobs = parseTeslaJson({
+    lookup: {
+      locations: { '402317': 'Fremont, California' },
+      departments: { '3': 'Tesla AI' },
+      types: { '3': 'intern' },
+    },
+    listings: [{
+      id: '282596',
+      t: ' Internship, Test Engineer, Self-Driving (Winter/Spring 2027) ',
+      dp: '3',
+      l: '402317',
+      y: 3,
+    }],
+  });
 
   assert.equal(jobs.length, 1);
-  assert.equal(jobs[0]?.title, 'Software Developer Intern');
-  assert.equal(jobs[0]?.location, 'Toronto, Ontario');
+  assert.equal(jobs[0]?.title, 'Internship, Test Engineer, Self-Driving (Winter/Spring 2027)');
+  assert.equal(jobs[0]?.location, 'Fremont, California');
   assert.equal(jobs[0]?.type, 'intern');
-  assert.equal(jobs[0]?.url, 'https://www.tesla.com/en_CA/careers/search/job/software-developer-intern-123');
-  assert.equal(jobs[0]?.description, 'Job category: Engineering & Information Technology');
+  assert.equal(
+    jobs[0]?.url,
+    'https://www.tesla.com/en_CA/careers/search/job/internship-test-engineer-self-driving-winter-spring-2027-282596',
+  );
+  assert.equal(jobs[0]?.description, 'Job category: Tesla AI');
 });
 
 test('stantec: public search response maps to a normalized adapter job', () => {

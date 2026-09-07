@@ -1,18 +1,28 @@
-/**
- * Tesla careers adapter for a search-results page saved from a browser.
- *
- * Tesla's Akamai configuration blocks this application's server-side requests. Save
- * the rendered careers search page as `input/tesla.html`; this adapter parses the
- * visible result cards without making a network request.
- */
+/** Tesla careers adapter for a search response saved from a browser. */
 
 import { readFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
-import { load } from 'cheerio';
 import type { Adapter, JobType, RawJob } from '../types.js';
 
-const INPUT_PATH = resolve(process.cwd(), 'input', 'tesla.html');
+const INPUT_PATH = resolve(process.cwd(), 'input', 'tesla.json');
 const TESLA_ORIGIN = 'https://www.tesla.com';
+
+interface TeslaListing {
+  id: string;
+  t: string;
+  dp: string;
+  l: string;
+  y: number;
+}
+
+interface TeslaPayload {
+  lookup: {
+    locations: Record<string, string>;
+    departments: Record<string, string>;
+    types: Record<string, string>;
+  };
+  listings: TeslaListing[];
+}
 
 function mapType(type: string | undefined): JobType | null {
   const normalized = type?.toLowerCase() ?? '';
@@ -25,30 +35,31 @@ function mapType(type: string | undefined): JobType | null {
 
 const cleanText = (value: string): string => value.replace(/\s+/g, ' ').trim();
 
-/** Parse rendered Tesla search-result cards. Exported for deterministic fixture tests. */
-export function parseTeslaHtml(html: string): RawJob[] {
-  const $ = load(html);
-  const jobs: RawJob[] = [];
+function slugifyTitle(title: string): string {
+  return title
+    .normalize('NFKD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-|-$/g, '');
+}
 
-  $('li[class*="SearchListItem"]').each((_index, element) => {
-    const card = $(element);
-    const link = card.find('a[href*="/careers/search/job/"]').first();
-    const title = cleanText(link.text());
-    const href = link.attr('href')?.trim();
-    const metadata = card.find('ul[class*="ListResultItemSublist"] > li').first();
-    const category = cleanText(metadata.find('strong').first().text());
-    const typeLabel = cleanText(metadata.find('strong').eq(1).text());
-    const location = cleanText(card.find('li[class*="ListResultItemSublistLocation"] strong').first().text());
-    if (!title || !href || !location) return;
+/** Parse Tesla's compact careers search payload. Exported for fixture tests. */
+export function parseTeslaJson(payload: TeslaPayload): RawJob[] {
+  return payload.listings.flatMap((listing) => {
+    const title = cleanText(listing.t);
+    const location = payload.lookup.locations[listing.l];
+    if (!listing.id || !title || !location) return [];
 
-    jobs.push({
+    const department = payload.lookup.departments[listing.dp];
+    const typeLabel = payload.lookup.types[String(listing.y)];
+    return [{
       title,
       company: 'Tesla',
       location,
       remote: /\bremote\b/i.test(`${title} ${location}`),
-      url: new URL(href, TESLA_ORIGIN).href,
+      url: `${TESLA_ORIGIN}/en_CA/careers/search/job/${slugifyTitle(title)}-${listing.id}`,
       source: 'tesla',
-      // Search-result cards do not expose a reliable posting date.
       postedAt: null,
       salaryRaw: null,
       salaryMin: null,
@@ -56,15 +67,14 @@ export function parseTeslaHtml(html: string): RawJob[] {
       salaryCurrency: null,
       type: mapType(typeLabel),
       sponsorship: null,
-      description: category ? `Job category: ${category}` : null,
-    });
+      description: department ? `Job category: ${department}` : null,
+    }];
   });
-
-  return jobs;
 }
 
 async function loadTeslaInput(): Promise<RawJob[]> {
-  return parseTeslaHtml(await readFile(INPUT_PATH, 'utf8'));
+  const payload = JSON.parse(await readFile(INPUT_PATH, 'utf8')) as TeslaPayload;
+  return parseTeslaJson(payload);
 }
 
 export function teslaAdapter(): Adapter {

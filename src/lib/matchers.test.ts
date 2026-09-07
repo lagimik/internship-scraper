@@ -57,7 +57,8 @@ test('canada: remote handling', () => {
 
 test('work terms: accepts Winter 2027 and Hiver 2027 postings', () => {
   for (const text of [
-    'Winter 2027', '2027 Winter', 'Hiver 2027', '2027 Hiver',
+    'Winter 2027', '2027 Winter', 'Winter/Spring 2027', '2027 Winter/Spring',
+    'Hiver 2027', '2027 Hiver',
     'Starting January 2027', 'Internship beginning January 2027',
     'Débutant en janvier 2027', 'Stage - janvier 2027',
     'January to April 2027', 'Janvier à avril 2027',

@@ -36,7 +36,11 @@ function explicitDuration(text: string, requireContext = false): WorkTermMatch |
 
 function targetTermEvidence(text: string): string | null {
   const patterns = [
-    new RegExp(String.raw`\b(?:winter|hiver)\s+${TARGET_YEAR}\b|\b${TARGET_YEAR}\s+(?:winter|hiver)\b`, 'i'),
+    new RegExp(
+      String.raw`\b(?:winter(?:\s*\/\s*spring)?|hiver)\s+${TARGET_YEAR}\b` +
+        String.raw`|\b${TARGET_YEAR}\s+(?:winter(?:\s*\/\s*spring)?|hiver)\b`,
+      'i',
+    ),
     new RegExp(
       String.raw`\b(?:start(?:ing|s)?|begin(?:ning|s)?|commenc(?:e|es|ing|ant)|début(?:ant)?|debute?|débute?)\b` +
         String.raw`[^.\n]{0,30}\b(?:jan(?:uary)?|janv(?:ier)?)\s+${TARGET_YEAR}\b`,
