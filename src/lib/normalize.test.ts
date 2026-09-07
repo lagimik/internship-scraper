@@ -49,6 +49,23 @@ test('normalize: an adapter-supplied type outranks the title guess', () => {
   assert.equal(keptJobs[0]?.type, 'intern');
 });
 
+test('normalize: keeps the GE Vernova French mechanical design internship', () => {
+  const { keptJobs } = normalize([raw({
+    title: 'Stagiaire Concepteur Mécanique Turbine',
+    company: 'GE Vernova',
+    location: 'Brossard, QC, CA',
+    type: 'intern',
+    description: 'Stagiaire universitaire hiver 2027 en conception mécanique.',
+    url: 'https://careers.gevernova.com/stagiaire-concepteur-mecanique-turbine/job/R5051913',
+  })]);
+
+  assert.equal(keptJobs.length, 1);
+  assert.equal(keptJobs[0]?.roleCategory, 'design-manufacturing');
+  assert.equal(keptJobs[0]?.type, 'intern');
+  assert.equal(keptJobs[0]?.country, 'CA');
+  assert.equal(keptJobs[0]?.region, 'QC');
+});
+
 test('normalize: postings older than the cutoff never enter the database', () => {
   const daysAgo = (n: number) => new Date(Date.now() - n * 86_400_000).toISOString();
   const { keptJobs, droppedStale } = normalize([

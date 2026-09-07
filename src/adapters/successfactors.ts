@@ -66,10 +66,6 @@ export const SUCCESSFACTORS_BOARDS: SuccessFactorsBoard[] = [
     name: 'Nutrien',
     apiBrand: 'North-America',
   },
-  {
-    url: 'https://careers.bwxt.com/search/?createNewAlert=false&q=&locationsearch=',
-    name: 'BWXT',
-  },
 ];
 
 export interface ParsedSuccessFactorsUrl {

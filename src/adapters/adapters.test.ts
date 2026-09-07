@@ -46,6 +46,7 @@ import {
   discoverCyberRecruiterPages,
   parseConfiguredHtml,
   parseCyberRecruiterJobs,
+  parseGcJobs,
   parseMelitronJobs,
 } from './custom.js';
 import {
@@ -1137,6 +1138,48 @@ test('custom: configured HTML cards map title, location and date', () => {
   assert.equal(job?.url, 'https://example.com/jobs/123-design-intern');
   assert.equal(job?.location, 'London, ON, Canada');
   assert.equal(job?.postedAt, '2026-08-25T00:00:00.000Z');
+});
+
+test('custom: GC Jobs student result maps department, location, salary and type', () => {
+  const board = {
+    kind: 'gc-jobs' as const,
+    name: 'Government of Canada',
+    url: 'https://emploisfp-psjobs.cfp-psc.gc.ca/psrs-srfp/applicant/page2440?tab=1&title=student',
+  };
+  const [job] = parseGcJobs(`
+    <ol>
+      <li class="searchResult">
+        <div><strong><a href="/psrs-srfp/applicant/page1800?poster=2453012">Microbial Ecology Master’s Student</a></strong></div>
+        <div><strong>Research Affiliate Program</strong></div>
+        <div class="tableTable"><div class="tableRow">
+          <div class="tableCell">
+            Closing date: 2026-09-11<br>
+            Agriculture and Agri-Food Canada<br>
+            - Science and Technology Branch<br>
+            Lethbridge (Alberta)
+          </div>
+          <div class="tableCell">
+            English essential<br>
+            $25.17 to $31.69 per hour (Varies by education and experience.)
+          </div>
+        </div></div>
+      </li>
+    </ol>
+  `, board);
+
+  assert.ok(job);
+  assert.equal(job.title, 'Microbial Ecology Master’s Student');
+  assert.equal(job.company, 'Agriculture and Agri-Food Canada');
+  assert.equal(job.location, 'Lethbridge (Alberta), Canada');
+  assert.equal(job.url, 'https://emploisfp-psjobs.cfp-psc.gc.ca/psrs-srfp/applicant/page1800?poster=2453012');
+  assert.equal(job.source, 'custom');
+  assert.equal(job.postedAt, null);
+  assert.equal(job.salaryRaw, '$25.17 to $31.69 per hour (Varies by education and experience.)');
+  assert.equal(job.salaryMin, 25.17);
+  assert.equal(job.salaryMax, 31.69);
+  assert.equal(job.salaryCurrency, 'CAD');
+  assert.equal(job.type, 'intern');
+  assert.equal(job.description, 'Research Affiliate Program');
 });
 
 test('custom: Melitron WordPress rows map title, location and URL', () => {

@@ -7,10 +7,10 @@
  */
 
 import { load } from 'cheerio';
-import type { Adapter, RawJob } from '../types.js';
+import type { Adapter, JobType, RawJob } from '../types.js';
 import { fetchText } from '../lib/fetch.js';
 
-type CustomBoard = CyberRecruiterBoard | HtmlBoard | MelitronBoard;
+type CustomBoard = CyberRecruiterBoard | GcJobsBoard | HtmlBoard | MelitronBoard;
 
 interface BoardBase {
   name: string;
@@ -23,6 +23,10 @@ export interface CyberRecruiterBoard extends BoardBase {
 
 export interface MelitronBoard extends BoardBase {
   kind: 'melitron';
+}
+
+export interface GcJobsBoard extends BoardBase {
+  kind: 'gc-jobs';
 }
 
 export interface HtmlSelectors {
@@ -41,6 +45,11 @@ export interface HtmlBoard extends BoardBase {
 }
 
 export const CUSTOM_BOARDS: CustomBoard[] = [
+  {
+    kind: 'gc-jobs',
+    name: 'Government of Canada',
+    url: 'https://emploisfp-psjobs.cfp-psc.gc.ca/psrs-srfp/applicant/page2440?tab=1&title=student&locationsFilter=&departments=&officialLanguage=&referenceNumber=&selectionProcessNumber=&search=Search%20jobs&log=false',
+  },
   {
     kind: 'melitron',
     name: 'Melitron',
@@ -151,6 +160,86 @@ export function parseMelitronJobs(
   return jobs;
 }
 
+function gcJobsLines($: ReturnType<typeof load>, element: Parameters<ReturnType<typeof load>>[0]): string[] {
+  const copy = $(element).clone();
+  copy.find('br').replaceWith('\n');
+  return copy.text().split('\n')
+    .map((line) => line.replace(/\s+/g, ' ').trim())
+    .filter(Boolean);
+}
+
+function gcJobsType(title: string, program: string): JobType | null {
+  const value = `${title} ${program}`;
+  if (/\bco[\s-]?op\b/i.test(value)) return 'co-op';
+  if (/\bstudent\b|\bintern(ship)?\b|research affiliate|student work experience/i.test(value)) {
+    return 'intern';
+  }
+  return null;
+}
+
+function gcJobsSalary(value: string | undefined): Pick<RawJob,
+  'salaryRaw' | 'salaryMin' | 'salaryMax' | 'salaryCurrency'> {
+  const salaryRaw = value?.match(/\$[\d,.]+(?:\s+(?:to|-)\s+\$[\d,.]+)?.*/i)?.[0] ?? null;
+  const amounts = salaryRaw?.match(/\$([\d,.]+)(?:\s+(?:to|-)\s+\$([\d,.]+))?/i);
+  const parseAmount = (amount: string | undefined): number | null => {
+    if (!amount) return null;
+    const parsed = Number(amount.replace(/,/g, ''));
+    return Number.isFinite(parsed) ? parsed : null;
+  };
+  return {
+    salaryRaw,
+    salaryMin: parseAmount(amounts?.[1]),
+    salaryMax: parseAmount(amounts?.[2]),
+    salaryCurrency: salaryRaw ? 'CAD' : null,
+  };
+}
+
+/** Parse the PSC-owned GC Jobs search-result fragment. */
+export function parseGcJobs(
+  html: string,
+  board: GcJobsBoard,
+  pageUrl = board.url,
+): RawJob[] {
+  const $ = load(html);
+  const jobs: RawJob[] = [];
+  $('li.searchResult').each((_, element) => {
+    const result = $(element);
+    const anchor = result.find('a[href]').filter((_, link) => {
+      const href = $(link).attr('href') ?? '';
+      return href.includes('page1800?poster=') || href.includes('/srs-sre/page01.html?poster=');
+    }).first();
+    const title = anchor.text().replace(/\s+/g, ' ').trim();
+    const href = anchor.attr('href');
+    if (!title || !href) return;
+
+    const program = result.children('div').children('strong').eq(1).text().replace(/\s+/g, ' ').trim();
+    const cells = result.find('.tableCell');
+    const details = gcJobsLines($, cells.eq(0));
+    const closingIndex = details.findIndex((line) => /^Closing date:/i.test(line));
+    const companyIndex = closingIndex >= 0 ? closingIndex + 1 : 0;
+    const company = details[companyIndex] ?? board.name;
+    const locationParts = details.slice(companyIndex + 1).filter((line) => !line.startsWith('-'));
+    let location = locationParts.join(' ').trim();
+    if (location && !/\bcanada\b|international|france/i.test(location)) location += ', Canada';
+    const secondary = gcJobsLines($, cells.eq(1));
+
+    jobs.push({
+      title,
+      company,
+      location,
+      remote: /\bremote\b/i.test(`${title} ${location}`),
+      url: new URL(href, pageUrl).toString(),
+      source: 'custom',
+      postedAt: null,
+      ...gcJobsSalary(secondary.find((line) => line.includes('$'))),
+      type: gcJobsType(title, program),
+      sponsorship: null,
+      description: program || null,
+    });
+  });
+  return jobs;
+}
+
 const CANADIAN_GROUP = /[?&]groupvalue=(?:AB|BC|MB|NB|NL|NS|NT|NU|ON|PE|QC|SK|YT)-/i;
 
 /** Find Canadian location pages from a Cyber Recruiter location index. */
@@ -240,8 +329,36 @@ async function fetchHtml(board: HtmlBoard): Promise<RawJob[]> {
   return jobs;
 }
 
+async function fetchGcJobs(board: GcJobsBoard): Promise<RawJob[]> {
+  const initial = await fetch(board.url, {
+    headers: { accept: 'text/html', 'user-agent': 'job-tracker/0.1 (personal job search aggregator)' },
+    signal: AbortSignal.timeout(20_000),
+  });
+  if (!initial.ok) throw new Error(`HTTP ${initial.status} for ${board.url}`);
+  await initial.arrayBuffer();
+  const sessionCookie = initial.headers.getSetCookie()
+    .map((cookie) => cookie.split(';', 1)[0])
+    .find((cookie) => cookie?.startsWith('JSESSIONID='));
+  if (!sessionCookie) throw new Error('GC Jobs did not provide a public session cookie');
+
+  const fragmentUrl = new URL(board.url);
+  fragmentUrl.searchParams.set('isSecondPartOfPage', '1');
+  fragmentUrl.searchParams.set('isInitialNetworkCheck', '1');
+  const html = await fetchText(`${fragmentUrl}#initialized`, {
+    realUrl: fragmentUrl.toString(),
+    headers: {
+      accept: 'text/html',
+      cookie: sessionCookie,
+      referer: board.url,
+      'x-requested-with': 'XMLHttpRequest',
+    },
+  });
+  return parseGcJobs(html, board, board.url);
+}
+
 async function fetchBoard(board: CustomBoard): Promise<RawJob[]> {
   if (board.kind === 'cyber-recruiter') return fetchCyberRecruiter(board);
+  if (board.kind === 'gc-jobs') return fetchGcJobs(board);
   if (board.kind === 'melitron') {
     const html = await fetchText(board.url, { headers: { accept: 'text/html' } });
     return parseMelitronJobs(html, board);
