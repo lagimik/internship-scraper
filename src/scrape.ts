@@ -39,6 +39,7 @@ import { taleoAdapter } from './adapters/taleo.js';
 import { ripplingAdapter } from './adapters/rippling.js';
 import { paradoxAdapter } from './adapters/paradox.js';
 import { cwsAdapter } from './adapters/cws.js';
+import { sapERecruitingAdapter } from './adapters/sap-erecruiting.js';
 
 /**
  * Sources cheap enough to poll often, the whole group finishes in ~10 seconds and
@@ -76,7 +77,7 @@ export function fastAdapters(): Adapter[] {
  * boards also change far more slowly than the curated lists do.
  */
 export function slowAdapters(): Adapter[] {
-  return [workdayAdapter(), eightfoldAdapter(), siemensAdapter(), appleAdapter(), smartRecruitersAdapter(), phenomAdapter(), paradoxAdapter()];
+  return [workdayAdapter(), eightfoldAdapter(), siemensAdapter(), appleAdapter(), smartRecruitersAdapter(), phenomAdapter(), paradoxAdapter(), sapERecruitingAdapter()];
 }
 
 /** Sources that run by default, fastest first. */

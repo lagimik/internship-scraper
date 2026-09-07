@@ -57,6 +57,100 @@ import {
   mapSmartRecruitersPosting,
   parseSmartRecruitersUrl,
 } from './smartrecruiters.js';
+import { parseUltiProResponse, parseUltiProUrl } from './ultipro.js';
+import { cwsAdapter, mapCwsJob, parseCwsUrl } from './cws.js';
+import {
+  mapSapERecruitingResult,
+  parseSapERecruitingPostingUrl,
+  parseSapERecruitingResults,
+  parseSapERecruitingUrl,
+} from './sap-erecruiting.js';
+
+test('sap-erecruiting: BC Hydro URL preserves its Web Dynpro config', () => {
+  assert.deepEqual(parseSapERecruitingUrl(
+    'https://app.bchydro.com/sap/bc/webdynpro/sap/hrrcf_a_unreg_job_search?sap-wd-configId=ZHRRCF_A_UNREG_JOB_SEARCH&sap-theme=sap_belize',
+  ), {
+    origin: 'https://app.bchydro.com',
+    applicationUrl: 'https://app.bchydro.com/sap/bc/webdynpro/sap/hrrcf_a_unreg_job_search',
+    configId: 'ZHRRCF_A_UNREG_JOB_SEARCH',
+  });
+  assert.equal(parseSapERecruitingUrl('https://app.bchydro.com/careers'), null);
+});
+
+test('sap-erecruiting: result update and OpenWindow command map a co-op posting', () => {
+  const response = `<updates><full-update><content-update><![CDATA[
+    <table ct="ST"><tbody>
+      <tr role="row"><th>Job Posting</th><th>Area of Expertise</th></tr>
+      <tr role="row">
+        <td role="presentation"></td>
+        <td role="gridcell"><a id="WDE0" ct="LN"><span>Co-op Student - Mechanical Engineer - Winter 2027</span></a></td>
+        <td role="gridcell"><span>Co-op / Student</span></td>
+      </tr>
+    </tbody></table>
+  ]]></content-update></full-update></updates>`;
+  const [result] = parseSapERecruitingResults(response);
+  assert.deepEqual(result, {
+    controlId: 'WDE0',
+    title: 'Co-op Student - Mechanical Engineer - Winter 2027',
+    areaOfExpertise: 'Co-op / Student',
+  });
+
+  const command = String.raw`OpenWindow",{"windowId":"sapwd_main_window","url":"\x2fsap\x2fbc\x2fwebdynpro\x2fsap\x2fhrrcf_a_posting_apply\x3fPARAM\x3dabc\x253d\x253d"}`;
+  const postingUrl = parseSapERecruitingPostingUrl(command, 'https://app.bchydro.com');
+  assert.equal(postingUrl, 'https://app.bchydro.com/sap/bc/webdynpro/sap/hrrcf_a_posting_apply?PARAM=abc%3d%3d');
+  assert.ok(result);
+  assert.ok(postingUrl);
+  const job = mapSapERecruitingResult(result, postingUrl, {
+    name: 'BC Hydro',
+    location: 'British Columbia, Canada',
+    url: 'https://app.bchydro.com/sap/bc/webdynpro/sap/hrrcf_a_unreg_job_search?sap-wd-configId=ZHRRCF_A_UNREG_JOB_SEARCH',
+  });
+  assert.equal(job.title, 'Co-op Student - Mechanical Engineer - Winter 2027');
+  assert.equal(job.company, 'BC Hydro');
+  assert.equal(job.location, 'British Columbia, Canada');
+  assert.equal(job.url, postingUrl);
+  assert.equal(job.source, 'sap-erecruiting');
+  assert.equal(job.type, 'co-op');
+});
+
+test('cws: Rio Tinto careers URL resolves to its public origin', () => {
+  assert.deepEqual(parseCwsUrl('https://jobs.riotinto.com/'), {
+    origin: 'https://jobs.riotinto.com',
+  });
+  assert.equal(parseCwsUrl('http://jobs.riotinto.com/'), null);
+});
+
+test('cws: public API record maps to the canonical Rio Tinto job', () => {
+  assert.equal(cwsAdapter().name, 'cws');
+  const job = mapCwsJob({
+    id: 23787136,
+    title: 'Intern-Mechanical Engineer',
+    primary_city: 'Salt Lake City',
+    primary_state: 'UT',
+    primary_country: 'US',
+    location_type: 'HCM_LOCATION_TYPE_OFFICE',
+    open_date: '2026-09-01T00:00:00',
+    job_type: 'Variable_time',
+    employment_type: 'Variable_time',
+    description: '<p>Build experience with mechanical assets.</p>',
+  }, {
+    url: 'https://jobs.riotinto.com/',
+    name: 'Rio Tinto',
+    apiUrl: 'https://jobsapi-google.m-cloud.io/api/job/search',
+    companyName: 'companies/de826bcc-d0cf-4689-9fc1-c1d9b100d59c',
+    customAttributeFilter: 'ats_portalid="Workday" AND is_internal="RioTinto_Careers"',
+  });
+
+  assert.ok(job);
+  assert.equal(job.title, 'Intern-Mechanical Engineer');
+  assert.equal(job.company, 'Rio Tinto');
+  assert.equal(job.location, 'Salt Lake City, UT, US');
+  assert.equal(job.url, 'https://jobs.riotinto.com/job/23787136/intern-mechanical-engineer/');
+  assert.equal(job.source, 'cws');
+  assert.equal(job.postedAt, '2026-09-01T00:00:00.000Z');
+  assert.equal(job.type, 'intern');
+  assert.equal(job.description, 'Build experience with mechanical assets.');
+});
 
 test('github: angle-bracket markdown links yield a clean URL', () => {
   // hanzili's lists escape URLs as [Apply](<https://…>). Keeping the ">" produced
@@ -574,6 +668,32 @@ test('avature: search URL and result cards map to jobs', () => {
   assert.equal(laterPage.nextOffset, 12);
 });
 
+test('avature: Pomerleau card maps and follows jobOffset pagination', () => {
+  const board = {
+    url: 'https://jobs.pomerleau.ca/en_US/Jobs/SearchJobs',
+    name: 'Pomerleau',
+  };
+  assert.deepEqual(parseAvatureUrl(board.url), {
+    origin: 'https://jobs.pomerleau.ca',
+    searchPath: '/en_US/Jobs/SearchJobs',
+  });
+
+  const page = parseAvatureSearchPage(`<article class="article article--result article--non-toggle">
+    <h3><a href="/en_US/Jobs/JobDetail/6466/3190">Senior Analyst - Strategy</a></h3>
+    <span class="list-item-location">Montreal, QC</span>
+  </article>
+  <a href="/en_US/Jobs/SearchJobs/?jobRecordsPerPage=6&amp;jobOffset=6">2</a>`, board);
+
+  assert.equal(page.jobs.length, 1);
+  assert.equal(page.jobs[0]?.title, 'Senior Analyst - Strategy');
+  assert.equal(page.jobs[0]?.company, 'Pomerleau');
+  assert.equal(page.jobs[0]?.location, 'Montreal, QC');
+  assert.equal(page.jobs[0]?.source, 'avature');
+  assert.equal(page.jobs[0]?.url, 'https://jobs.pomerleau.ca/en_US/Jobs/JobDetail/6466/3190');
+  assert.equal(page.nextOffset, 6);
+  assert.equal(page.offsetParameter, 'jobOffset');
+});
+
 test('avature: country-filtered multi-location cards retain the country', () => {
   const board = {
     url: 'https://jobs.siemens.com/en_US/externaljobs/SearchJobs/',
@@ -695,6 +815,53 @@ test('dayforce: careers URL decomposes into public API identifiers', () => {
     jobBoardCode: 'CANDIDATEPORTAL',
   });
   assert.equal(parseDayforceUrl('https://example.com/en-CA/eclipse/CANDIDATEPORTAL'), null);
+});
+
+test('ultipro: supplied Alamos Gold URL preserves tenant and board identifiers', () => {
+  assert.deepEqual(parseUltiProUrl(
+    'https://recruiting.ultipro.ca/ALA5000ALAG/JobBoard/63c26905-d7c5-4e50-933f-60cc2d69067f/?q=&o=postedDateDesc&w=&wc=&we=&wpst=',
+  ), {
+    origin: 'https://recruiting.ultipro.ca',
+    boardPath: '/ALA5000ALAG/JobBoard/63c26905-d7c5-4e50-933f-60cc2d69067f',
+    boardUrl: 'https://recruiting.ultipro.ca/ALA5000ALAG/JobBoard/63c26905-d7c5-4e50-933f-60cc2d69067f/',
+    searchUrl: 'https://recruiting.ultipro.ca/ALA5000ALAG/JobBoard/63c26905-d7c5-4e50-933f-60cc2d69067f/JobBoardView/LoadSearchResults',
+  });
+});
+
+test('ultipro: Alamos Gold opportunity maps live response fields', () => {
+  const board = {
+    url: 'https://recruiting.ultipro.ca/ALA5000ALAG/JobBoard/63c26905-d7c5-4e50-933f-60cc2d69067f/',
+    name: 'Alamos Gold Inc.',
+  };
+  const [job] = parseUltiProResponse({ opportunities: [{
+    Id: '74a3cf46-9999-4ba9-9e24-2ded1585b42b',
+    Title: 'Project Controls Specialist',
+    RequisitionNumber: 'SPECI003972',
+    PostedDate: '2026-09-04T20:25:08.49Z',
+    BriefDescription: 'Reporting to the Project Controls Manager.',
+    JobLocationType: 1,
+    OpportunityType: 0,
+    Locations: [{
+      LocalizedName: 'Lynn Lake Site',
+      Address: {
+        City: 'Lynn Lake',
+        PostalCode: 'R0B0W0',
+        State: { Code: 'MB', Name: 'Manitoba' },
+        Country: { Code: 'CAN', Name: 'Canada' },
+      },
+    }],
+  }] }, board);
+
+  assert.ok(job);
+  assert.equal(job.title, 'Project Controls Specialist');
+  assert.equal(job.company, 'Alamos Gold Inc.');
+  assert.equal(job.location, 'Lynn Lake, MB, R0B0W0, CAN');
+  assert.equal(job.postedAt, '2026-09-04T20:25:08.490Z');
+  assert.equal(job.source, 'ultipro');
+  assert.equal(
+    job.url,
+    'https://recruiting.ultipro.ca/ALA5000ALAG/JobBoard/63c26905-d7c5-4e50-933f-60cc2d69067f/OpportunityDetail?opportunityId=74a3cf46-9999-4ba9-9e24-2ded1585b42b',
+  );
 });
 
 test('dayforce: structured posting maps location, type, salary and URL', () => {

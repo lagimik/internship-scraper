@@ -16,6 +16,12 @@ export interface SuccessFactorsBoard {
   name: string;
   /** Newer RMK sites load search results from the public recruiting service. */
   apiBrand?: string;
+  apiLocale?: string;
+  apiLocation?: string;
+  apiDefaultLocation?: string;
+  apiDateOrder?: 'mdy' | 'dmy';
+  apiJobPathBrand?: boolean;
+  apiTerms?: string[];
 }
 
 /** Career sites verified to expose server-rendered `/search/` results. */
@@ -66,6 +72,17 @@ export const SUCCESSFACTORS_BOARDS: SuccessFactorsBoard[] = [
     name: 'Nutrien',
     apiBrand: 'North-America',
   },
+  {
+    url: 'https://emploi.hydroquebec.com/search/?q=etudiant',
+    name: 'Hydro-Québec',
+    apiBrand: 'Hydro-Québec',
+    apiLocale: 'fr_FR',
+    apiLocation: '',
+    apiDefaultLocation: 'Québec, Canada',
+    apiDateOrder: 'dmy',
+    apiJobPathBrand: false,
+    apiTerms: ['etudiant'],
+  },
 ];
 
 export interface ParsedSuccessFactorsUrl {
@@ -112,13 +129,17 @@ interface SuccessFactorsApiResponse {
   totalJobs?: number;
 }
 
-function parseApiDate(value: string | undefined): string | null {
+function parseApiDate(value: string | undefined, order: 'mdy' | 'dmy' = 'mdy'): string | null {
   if (!value) return null;
   const parts = /^(\d{1,2})\/(\d{1,2})\/(\d{2}|\d{4})$/.exec(value);
   if (!parts?.[1] || !parts[2] || !parts[3]) return null;
   const year = Number(parts[3]) < 100 ? 2000 + Number(parts[3]) : Number(parts[3]);
-  const date = new Date(Date.UTC(year, Number(parts[1]) - 1, Number(parts[2])));
-  return Number.isNaN(date.getTime()) ? null : date.toISOString();
+  const month = Number(order === 'dmy' ? parts[2] : parts[1]);
+  const day = Number(order === 'dmy' ? parts[1] : parts[2]);
+  if (month < 1 || month > 12 || day < 1 || day > 31) return null;
+  const date = new Date(Date.UTC(year, month - 1, day));
+  if (date.getUTCMonth() !== month - 1 || date.getUTCDate() !== day) return null;
+  return date.toISOString();
 }
 
 /** Map a job returned by the newer Recruiting Marketing search service. */
@@ -135,22 +156,23 @@ export function mapSuccessFactorsApiJob(
   const location = (posting.jobLocationShort ?? [])
     .map((value) => value.replace(/<br\s*\/?>/gi, '').trim())
     .filter(Boolean)
-    .join('; ');
+    .join('; ') || board.apiDefaultLocation || '';
   const employmentType = posting.filter3?.join(' ') ?? '';
+  const jobPath = board.apiJobPathBrand === false ? '' : `/${brand}`;
 
   return {
     title,
     company: board.name,
     location,
     remote: /remote|home.?based/i.test(`${posting.remoteElig?.join(' ') ?? ''} ${location} ${title}`),
-    url: `${parsed.origin}/${brand}/job/${slug}/${posting.id}-en_US`,
+    url: `${parsed.origin}${jobPath}/job/${slug}/${posting.id}-${board.apiLocale ?? 'en_US'}`,
     source: 'successfactors',
-    postedAt: parseApiDate(posting.unifiedStandardStart),
+    postedAt: parseApiDate(posting.unifiedStandardStart, board.apiDateOrder),
     salaryRaw: null,
     salaryMin: null,
     salaryMax: null,
     salaryCurrency: null,
-    type: /co-?op/i.test(title) ? 'co-op' : /intern|student/i.test(`${title} ${employmentType}`) ? 'intern' : null,
+    type: /co-?op/i.test(title) ? 'co-op' : /intern|student|stage|étudiant/i.test(`${title} ${employmentType}`) ? 'intern' : null,
     sponsorship: null,
     description: null,
   };
@@ -229,15 +251,15 @@ async function fetchApiBoard(board: SuccessFactorsBoard, parsed: ParsedSuccessFa
   const seen = new Set<string>();
   const endpoint = `${parsed.origin}/services/recruiting/v1/jobs`;
 
-  for (const term of SEARCH_TERMS) {
+  for (const term of board.apiTerms ?? SEARCH_TERMS) {
     let fetched = 0;
     for (let pageNumber = 0; pageNumber < MAX_API_PAGES; pageNumber++) {
       const body = JSON.stringify({
-        locale: 'en_US',
+        locale: board.apiLocale ?? 'en_US',
         pageNumber,
         sortBy: '',
         keywords: term,
-        location: 'Canada',
+        location: board.apiLocation ?? 'Canada',
         facetFilters: {},
         brand: board.apiBrand,
         skills: [],

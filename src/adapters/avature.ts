@@ -3,8 +3,8 @@
  *
  * Avature portals render public search results as server-side HTML. A configured URL
  * carries the portal-specific facet IDs (which are not portable between employers),
- * while `folderOffset` pages through the result folder. Keeping the complete verified
- * search URL is therefore safer than trying to reconstruct its numeric filters.
+ * while `folderOffset` or `jobOffset` pages through the result folder. Keeping the
+ * complete verified search URL is safer than reconstructing its numeric filters.
  */
 
 import * as cheerio from 'cheerio';
@@ -17,10 +17,13 @@ export interface AvatureBoard {
   name: string;
   /** Used when a result says only "Multiple Locations". */
   country?: string;
-  
 }
 
 export const AVATURE_BOARDS: AvatureBoard[] = [
+  {
+    url: 'https://jobs.pomerleau.ca/en_US/Jobs/SearchJobs',
+    name: 'Pomerleau',
+  },
   {
     url: 'https://jobs.siemens-energy.com/en_US/jobs/Jobs?29454=964508&29454_format=11381&listFilterMode=1&folderRecordsPerPage=20',
     name: 'Siemens Energy',
@@ -32,6 +35,7 @@ export interface ParsedAvaturePage {
   jobs: RawJob[];
   /** Offset of the next page, or null when this is the last page. */
   nextOffset: number | null;
+  offsetParameter: 'folderOffset' | 'jobOffset' | null;
 }
 
 function cleanText(value: string): string {
@@ -89,19 +93,26 @@ export function parseAvatureSearchPage(
     });
   });
 
-  const offsets = $('a[href*="folderOffset="]').map((_, link) => {
+  const paginationLinks = $('a[href*="folderOffset="], a[href*="jobOffset="]').map((_, link) => {
     const href = $(link).attr('href');
     if (!href) return null;
     try {
-      const offset = Number(new URL(href, origin).searchParams.get('folderOffset'));
-      return Number.isFinite(offset) && offset >= 0 ? offset : null;
+      const url = new URL(href, origin);
+      const offsetParameter = url.searchParams.has('folderOffset') ? 'folderOffset' : 'jobOffset';
+      const offset = Number(url.searchParams.get(offsetParameter));
+      return Number.isFinite(offset) && offset >= 0 ? { offset, offsetParameter } : null;
     } catch {
       return null;
     }
-  }).get().filter((offset): offset is number => typeof offset === 'number');
+  }).get().filter((link): link is { offset: number; offsetParameter: 'folderOffset' | 'jobOffset' } => Boolean(link));
 
-  const forwardOffsets = offsets.filter((candidate) => candidate > currentOffset);
-  return { jobs, nextOffset: forwardOffsets.length ? Math.min(...forwardOffsets) : null };
+  const forwardLinks = paginationLinks.filter((link) => link.offset > currentOffset);
+  const nextLink = forwardLinks.sort((left, right) => left.offset - right.offset)[0];
+  return {
+    jobs,
+    nextOffset: nextLink?.offset ?? null,
+    offsetParameter: nextLink?.offsetParameter ?? null,
+  };
 }
 
 export function parseAvatureUrl(url: string): { origin: string; searchPath: string } | null {
@@ -123,12 +134,12 @@ async function fetchAvatureBoard(board: AvatureBoard): Promise<RawJob[]> {
   const seen = new Set<string>();
   const visitedOffsets = new Set<number>();
   let offset = 0;
+  let offsetParameter: 'folderOffset' | 'jobOffset' | null = null;
 
   for (let page = 0; page < MAX_PAGES && !visitedOffsets.has(offset); page++) {
     visitedOffsets.add(offset);
     const url = new URL(board.url);
-    if (offset > 0) url.searchParams.set('folderOffset', String(offset));
-    else url.searchParams.delete('folderOffset');
+    if (offset > 0 && offsetParameter) url.searchParams.set(offsetParameter, String(offset));
 
     const parsed = parseAvatureSearchPage(await fetchText(url.href), board, offset);
     for (const job of parsed.jobs) {
@@ -138,6 +149,7 @@ async function fetchAvatureBoard(board: AvatureBoard): Promise<RawJob[]> {
     }
     if (parsed.nextOffset === null || parsed.jobs.length === 0) break;
     offset = parsed.nextOffset;
+    offsetParameter = parsed.offsetParameter;
   }
 
   return out;
