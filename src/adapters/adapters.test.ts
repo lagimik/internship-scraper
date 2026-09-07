@@ -52,6 +52,106 @@ import {
   mapSmartRecruitersPosting,
   parseSmartRecruitersUrl,
 } from './smartrecruiters.js';
+import { parseUltiProResponse, parseUltiProUrl } from './ultipro.js';
+import { mapRipplingPosting, parseRipplingUrl } from './rippling.js';
+import {
+  mapSuccessFactorsApiJob,
+  parseSuccessFactorsHtml,
+  parseSuccessFactorsUrl,
+} from './successfactors.js';
+
+test('rippling: Kraken Robotics URL and API posting map to a canonical job', () => {
+  const board = {
+    url: 'https://ats.rippling.com/en-CA/kraken-robotics-inc/jobs',
+    name: 'Kraken Robotics Inc.',
+  };
+  const parsed = parseRipplingUrl(board.url);
+  assert.deepEqual(parsed, {
+    origin: 'https://ats.rippling.com',
+    locale: 'en-CA',
+    slug: 'kraken-robotics-inc',
+  });
+  assert.ok(parsed);
+
+  const job = mapRipplingPosting({
+    id: 'cf84fc0e-616f-4c5a-8f44-1ba6ab761e87',
+    uuid: 'cf84fc0e-616f-4c5a-8f44-1ba6ab761e87',
+    name: 'Internships Opportunities',
+    url: 'https://ats.rippling.com/kraken-robotics-inc/jobs/cf84fc0e-616f-4c5a-8f44-1ba6ab761e87',
+    locations: [
+      { name: 'Dartmouth, Canada', countryCode: 'CA', workplaceType: 'ON_SITE' },
+      { name: 'Mount Pearl, Canada', countryCode: 'CA', workplaceType: 'ON_SITE' },
+    ],
+    employmentType: { id: 'Temporary / Intern', label: 'TEMP' },
+    createdOn: '2025-10-22T07:02:22.619000-07:00',
+    description: { role: '<p>Build marine robotics software.</p>', company: null },
+  }, board, parsed);
+
+  assert.ok(job);
+  assert.equal(job.title, 'Internships Opportunities');
+  assert.equal(job.company, 'Kraken Robotics Inc.');
+  assert.equal(job.location, 'Dartmouth, Canada; Mount Pearl, Canada');
+  assert.equal(job.url, 'https://ats.rippling.com/kraken-robotics-inc/jobs/cf84fc0e-616f-4c5a-8f44-1ba6ab761e87');
+  assert.equal(job.source, 'rippling');
+  assert.equal(job.postedAt, '2025-10-22T07:02:22.619000-07:00');
+  assert.equal(job.type, 'intern');
+  assert.equal(job.description, 'Build marine robotics software.');
+});
+
+test('successfactors: BWXT search URL and HTML result map to a canonical job', () => {
+  const board = {
+    url: 'https://careers.bwxt.com/search/?createNewAlert=false&q=&locationsearch=',
+    name: 'BWXT',
+  };
+
+  assert.deepEqual(parseSuccessFactorsUrl(board.url), {
+    origin: 'https://careers.bwxt.com',
+    searchUrl: 'https://careers.bwxt.com/search/',
+  });
+
+  const jobs = parseSuccessFactorsHtml(`
+    <table>
+      <tr class="data-row">
+        <td><a class="jobTitle-link" href="/job/Peterborough-Systems-Engineer-ON/1412785100/">Systems Engineer</a></td>
+        <td><span class="jobLocation">Peterborough, ON, CA</span></td>
+        <td><span class="jobDate">Aug 25, 2026</span></td>
+      </tr>
+    </table>
+  `, board);
+
+  assert.equal(jobs.length, 1);
+  assert.equal(jobs[0]?.title, 'Systems Engineer');
+  assert.equal(jobs[0]?.company, 'BWXT');
+  assert.equal(jobs[0]?.location, 'Peterborough, ON, CA');
+  assert.equal(jobs[0]?.url, 'https://careers.bwxt.com/job/Peterborough-Systems-Engineer-ON/1412785100/');
+  assert.equal(jobs[0]?.source, 'successfactors');
+  assert.equal(jobs[0]?.postedAt, '2026-08-25T00:00:00.000Z');
+});
+
+test('successfactors: Nutrien RMK API job maps to its canonical URL', () => {
+  const job = mapSuccessFactorsApiJob({
+    jobLocationShort: ['Redwater, AB, CAN, T0A 2W0<br/>'],
+    remoteElig: ['On-Site'],
+    filter3: ['Student'],
+    brandUrl: 'North-America',
+    unifiedUrlTitle: 'Co-op%2C-Mechanical-Engineer',
+    unifiedStandardStart: '9/1/26',
+    id: '33514',
+    unifiedStandardTitle: 'Co-op, Mechanical Engineer',
+  }, {
+    url: 'https://jobs.nutrien.com/North-America/go/search-result-na/2701217/',
+    name: 'Nutrien',
+    apiBrand: 'North-America',
+  });
+
+  assert.ok(job);
+  assert.equal(job.title, 'Co-op, Mechanical Engineer');
+  assert.equal(job.company, 'Nutrien');
+  assert.equal(job.location, 'Redwater, AB, CAN, T0A 2W0');
+  assert.equal(job.url, 'https://jobs.nutrien.com/North-America/job/Co-op%2C-Mechanical-Engineer/33514-en_US');
+  assert.equal(job.postedAt, '2026-09-01T00:00:00.000Z');
+  assert.equal(job.type, 'co-op');
+});
 
 test('github: angle-bracket markdown links yield a clean URL', () => {
   // hanzili's lists escape URLs as [Apply](<https://…>). Keeping the ">" produced
@@ -692,7 +792,58 @@ test('dayforce: careers URL decomposes into public API identifiers', () => {
     clientNamespace: 'eclipse',
     jobBoardCode: 'CANDIDATEPORTAL',
   });
+  assert.deepEqual(
+    parseDayforceUrl('https://jobs.dayforcehcm.com/westerkirk/DEHAVILLANDCORPORATECAREERS'),
+    {
+      origin: 'https://jobs.dayforcehcm.com',
+      cultureCode: 'en-US',
+      clientNamespace: 'westerkirk',
+      jobBoardCode: 'DEHAVILLANDCORPORATECAREERS',
+    },
+  );
   assert.equal(parseDayforceUrl('https://example.com/en-CA/eclipse/CANDIDATEPORTAL'), null);
+});
+
+test('ultipro: supplied HH Angus URL preserves tenant and board identifiers', () => {
+  assert.deepEqual(parseUltiProUrl(
+    'https://recruiting.ultipro.ca/HHA5000HHAA/JobBoard/7975045a-4360-4990-91b1-b0a05242192c/?q=&o=postedDateDesc&w=&wc=&we=&wpst=',
+  ), {
+    origin: 'https://recruiting.ultipro.ca',
+    boardPath: '/HHA5000HHAA/JobBoard/7975045a-4360-4990-91b1-b0a05242192c',
+    boardUrl: 'https://recruiting.ultipro.ca/HHA5000HHAA/JobBoard/7975045a-4360-4990-91b1-b0a05242192c/',
+    searchUrl: 'https://recruiting.ultipro.ca/HHA5000HHAA/JobBoard/7975045a-4360-4990-91b1-b0a05242192c/JobBoardView/LoadSearchResults',
+  });
+  assert.equal(parseUltiProUrl('https://example.com/JobBoard/7975045a-4360-4990-91b1-b0a05242192c'), null);
+});
+
+test('ultipro: structured opportunity maps location, date and canonical URL', () => {
+  const board = {
+    url: 'https://recruiting.ultipro.ca/HHA5000HHAA/JobBoard/7975045a-4360-4990-91b1-b0a05242192c/',
+    name: 'HH Angus',
+  };
+  const [job] = parseUltiProResponse({ opportunities: [{
+    Id: '8d699979-242e-4e91-9b6d-32e5dc066c9a',
+    Title: 'Engineering Intern',
+    RequisitionNumber: 'ENG-2027',
+    PostedDate: '2026-09-01T00:00:00Z',
+    BriefDescription: 'Support building systems design and software analysis.',
+    Locations: [{ Address: {
+      City: 'Toronto',
+      State: { Code: 'ON', Name: 'Ontario' },
+      Country: { Code: 'CA', Name: 'Canada' },
+    } }],
+  }] }, board);
+
+  assert.ok(job);
+  assert.equal(job.title, 'Engineering Intern');
+  assert.equal(job.company, 'HH Angus');
+  assert.equal(job.location, 'Toronto, ON, CA');
+  assert.equal(job.postedAt, '2026-09-01T00:00:00.000Z');
+  assert.equal(job.source, 'ultipro');
+  assert.equal(
+    job.url,
+    'https://recruiting.ultipro.ca/HHA5000HHAA/JobBoard/7975045a-4360-4990-91b1-b0a05242192c/OpportunityDetail?opportunityId=8d699979-242e-4e91-9b6d-32e5dc066c9a',
+  );
 });
 
 test('dayforce: structured posting maps location, type, salary and URL', () => {
@@ -719,13 +870,58 @@ test('dayforce: structured posting maps location, type, salary and URL', () => {
   assert.equal(job.url, 'https://jobs.dayforcehcm.com/en-CA/eclipse/CANDIDATEPORTAL/jobs/4031');
 });
 
+test('dayforce: De Havilland posting maps from its cultureless board', () => {
+  const board = {
+    url: 'https://jobs.dayforcehcm.com/westerkirk/DEHAVILLANDCORPORATECAREERS',
+    name: 'De Havilland Aircraft of Canada',
+  };
+  const parsed = parseDayforceUrl(board.url);
+  assert.ok(parsed);
+  const [job] = parseDayforceResponse({ jobPostings: [{
+    jobPostingId: 13692,
+    jobTitle: 'Production Planner - FAL',
+    jobDescription: 'The Production Planner plans and coordinates manufacturing activities.',
+    hasVirtualLocation: false,
+    postingStartTimestampUTC: '2026-09-04T06:00:00+00:00',
+    postingLocations: [{ formattedAddress: 'Calgary, AB, Canada' }],
+  }] }, board, parsed);
+
+  assert.ok(job);
+  assert.equal(job.title, 'Production Planner - FAL');
+  assert.equal(job.company, 'De Havilland Aircraft of Canada');
+  assert.equal(job.location, 'Calgary, AB, Canada');
+  assert.equal(job.postedAt, '2026-09-04T06:00:00+00:00');
+  assert.equal(job.source, 'dayforce');
+  assert.equal(job.url, 'https://jobs.dayforcehcm.com/en-US/westerkirk/DEHAVILLANDCORPORATECAREERS/jobs/13692');
+});
+
 test('bamboohr: careers URL decomposes into tenant API parts', () => {
-  assert.deepEqual(parseBambooHrUrl('https://avidbots.bamboohr.com/careers/937'), {
-    origin: 'https://avidbots.bamboohr.com',
-    tenant: 'avidbots',
+  assert.deepEqual(parseBambooHrUrl('https://volatus.bamboohr.com/careers'), {
+    origin: 'https://volatus.bamboohr.com',
+    tenant: 'volatus',
   });
   assert.equal(parseBambooHrUrl('https://example.com/careers'), null);
   assert.equal(parseBambooHrUrl('https://avidbots.bamboohr.com/employees'), null);
+});
+
+test('bamboohr: Volatus posting maps its public detail record', () => {
+  const board = { url: 'https://volatus.bamboohr.com/careers', name: 'Volatus Aerospace' };
+  const parsed = parseBambooHrUrl(board.url);
+  assert.ok(parsed);
+  const job = parseBambooHrPosting({
+    id: '116',
+    jobOpeningName: 'Maintenance Technician',
+    jobOpeningStatus: 'Open',
+    employmentStatusLabel: 'Full-Time',
+    location: { city: 'Vaughan', state: 'Ontario', addressCountry: 'Canada' },
+    jobOpeningShareUrl: 'https://volatus.bamboohr.com/careers/116',
+  }, board, parsed);
+  assert.ok(job);
+  assert.equal(job.title, 'Maintenance Technician');
+  assert.equal(job.company, 'Volatus Aerospace');
+  assert.equal(job.location, 'Vaughan, Ontario, Canada');
+  assert.equal(job.url, 'https://volatus.bamboohr.com/careers/116');
+  assert.equal(job.source, 'bamboohr');
 });
 
 test('bamboohr: detail record maps structured location, date and description', () => {
@@ -936,7 +1132,8 @@ test('custom: configured HTML cards map title, location and date', () => {
   };
   const [job] = parseConfiguredHtml(`
     <div class="jobs-section__item"><h2><a href="/jobs/123-design-intern">Design Intern</a></h2>
-    <div class="location">London, ON, Canada</div><time datetime="2026-08-25">Aug 25</time></div>`, board);
+    <div class="location"><span>Location: </span>London, ON, Canada</div>
+    <time datetime="2026-08-25">Aug 25</time></div>`, board);
   assert.equal(job?.url, 'https://example.com/jobs/123-design-intern');
   assert.equal(job?.location, 'London, ON, Canada');
   assert.equal(job?.postedAt, '2026-08-25T00:00:00.000Z');

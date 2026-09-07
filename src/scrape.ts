@@ -36,6 +36,7 @@ import { cornerstoneAdapter } from './adapters/cornerstone.js';
 import { phenomAdapter } from './adapters/phenom.js';
 import { smartRecruitersAdapter } from './adapters/smartrecruiters.js';
 import { taleoAdapter } from './adapters/taleo.js';
+import { ripplingAdapter } from './adapters/rippling.js';
 
 /**
  * Sources cheap enough to poll often, the whole group finishes in ~10 seconds and
@@ -62,6 +63,7 @@ export function fastAdapters(): Adapter[] {
     avatureAdapter(),
     cornerstoneAdapter(),
     taleoAdapter(),
+    ripplingAdapter(),
   ];
 }
 

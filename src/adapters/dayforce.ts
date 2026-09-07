@@ -23,7 +23,9 @@ export interface DayforceBoard {
 
 export const DAYFORCE_BOARDS: DayforceBoard[] = [
   { url: 'https://jobs.dayforcehcm.com/en-CA/eclipse/CANDIDATEPORTAL', name: 'Eclipse Automation' },
-  { url: 'https://jobs.dayforcehcm.com/en-US/pp4h663/CANDIDATEPORTAL', name: 'Synaptive' }
+  { url: 'https://jobs.dayforcehcm.com/en-US/pp4h663/CANDIDATEPORTAL', name: 'Synaptive' },
+  { url: 'https://jobs.dayforcehcm.com/westerkirk/DEHAVILLANDCORPORATECAREERS', name: 'De Havilland Aircraft of Canada' },
+  { url: 'https://jobs.dayforcehcm.com/fairbanksmorse/CANDIDATEPORTAL', name: 'Fairbanks Morse' },
 ];
 
 export interface ParsedDayforceUrl {
@@ -72,9 +74,11 @@ export function parseDayforceUrl(url: string): ParsedDayforceUrl | null {
   if (parsed.hostname.toLowerCase() !== 'jobs.dayforcehcm.com') return null;
 
   const segments = parsed.pathname.split('/').filter(Boolean);
-  const [cultureCode, clientNamespace, jobBoardCode] = segments;
+  const hasCultureCode = /^[a-z]{2}-[a-z]{2}$/i.test(segments[0] ?? '');
+  const [cultureCode, clientNamespace, jobBoardCode] = hasCultureCode
+    ? segments
+    : ['en-US', ...segments];
   if (!cultureCode || !clientNamespace || !jobBoardCode) return null;
-  if (!/^[a-z]{2}-[a-z]{2}$/i.test(cultureCode)) return null;
 
   return {
     origin: parsed.origin,

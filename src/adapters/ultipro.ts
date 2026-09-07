@@ -29,7 +29,12 @@ export const ULTIPRO_BOARDS: UltiProBoard[] = [
     url: 'https://recruiting.ultipro.ca/HER5001HERO/JobBoard/e5ac0ff2-938c-46f6-8143-8edb3cf5527b/?q=&o=postedDateDesc&w=&wc=&we=&wpst=',
     name: 'Heroux-Devtek Inc',
     searchTerms: [''],
-  }
+  },
+  {
+    url: 'https://recruiting.ultipro.ca/HHA5000HHAA/JobBoard/7975045a-4360-4990-91b1-b0a05242192c/?q=&o=postedDateDesc&w=&wc=&we=&wpst=',
+    name: 'HH Angus',
+    searchTerms: [''],
+  },
 ];
 
 export interface ParsedUltiProUrl {

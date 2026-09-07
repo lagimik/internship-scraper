@@ -7,13 +7,15 @@
  */
 
 import type { Adapter, RawJob } from '../types.js';
-import { fetchText } from '../lib/fetch.js';
+import { fetchJson, fetchText } from '../lib/fetch.js';
 import { load } from 'cheerio';
 
 export interface SuccessFactorsBoard {
   /** Any public page on the employer's SuccessFactors career-site host. */
   url: string;
   name: string;
+  /** Newer RMK sites load search results from the public recruiting service. */
+  apiBrand?: string;
 }
 
 /** Career sites verified to expose server-rendered `/search/` results. */
@@ -59,6 +61,15 @@ export const SUCCESSFACTORS_BOARDS: SuccessFactorsBoard[] = [
     url: 'https://jobsearch.alstom.com/search/',
     name: 'Alstom',
   },
+  {
+    url: 'https://jobs.nutrien.com/North-America/go/search-result-na/2701217/',
+    name: 'Nutrien',
+    apiBrand: 'North-America',
+  },
+  {
+    url: 'https://careers.bwxt.com/search/?createNewAlert=false&q=&locationsearch=',
+    name: 'BWXT',
+  },
 ];
 
 export interface ParsedSuccessFactorsUrl {
@@ -87,6 +98,66 @@ function parseDate(value: string | null): string | null {
   if (month < 0) return null;
   const date = new Date(Date.UTC(Number(parts[3]), month, Number(parts[2])));
   return Number.isNaN(date.getTime()) ? null : date.toISOString();
+}
+
+export interface SuccessFactorsApiJob {
+  jobLocationShort?: string[];
+  remoteElig?: string[];
+  filter3?: string[];
+  brandUrl?: string;
+  unifiedUrlTitle?: string;
+  unifiedStandardStart?: string;
+  id?: string;
+  unifiedStandardTitle?: string;
+}
+
+interface SuccessFactorsApiResponse {
+  jobSearchResult?: Array<{ response?: SuccessFactorsApiJob }>;
+  totalJobs?: number;
+}
+
+function parseApiDate(value: string | undefined): string | null {
+  if (!value) return null;
+  const parts = /^(\d{1,2})\/(\d{1,2})\/(\d{2}|\d{4})$/.exec(value);
+  if (!parts?.[1] || !parts[2] || !parts[3]) return null;
+  const year = Number(parts[3]) < 100 ? 2000 + Number(parts[3]) : Number(parts[3]);
+  const date = new Date(Date.UTC(year, Number(parts[1]) - 1, Number(parts[2])));
+  return Number.isNaN(date.getTime()) ? null : date.toISOString();
+}
+
+/** Map a job returned by the newer Recruiting Marketing search service. */
+export function mapSuccessFactorsApiJob(
+  posting: SuccessFactorsApiJob,
+  board: SuccessFactorsBoard,
+): RawJob | null {
+  const parsed = parseSuccessFactorsUrl(board.url);
+  const title = posting.unifiedStandardTitle?.trim();
+  const slug = posting.unifiedUrlTitle;
+  const brand = posting.brandUrl ?? board.apiBrand;
+  if (!parsed || !title || !slug || !brand || !posting.id) return null;
+
+  const location = (posting.jobLocationShort ?? [])
+    .map((value) => value.replace(/<br\s*\/?>/gi, '').trim())
+    .filter(Boolean)
+    .join('; ');
+  const employmentType = posting.filter3?.join(' ') ?? '';
+
+  return {
+    title,
+    company: board.name,
+    location,
+    remote: /remote|home.?based/i.test(`${posting.remoteElig?.join(' ') ?? ''} ${location} ${title}`),
+    url: `${parsed.origin}/${brand}/job/${slug}/${posting.id}-en_US`,
+    source: 'successfactors',
+    postedAt: parseApiDate(posting.unifiedStandardStart),
+    salaryRaw: null,
+    salaryMin: null,
+    salaryMax: null,
+    salaryCurrency: null,
+    type: /co-?op/i.test(title) ? 'co-op' : /intern|student/i.test(`${title} ${employmentType}`) ? 'intern' : null,
+    sponsorship: null,
+    description: null,
+  };
 }
 
 /** Parse both the classic table layout and the newer responsive tile layout. */
@@ -155,10 +226,57 @@ const SEARCH_TERMS = (process.env.JT_SF_TERMS ?? 'intern,co-op,student,stagiaire
   .map((term) => term.trim())
   .filter(Boolean);
 const MAX_PAGES = 6;
+const MAX_API_PAGES = 10;
+
+async function fetchApiBoard(board: SuccessFactorsBoard, parsed: ParsedSuccessFactorsUrl): Promise<RawJob[]> {
+  const jobs: RawJob[] = [];
+  const seen = new Set<string>();
+  const endpoint = `${parsed.origin}/services/recruiting/v1/jobs`;
+
+  for (const term of SEARCH_TERMS) {
+    let fetched = 0;
+    for (let pageNumber = 0; pageNumber < MAX_API_PAGES; pageNumber++) {
+      const body = JSON.stringify({
+        locale: 'en_US',
+        pageNumber,
+        sortBy: '',
+        keywords: term,
+        location: 'Canada',
+        facetFilters: {},
+        brand: board.apiBrand,
+        skills: [],
+        categoryId: 0,
+        alertId: '',
+        rcmCandidateId: '',
+      });
+      const response = await fetchJson<SuccessFactorsApiResponse>(`${endpoint}?${body}`, {
+        realUrl: endpoint,
+        method: 'POST',
+        body,
+        headers: { 'content-type': 'application/json' },
+      });
+      const postings = response.jobSearchResult ?? [];
+      fetched += postings.length;
+      for (const entry of postings) {
+        if (!entry.response) continue;
+        const job = mapSuccessFactorsApiJob(entry.response, board);
+        if (job && !seen.has(job.url)) {
+          seen.add(job.url);
+          jobs.push(job);
+        }
+      }
+
+      if (postings.length === 0 || fetched >= (response.totalJobs ?? Infinity)) break;
+    }
+  }
+
+  return jobs;
+}
 
 async function fetchBoard(board: SuccessFactorsBoard): Promise<RawJob[]> {
   const parsed = parseSuccessFactorsUrl(board.url);
   if (!parsed) throw new Error(`unparseable SuccessFactors URL: ${board.url}`);
+  if (board.apiBrand) return fetchApiBoard(board, parsed);
 
   const jobs: RawJob[] = [];
   const seen = new Set<string>();

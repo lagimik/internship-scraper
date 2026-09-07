@@ -64,7 +64,6 @@ export const CUSTOM_BOARDS: CustomBoard[] = [
     },
     maxPages: 5,
   },
-  
 ];
 
 function isoDate(value: string | undefined): string | null {
@@ -94,7 +93,10 @@ export function parseConfiguredHtml(html: string, board: HtmlBoard, pageUrl = bo
     const title = anchor.text().replace(/\s+/g, ' ').trim();
     const href = anchor.attr('href');
     if (!title || !href) return;
-    const location = card.find(board.selectors.location).first().text().replace(/\s+/g, ' ').trim();
+    const location = card.find(board.selectors.location).first().text()
+      .replace(/\s+/g, ' ')
+      .replace(/^Location:\s*/i, '')
+      .trim();
     const dateElement = board.selectors.postedDate
       ? card.find(board.selectors.postedDate).first()
       : null;
