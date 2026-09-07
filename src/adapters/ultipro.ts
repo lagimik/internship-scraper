@@ -35,6 +35,10 @@ export const ULTIPRO_BOARDS: UltiProBoard[] = [
     name: 'HH Angus',
     searchTerms: [''],
   },
+  {
+    url: 'https://recruiting.ultipro.ca/ALA5000ALAG/JobBoard/63c26905-d7c5-4e50-933f-60cc2d69067f/?q=&o=postedDateDesc&w=&wc=&we=&wpst=',
+    name: 'Alamos Gold Inc.',
+  },
 ];
 
 export interface ParsedUltiProUrl {

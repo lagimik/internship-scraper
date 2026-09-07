@@ -12,6 +12,8 @@ export interface CornerstoneBoard {
   /** A real CSOD career-site or requisition URL. */
   url: string;
   name: string;
+  /** Value observed in the career site's public search request. */
+  careerSitePageId?: number;
 }
 
 /** Verified public Cornerstone career sites. */
@@ -19,6 +21,11 @@ export const CORNERSTONE_BOARDS: CornerstoneBoard[] = [
   {
     url: 'https://trench.csod.com/ux/ats/careersite/1/home/requisition/1558?c=trench&source=LinkedIn',
     name: 'Trench Group',
+  },
+  {
+    url: 'https://bba.csod.com/ux/ats/careersite/5/home?c=bba&lang=en-US',
+    name: 'BBA',
+    careerSitePageId: 5,
   },
 ];
 
@@ -187,7 +194,7 @@ async function fetchCornerstoneBoard(board: CornerstoneBoard): Promise<RawJob[]>
   for (let pageNumber = 1; pageNumber <= MAX_PAGES; pageNumber++) {
     const body = JSON.stringify({
       careerSiteId: parsed.careerSiteId,
-      careerSitePageId: 1,
+      careerSitePageId: board.careerSitePageId ?? 1,
       pageNumber,
       pageSize: PAGE_SIZE,
       cultureId: context.cultureId,

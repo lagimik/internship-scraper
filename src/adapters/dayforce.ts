@@ -24,6 +24,7 @@ export interface DayforceBoard {
 export const DAYFORCE_BOARDS: DayforceBoard[] = [
   { url: 'https://jobs.dayforcehcm.com/en-CA/eclipse/CANDIDATEPORTAL', name: 'Eclipse Automation' },
   { url: 'https://jobs.dayforcehcm.com/en-US/pp4h663/CANDIDATEPORTAL', name: 'Synaptive' },
+  { url: 'https://jobs.dayforcehcm.com/en-US/tcii/TIND', name: 'Tigercat Industries' },
   { url: 'https://jobs.dayforcehcm.com/westerkirk/DEHAVILLANDCORPORATECAREERS', name: 'De Havilland Aircraft of Canada' },
   { url: 'https://jobs.dayforcehcm.com/fairbanksmorse/CANDIDATEPORTAL', name: 'Fairbanks Morse' },
 ];

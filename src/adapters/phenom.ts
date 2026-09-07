@@ -19,6 +19,12 @@ export const PHENOM_BOARDS: PhenomBoard[] = [
     refNum: 'TRTEGLOBAL',
     locale: 'en_global',
   },
+  {
+    url: 'https://careers.atco.com/global/en',
+    name: 'ATCO Group',
+    refNum: 'AGZAGAGLOBAL',
+    locale: 'en_global',
+  },
 ];
 
 export interface ParsedPhenomUrl {
@@ -144,16 +150,29 @@ const MAX_SITEMAPS = 10;
 const MAX_DETAILS = 250;
 const DETAIL_CONCURRENCY = 5;
 
+/** Find student job pages in either a direct urlset or fetched child sitemaps. */
+export function discoverPhenomDetailUrls(rootXml: string, childXml: string[] = []): string[] {
+  const rootUrls = parsePhenomSitemap(rootXml);
+  const directUrls = rootUrls.filter((url) => /\/job\//i.test(url) && STUDENT_SLUG.test(url));
+  const urls = directUrls.length > 0
+    ? directUrls
+    : childXml.flatMap((xml) => parsePhenomSitemap(xml).filter((url) => STUDENT_SLUG.test(url)));
+  return [...new Set(urls)].slice(0, MAX_DETAILS);
+}
+
 async function fetchBoard(board: PhenomBoard): Promise<RawJob[]> {
-  const sitemapUrls = parsePhenomSitemap(await fetchText(`${board.url}/sitemap_index.xml`, {
+  const rootXml = await fetchText(`${board.url}/sitemap_index.xml`, {
     headers: { accept: 'application/xml' },
-  })).slice(0, MAX_SITEMAPS);
-  const sitemapResults = await Promise.allSettled(sitemapUrls.map((url) => fetchText(url, {
-    headers: { accept: 'application/xml' },
-  })));
-  const detailUrls = [...new Set(sitemapResults.flatMap((result) => result.status === 'fulfilled'
-    ? parsePhenomSitemap(result.value).filter((url) => STUDENT_SLUG.test(url))
-    : []))].slice(0, MAX_DETAILS);
+  });
+  let detailUrls = discoverPhenomDetailUrls(rootXml);
+  if (detailUrls.length === 0) {
+    const sitemapUrls = parsePhenomSitemap(rootXml).slice(0, MAX_SITEMAPS);
+    const sitemapResults = await Promise.allSettled(sitemapUrls.map((url) => fetchText(url, {
+      headers: { accept: 'application/xml' },
+    })));
+    detailUrls = discoverPhenomDetailUrls(rootXml, sitemapResults.flatMap((result) =>
+      result.status === 'fulfilled' ? [result.value] : []));
+  }
 
   const jobs: RawJob[] = [];
   for (let offset = 0; offset < detailUrls.length; offset += DETAIL_CONCURRENCY) {

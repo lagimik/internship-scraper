@@ -10,7 +10,7 @@ import { load } from 'cheerio';
 import type { Adapter, JobType, RawJob } from '../types.js';
 import { fetchText } from '../lib/fetch.js';
 
-type CustomBoard = CyberRecruiterBoard | GcJobsBoard | HtmlBoard | MelitronBoard;
+type CustomBoard = CyberRecruiterBoard | GcJobsBoard | HtmlBoard | Jp2gBoard | MelitronBoard;
 
 interface BoardBase {
   name: string;
@@ -23,6 +23,10 @@ export interface CyberRecruiterBoard extends BoardBase {
 
 export interface MelitronBoard extends BoardBase {
   kind: 'melitron';
+}
+
+export interface Jp2gBoard extends BoardBase {
+  kind: 'jp2g';
 }
 
 export interface GcJobsBoard extends BoardBase {
@@ -45,6 +49,11 @@ export interface HtmlBoard extends BoardBase {
 }
 
 export const CUSTOM_BOARDS: CustomBoard[] = [
+  {
+    kind: 'jp2g',
+    name: 'JP2G Consultants Inc.',
+    url: 'https://www.jp2g.com/careers/',
+  },
   {
     kind: 'gc-jobs',
     name: 'Government of Canada',
@@ -154,6 +163,40 @@ export function parseMelitronJobs(
       postedAt: null,
       ...emptyFields(),
       type: null,
+      description: null,
+    });
+  });
+  return jobs;
+}
+
+/** Parse JP2G's office-scoped static job links. */
+export function parseJp2gJobs(
+  html: string,
+  board: Jp2gBoard,
+  pageUrl = board.url,
+): RawJob[] {
+  const $ = load(html);
+  const jobs: RawJob[] = [];
+  $('a[href*="/careers/"][href$=".html"]').each((_, element) => {
+    const anchor = $(element);
+    const title = anchor.text().replace(/\s+/g, ' ').trim();
+    const href = anchor.attr('href');
+    if (!title || !href) return;
+
+    const url = new URL(href, pageUrl);
+    const office = url.pathname.match(/^\/careers\/([^/]+)-office\/[^/]+\.html$/i)?.[1];
+    if (!office) return;
+    const city = office.split('-').map((word) => `${word[0]?.toUpperCase() ?? ''}${word.slice(1)}`).join(' ');
+    jobs.push({
+      title,
+      company: board.name,
+      location: `${city}, Ontario, Canada`,
+      remote: /remote|home.?based/i.test(title),
+      url: url.toString(),
+      source: 'custom',
+      postedAt: null,
+      ...emptyFields(),
+      type: /\bintern(ship)?\b/i.test(title) ? 'intern' : /\bco[\s-]?op\b/i.test(title) ? 'co-op' : null,
       description: null,
     });
   });
@@ -359,6 +402,10 @@ async function fetchGcJobs(board: GcJobsBoard): Promise<RawJob[]> {
 async function fetchBoard(board: CustomBoard): Promise<RawJob[]> {
   if (board.kind === 'cyber-recruiter') return fetchCyberRecruiter(board);
   if (board.kind === 'gc-jobs') return fetchGcJobs(board);
+  if (board.kind === 'jp2g') {
+    const html = await fetchText(board.url, { headers: { accept: 'text/html' } });
+    return parseJp2gJobs(html, board);
+  }
   if (board.kind === 'melitron') {
     const html = await fetchText(board.url, { headers: { accept: 'text/html' } });
     return parseMelitronJobs(html, board);
