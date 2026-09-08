@@ -104,6 +104,35 @@ test('Babcock category URL maps its classic Canadian result markup', () => {
   assert.equal(job.postedAt, null);
 });
 
+test('NRC category URL maps its day-first classic result', () => {
+  const board = SUCCESSFACTORS_BOARDS.find(({ name }) => name === 'National Research Council Canada');
+
+  assert.ok(board);
+  assert.deepEqual(parseSuccessFactorsUrl(board.url), {
+    origin: 'https://recruitment-recrutement.nrc-cnrc.gc.ca',
+    searchUrl: 'https://recruitment-recrutement.nrc-cnrc.gc.ca/search/',
+  });
+
+  const [job] = parseSuccessFactorsHtml(`
+    <table>
+      <tr class="data-row">
+        <td><a class="jobTitle-link" href="/job/Within-a-National-Research-Cou-Student-Employment-Program-ON/605704317/">Student Employment Program</a></td>
+        <td class="jobLocation">Within a National Research Cou, ON, CA</td>
+        <td class="jobDate">1 Sept 2026</td>
+      </tr>
+    </table>
+  `, board);
+
+  assert.ok(job);
+  assert.equal(job.title, 'Student Employment Program');
+  assert.equal(job.company, 'National Research Council Canada');
+  assert.equal(job.location, 'Within a National Research Cou, ON, CA');
+  assert.equal(job.postedAt, '2026-09-01T00:00:00.000Z');
+  assert.equal(job.url,
+    'https://recruitment-recrutement.nrc-cnrc.gc.ca/job/Within-a-National-Research-Cou-Student-Employment-Program-ON/605704317/');
+  assert.equal(job.source, 'successfactors');
+});
+
 test('Hydro-Québec French API job maps to its canonical URL', () => {
   const job = mapSuccessFactorsApiJob({
     unifiedUrlTitle: 'Stages-coll%C3%A9giaux-%C3%A9tudiant%28es%29-Autochtones',

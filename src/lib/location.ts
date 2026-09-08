@@ -31,7 +31,7 @@ const CA_CITIES: Record<string, string> = {
   london: 'ON', kitchener: 'ON', waterloo: 'ON', windsor: 'ON', markham: 'ON',
   vaughan: 'ON', burlington: 'ON', oakville: 'ON', guelph: 'ON', kingston: 'ON',
   montreal: 'QC', 'montréal': 'QC', 'quebec city': 'QC', laval: 'QC', gatineau: 'QC',
-  sherbrooke: 'QC', vancouver: 'BC', burnaby: 'BC', surrey: 'BC', richmond: 'BC',
+  sherbrooke: 'QC', boisbriand: 'QC', vancouver: 'BC', burnaby: 'BC', surrey: 'BC', richmond: 'BC',
   victoria: 'BC', kelowna: 'BC', 'north vancouver': 'BC', calgary: 'AB', edmonton: 'AB',
   winnipeg: 'MB', regina: 'SK', saskatoon: 'SK', halifax: 'NS', moncton: 'NB',
 };

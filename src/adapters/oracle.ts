@@ -45,12 +45,18 @@ export const ORACLE_BOARDS: OracleBoard[] = [
     url: 'https://icfcjb.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/Aerospace',
     name: 'Honeywell Aerospace',
   },
+  {
+    url: 'https://ehif.fa.em2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/jobs?lastSelectedFacet=AttributeChar4&mode=location&selectedFlexFieldsFacets=%22AttributeChar4%7CGraduates%3BTrainees%22',
+    name: 'Wood',
+  },
 ];
 
 export interface ParsedOracleUrl {
   origin: string;
   language: string;
   site: string;
+  lastSelectedFacet?: string;
+  selectedFlexFieldsFacets?: string;
 }
 
 /** Decompose a Candidate Experience URL, including deep `/jobs` and `/job/<id>` URLs. */
@@ -63,7 +69,16 @@ export function parseOracleUrl(url: string): ParsedOracleUrl | null {
       /^\/hcmUI\/CandidateExperience\/([^/]+)\/sites\/([^/]+)(?:\/|$)/i,
     );
     if (!match?.[1] || !match[2]) return null;
-    return { origin: parsed.origin, language: match[1], site: match[2] };
+    const lastSelectedFacet = parsed.searchParams.get('lastSelectedFacet');
+    const selectedFlexFieldsFacets = parsed.searchParams.get('selectedFlexFieldsFacets')
+      ?.replace(/^"|"$/g, '');
+    return {
+      origin: parsed.origin,
+      language: match[1],
+      site: match[2],
+      ...(lastSelectedFacet ? { lastSelectedFacet } : {}),
+      ...(selectedFlexFieldsFacets ? { selectedFlexFieldsFacets } : {}),
+    };
   } catch {
     return null;
   }
@@ -81,16 +96,27 @@ interface OracleLocation {
 
 export interface OracleRequisition {
   Id?: string | number;
+  id?: string | number;
   Title?: string;
+  title?: string;
   PostedDate?: string;
+  postedDate?: string;
   PostingEndDate?: string | null;
+  postingEndDate?: string | null;
   PrimaryLocation?: string;
+  primaryLocation?: string;
   WorkplaceType?: string;
+  workplaceType?: string;
   WorkplaceTypeCode?: string;
+  workplaceTypeCode?: string;
   WorkerType?: string;
+  workerType?: string;
   ContractType?: string;
+  contractType?: string;
   JobType?: string;
+  jobType?: string;
   ShortDescriptionStr?: string;
+  shortDescriptionStr?: string;
   workLocation?: OracleLocation[];
   secondaryLocations?: OracleLocation[];
   otherWorkLocations?: OracleLocation[];
@@ -98,8 +124,11 @@ export interface OracleRequisition {
 
 interface OracleSearch {
   TotalJobsCount?: number;
+  totalJobsCount?: number;
   Offset?: number;
+  offset?: number;
   Limit?: number;
+  limit?: number;
   requisitionList?: OracleRequisition[];
 }
 
@@ -134,7 +163,12 @@ export function collectOracleLocations(job: OracleRequisition): string {
 }
 
 function mapOracleType(job: OracleRequisition): JobType | null {
-  const value = [job.WorkerType, job.ContractType, job.JobType, job.Title].filter(Boolean).join(' ');
+  const value = [
+    job.WorkerType ?? job.workerType,
+    job.ContractType ?? job.contractType,
+    job.JobType ?? job.jobType,
+    job.Title ?? job.title,
+  ].filter(Boolean).join(' ');
   if (/co.?op/i.test(value)) return 'co-op';
   if (/intern|student|trainee|stagiaire/i.test(value)) return 'intern';
   if (/contract|temporary|fixed.?term/i.test(value)) return 'contract';
@@ -172,33 +206,70 @@ async function searchJobs(
   return response.items?.[0] ?? {};
 }
 
+async function searchFacetedJobs(
+  parsed: ParsedOracleUrl,
+  offset: number,
+): Promise<OracleSearch> {
+  const endpoint = new URL(
+    '/hcmRestApi/CandidateExperience/recruitingCEJobSearch/list',
+    parsed.origin,
+  ).toString();
+  const body = JSON.stringify({
+    input: '',
+    expand: 'requisitionList.workLocation,requisitionList.otherWorkLocations,requisitionList.secondaryLocations,flexFieldsFacet.values,requisitionList.requisitionFlexFields',
+    siteNumber: parsed.site,
+    limit: PAGE_SIZE,
+    lastSelectedFacet: parsed.lastSelectedFacet,
+    selectedFlexFieldsFacets: parsed.selectedFlexFieldsFacets,
+    sortBy: 'POSTING_DATES_DESC',
+    offset,
+    facets: 'WORK_LOCATIONS;WORKPLACE_TYPES;TITLES;CATEGORIES;ORGANIZATIONS;POSTING_DATES;FLEX_FIELDS;RETAIL_LOCATION',
+  });
+  const response = await fetchJson<OracleResponse>(`${endpoint}#${body}`, {
+    realUrl: endpoint,
+    method: 'POST',
+    body,
+    headers: {
+      'content-type': 'application/vnd.oracle.adf.action+json',
+      'ora-irc-language': parsed.language,
+      'ora-irc-rest-action': 'ACE_JOBSEARCH_LIST',
+    },
+  });
+  return response.items?.[0] ?? {};
+}
+
 export function mapOracleRequisition(
   requisition: OracleRequisition,
   board: OracleBoard,
   parsed: ParsedOracleUrl,
 ): RawJob | null {
-  const id = String(requisition.Id ?? '');
-  const title = requisition.Title?.trim() ?? '';
+  const id = String(requisition.Id ?? requisition.id ?? '');
+  const title = (requisition.Title ?? requisition.title)?.trim() ?? '';
   if (!id || !title) return null;
 
-  const location = collectOracleLocations(requisition);
+  const location = collectOracleLocations({
+    ...requisition,
+    PrimaryLocation: requisition.PrimaryLocation ?? requisition.primaryLocation,
+  });
+  const workplaceType = requisition.WorkplaceType ?? requisition.workplaceType ?? '';
+  const workplaceTypeCode = requisition.WorkplaceTypeCode ?? requisition.workplaceTypeCode;
   return {
     title,
     company: board.name,
     location,
     remote: /remote/i.test(location)
-      || /remote/i.test(requisition.WorkplaceType ?? '')
-      || requisition.WorkplaceTypeCode === 'ORA_REMOTE',
+      || /remote/i.test(workplaceType)
+      || workplaceTypeCode === 'ORA_REMOTE',
     url: `${parsed.origin}/hcmUI/CandidateExperience/${parsed.language}/sites/${parsed.site}/job/${encodeURIComponent(id)}`,
     source: 'oracle',
-    postedAt: parseOraclePostedDate(requisition.PostedDate),
+    postedAt: parseOraclePostedDate(requisition.PostedDate ?? requisition.postedDate),
     salaryRaw: null,
     salaryMin: null,
     salaryMax: null,
     salaryCurrency: null,
     type: mapOracleType(requisition),
     sponsorship: null,
-    description: requisition.ShortDescriptionStr?.trim() || null,
+    description: (requisition.ShortDescriptionStr ?? requisition.shortDescriptionStr)?.trim() || null,
   };
 }
 
@@ -208,6 +279,29 @@ async function fetchOracleBoard(board: OracleBoard): Promise<RawJob[]> {
 
   const jobs: RawJob[] = [];
   const seen = new Set<string>();
+
+  if (parsed.selectedFlexFieldsFacets) {
+    let pages = MAX_PAGES;
+    for (let page = 0; page < pages; page++) {
+      const data = await searchFacetedJobs(parsed, page * PAGE_SIZE);
+      const requisitions = data.requisitionList ?? [];
+      if (requisitions.length === 0) break;
+      const total = data.TotalJobsCount ?? data.totalJobsCount;
+      if (page === 0 && typeof total === 'number') {
+        pages = Math.min(MAX_PAGES, Math.max(1, Math.ceil(total / PAGE_SIZE)));
+      }
+      for (const requisition of requisitions) {
+        const id = String(requisition.Id ?? requisition.id ?? '');
+        if (!id || seen.has(id)) continue;
+        const job = mapOracleRequisition(requisition, board, parsed);
+        if (!job) continue;
+        seen.add(id);
+        jobs.push(job);
+      }
+      if (requisitions.length < PAGE_SIZE) break;
+    }
+    return jobs;
+  }
 
   for (const term of SEARCH_TERMS) {
     let pages = MAX_PAGES;

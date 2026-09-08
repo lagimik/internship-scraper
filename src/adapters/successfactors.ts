@@ -46,6 +46,10 @@ export const SUCCESSFACTORS_BOARDS: SuccessFactorsBoard[] = [
     url: 'https://jobs.babcockinternational.com/go/View-all-Jobs/4819301/',
     name: 'Babcock International',
   },
+  {
+    url: 'https://recruitment-recrutement.nrc-cnrc.gc.ca/go/all-jobs/2320717/',
+    name: 'National Research Council Canada',
+  },
 
   {
     url: 'https://careers.brp.com/global/en/job/36297/Manufacturing-Engineer',
@@ -108,12 +112,17 @@ export function parseSuccessFactorsUrl(url: string): ParsedSuccessFactorsUrl | n
 function parseDate(value: string | null): string | null {
   if (!value) return null;
   const cleaned = value.replace(/^date\s*/i, '').trim();
-  const parts = /^(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+(\d{1,2}),\s*(\d{4})$/i.exec(cleaned);
-  if (!parts?.[1] || !parts[2] || !parts[3]) return null;
+  const monthPattern = '(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sept?(?:ember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)';
+  const monthFirst = new RegExp(`^${monthPattern}\\s+(\\d{1,2}),\\s*(\\d{4})$`, 'i').exec(cleaned);
+  const dayFirst = new RegExp(`^(\\d{1,2})\\s+${monthPattern}\\s+(\\d{4})$`, 'i').exec(cleaned);
+  const monthName = monthFirst?.[1] ?? dayFirst?.[2];
+  const day = monthFirst?.[2] ?? dayFirst?.[1];
+  const year = monthFirst?.[3] ?? dayFirst?.[3];
+  if (!monthName || !day || !year) return null;
   const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
-  const month = months.indexOf(parts[1].slice(0, 3).toLowerCase());
+  const month = months.indexOf(monthName.slice(0, 3).toLowerCase());
   if (month < 0) return null;
-  const date = new Date(Date.UTC(Number(parts[3]), month, Number(parts[2])));
+  const date = new Date(Date.UTC(Number(year), month, Number(day)));
   return Number.isNaN(date.getTime()) ? null : date.toISOString();
 }
 

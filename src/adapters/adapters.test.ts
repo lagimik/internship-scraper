@@ -52,6 +52,7 @@ import {
   discoverCyberRecruiterPages,
   parseConfiguredHtml,
   parseCyberRecruiterJobs,
+  parseKinovaJobs,
   parseMelitronJobs,
   parseWpJobManagerJobs,
 } from './custom.js';
@@ -1156,6 +1157,17 @@ test('applicantpro: public API URL decomposes into board identifiers', () => {
   assert.equal(parseApplicantProUrl('https://martinrea.prevueaps.com/jobs/596'), null);
 });
 
+test('applicantpro: Ben Machine endpoint preserves the verified tenant and site ID', () => {
+  assert.deepEqual(parseApplicantProUrl(
+    'https://benmachine.prevueaps.com/core/jobs/1104?getParams=%7B%7D',
+  ), {
+    origin: 'https://benmachine.prevueaps.com',
+    tenant: 'benmachine',
+    siteId: 1104,
+    endpoint: 'https://benmachine.prevueaps.com/core/jobs/1104?getParams=%7B%7D',
+  });
+});
+
 test('applicantpro: structured jobs map location, type, salary and date', () => {
   assert.equal(applicantProAdapter().name, 'applicantpro');
   const board = {
@@ -1188,6 +1200,37 @@ test('applicantpro: structured jobs map location, type, salary and date', () => 
   assert.equal(job?.salaryCurrency, 'CAD');
   assert.equal(job?.source, 'applicantpro');
   assert.equal(job?.description, 'Category: Engineering');
+});
+
+test('applicantpro: Ben Machine job maps its public API fields', () => {
+  const board = {
+    name: 'Ben Machine Products',
+    url: 'https://benmachine.prevueaps.com/core/jobs/1104?getParams=%7B%7D',
+  };
+  const parsed = parseApplicantProUrl(board.url);
+  assert.ok(parsed);
+  const [job] = parseApplicantProJobs({ data: { jobs: [{
+    id: 333747,
+    title: 'CMM Programmer, Operator and Inspector',
+    startDateRef: 'Jun 15, 2026',
+    jobLocation: 'Vaughan, ON, Canada, L4H 3T9',
+    workplaceType: 'Onsite',
+    employmentType: 'Full Time',
+    minSalary: '30',
+    maxSalary: '34',
+    payTypeFrame: 'per hour',
+    iso3: 'CAN',
+    jobUrl: 'https://benmachine.prevueaps.com/jobs/333747',
+  }] } }, board, parsed);
+
+  assert.equal(job?.title, 'CMM Programmer, Operator and Inspector');
+  assert.equal(job?.company, 'Ben Machine Products');
+  assert.equal(job?.location, 'Vaughan, ON, Canada, L4H 3T9');
+  assert.equal(job?.url, 'https://benmachine.prevueaps.com/jobs/333747');
+  assert.equal(job?.source, 'applicantpro');
+  assert.equal(job?.postedAt?.slice(0, 10), '2026-06-15');
+  assert.equal(job?.type, 'full-time');
+  assert.equal(job?.salaryRaw, '30 - 34 CAD per hour');
 });
 
 test('talentbrew: job URL decomposes into search identifiers', () => {
@@ -1245,6 +1288,28 @@ test('custom: configured HTML cards map title, location and date', () => {
   assert.equal(job?.url, 'https://example.com/jobs/123-design-intern');
   assert.equal(job?.location, 'London, ON, Canada');
   assert.equal(job?.postedAt, '2026-08-25T00:00:00.000Z');
+});
+
+test('custom: Kinova Craft response maps the supplied posting shape', () => {
+  const board = CUSTOM_BOARDS.find(({ name }) => name === 'Kinova Robotics');
+  assert.equal(board?.kind, 'kinova');
+  if (!board || board.kind !== 'kinova') return;
+
+  const [job] = parseKinovaJobs({ data: { jobs: [{
+    title: 'Technician Quality Control, Mechanical (CMM)',
+    url: 'https://www.kinovarobotics.com/job/technician-quality-control-mechanical-cmm',
+    postDate: '2026-05-14T11:55:00-06:00',
+    job: [{ type: 'Permanent position', location: 'Boisbriand' }],
+  }] } }, board);
+
+  assert.equal(job?.title, 'Technician Quality Control, Mechanical (CMM)');
+  assert.equal(job?.company, 'Kinova Robotics');
+  assert.equal(job?.location, 'Boisbriand');
+  assert.equal(job?.url,
+    'https://www.kinovarobotics.com/job/technician-quality-control-mechanical-cmm');
+  assert.equal(job?.source, 'custom');
+  assert.equal(job?.postedAt, '2026-05-14T17:55:00.000Z');
+  assert.equal(job?.type, 'full-time');
 });
 
 test('custom: Haply Odoo cards map nested titles and canonical job URLs', () => {

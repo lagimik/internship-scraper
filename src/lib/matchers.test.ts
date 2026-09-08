@@ -19,6 +19,7 @@ test('canada: real location strings from live sources', () => {
   assert.equal(match('Saint-Bruno (QC)', 'CA')?.region, 'QC');
   assert.deepEqual(matchLocations('Brossard, QC, CA').map((result) => result.country), ['CA']);
   assert.equal(match('Vancouver, Canada +1', 'CA')?.region, 'BC');
+  assert.equal(match('Boisbriand', 'CA')?.region, 'QC');
   assert.equal(match('Montreal, Quebec', 'CA')?.region, 'QC');
 
   const multi = matchLocations('New York, San Francisco, Seattle, or Remote (US/Canada)');

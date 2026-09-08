@@ -26,6 +26,10 @@ export const APPLICANTPRO_BOARDS: ApplicantProBoard[] = [
     url: 'https://martinrea.prevueaps.com/core/jobs/596?getParams=%7B%7D',
     name: 'Martinrea International',
   },
+  {
+    url: 'https://benmachine.prevueaps.com/core/jobs/1104?getParams=%7B%7D',
+    name: 'Ben Machine Products',
+  },
 ];
 
 export interface ParsedApplicantProUrl {

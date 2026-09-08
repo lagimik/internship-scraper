@@ -11,7 +11,7 @@ import type { Adapter, JobType, RawJob } from '../types.js';
 import { fetchJson, fetchText } from '../lib/fetch.js';
 
 type CustomBoard = CyberRecruiterBoard | GcJobsBoard | HtmlBoard | Jp2gBoard | MelitronBoard
-  | WpJobManagerBoard | AmazonUniversityBoard;
+  | WpJobManagerBoard | AmazonUniversityBoard | KinovaBoard;
 
 interface BoardBase {
   name: string;
@@ -43,6 +43,10 @@ export interface AmazonUniversityBoard extends BoardBase {
   maxPages?: number;
 }
 
+export interface KinovaBoard extends BoardBase {
+  kind: 'kinova';
+}
+
 export interface HtmlSelectors {
   card: string;
   titleLink: string;
@@ -60,6 +64,11 @@ export interface HtmlBoard extends BoardBase {
 }
 
 export const CUSTOM_BOARDS: CustomBoard[] = [
+  {
+    kind: 'kinova',
+    name: 'Kinova Robotics',
+    url: 'https://www.kinovarobotics.com/career',
+  },
   {
     kind: 'wp-job-manager',
     name: 'Canadensys Aerospace',
@@ -135,6 +144,78 @@ function emptyFields(): Pick<RawJob,
     salaryCurrency: null,
     sponsorship: null,
   };
+}
+
+export interface KinovaJob {
+  title?: string;
+  url?: string;
+  postDate?: string;
+  job?: Array<{
+    type?: string;
+    location?: string;
+  }>;
+}
+
+export interface KinovaResponse {
+  data?: {
+    jobs?: KinovaJob[];
+  };
+}
+
+const KINOVA_JOBS_QUERY = `{
+  jobs: entries(section: "job", orderBy: "postDate DESC") {
+    title
+    url
+    postDate
+    ... on job_Entry {
+      job {
+        ... on jobBlock_Entry {
+          type: type_
+          location
+        }
+      }
+    }
+  }
+}`;
+
+/** Map Kinova's public Craft CMS careers response. */
+export function parseKinovaJobs(response: KinovaResponse, board: KinovaBoard): RawJob[] {
+  return (response.data?.jobs ?? []).flatMap((posting): RawJob[] => {
+    const title = posting.title?.trim();
+    const url = posting.url?.trim();
+    if (!title || !url) return [];
+
+    const details = posting.job?.[0];
+    const location = details?.location?.trim() ?? '';
+    const employmentType = details?.type?.trim() ?? '';
+    const type: JobType | null = /\bco[\s-]?op\b/i.test(`${title} ${employmentType}`) ? 'co-op'
+      : /\bintern(ship)?\b|\bstudent\b/i.test(`${title} ${employmentType}`) ? 'intern'
+        : /permanent|full[\s-]?time/i.test(employmentType) ? 'full-time' : null;
+    return [{
+      title,
+      company: board.name,
+      location,
+      remote: /remote|home.?based/i.test(`${title} ${location} ${employmentType}`),
+      url,
+      source: 'custom',
+      postedAt: isoDate(posting.postDate),
+      ...emptyFields(),
+      type,
+      description: null,
+    }];
+  });
+}
+
+async function fetchKinova(board: KinovaBoard): Promise<RawJob[]> {
+  const endpoint = new URL('/api', board.url).toString();
+  const body = JSON.stringify({ query: KINOVA_JOBS_QUERY });
+  const response = await fetchJson<KinovaResponse>(`${endpoint}?query=${encodeURIComponent(KINOVA_JOBS_QUERY)}`, {
+    realUrl: endpoint,
+    method: 'POST',
+    body,
+    headers: { 'content-type': 'application/json' },
+  });
+  return parseKinovaJobs(response, board);
 }
 
 const AMAZON_TEAM = 'studentprograms.team-internships-for-students';
@@ -667,6 +748,7 @@ async function fetchGcJobs(board: GcJobsBoard): Promise<RawJob[]> {
 
 async function fetchBoard(board: CustomBoard): Promise<RawJob[]> {
   if (board.kind === 'amazon-university') return fetchAmazonUniversity(board);
+  if (board.kind === 'kinova') return fetchKinova(board);
   if (board.kind === 'cyber-recruiter') return fetchCyberRecruiter(board);
   if (board.kind === 'gc-jobs') return fetchGcJobs(board);
   if (board.kind === 'wp-job-manager') return fetchWpJobManager(board);

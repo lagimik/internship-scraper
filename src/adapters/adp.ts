@@ -1,19 +1,16 @@
-/** ADP Workforce Now public Career Center API adapter. */
+/** ADP Workforce Now public recruitment API adapter. */
 
 import { load } from 'cheerio';
 import type { Adapter, JobType, RawJob } from '../types.js';
 import { fetchJson } from '../lib/fetch.js';
 
 export interface AdpBoard {
+  /** A verified public ADP Workforce Now recruitment URL. */
   url: string;
   name: string;
 }
 
 export const ADP_BOARDS: AdpBoard[] = [
-  {
-    url: 'https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=3196ba6f-d49c-4493-9290-3d91489bdfa9&ccId=19000101_000001&type=JS&lang=en_CA',
-    name: 'General Fusion',
-  },
   {
     url: 'https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=6008c003-f9a4-47a3-8573-a3b0d594bcba&ccId=9201209146560_3&lang=fr_CA&jobId=577655&jwId=9201209146560_1',
     name: 'Marmen',
@@ -24,55 +21,9 @@ export interface ParsedAdpUrl {
   origin: string;
   cid: string;
   ccId: string;
-  jwId?: string;
+  jwId: string;
   lang: string;
 }
-
-interface AdpCode {
-  codeValue?: string;
-  shortName?: string;
-}
-
-interface AdpLocation {
-  nameCode?: AdpCode;
-  address?: {
-    cityName?: string;
-    countrySubdivisionLevel1?: AdpCode;
-    countryCode?: string;
-    postalCode?: string;
-  };
-}
-
-interface AdpRate {
-  amountValue?: number;
-  currencyCode?: string;
-}
-
-export interface AdpRequisition {
-  itemID?: string;
-  requisitionTitle?: string;
-  postDate?: string;
-  workLevelCode?: AdpCode;
-  clientRequisitionID?: string;
-  requisitionDescription?: string;
-  requisitionLocations?: AdpLocation[];
-  payGradeRange?: { minimumRate?: AdpRate; maximumRate?: AdpRate };
-  sponsoredVisaTypeCodes?: AdpCode[];
-  customFieldGroup?: {
-    stringFields?: Array<{ stringValue?: string; nameCode?: AdpCode }>;
-  };
-}
-
-export type AdpPosting = AdpRequisition;
-
-interface AdpListResponse {
-  jobRequisitions?: AdpRequisition[];
-  meta?: { totalNumber?: number };
-}
-
-const PAGE_SIZE = 20;
-const MAX_PAGES = 10;
-const DETAIL_CONCURRENCY = 5;
 
 export function parseAdpUrl(url: string): ParsedAdpUrl | null {
   let parsed: URL;
@@ -81,172 +32,218 @@ export function parseAdpUrl(url: string): ParsedAdpUrl | null {
   } catch {
     return null;
   }
+  if (parsed.protocol !== 'https:' || parsed.hostname !== 'workforcenow.adp.com') return null;
+  if (!parsed.pathname.endsWith('/mdf/recruitment/recruitment.html')) return null;
 
-  if (parsed.protocol !== 'https:'
-    || parsed.hostname.toLowerCase() !== 'workforcenow.adp.com'
-    || !/\/mdf\/recruitment\/recruitment\.html$/i.test(parsed.pathname)) return null;
-
-  const cid = parsed.searchParams.get('cid')?.trim();
-  const ccId = parsed.searchParams.get('ccId')?.trim();
-  const jwId = parsed.searchParams.get('jwId')?.trim() || undefined;
-  const lang = parsed.searchParams.get('lang')?.trim() || 'en_CA';
-  if (!cid || !ccId) return null;
-  return { origin: parsed.origin, cid, ccId, ...(jwId ? { jwId } : {}), lang };
+  const cid = parsed.searchParams.get('cid');
+  const ccId = parsed.searchParams.get('ccId');
+  const jwId = parsed.searchParams.get('jwId');
+  const lang = parsed.searchParams.get('lang');
+  if (!cid || !ccId || !jwId || !lang) return null;
+  return { origin: parsed.origin, cid, ccId, jwId, lang };
 }
 
-function apiUrl(parsed: ParsedAdpUrl, path = ''): URL {
-  const url = new URL(
-    `/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions${path}`,
-    parsed.origin,
-  );
-  url.searchParams.set('cid', parsed.cid);
-  url.searchParams.set('ccId', parsed.ccId);
-  if (parsed.jwId) url.searchParams.set('jwId', parsed.jwId);
-  url.searchParams.set('lang', parsed.lang);
-  url.searchParams.set('locale', parsed.lang);
-  return url;
+interface AdpLocation {
+  nameCode?: { shortName?: string };
+  address?: {
+    cityName?: string;
+    countrySubdivisionLevel1?: { codeValue?: string };
+    postalCode?: string;
+  };
 }
 
-function externalId(requisition: AdpRequisition): string | null {
-  return requisition.customFieldGroup?.stringFields?.find(
-    (field) => field.nameCode?.codeValue === 'ExternalJobID',
-  )?.stringValue?.trim() || null;
+interface AdpStringField {
+  stringValue?: string;
+  nameCode?: { codeValue?: string };
 }
 
-function htmlToText(html: string | undefined): string | null {
+export interface AdpPosting {
+  itemID?: string;
+  requisitionTitle?: string;
+  postDate?: string;
+  workLevelCode?: { shortName?: string };
+  clientRequisitionID?: string;
+  requisitionLocations?: AdpLocation[];
+  sponsoredVisaTypeCodes?: unknown[];
+  customFieldGroup?: { stringFields?: AdpStringField[] };
+  requisitionDescription?: string;
+}
+
+interface AdpResponse {
+  jobRequisitions?: AdpPosting[];
+  meta?: { startSequence?: number; totalNumber?: number };
+}
+
+const PAGE_SIZE = 20;
+const MAX_PAGES = 10;
+const DETAIL_CONCURRENCY = 4;
+const MAX_DETAIL_LOOKUPS = 50;
+const STUDENT_ROLE = /\b(intern(ship)?|co[\s-]?op|student|apprentice|stagiaire|stage|étudiant)\b/i;
+
+function externalJobId(posting: AdpPosting): string | null {
+  return posting.customFieldGroup?.stringFields
+    ?.find((field) => field.nameCode?.codeValue === 'ExternalJobID')
+    ?.stringValue ?? null;
+}
+
+function descriptionText(html: string | undefined): string | null {
   if (!html) return null;
   const $ = load(`<div>${html}</div>`);
   $('br').replaceWith('\n');
   $('p,li,h1,h2,h3,h4,h5,h6').append('\n');
-  return $('div').first().text()
+  const text = $('div').first().text()
     .replace(/\u00a0/g, ' ')
     .replace(/[ \t]+/g, ' ')
     .replace(/ *\n+ */g, '\n')
-    .trim() || null;
+    .trim();
+  return text || null;
 }
 
-function mapType(value: string): JobType | null {
+function postingType(posting: AdpPosting): JobType | null {
+  const value = `${posting.requisitionTitle ?? ''} ${posting.workLevelCode?.shortName ?? ''}`;
   if (/\bco[\s-]?op\b/i.test(value)) return 'co-op';
-  if (/\bintern(ship)?\b|\bstudent\b|\bapprentice\b|\bstagiaire\b|\bstage\b|\bétudiant\b/i.test(value)) return 'intern';
-  if (/\bcontract|temporary|fixed[- ]term|temporaire|contractuel\b/i.test(value)) return 'contract';
-  if (/\bfull[- ]?time\b/i.test(value)) return 'full-time';
+  if (STUDENT_ROLE.test(value)) return 'intern';
+  if (/contract|temporary|temporaire|contractuel/i.test(value)) return 'contract';
   return null;
 }
 
-export function mapAdpRequisition(
-  requisition: AdpRequisition,
-  board: AdpBoard,
-  _parsed?: ParsedAdpUrl,
-): RawJob | null {
-  const id = externalId(requisition);
-  const title = requisition.requisitionTitle?.trim();
-  if (!id || !title) return null;
+function postingUrl(posting: AdpPosting, board: AdpBoard): string | null {
+  const jobId = externalJobId(posting);
+  if (!jobId) return null;
+  const url = new URL(board.url);
+  url.searchParams.set('jobId', jobId);
+  return url.toString();
+}
 
-  const locations = (requisition.requisitionLocations ?? []).map((location) => {
-    const labelled = location.nameCode?.shortName?.trim();
-    if (labelled) return labelled;
-    return [
-      location.address?.cityName,
-      location.address?.countrySubdivisionLevel1?.codeValue,
-      location.address?.countryCode,
-    ].filter(Boolean).join(', ');
-  }).filter(Boolean);
-  const location = [...new Set(locations)].join('; ');
-  const description = htmlToText(requisition.requisitionDescription);
-  const minimum = requisition.payGradeRange?.minimumRate;
-  const maximum = requisition.payGradeRange?.maximumRate;
-  const currency = minimum?.currencyCode ?? maximum?.currencyCode ?? null;
-  const salaryRaw = minimum?.amountValue != null || maximum?.amountValue != null
-    ? `${minimum?.amountValue ?? ''}${minimum?.amountValue != null && maximum?.amountValue != null ? '-' : ''}${maximum?.amountValue ?? ''}${currency ? ` ${currency}` : ''}`
-    : description?.split(/\n|(?<=[.!?])\s+/).find(
-      (sentence) => /salary|compensation|salaire|rémunération/i.test(sentence)
-        && /\$\s*\d|\d[\d ,.]*\s*\$/i.test(sentence),
-    ) ?? null;
-  const detailUrl = new URL(board.url);
-  if (detailUrl.searchParams.has('type')) detailUrl.searchParams.set('type', 'MP');
-  detailUrl.searchParams.set('jobId', id);
-  const sponsorship = requisition.sponsoredVisaTypeCodes?.map(
-    (code) => code.shortName ?? code.codeValue,
-  ).filter(Boolean).join(', ') || description?.split(/(?<=[.!?])\s+/).filter(
-    (sentence) => /visa|sponsor|right to work|eligible to work|autorisé.*travailler/i.test(sentence),
-  ).join(' ') || null;
+export function mapAdpPosting(posting: AdpPosting, board: AdpBoard): RawJob | null {
+  const title = posting.requisitionTitle?.trim();
+  const url = postingUrl(posting, board);
+  if (!title || !url) return null;
+
+  const location = (posting.requisitionLocations ?? [])
+    .map((entry) => entry.nameCode?.shortName?.trim()
+      || [entry.address?.cityName, entry.address?.countrySubdivisionLevel1?.codeValue]
+        .filter(Boolean)
+        .join(', '))
+    .filter(Boolean)
+    .join('; ');
+  const description = descriptionText(posting.requisitionDescription);
+  const salaryRaw = description
+    ?.split(/\n|(?<=[.!?])\s+/)
+    .find((sentence) => /salary|compensation|salaire|rémunération/i.test(sentence)
+      && /\$\s*\d|\d[\d ,.]*\s*\$/i.test(sentence)) ?? null;
+  const sponsorship = description
+    ?.split(/(?<=[.!?])\s+/)
+    .filter((sentence) => /visa|sponsor|right to work|eligible to work|autorisé.*travailler/i.test(sentence))
+    .join(' ') || null;
 
   return {
     title,
     company: board.name,
     location,
     remote: /remote|hybrid|télétravail|hybride/i.test(`${title} ${location} ${description ?? ''}`),
-    url: detailUrl.toString(),
+    url,
     source: 'adp',
-    postedAt: requisition.postDate ?? null,
+    postedAt: posting.postDate ?? null,
     salaryRaw,
-    salaryMin: minimum?.amountValue ?? null,
-    salaryMax: maximum?.amountValue ?? null,
-    salaryCurrency: currency,
-    type: mapType(`${title} ${requisition.workLevelCode?.shortName ?? ''}`),
+    salaryMin: null,
+    salaryMax: null,
+    salaryCurrency: null,
+    type: postingType(posting),
     sponsorship,
     description,
   };
 }
 
-export function mapAdpPosting(posting: AdpPosting, board: AdpBoard): RawJob | null {
-  return mapAdpRequisition(posting, board);
+function apiBase(parsed: ParsedAdpUrl): string {
+  return `${parsed.origin}/mascsr/default/careercenter/public/events/staffing/v1/job-requisitions`;
 }
 
-async function fetchAdpBoard(board: AdpBoard): Promise<RawJob[]> {
+function apiParams(parsed: ParsedAdpUrl): URLSearchParams {
+  return new URLSearchParams({
+    cid: parsed.cid,
+    ccId: parsed.ccId,
+    jwId: parsed.jwId,
+    lang: parsed.lang,
+    locale: parsed.lang,
+  });
+}
+
+async function fetchBoard(board: AdpBoard): Promise<RawJob[]> {
   const parsed = parseAdpUrl(board.url);
-  if (!parsed) throw new Error(`unparseable ADP URL: ${board.url}`);
+  if (!parsed) throw new Error(`unparseable ADP Workforce Now URL: ${board.url}`);
   const configuration = parsed;
 
-  const summaries: AdpRequisition[] = [];
+  const base = apiBase(configuration);
+  const postings: AdpPosting[] = [];
+  const seen = new Set<string>();
+  let offset = 0;
   for (let page = 0; page < MAX_PAGES; page++) {
-    const url = apiUrl(configuration);
-    url.searchParams.set('$top', String(PAGE_SIZE));
-    url.searchParams.set('$skip', String(page * PAGE_SIZE));
-    const response = await fetchJson<AdpListResponse>(url.toString());
-    const batch = response.jobRequisitions ?? [];
-    summaries.push(...batch);
-    if (batch.length < PAGE_SIZE || summaries.length >= (response.meta?.totalNumber ?? Infinity)) break;
+    const params = apiParams(configuration);
+    params.set('$top', String(PAGE_SIZE));
+    params.set('$skip', String(offset));
+    const response = await fetchJson<AdpResponse>(`${base}?${params}`);
+    const pagePostings = response.jobRequisitions ?? [];
+    if (pagePostings.length === 0) break;
+    let added = 0;
+    for (const posting of pagePostings) {
+      const key = externalJobId(posting) ?? posting.itemID;
+      if (!key || seen.has(key)) continue;
+      seen.add(key);
+      postings.push(posting);
+      added++;
+    }
+    offset += pagePostings.length;
+    if (added === 0 || postings.length >= (response.meta?.totalNumber ?? Infinity)) break;
   }
 
-  const jobs: RawJob[] = [];
+  const detailIndexes = postings
+    .map((posting, index) => STUDENT_ROLE.test(
+      `${posting.requisitionTitle ?? ''} ${posting.workLevelCode?.shortName ?? ''}`,
+    ) ? index : -1)
+    .filter((index) => index >= 0)
+    .slice(0, MAX_DETAIL_LOOKUPS);
   let cursor = 0;
-  async function worker(): Promise<void> {
-    while (cursor < summaries.length) {
-      const summary = summaries[cursor++];
-      if (!summary) continue;
-      const id = externalId(summary);
-      let requisition = summary;
-      if (id) {
-        try {
-          requisition = await fetchJson<AdpRequisition>(apiUrl(configuration, `/${encodeURIComponent(id)}`).toString());
-        } catch {
-          requisition = summary;
-        }
+
+  async function detailWorker(): Promise<void> {
+    while (cursor < detailIndexes.length) {
+      const index = detailIndexes[cursor++];
+      const posting = index === undefined ? undefined : postings[index];
+      const jobId = posting && externalJobId(posting);
+      if (!posting || !jobId || index === undefined) continue;
+      try {
+        postings[index] = await fetchJson<AdpPosting>(`${base}/${jobId}?${apiParams(configuration)}`);
+      } catch {
+        // Listing data remains usable if a posting closes before its detail request.
       }
-      const job = mapAdpRequisition({ ...summary, ...requisition }, board, configuration);
-      if (job) jobs.push(job);
     }
   }
+
   await Promise.all(Array.from(
-    { length: Math.min(DETAIL_CONCURRENCY, summaries.length) },
-    () => worker(),
+    { length: Math.min(DETAIL_CONCURRENCY, detailIndexes.length) },
+    detailWorker,
   ));
+  return postings.flatMap((posting) => {
+    const mapped = mapAdpPosting(posting, board);
+    return mapped ? [mapped] : [];
+  });
+}
+
+async function fetchBoards(boards: AdpBoard[]): Promise<RawJob[]> {
+  const settled = await Promise.allSettled(boards.map(fetchBoard));
+  const jobs = settled.flatMap((result) => result.status === 'fulfilled' ? result.value : []);
+  if (jobs.length === 0) {
+    const failures = settled.flatMap((result, index) => result.status === 'rejected'
+      ? [`${boards[index]?.name}: ${result.reason instanceof Error ? result.reason.message : String(result.reason)}`]
+      : []);
+    if (failures.length > 0) throw new Error(failures.join('; '));
+  }
   return jobs;
 }
 
 export function adpAdapter(boards: AdpBoard[] = ADP_BOARDS): Adapter {
   return {
     name: 'adp',
-    fetch: async () => {
-      const settled = await Promise.allSettled(boards.map(fetchAdpBoard));
-      const jobs = settled.flatMap((result) => result.status === 'fulfilled' ? result.value : []);
-      if (jobs.length === 0 && boards.length > 0 && settled.every((result) => result.status === 'rejected')) {
-        throw new Error(settled.map((result, index) => result.status === 'rejected'
-          ? `${boards[index]?.name}: ${result.reason instanceof Error ? result.reason.message : String(result.reason)}`
-          : '').filter(Boolean).join('; '));
-      }
-      return jobs;
-    },
+    fetch: () => fetchBoards(boards),
   };
 }

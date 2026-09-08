@@ -45,7 +45,6 @@ import { workableAdapter } from './adapters/workable.js';
 import { teamtailorAdapter } from './adapters/teamtailor.js';
 import { folksAdapter } from './adapters/glowinthecloud.js';
 import { adpAdapter } from './adapters/adp.js';
-import { kulaAdapter } from './adapters/kula.js';
 
 /**
  * Sources cheap enough to poll often, the whole group finishes in ~10 seconds and
@@ -79,7 +78,6 @@ export function fastAdapters(): Adapter[] {
     teamtailorAdapter(),
     folksAdapter(),
     adpAdapter(),
-    kulaAdapter(),
   ];
 }
 
