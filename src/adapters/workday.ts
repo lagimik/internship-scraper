@@ -59,6 +59,8 @@ export const WORKDAY_BOARDS: WorkdayBoard[] = [
  { url: 'https://multimatic.wd10.myworkdayjobs.com/MMEC', name: 'Multimatic' },
  { url: 'https://irvingoil.wd3.myworkdayjobs.com/en-US/IOL_Careers_Primary', name: 'Irving Oil' },
  { url: 'https://cat.wd5.myworkdayjobs.com/en-US/CaterpillarCareers', name: 'Caterpillar' },
+ { url: 'https://mosaic.wd5.myworkdayjobs.com/mosaic?workerSubType=ed8099291cc44a449715a96f49b3b316', name: 'The Mosaic Company' },
+ { url: 'https://tcenergy.wd3.myworkdayjobs.com/en-US/CAREER_SITE_TC', name: 'TC Energy' },
  
 
 
@@ -188,15 +190,19 @@ export function parseWorkdayUrl(url: string): ParsedWorkdayUrl | null {
 
   // The tenant is the subdomain for every tenant checked (incl. host≠company cases
   // like Loblaw's `myview`), so derive it rather than asking for it separately.
-  const locationCountries = parsedUrl.searchParams.getAll('locationCountry').filter(Boolean);
+  const facetKeys = ['locationCountry', 'workerSubType'] as const;
+  const appliedFacets = Object.fromEntries(facetKeys.flatMap((key) => {
+    const values = parsedUrl.searchParams.getAll(key).filter(Boolean);
+    return values.length > 0 ? [[key, values]] : [];
+  }));
   return {
     host,
     dc,
     tenant: host,
     site,
     origin: `${parsedUrl.protocol}//${parsedUrl.host}`,
-    ...(locationCountries.length > 0
-      ? { appliedFacets: { locationCountry: locationCountries } }
+    ...(Object.keys(appliedFacets).length > 0
+      ? { appliedFacets }
       : {}),
   };
 }

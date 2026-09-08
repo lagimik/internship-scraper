@@ -21,6 +21,17 @@ export interface AshbyBoard {
   name?: string;
 }
 
+export function parseAshbyUrl(url: string): { token: string } | null {
+  try {
+    const parsed = new URL(url);
+    if (parsed.protocol !== 'https:' || parsed.hostname !== 'jobs.ashbyhq.com') return null;
+    const token = parsed.pathname.split('/').filter(Boolean)[0];
+    return token ? { token } : null;
+  } catch {
+    return null;
+  }
+}
+
 /** Verified live Ashby boards (checked against the API, not guessed). */
 export const ASHBY_BOARDS: AshbyBoard[] = [
   { token: 'dominion%20dynamics', name: 'Dominion Dynamics' },
@@ -56,6 +67,7 @@ export const ASHBY_BOARDS: AshbyBoard[] = [
   { token: 'loopio', name: 'Loopio' },
   { token: 'rewind', name: 'Rewind' },
   { token: 'lightspeed', name: 'Lightspeed' },
+  { token: 'rivianvw.tech', name: 'Rivian and Volkswagen Group Technologies' },
 ];
 
 interface AshbyAddress {
@@ -66,7 +78,7 @@ interface AshbyAddress {
   };
 }
 
-interface AshbyJob {
+export interface AshbyJob {
   id: string;
   title: string;
   department?: string;
@@ -82,8 +94,8 @@ interface AshbyJob {
   descriptionPlain?: string;
   address?: AshbyAddress;
   compensation?: {
-    compensationTierSummary?: string;
-    scrapeableCompensationSalarySummary?: string;
+    compensationTierSummary?: string | null;
+    scrapeableCompensationSalarySummary?: string | null;
   };
 }
 
@@ -125,6 +137,29 @@ export function collectLocations(j: AshbyJob): string {
   return [...new Set(parts)].join('; ');
 }
 
+export function mapAshbyJob(j: AshbyJob, board: AshbyBoard): RawJob {
+  const location = collectLocations(j);
+  return {
+    title: j.title.trim(),
+    company: board.name ?? board.token,
+    location,
+    remote: Boolean(j.isRemote) || /remote/i.test(location),
+    url: j.jobUrl ?? j.applyUrl ?? `https://jobs.ashbyhq.com/${board.token}/${j.id}`,
+    source: 'ashby',
+    postedAt: j.publishedAt ?? null,
+    salaryRaw:
+      j.compensation?.scrapeableCompensationSalarySummary ??
+      j.compensation?.compensationTierSummary ??
+      null,
+    salaryMin: null,
+    salaryMax: null,
+    salaryCurrency: null,
+    type: mapEmploymentType(j.employmentType),
+    sponsorship: null,
+    description: j.descriptionPlain ?? null,
+  };
+}
+
 async function fetchAshbyBoard(board: AshbyBoard): Promise<RawJob[]> {
   const data = await fetchJson<{ jobs?: AshbyJob[] }>(
     `https://api.ashbyhq.com/posting-api/job-board/${board.token}?includeCompensation=true`,
@@ -132,29 +167,7 @@ async function fetchAshbyBoard(board: AshbyBoard): Promise<RawJob[]> {
 
   return (data.jobs ?? [])
     .filter((j) => j.isListed !== false)
-    .map((j) => {
-      const location = collectLocations(j);
-      return {
-        title: j.title.trim(),
-        company: board.name ?? board.token,
-        location,
-        remote: Boolean(j.isRemote) || /remote/i.test(location),
-        url: j.jobUrl ?? j.applyUrl ?? `https://jobs.ashbyhq.com/${board.token}/${j.id}`,
-        source: 'ashby',
-        postedAt: j.publishedAt ?? null,
-        salaryRaw:
-          j.compensation?.scrapeableCompensationSalarySummary ??
-          j.compensation?.compensationTierSummary ??
-          null,
-        salaryMin: null,
-        salaryMax: null,
-        salaryCurrency: null,
-        // Ashby states this explicitly, which beats guessing from the title.
-        type: mapEmploymentType(j.employmentType),
-        sponsorship: null,
-        description: j.descriptionPlain ?? null,
-      } satisfies RawJob;
-    });
+    .map((j) => mapAshbyJob(j, board));
 }
 
 /** Fetch boards with bounded concurrency; a dead board is skipped, not fatal. */

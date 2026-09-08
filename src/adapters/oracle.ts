@@ -13,6 +13,9 @@ export interface OracleBoard {
   /** A Candidate Experience URL ending in `/sites/<site number>`. */
   url: string;
   name: string;
+  /** Verified Oracle API origin when the careers site uses a custom domain. */
+  apiOrigin?: string;
+  facetedSearch?: 'action';
 }
 
 /** Oracle boards verified against the public recruitingCEJobRequisitions API. */
@@ -48,6 +51,16 @@ export const ORACLE_BOARDS: OracleBoard[] = [
   {
     url: 'https://ehif.fa.em2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/jobs?lastSelectedFacet=AttributeChar4&mode=location&selectedFlexFieldsFacets=%22AttributeChar4%7CGraduates%3BTrainees%22',
     name: 'Wood',
+    facetedSearch: 'action',
+  },
+  {
+    url: 'https://hckz.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/jobs?mode=job-location',
+    name: 'Seaspan',
+  },
+  {
+    url: 'https://jobs.nokia.com/en/sites/CX_1/jobs?lastSelectedFacet=LOCATIONS&selectedFlexFieldsFacets=%22AttributeChar21%7CStudent+or+Intern+or+Trainee%3BGraduate+or+Entry+Level%22&selectedLocationsFacet=300000000471544',
+    name: 'Nokia',
+    apiOrigin: 'https://fa-evmr-saasfaprod1.fa.ocs.oraclecloud.com',
   },
 ];
 
@@ -57,27 +70,33 @@ export interface ParsedOracleUrl {
   site: string;
   lastSelectedFacet?: string;
   selectedFlexFieldsFacets?: string;
+  selectedLocationsFacet?: string;
 }
 
 /** Decompose a Candidate Experience URL, including deep `/jobs` and `/job/<id>` URLs. */
 export function parseOracleUrl(url: string): ParsedOracleUrl | null {
   try {
     const parsed = new URL(url);
-    if (parsed.protocol !== 'https:' || !parsed.hostname.endsWith('.oraclecloud.com')) return null;
+    if (parsed.protocol !== 'https:') return null;
+    const isOracleHost = parsed.hostname.endsWith('.oraclecloud.com');
+    const isVerifiedCustomHost = parsed.hostname === 'jobs.nokia.com';
+    if (!isOracleHost && !isVerifiedCustomHost) return null;
 
     const match = parsed.pathname.match(
-      /^\/hcmUI\/CandidateExperience\/([^/]+)\/sites\/([^/]+)(?:\/|$)/i,
+      /^(?:\/hcmUI\/CandidateExperience)?\/([^/]+)\/sites\/([^/]+)(?:\/|$)/i,
     );
     if (!match?.[1] || !match[2]) return null;
     const lastSelectedFacet = parsed.searchParams.get('lastSelectedFacet');
     const selectedFlexFieldsFacets = parsed.searchParams.get('selectedFlexFieldsFacets')
       ?.replace(/^"|"$/g, '');
+    const selectedLocationsFacet = parsed.searchParams.get('selectedLocationsFacet');
     return {
       origin: parsed.origin,
       language: match[1],
       site: match[2],
       ...(lastSelectedFacet ? { lastSelectedFacet } : {}),
       ...(selectedFlexFieldsFacets ? { selectedFlexFieldsFacets } : {}),
+      ...(selectedLocationsFacet ? { selectedLocationsFacet } : {}),
     };
   } catch {
     return null;
@@ -169,10 +188,10 @@ function mapOracleType(job: OracleRequisition): JobType | null {
     job.JobType ?? job.jobType,
     job.Title ?? job.title,
   ].filter(Boolean).join(' ');
-  if (/co.?op/i.test(value)) return 'co-op';
-  if (/intern|student|trainee|stagiaire/i.test(value)) return 'intern';
-  if (/contract|temporary|fixed.?term/i.test(value)) return 'contract';
-  if (/full.?time|regular/i.test(value)) return 'full-time';
+  if (/\bco[\s-]?op\b/i.test(value)) return 'co-op';
+  if (/\b(?:intern(?:ship)?|student|trainee|stagiaire)\b/i.test(value)) return 'intern';
+  if (/\b(?:contract|temporary|fixed[\s-]?term)\b/i.test(value)) return 'contract';
+  if (/\bfull[\s-]?time\b|\bregular\b/i.test(value)) return 'full-time';
   return null;
 }
 
@@ -187,20 +206,35 @@ async function searchJobs(
   parsed: ParsedOracleUrl,
   keyword: string,
   offset: number,
+  apiOrigin = parsed.origin,
 ): Promise<OracleSearch> {
   const endpoint = new URL(
     '/hcmRestApi/resources/latest/recruitingCEJobRequisitions',
-    parsed.origin,
+    apiOrigin,
   );
   endpoint.searchParams.set('onlyData', 'true');
   endpoint.searchParams.set(
     'expand',
     'requisitionList.workLocation,requisitionList.otherWorkLocations,requisitionList.secondaryLocations',
   );
-  endpoint.searchParams.set(
-    'finder',
-    `findReqs;siteNumber=${parsed.site},keyword=${keyword},limit=${PAGE_SIZE},offset=${offset},sortBy=POSTING_DATES_DESC`,
-  );
+  const finder = [
+    `siteNumber=${parsed.site}`,
+    ...(keyword ? [`keyword=${keyword}`] : []),
+    ...(parsed.selectedFlexFieldsFacets || parsed.selectedLocationsFacet
+      ? ['facetsList=LOCATIONS;WORK_LOCATIONS;WORKPLACE_TYPES;TITLES;CATEGORIES;ORGANIZATIONS;POSTING_DATES;FLEX_FIELDS']
+      : []),
+    `limit=${PAGE_SIZE}`,
+    ...(parsed.lastSelectedFacet ? [`lastSelectedFacet=${parsed.lastSelectedFacet}`] : []),
+    ...(parsed.selectedFlexFieldsFacets
+      ? [`selectedFlexFieldsFacets="${parsed.selectedFlexFieldsFacets}"`]
+      : []),
+    ...(parsed.selectedLocationsFacet
+      ? [`selectedLocationsFacet=${parsed.selectedLocationsFacet}`]
+      : []),
+    `offset=${offset}`,
+    'sortBy=POSTING_DATES_DESC',
+  ];
+  endpoint.searchParams.set('finder', `findReqs;${finder.join(',')}`);
 
   const response = await fetchJson<OracleResponse>(endpoint.toString());
   return response.items?.[0] ?? {};
@@ -253,6 +287,9 @@ export function mapOracleRequisition(
   });
   const workplaceType = requisition.WorkplaceType ?? requisition.workplaceType ?? '';
   const workplaceTypeCode = requisition.WorkplaceTypeCode ?? requisition.workplaceTypeCode;
+  const candidateExperiencePath = parsed.origin.endsWith('.oraclecloud.com')
+    ? '/hcmUI/CandidateExperience'
+    : '';
   return {
     title,
     company: board.name,
@@ -260,7 +297,7 @@ export function mapOracleRequisition(
     remote: /remote/i.test(location)
       || /remote/i.test(workplaceType)
       || workplaceTypeCode === 'ORA_REMOTE',
-    url: `${parsed.origin}/hcmUI/CandidateExperience/${parsed.language}/sites/${parsed.site}/job/${encodeURIComponent(id)}`,
+    url: `${parsed.origin}${candidateExperiencePath}/${parsed.language}/sites/${parsed.site}/job/${encodeURIComponent(id)}`,
     source: 'oracle',
     postedAt: parseOraclePostedDate(requisition.PostedDate ?? requisition.postedDate),
     salaryRaw: null,
@@ -280,7 +317,7 @@ async function fetchOracleBoard(board: OracleBoard): Promise<RawJob[]> {
   const jobs: RawJob[] = [];
   const seen = new Set<string>();
 
-  if (parsed.selectedFlexFieldsFacets) {
+  if (board.facetedSearch === 'action') {
     let pages = MAX_PAGES;
     for (let page = 0; page < pages; page++) {
       const data = await searchFacetedJobs(parsed, page * PAGE_SIZE);
@@ -303,10 +340,33 @@ async function fetchOracleBoard(board: OracleBoard): Promise<RawJob[]> {
     return jobs;
   }
 
+  if (parsed.selectedFlexFieldsFacets || parsed.selectedLocationsFacet) {
+    let pages = MAX_PAGES;
+    for (let page = 0; page < pages; page++) {
+      const data = await searchJobs(parsed, '', page * PAGE_SIZE, board.apiOrigin);
+      const requisitions = data.requisitionList ?? [];
+      if (requisitions.length === 0) break;
+      const total = data.TotalJobsCount ?? data.totalJobsCount;
+      if (page === 0 && typeof total === 'number') {
+        pages = Math.min(MAX_PAGES, Math.max(1, Math.ceil(total / PAGE_SIZE)));
+      }
+      for (const requisition of requisitions) {
+        const id = String(requisition.Id ?? requisition.id ?? '');
+        if (!id || seen.has(id)) continue;
+        const job = mapOracleRequisition(requisition, board, parsed);
+        if (!job) continue;
+        seen.add(id);
+        jobs.push(job);
+      }
+      if (requisitions.length < PAGE_SIZE) break;
+    }
+    return jobs;
+  }
+
   for (const term of SEARCH_TERMS) {
     let pages = MAX_PAGES;
     for (let page = 0; page < pages; page++) {
-      const data = await searchJobs(parsed, term, page * PAGE_SIZE);
+      const data = await searchJobs(parsed, term, page * PAGE_SIZE, board.apiOrigin);
       const requisitions = data.requisitionList ?? [];
       if (requisitions.length === 0) break;
 
