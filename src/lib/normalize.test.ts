@@ -66,6 +66,39 @@ test('normalize: keeps the GE Vernova French mechanical design internship', () =
   assert.equal(keptJobs[0]?.region, 'QC');
 });
 
+test('normalize: keeps Winter 2027 RTX jobs with Workday site-code locations', () => {
+  const { keptJobs } = normalize([raw({
+    title: 'Stage - Hiver 2027 - Génie mécanique / Internship - Winter 2027 - Mechanical Engineering',
+    company: 'RTX',
+    location: 'CA-QC-LONGUEUIL-J01 ~ 1000 Blvd Marie-Victorin ~ J01 BLDG',
+    type: 'intern',
+    url: 'https://example.com/rtx-mechanical',
+  })]);
+
+  assert.equal(keptJobs.length, 1);
+  assert.equal(keptJobs[0]?.country, 'CA');
+  assert.equal(keptJobs[0]?.region, 'QC');
+});
+
+test('normalize: uses descriptions to guard generic project engineer titles', () => {
+  const { keptJobs, droppedNotRole } = normalize([
+    raw({
+      title: 'Project Engineer Intern - Winter 2027',
+      description: 'Support mechanical engineering and manufacturing projects.',
+      url: 'https://example.com/mechanical-project',
+    }),
+    raw({
+      title: 'GridOS Project Engineer Intern - Winter 2027',
+      description: 'Deploy Linux software using GitOps.',
+      url: 'https://example.com/software-project',
+    }),
+  ]);
+
+  assert.equal(keptJobs.length, 1);
+  assert.equal(keptJobs[0]?.matchedBy, 'project-engineer-context');
+  assert.equal(droppedNotRole, 1);
+});
+
 test('normalize: postings older than the cutoff never enter the database', () => {
   const daysAgo = (n: number) => new Date(Date.now() - n * 86_400_000).toISOString();
   const { keptJobs, droppedStale } = normalize([

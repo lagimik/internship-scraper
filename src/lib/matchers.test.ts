@@ -26,6 +26,12 @@ test('canada: real location strings from live sources', () => {
   assert.ok(multi.every((result) => result.remote));
 });
 
+test('canada: recognizes Workday country-province site codes', () => {
+  assert.equal(match('CA-QC-LONGUEUIL-J01 ~ 1000 Blvd Marie-Victorin', 'CA')?.region, 'QC');
+  assert.equal(match('CA-QC-MIRABEL-M01 ~ 11155 Julien-Audette', 'CA')?.region, 'QC');
+  assert.equal(match('CA-NS-HALIFAX-PLANT 41', 'CA')?.region, 'NS');
+});
+
 test('locations: recognizes US locations and rejects other countries', () => {
   const usLocations: Array<[string, string]> = [
     ['San Francisco, CA', 'CA'], ['Austin, TX', 'TX'],
@@ -86,6 +92,13 @@ test('work terms: incompatible durations override Winter/Hiver 2027 wording', ()
     assert.equal(isFourMonthEligible(term), false, `should reject ${text}`);
   }
   assert.equal(isFourMonthEligible(matchWorkTerm('Hiver 2027 - stage de quatre mois', null)), true);
+});
+
+test('work terms: calendar ranges determine duration before seasonal inference', () => {
+  assert.equal(isFourMonthEligible(matchWorkTerm('Internship - January 2027-April 2027', null)), true);
+  assert.equal(isFourMonthEligible(matchWorkTerm('Co-op - January 2027-June 2027', null)), false);
+  assert.equal(matchWorkTerm('Co-op - January 2027-June 2027', null).months, 6);
+  assert.equal(isFourMonthEligible(matchWorkTerm('Stage - janvier à avril 2027', null)), true);
 });
 
 test('roles: target titles match', () => {
@@ -159,6 +172,17 @@ test('roles: common unordered and qualified title permutations match', () => {
   }
 });
 
+test('roles: project engineer requires target-discipline context', () => {
+  const mechanical = matchRole(
+    'Project Engineer Intern',
+    'Support mechanical engineering, manufacturing engineering, and process improvement.',
+  );
+  assert.equal(mechanical.category, 'project-management');
+  assert.equal(mechanical.matchedBy, 'project-engineer-context');
+  assert.equal(matchRole('Project Engineer Intern').matches, false);
+  assert.equal(matchRole('GridOS Project Engineer Intern', 'Deploy Linux software using GitOps.').matches, false);
+});
+
 test('roles: computing and business titles are excluded', () => {
   for (const t of [
     'DevOps Engineer Intern',
@@ -173,6 +197,18 @@ test('roles: computing and business titles are excluded', () => {
     'Financial Analyst Intern',
   ]) {
     assert.equal(matchRole(t).matches, false, `should exclude: ${t}`);
+  }
+});
+
+test('roles: electrical and instructional design titles are excluded', () => {
+  for (const title of [
+    'Electronic Design Engineer Intern',
+    'Electrical Engineer, Cell Manufacturing Intern',
+    'FPGA Hardware Design Engineering Co-op',
+    'AI Hardware Physical Design Engineer Intern',
+    'Instructional Design, Manufacturing Intern',
+  ]) {
+    assert.equal(matchRole(title).matches, false, `should exclude: ${title}`);
   }
 });
 

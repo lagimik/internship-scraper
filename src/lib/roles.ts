@@ -24,6 +24,10 @@ const EXCLUSIONS: Array<[RegExp, string]> = [
   [/\b(cybersecurity|information technology|it|network|database)\s+(engineer|developer|analyst|specialist|manager|intern|co\s?op)\b/, 'computing'],
   [/\b(qa|quality assurance)\s+(analyst|tester|automation|developer)\b|\btest\s+automation\b/, 'software-testing'],
 
+  // Broad design/manufacturing rules must not absorb explicit electronics roles.
+  [/\b(electrical|electronics?|fpga|asic|radio frequency|ai hardware)\b/, 'electrical-electronics'],
+  [/\binstructional\s+design\b/, 'instructional-design'],
+
   // Other disciplines and common false positives.
   [/\b(vp|vice president|head of|chief)\b/, 'leadership'],
   [/\b(recruiter|sourcer|talent acquisition|human resources|people ops)\b/, 'recruiting'],
@@ -35,6 +39,8 @@ const EXCLUSIONS: Array<[RegExp, string]> = [
 
 const STUDENT_MARKER = /\b(intern(ship)?s?|co\s?op|student|placement|stagiaire|stages?|étudiant(e)?|apprenti(ce|ceship)?|undergrad(uate)?|work\s+term)\b/;
 const ENGINEERING_ROLE = /\b(engineer(ing)?|designer|design|technologist|technician|specialist|scientist|coordinator|manager|management|controls?)\b/;
+const PROJECT_ENGINEER = /\bprojects?\s+engineer(ing)?\b/;
+const PROJECT_ENGINEER_CONTEXT = /\b(mechanical|mechatronic(s|al)?|electro\s?mechanical|manufacturing|industrial\s+engineering|production|assembly|tooling|materials?\s+engineering|process\s+engineering|quality\s+engineering)\b/;
 
 interface ConceptRule {
   category: RoleCategory;
@@ -192,7 +198,7 @@ export function isStudentType(type: JobType | null): boolean {
   return type === 'intern' || type === 'co-op';
 }
 
-export function matchRole(title: string): RoleMatch {
+export function matchRole(title: string, description: string | null = null): RoleMatch {
   const normalized = normalizeTitle(title);
   if (!normalized) return { matches: false, category: null, type: null, matchedBy: null };
 
@@ -200,6 +206,14 @@ export function matchRole(title: string): RoleMatch {
     if (pattern.test(normalized)) {
       return { matches: false, category: null, type: null, matchedBy: null, excludedBy: reason };
     }
+  }
+  if (PROJECT_ENGINEER.test(normalized) && PROJECT_ENGINEER_CONTEXT.test(normalizeTitle(description ?? ''))) {
+    return {
+      matches: true,
+      category: 'project-management',
+      type: classifyType(normalized),
+      matchedBy: 'project-engineer-context',
+    };
   }
   for (const rule of CONCEPT_RULES) {
     const matchesAll = rule.all.every((pattern) => pattern.test(normalized));

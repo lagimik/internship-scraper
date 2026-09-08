@@ -11,6 +11,41 @@ export interface WorkTermMatch {
 const TARGET_YEAR = 2027;
 const TERM_CONTEXT = String.raw`(?:intern(?:ship)?|co[ -]?op|work\s*term|placement|term|semester|stage|stagiaire)`;
 const DURATION_CONTEXT = /\b(?:intern(?:ship)?|co[ -]?op|work\s*term|placement|duration|contract|position|stage|mandat)\b/i;
+const MONTH_NUMBERS: Record<string, number> = {
+  january: 1, jan: 1, janvier: 1, janv: 1,
+  february: 2, feb: 2, février: 2, fevrier: 2, févr: 2, fevr: 2,
+  march: 3, mar: 3, mars: 3,
+  april: 4, apr: 4, avril: 4, avr: 4,
+  may: 5, mai: 5,
+  june: 6, jun: 6, juin: 6,
+  july: 7, jul: 7, juillet: 7, juil: 7,
+  august: 8, aug: 8, août: 8, aout: 8,
+  september: 9, sep: 9, sept: 9, septembre: 9,
+  october: 10, oct: 10, octobre: 10,
+  november: 11, nov: 11, novembre: 11,
+  december: 12, dec: 12, décembre: 12, decembre: 12, déc: 12,
+};
+const MONTH_NAME = Object.keys(MONTH_NUMBERS).sort((a, b) => b.length - a.length).join('|');
+
+function calendarRangeDuration(text: string): WorkTermMatch | null {
+  const pattern = new RegExp(
+    String.raw`\b(${MONTH_NAME})\s*(20\d{2})?\s*(?:-|to|through|until|à|au)\s*` +
+      String.raw`(${MONTH_NAME})\s*(20\d{2})\b`,
+    'i',
+  );
+  const match = text.match(pattern);
+  if (!match) return null;
+
+  const startMonth = MONTH_NUMBERS[match[1]?.toLowerCase() ?? ''];
+  const endMonth = MONTH_NUMBERS[match[3]?.toLowerCase() ?? ''];
+  const endYear = Number(match[4]);
+  const startYear = Number(match[2] ?? match[4]);
+  if (!startMonth || !endMonth || !Number.isFinite(startYear) || !Number.isFinite(endYear)) return null;
+
+  const months = (endYear - startYear) * 12 + endMonth - startMonth + 1;
+  if (months < 1 || months > 24) return null;
+  return { months, confidence: 'confirmed', matchedBy: match[0], isTargetTerm: false };
+}
 
 function explicitDuration(text: string, requireContext = false): WorkTermMatch | null {
   const pattern = /\b(\d{1,2}|four|eight|twelve|sixteen|quatre|huit|douze|seize)\s*[- ]?(months?|weeks?|mois|semaines?)\b/g;
@@ -70,8 +105,8 @@ export function matchWorkTerm(title: string, description: string | null): WorkTe
   const normalizedTitle = title.toLowerCase().replace(/[–—]/g, '-');
   const normalizedDescription = (description ?? '').toLowerCase().replace(/[–—]/g, '-');
 
-  const titleDuration = explicitDuration(normalizedTitle);
-  const descriptionDuration = explicitDuration(normalizedDescription, true);
+  const titleDuration = explicitDuration(normalizedTitle) ?? calendarRangeDuration(normalizedTitle);
+  const descriptionDuration = explicitDuration(normalizedDescription, true) ?? calendarRangeDuration(normalizedDescription);
   const duration = titleDuration ?? descriptionDuration;
 
   const evidence = targetTermEvidence(normalizedTitle) ?? targetTermEvidence(normalizedDescription);

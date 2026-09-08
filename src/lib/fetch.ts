@@ -32,6 +32,10 @@ function cachePath(url: string): string {
   return resolve(CACHE_DIR, `${createHash('sha256').update(url).digest('hex').slice(0, 20)}.txt`);
 }
 
+function cacheMetadataPath(path: string): string {
+  return `${path.slice(0, -4)}.meta.json`;
+}
+
 export async function fetchText(url: string, opts: FetchOptions = {}): Promise<string> {
   const { retries = 3, timeoutMs = 20_000, headers = {}, method, body, realUrl } = opts;
   const target = realUrl ?? url;
@@ -90,6 +94,14 @@ export async function fetchText(url: string, opts: FetchOptions = {}): Promise<s
       const text = await res.text();
       mkdirSync(CACHE_DIR, { recursive: true });
       writeFileSync(cached, text, 'utf8');
+      writeFileSync(cacheMetadataPath(cached), JSON.stringify({
+        cacheKey: url,
+        target,
+        method: method ?? 'GET',
+        fetchedAt: new Date().toISOString(),
+        status: res.status,
+        contentType: res.headers.get('content-type'),
+      }, null, 2), 'utf8');
       return text;
     } catch (err) {
       lastErr = err;

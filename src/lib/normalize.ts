@@ -58,7 +58,7 @@ export function normalize(raw: RawJob[]): NormalizeStats {
   const cutoff = MAX_AGE_DAYS > 0 ? Date.now() - MAX_AGE_DAYS * 86_400_000 : null;
 
   for (const j of raw) {
-    const role = matchRole(j.title);
+    const role = matchRole(j.title, j.description);
     if (!role.matches) {
       droppedNotRole++;
       continue;

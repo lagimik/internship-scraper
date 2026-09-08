@@ -94,7 +94,7 @@ export function matchLocations(rawLocation: string): LocationMatch[] {
   for (const code of CA_CODES) {
     const c = code.toLowerCase();
     if (new RegExp(`\\(\\s*${c}\\s*\\)`).test(loc) || new RegExp(`,\\s*${c}\\b`).test(loc) ||
-        new RegExp(`\\bca/${c}(?:/|\\b)`).test(loc)) {
+        new RegExp(`\\bca[-/]${c}(?:[-/]|\\b)`).test(loc)) {
       add('CA', code, caNamed || !usNamed ? 'confirmed' : 'ambiguous', `province-code:${code}`);
     }
   }
