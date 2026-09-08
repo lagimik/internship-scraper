@@ -40,6 +40,8 @@ import { ripplingAdapter } from './adapters/rippling.js';
 import { paradoxAdapter } from './adapters/paradox.js';
 import { cwsAdapter } from './adapters/cws.js';
 import { sapERecruitingAdapter } from './adapters/sap-erecruiting.js';
+import { adpAdapter } from './adapters/adp.js';
+import { kulaAdapter } from './adapters/kula.js';
 
 /**
  * Sources cheap enough to poll often, the whole group finishes in ~10 seconds and
@@ -68,6 +70,8 @@ export function fastAdapters(): Adapter[] {
     taleoAdapter(),
     ripplingAdapter(),
     cwsAdapter(),
+    adpAdapter(),
+    kulaAdapter(),
   ];
 }
 

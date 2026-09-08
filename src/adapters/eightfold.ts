@@ -22,8 +22,13 @@ export interface EightfoldBoard {
   name: string;
 }
 
-/** Verified against each tenant's unauthenticated PCS search API. */
+/** Verified against each careers origin's unauthenticated PCS search API. */
 export const EIGHTFOLD_BOARDS: EightfoldBoard[] = [
+  {
+    url: 'https://apply.careers.microsoft.com/careers',
+    domain: 'microsoft.com',
+    name: 'Microsoft',
+  },
   {
     url: 'https://bostonscientific.eightfold.ai/careers',
     domain: 'bostonscientific.com',
@@ -64,13 +69,16 @@ export interface ParsedEightfoldUrl {
   tenant: string;
 }
 
-/** Parse only public Eightfold tenant career URLs. */
+/** Parse only verified public Eightfold careers URL shapes. */
 export function parseEightfoldUrl(url: string): ParsedEightfoldUrl | null {
   let parsed: URL;
   try {
     parsed = new URL(url);
   } catch {
     return null;
+  }
+  if (parsed.hostname === 'apply.careers.microsoft.com' && parsed.pathname === '/careers') {
+    return { origin: parsed.origin, tenant: 'microsoft' };
   }
   const match = parsed.hostname.match(/^([a-z0-9-]+)\.eightfold\.ai$/i);
   if (!match?.[1] || !parsed.pathname.startsWith('/careers')) return null;

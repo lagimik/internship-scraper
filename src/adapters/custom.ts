@@ -8,9 +8,10 @@
 
 import { load } from 'cheerio';
 import type { Adapter, JobType, RawJob } from '../types.js';
-import { fetchText } from '../lib/fetch.js';
+import { fetchJson, fetchText } from '../lib/fetch.js';
 
-type CustomBoard = CyberRecruiterBoard | GcJobsBoard | HtmlBoard | Jp2gBoard | MelitronBoard;
+type CustomBoard = CyberRecruiterBoard | GcJobsBoard | HtmlBoard | Jp2gBoard | MelitronBoard
+  | WpJobManagerBoard | AmazonUniversityBoard;
 
 interface BoardBase {
   name: string;
@@ -33,6 +34,15 @@ export interface GcJobsBoard extends BoardBase {
   kind: 'gc-jobs';
 }
 
+export interface WpJobManagerBoard extends BoardBase {
+  kind: 'wp-job-manager';
+}
+
+export interface AmazonUniversityBoard extends BoardBase {
+  kind: 'amazon-university';
+  maxPages?: number;
+}
+
 export interface HtmlSelectors {
   card: string;
   titleLink: string;
@@ -49,6 +59,17 @@ export interface HtmlBoard extends BoardBase {
 }
 
 export const CUSTOM_BOARDS: CustomBoard[] = [
+  {
+    kind: 'wp-job-manager',
+    name: 'Canadensys Aerospace',
+    url: 'https://www.canadensys.com/jobs/',
+  },
+  {
+    kind: 'amazon-university',
+    name: 'Amazon',
+    url: 'https://www.amazon.jobs/content/en/career-programs/university?keyword%5B%5D=intern&team%5B%5D=studentprograms.team-internships-for-students',
+    maxPages: 20,
+  },
   {
     kind: 'jp2g',
     name: 'JP2G Consultants Inc.',
@@ -101,6 +122,163 @@ function emptyFields(): Pick<RawJob,
   };
 }
 
+const AMAZON_TEAM = 'studentprograms.team-internships-for-students';
+
+export interface AmazonUniversityConfig {
+  origin: string;
+  keyword: string;
+  labels: string[];
+}
+
+export function parseAmazonUniversityUrl(value: string): AmazonUniversityConfig | null {
+  try {
+    const url = new URL(value);
+    const keyword = url.searchParams.get('keyword[]');
+    const team = url.searchParams.get('team[]');
+    if (!/(^|\.)amazon\.jobs$/i.test(url.hostname)
+      || url.pathname !== '/content/en/career-programs/university'
+      || keyword !== 'intern'
+      || team !== AMAZON_TEAM) return null;
+    return { origin: url.origin, keyword, labels: ['studentprograms', team] };
+  } catch {
+    return null;
+  }
+}
+
+interface AmazonSearchHit {
+  fields?: Record<string, string[] | undefined>;
+}
+
+export interface AmazonSearchResponse {
+  found?: number;
+  start?: number;
+  searchHits?: AmazonSearchHit[];
+}
+
+function firstAmazonField(
+  fields: Record<string, string[] | undefined>,
+  name: string,
+): string | undefined {
+  return fields[name]?.[0];
+}
+
+function amazonTimestamp(value: string | undefined): string | null {
+  if (!value) return null;
+  const timestamp = Number(value) * 1000;
+  return Number.isFinite(timestamp) ? new Date(timestamp).toISOString() : null;
+}
+
+/** Map Amazon's nested search fields without depending on its presentation markup. */
+export function mapAmazonSearchResponse(
+  response: AmazonSearchResponse,
+  board: AmazonUniversityBoard,
+): RawJob[] {
+  const origin = new URL(board.url).origin;
+  return (response.searchHits ?? []).flatMap((hit) => {
+    const fields = hit.fields ?? {};
+    const title = firstAmazonField(fields, 'title');
+    const id = firstAmazonField(fields, 'icimsJobId');
+    if (!title || !id) return [];
+    const location = firstAmazonField(fields, 'location')
+      ?? firstAmazonField(fields, 'normalizedLocation')
+      ?? '';
+    const locations = fields.locations?.join(' ') ?? '';
+    const descriptionHtml = [
+      firstAmazonField(fields, 'description'),
+      firstAmazonField(fields, 'basicQualifications'),
+      firstAmazonField(fields, 'preferredQualifications'),
+    ].filter(Boolean).join('<br>');
+    const description = descriptionHtml
+      ? load(`<div>${descriptionHtml}</div>`).text().replace(/\s+/g, ' ').trim()
+      : null;
+    return [{
+      title,
+      company: board.name,
+      location,
+      remote: /remote|home.?based|"type":"REMOTE"/i.test(`${title} ${location} ${locations}`),
+      url: `${origin}/jobs/${encodeURIComponent(id)}`,
+      source: 'custom',
+      postedAt: amazonTimestamp(firstAmazonField(fields, 'updatedDate')
+        ?? firstAmazonField(fields, 'createdDate')),
+      ...emptyFields(),
+      type: 'intern',
+      description,
+    }];
+  });
+}
+
+function amazonSearchKey(html: string): string | null {
+  const value = load(html)('script#jobs-cms-next-data, script#__NEXT_DATA__').first().text();
+  if (!value) return null;
+  try {
+    const data = JSON.parse(value) as {
+      props?: { searchKey?: unknown; pageProps?: { searchKey?: unknown } };
+    };
+    const searchKey = data.props?.searchKey ?? data.props?.pageProps?.searchKey;
+    return typeof searchKey === 'string' ? searchKey : null;
+  } catch {
+    return null;
+  }
+}
+
+function amazonSearchBody(config: AmazonUniversityConfig, start: number, size: number): string {
+  return JSON.stringify({
+    accessLevel: 'EXTERNAL',
+    contentFilterFacets: [{
+      name: 'primarySearchLabel',
+      requestedFacetCount: 9999,
+      values: config.labels.map((name) => ({ name })),
+    }],
+    excludeFacets: [
+      { name: 'isConfidential', values: [{ name: '1' }] },
+      { name: 'businessCategory', values: [{ name: 'a-confidential-job' }] },
+    ],
+    filterFacets: [],
+    includeFacets: [],
+    jobTypeFacets: [],
+    locationFacets: [[
+      { name: 'country', requestedFacetCount: 9999 },
+      { name: 'normalizedStateName', requestedFacetCount: 9999 },
+      { name: 'normalizedCityName', requestedFacetCount: 9999 },
+    ]],
+    query: config.keyword,
+    size,
+    start,
+    treatment: 'OM',
+    sort: { sortOrder: 'DESCENDING', sortType: 'SCORE' },
+  });
+}
+
+async function fetchAmazonUniversity(board: AmazonUniversityBoard): Promise<RawJob[]> {
+  const config = parseAmazonUniversityUrl(board.url);
+  if (!config) throw new Error(`Unsupported Amazon University URL: ${board.url}`);
+  const html = await fetchText(board.url, { headers: { accept: 'text/html' } });
+  const apiKey = amazonSearchKey(html);
+  if (!apiKey) throw new Error('Amazon University page did not expose its public search key');
+
+  const endpoint = `${config.origin}/api/jobs/search?is_als=true`;
+  const pageSize = 100;
+  const jobs: RawJob[] = [];
+  for (let page = 0; page < (board.maxPages ?? 20); page++) {
+    const start = page * pageSize;
+    const body = amazonSearchBody(config, start, pageSize);
+    const response = await fetchJson<AmazonSearchResponse>(`${endpoint}&start=${start}`, {
+      realUrl: endpoint,
+      method: 'POST',
+      body,
+      headers: {
+        'content-type': 'text/plain;charset=UTF-8',
+        referer: board.url,
+        'x-api-key': apiKey,
+      },
+    });
+    const pageJobs = mapAmazonSearchResponse(response, board);
+    jobs.push(...pageJobs);
+    if ((response.searchHits?.length ?? 0) === 0 || jobs.length >= (response.found ?? 0)) break;
+  }
+  return jobs;
+}
+
 /** Parse a conventional card-based HTML board using only configured selectors. */
 export function parseConfiguredHtml(html: string, board: HtmlBoard, pageUrl = board.url): RawJob[] {
   const $ = load(html);
@@ -132,6 +310,40 @@ export function parseConfiguredHtml(html: string, board: HtmlBoard, pageUrl = bo
       description: board.selectors.description
         ? card.find(board.selectors.description).first().text().replace(/\s+/g, ' ').trim() || null
         : null,
+    });
+  });
+  return jobs;
+}
+
+/** Parse the stable listing fragment returned by WP Job Manager's public AJAX route. */
+export function parseWpJobManagerJobs(
+  html: string,
+  board: WpJobManagerBoard,
+  pageUrl = board.url,
+): RawJob[] {
+  const $ = load(html);
+  const jobs: RawJob[] = [];
+  $('li.job_listing').each((_, element) => {
+    const card = $(element);
+    const anchor = card.children('a[href]').first();
+    const title = card.find('.position h3').first().text().replace(/\s+/g, ' ').trim();
+    const href = anchor.attr('href');
+    if (!title || !href) return;
+
+    const location = card.find('.location').first().text().replace(/\s+/g, ' ').trim();
+    const jobType = card.find('.job-type').first().text().replace(/\s+/g, ' ').trim();
+    jobs.push({
+      title,
+      company: board.name,
+      location,
+      remote: /remote|home.?based/i.test(`${title} ${location}`),
+      url: new URL(href, pageUrl).toString(),
+      source: 'custom',
+      postedAt: isoDate(card.find('time[datetime]').first().attr('datetime')),
+      ...emptyFields(),
+      type: /\bintern(ship)?\b/i.test(jobType) ? 'intern'
+        : /\bco[\s-]?op\b/i.test(jobType) ? 'co-op' : null,
+      description: null,
     });
   });
   return jobs;
@@ -372,6 +584,44 @@ async function fetchHtml(board: HtmlBoard): Promise<RawJob[]> {
   return jobs;
 }
 
+interface WpJobManagerResponse {
+  found_jobs: boolean;
+  max_num_pages: number;
+  html: string;
+}
+
+async function fetchWpJobManager(board: WpJobManagerBoard): Promise<RawJob[]> {
+  const endpoint = new URL('/jm-ajax/get_listings/', board.url).toString();
+  const jobs: RawJob[] = [];
+  let maxPages = 1;
+  for (let page = 1; page <= Math.min(maxPages, 10); page++) {
+    const body = new URLSearchParams({
+      lang: '',
+      search_keywords: '',
+      search_location: '',
+      per_page: '10',
+      orderby: 'featured',
+      order: 'DESC',
+      page: String(page),
+      show_pagination: 'false',
+    }).toString();
+    const response = JSON.parse(await fetchText(`${endpoint}?page=${page}`, {
+      realUrl: endpoint,
+      method: 'POST',
+      body,
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
+        referer: board.url,
+        'x-requested-with': 'XMLHttpRequest',
+      },
+    })) as WpJobManagerResponse;
+    if (!response.found_jobs) break;
+    jobs.push(...parseWpJobManagerJobs(response.html, board));
+    maxPages = Number.isFinite(response.max_num_pages) ? response.max_num_pages : 1;
+  }
+  return jobs;
+}
+
 async function fetchGcJobs(board: GcJobsBoard): Promise<RawJob[]> {
   const initial = await fetch(board.url, {
     headers: { accept: 'text/html', 'user-agent': 'job-tracker/0.1 (personal job search aggregator)' },
@@ -400,8 +650,10 @@ async function fetchGcJobs(board: GcJobsBoard): Promise<RawJob[]> {
 }
 
 async function fetchBoard(board: CustomBoard): Promise<RawJob[]> {
+  if (board.kind === 'amazon-university') return fetchAmazonUniversity(board);
   if (board.kind === 'cyber-recruiter') return fetchCyberRecruiter(board);
   if (board.kind === 'gc-jobs') return fetchGcJobs(board);
+  if (board.kind === 'wp-job-manager') return fetchWpJobManager(board);
   if (board.kind === 'jp2g') {
     const html = await fetchText(board.url, { headers: { accept: 'text/html' } });
     return parseJp2gJobs(html, board);

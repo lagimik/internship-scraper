@@ -52,6 +52,7 @@ import {
   parseConfiguredHtml,
   parseCyberRecruiterJobs,
   parseMelitronJobs,
+  parseWpJobManagerJobs,
 } from './custom.js';
 import {
   mapSmartRecruitersPosting,
@@ -65,6 +66,20 @@ import {
   parseSapERecruitingResults,
   parseSapERecruitingUrl,
 } from './sap-erecruiting.js';
+import { adpAdapter, mapAdpRequisition, parseAdpUrl } from './adp.js';
+
+  assert.ok(job);
+  assert.equal(adpAdapter().name, 'adp');
+  assert.equal(job.title, 'Analytical Mechanical Engineer');
+  assert.equal(job.company, 'General Fusion');
+  assert.equal(job.location, 'Richmond, BC, CA');
+  assert.equal(job.url, `${board.url.replace('type=JS', 'type=MP')}&jobId=567472`);
+  assert.equal(job.source, 'adp');
+  assert.equal(job.salaryMin, 95000);
+  assert.equal(job.salaryMax, 115000);
+  assert.equal(job.salaryCurrency, 'CAD');
+  assert.equal(job.description, 'Design and analyze mechanical systems.');
+});
 
 test('sap-erecruiting: BC Hydro URL preserves its Web Dynpro config', () => {
   assert.deepEqual(parseSapERecruitingUrl(
@@ -334,6 +349,38 @@ test('workday: supplied GM detail URL maps its board and posting', () => {
   assert.equal(job.source, 'workday');
 });
 
+test('workday: Caterpillar application URL maps its board and posting', () => {
+  const board = {
+    url: 'https://cat.wd5.myworkdayjobs.com/en-US/CaterpillarCareers',
+    name: 'Caterpillar',
+  };
+  const parsed = parseWorkdayUrl(
+    'https://cat.wd5.myworkdayjobs.com/en-US/CaterpillarCareers/job/Irving-Texas/XMLNAME-2027-Summer-Corporate-Intern---Information-Technology_R0000383086-1/apply',
+  );
+  assert.deepEqual(parsed, {
+    host: 'cat',
+    dc: 'wd5',
+    tenant: 'cat',
+    site: 'CaterpillarCareers',
+    origin: 'https://cat.wd5.myworkdayjobs.com',
+  });
+  assert.ok(parsed);
+
+  const job = mapWorkdayPosting({
+    title: '2027 Summer Corporate Intern - Information Technology',
+    externalPath: '/job/Irving-Texas/XMLNAME-2027-Summer-Corporate-Intern---Information-Technology_R0000383086-1',
+    locationsText: '5 Locations',
+    postedOn: 'Posted 4 Days Ago',
+    bulletFields: ['R0000383086'],
+  }, board, parsed);
+
+  assert.equal(job.title, '2027 Summer Corporate Intern - Information Technology');
+  assert.equal(job.company, 'Caterpillar');
+  assert.equal(job.location, '5 Locations');
+  assert.equal(job.url, 'https://cat.wd5.myworkdayjobs.com/en-US/CaterpillarCareers/job/Irving-Texas/XMLNAME-2027-Summer-Corporate-Intern---Information-Technology_R0000383086-1');
+  assert.equal(job.source, 'workday');
+});
+
 test('workday: shared-host AB InBev URL maps its board and posting', () => {
   const board = {
     url: 'https://wd1.myworkdaysite.com/en-US/recruiting/abinbev/CAN/details/London-Ontario/Packaging-Intern_30102886?source=LinkedIn',
@@ -407,6 +454,28 @@ test('taleo: public search response maps the supplied HDR posting', () => {
   assert.equal(job.type, 'co-op');
   assert.equal(job.postedAt, '2026-08-25T00:00:00.000Z');
   assert.equal(job.url, 'https://hdr.taleo.net/careersection/ex/jobdetail.ftl?job=195537&lang=en');
+
+test('custom: Canadensys WP Job Manager response maps listing fields', () => {
+  const [job] = parseWpJobManagerJobs(`
+    <li class="post-1130 job_listing type-job_listing status-publish job-type-full-time">
+      <a href="https://www.canadensys.com/job/space-systems-engineer/">
+        <div class="position"><h3>Space Systems Engineer</h3></div>
+        <div class="location">Bolton, Ontario</div>
+        <ul class="meta"><li class="job-type full-time">Full Time</li>
+          <li class="date"><time datetime="2026-03-20">Posted 6 months ago</time></li></ul>
+      </a>
+    </li>`, {
+    kind: 'wp-job-manager',
+    name: 'Canadensys Aerospace',
+    url: 'https://www.canadensys.com/jobs/',
+  });
+  assert.equal(job?.title, 'Space Systems Engineer');
+  assert.equal(job?.company, 'Canadensys Aerospace');
+  assert.equal(job?.location, 'Bolton, Ontario');
+  assert.equal(job?.url, 'https://www.canadensys.com/job/space-systems-engineer/');
+  assert.equal(job?.postedAt, '2026-03-20T00:00:00.000Z');
+  assert.equal(job?.source, 'custom');
+});
   assert.equal(job.source, 'taleo');
 });
 
@@ -893,6 +962,10 @@ test('bamboohr: careers URL decomposes into tenant API parts', () => {
     origin: 'https://avidbots.bamboohr.com',
     tenant: 'avidbots',
   });
+  assert.deepEqual(parseBambooHrUrl('https://svante.bamboohr.com/careers/453'), {
+    origin: 'https://svante.bamboohr.com',
+    tenant: 'svante',
+  });
   assert.equal(parseBambooHrUrl('https://example.com/careers'), null);
   assert.equal(parseBambooHrUrl('https://avidbots.bamboohr.com/employees'), null);
 });
@@ -920,6 +993,32 @@ test('bamboohr: detail record maps structured location, date and description', (
   assert.equal(job.salaryRaw, '$25–$30/hour');
   assert.equal(job.salaryCurrency, 'CAD');
   assert.match(job.description ?? '', /Build & test robots/);
+});
+
+test('bamboohr: Svante detail record maps canonical posting fields', () => {
+  const board = { url: 'https://svante.bamboohr.com/careers', name: 'Svante' };
+  const parsed = parseBambooHrUrl(board.url);
+  assert.ok(parsed);
+  const job = parseBambooHrPosting({
+    id: '453',
+    jobOpeningName: 'Future Opportunities',
+    jobOpeningStatus: 'Open',
+    employmentStatusLabel: 'Permanent Full-Time',
+    location: { city: 'Burnaby', state: 'British Columbia', addressCountry: 'Canada' },
+    atsLocation: { country: null, state: null, city: null },
+    description: '<p>Svante is a rapidly growing clean energy technology company.</p>',
+    compensation: null,
+    datePosted: '2026-08-13',
+    locationType: '0',
+    jobOpeningShareUrl: 'https://svante.bamboohr.com/careers/453',
+  }, board, parsed);
+  assert.ok(job);
+  assert.equal(job.title, 'Future Opportunities');
+  assert.equal(job.company, 'Svante');
+  assert.equal(job.location, 'Burnaby, British Columbia, Canada');
+  assert.equal(job.url, 'https://svante.bamboohr.com/careers/453');
+  assert.equal(job.source, 'bamboohr');
+  assert.equal(job.postedAt, '2026-08-13T00:00:00.000Z');
 });
 
 test('tesla: saved search HTML returns visible result cards', () => {
