@@ -17,6 +17,7 @@ export interface Board {
 
 /** Verified live Greenhouse boards (checked against the API, not guessed). */
 export const GREENHOUSE_BOARDS: Board[] = [
+  { token: 'aperaaiinc', name: 'Apera AI Inc' },
   { token: 'agilityrobotics', name: 'Agility Robotics' },
   { token: 'flyzipline', name: 'Zipline' },
   { token: 'spacex', name: 'SpaceX' },
@@ -75,6 +76,7 @@ export const GREENHOUSE_BOARDS: Board[] = [
 export const LEVER_BOARDS: Board[] = [
   { token: 'matchgroup', name: 'Match Group' },
   // Canadian, verified live. Telesat is the best intern source on this platform.
+  { token: 'deepsky', name: 'DeepSky' },
   { token: 'telesat', name: 'Telesat' },
   { token: 'waabi', name: 'Waabi' },
   { token: 'wattpad', name: 'Wattpad' },

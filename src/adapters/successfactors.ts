@@ -42,6 +42,10 @@ export const SUCCESSFACTORS_BOARDS: SuccessFactorsBoard[] = [
     url: 'https://jobs.bombardier.com/search/?q=',
     name: 'Bombardier',
   },
+  {
+    url: 'https://jobs.babcockinternational.com/go/View-all-Jobs/4819301/',
+    name: 'Babcock International',
+  },
 
   {
     url: 'https://careers.brp.com/global/en/job/36297/Manufacturing-Engineer',

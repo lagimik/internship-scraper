@@ -40,6 +40,11 @@ import { ripplingAdapter } from './adapters/rippling.js';
 import { paradoxAdapter } from './adapters/paradox.js';
 import { cwsAdapter } from './adapters/cws.js';
 import { sapERecruitingAdapter } from './adapters/sap-erecruiting.js';
+import { collageAdapter } from './adapters/collage.js';
+import { workableAdapter } from './adapters/workable.js';
+import { teamtailorAdapter } from './adapters/teamtailor.js';
+import { folksAdapter } from './adapters/glowinthecloud.js';
+import { adpAdapter } from './adapters/adp.js';
 
 /**
  * Sources cheap enough to poll often, the whole group finishes in ~10 seconds and
@@ -68,6 +73,11 @@ export function fastAdapters(): Adapter[] {
     taleoAdapter(),
     ripplingAdapter(),
     cwsAdapter(),
+    collageAdapter(),
+    workableAdapter(),
+    teamtailorAdapter(),
+    folksAdapter(),
+    adpAdapter(),
   ];
 }
 

@@ -39,6 +39,11 @@ export const ULTIPRO_BOARDS: UltiProBoard[] = [
     url: 'https://recruiting.ultipro.ca/ALA5000ALAG/JobBoard/63c26905-d7c5-4e50-933f-60cc2d69067f/?q=&o=postedDateDesc&w=&wc=&we=&wpst=',
     name: 'Alamos Gold Inc.',
   },
+  {
+    url: 'https://recruiting.ultipro.ca/ARR5001AMFG/JobBoard/e3606402-dc8c-458e-855b-d6cd867e57fc/?q=student&o=relevance',
+    name: 'Arrow Machine and Fabrication Group',
+    searchTerms: ['student'],
+  },
 ];
 
 export interface ParsedUltiProUrl {

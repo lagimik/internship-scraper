@@ -36,6 +36,7 @@ export interface GcJobsBoard extends BoardBase {
 export interface HtmlSelectors {
   card: string;
   titleLink: string;
+  title?: string;
   location: string;
   postedDate?: string;
   description?: string;
@@ -82,6 +83,20 @@ export const CUSTOM_BOARDS: CustomBoard[] = [
     },
     maxPages: 5,
   },
+  {
+    kind: 'html',
+    name: 'Haply Robotics',
+    url: 'https://haply.odoo.com/en_CA/jobs',
+    selectors: {
+      card: '#jobs_grid > .row > .col-lg > .card',
+      titleLink: 'a[href*="/jobs/"]',
+      title: 'h3',
+      location: '[itemprop="address"]',
+      description: '.card-body > .oe_empty.text-muted',
+      nextPage: 'li.page-item:last-child:not(.disabled) a.page-link',
+    },
+    maxPages: 3,
+  },
 ];
 
 function isoDate(value: string | undefined): string | null {
@@ -108,7 +123,8 @@ export function parseConfiguredHtml(html: string, board: HtmlBoard, pageUrl = bo
   $(board.selectors.card).each((_, element) => {
     const card = $(element);
     const anchor = card.find(board.selectors.titleLink).first();
-    const title = anchor.text().replace(/\s+/g, ' ').trim();
+    const titleElement = board.selectors.title ? anchor.find(board.selectors.title).first() : anchor;
+    const title = titleElement.text().replace(/\s+/g, ' ').trim();
     const href = anchor.attr('href');
     if (!title || !href) return;
     const location = card.find(board.selectors.location).first().text()

@@ -48,6 +48,7 @@ import {
   parsePhenomUrl,
 } from './phenom.js';
 import {
+  CUSTOM_BOARDS,
   discoverCyberRecruiterPages,
   parseConfiguredHtml,
   parseCyberRecruiterJobs,
@@ -65,6 +66,51 @@ import {
   parseSapERecruitingResults,
   parseSapERecruitingUrl,
 } from './sap-erecruiting.js';
+import { parseTeamtailorJobs, parseTeamtailorUrl, teamtailorAdapter } from './teamtailor.js';
+
+test('teamtailor: Vention URL preserves the verified regional tenant', () => {
+  assert.deepEqual(parseTeamtailorUrl('https://vention.na.teamtailor.com/jobs/'), {
+    origin: 'https://vention.na.teamtailor.com',
+  });
+  assert.deepEqual(parseTeamtailorUrl('https://vention.na.teamtailor.com/jobs/123-software-intern'), {
+    origin: 'https://vention.na.teamtailor.com',
+  });
+  assert.equal(parseTeamtailorUrl('https://example.com/jobs/'), null);
+});
+
+test('teamtailor: listing cards map metadata and expose bounded pagination', () => {
+  assert.equal(teamtailorAdapter().name, 'teamtailor');
+  const board = { name: 'Vention', url: 'https://vention.na.teamtailor.com/jobs/' };
+  const parsed = parseTeamtailorUrl(board.url);
+  assert.ok(parsed);
+  const result = parseTeamtailorJobs(`
+    <ul><li><div>
+      <a href="https://vention.na.teamtailor.com/jobs/700001-software-developer-intern">
+        <span></span>Software Developer Intern
+      </a>
+      <div><span>Technology</span><span>·</span><span>Montreal</span></div>
+    </div></li></ul>
+    <a href="/jobs/show_more?page=2">Show more</a>
+  `, board, parsed);
+
+  assert.equal(result.nextPage, 'https://vention.na.teamtailor.com/jobs/show_more?page=2');
+  assert.deepEqual(result.jobs[0], {
+    title: 'Software Developer Intern',
+    company: 'Vention',
+    location: 'Montreal',
+    remote: false,
+    url: 'https://vention.na.teamtailor.com/jobs/700001-software-developer-intern',
+    source: 'teamtailor',
+    postedAt: null,
+    salaryRaw: null,
+    salaryMin: null,
+    salaryMax: null,
+    salaryCurrency: null,
+    type: 'intern',
+    sponsorship: null,
+    description: 'Technology',
+  });
+});
 
 test('sap-erecruiting: BC Hydro URL preserves its Web Dynpro config', () => {
   assert.deepEqual(parseSapERecruitingUrl(
@@ -828,6 +874,17 @@ test('ultipro: supplied Alamos Gold URL preserves tenant and board identifiers',
   });
 });
 
+test('ultipro: Arrow URL preserves the supplied tenant and board identifiers', () => {
+  assert.deepEqual(parseUltiProUrl(
+    'https://recruiting.ultipro.ca/ARR5001AMFG/JobBoard/e3606402-dc8c-458e-855b-d6cd867e57fc/?q=student&o=relevance',
+  ), {
+    origin: 'https://recruiting.ultipro.ca',
+    boardPath: '/ARR5001AMFG/JobBoard/e3606402-dc8c-458e-855b-d6cd867e57fc',
+    boardUrl: 'https://recruiting.ultipro.ca/ARR5001AMFG/JobBoard/e3606402-dc8c-458e-855b-d6cd867e57fc/',
+    searchUrl: 'https://recruiting.ultipro.ca/ARR5001AMFG/JobBoard/e3606402-dc8c-458e-855b-d6cd867e57fc/JobBoardView/LoadSearchResults',
+  });
+});
+
 test('ultipro: Alamos Gold opportunity maps live response fields', () => {
   const board = {
     url: 'https://recruiting.ultipro.ca/ALA5000ALAG/JobBoard/63c26905-d7c5-4e50-933f-60cc2d69067f/',
@@ -1103,6 +1160,31 @@ test('custom: configured HTML cards map title, location and date', () => {
   assert.equal(job?.url, 'https://example.com/jobs/123-design-intern');
   assert.equal(job?.location, 'London, ON, Canada');
   assert.equal(job?.postedAt, '2026-08-25T00:00:00.000Z');
+});
+
+test('custom: Haply Odoo cards map nested titles and canonical job URLs', () => {
+  const board = CUSTOM_BOARDS.find(({ name }) => name === 'Haply Robotics');
+  assert.equal(board?.kind, 'html');
+  if (!board || board.kind !== 'html') return;
+
+  const [job] = parseConfiguredHtml(`
+    <div id="jobs_grid"><div class="row"><div class="col-lg mb32"><div class="card">
+      <a class="text-decoration-none text-reset" href="/en_CA/jobs/software-engineer-robotics-platform-rust-73">
+        <div class="card-body"><h3>Software Engineer, Robotics Platform (Rust)</h3>
+          <p class="oe_empty text-muted">Build software for Haply's robotics platform.</p>
+          <div itemprop="address"><span itemprop="addressLocality">Montréal</span>,
+            <span itemprop="addressCountry">Canada</span></div>
+        </div>
+      </a>
+    </div></div></div></div>`, board);
+
+  assert.equal(job?.title, 'Software Engineer, Robotics Platform (Rust)');
+  assert.equal(job?.company, 'Haply Robotics');
+  assert.equal(job?.location, 'Montréal, Canada');
+  assert.equal(job?.url,
+    'https://haply.odoo.com/en_CA/jobs/software-engineer-robotics-platform-rust-73');
+  assert.equal(job?.source, 'custom');
+  assert.equal(job?.description, "Build software for Haply's robotics platform.");
 });
 
 test('custom: Melitron WordPress rows map title, location and URL', () => {

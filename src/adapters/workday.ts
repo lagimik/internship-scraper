@@ -42,7 +42,7 @@ export const WORKDAY_BOARDS: WorkdayBoard[] = [
  { url: 'https://globalhr.wd5.myworkdayjobs.com/en-CA/REC_RTX_Ext_Gateway/', name: 'RTX' },
  { url: 'https://lumentum.wd5.myworkdayjobs.com/LITE', name: 'Lumentum' },
  { url: 'https://ciena.wd5.myworkdayjobs.com/Careers', name: 'Ciena' },
- { url: 'https://ag.wd3.myworkdayjobs.com/Airbus', name: 'Airbus' },
+ { url: 'https://ag.wd3.myworkdayjobs.com/Airbus?locationCountry=a30a87ed25634629aa6c3958aa2b91ea', name: 'Airbus' },
  { url: 'https://slihrms.wd3.myworkdayjobs.com/careers', name: 'AtkinsRealis' },
  { url: 'https://brucepower.wd3.myworkdayjobs.com/BrucePower', name: 'Bruce Power' },
  { url: 'https://generalmotors.wd5.myworkdayjobs.com/en-CA/Careers_GM', name: 'General Motors' },
@@ -142,6 +142,7 @@ export interface ParsedWorkdayUrl {
   site: string;
   /** Base for building apply links back to the human-facing page. */
   origin: string;
+  appliedFacets?: Record<string, string[]>;
 }
 
 /**
@@ -186,7 +187,17 @@ export function parseWorkdayUrl(url: string): ParsedWorkdayUrl | null {
 
   // The tenant is the subdomain for every tenant checked (incl. host≠company cases
   // like Loblaw's `myview`), so derive it rather than asking for it separately.
-  return { host, dc, tenant: host, site, origin: `${parsedUrl.protocol}//${parsedUrl.host}` };
+  const locationCountries = parsedUrl.searchParams.getAll('locationCountry').filter(Boolean);
+  return {
+    host,
+    dc,
+    tenant: host,
+    site,
+    origin: `${parsedUrl.protocol}//${parsedUrl.host}`,
+    ...(locationCountries.length > 0
+      ? { appliedFacets: { locationCountry: locationCountries } }
+      : {}),
+  };
 }
 
 function workdayJobBase(parsed: ParsedWorkdayUrl): string {
@@ -242,8 +253,9 @@ async function postJobs(
   const endpoint = `${p.origin}/wday/cxs/${p.tenant}/${p.site}/jobs`;
   // fetchText caches by URL; fold the POST body into the cache key so different
   // search terms and pages don't collide on one cached response.
-  const cacheKey = `${endpoint}#${searchText}@${offset}`;
-  const body = JSON.stringify({ appliedFacets: {}, limit, offset, searchText });
+  const appliedFacets = p.appliedFacets ?? {};
+  const cacheKey = `${endpoint}#${JSON.stringify(appliedFacets)}:${searchText}@${offset}`;
+  const body = JSON.stringify({ appliedFacets, limit, offset, searchText });
   const text = await fetchText(cacheKey, {
     method: 'POST',
     body,
