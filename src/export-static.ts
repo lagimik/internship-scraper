@@ -87,7 +87,9 @@ try {
   // element early. The client reads this as JSON from textContent.
   const json = JSON.stringify(data).replaceAll('<', '\\u003c');
   const scripts = `<script type="application/json" id="dashboard-data">${json}</script>\n<script>\n${client}\n</script>`;
-  const html = template.slice(0, scriptStart) + scripts + template.slice(scriptEnd + '</script>'.length);
+  const dashboardHtml = template.slice(0, scriptStart) + scripts + template.slice(scriptEnd + '</script>'.length);
+  const analytics = `<script data-goatcounter="https://lagimik.goatcounter.com/count"\n        async src="//gc.zgo.at/count.js"></script>`;
+  const html = dashboardHtml.replace('</head>', `${analytics}\n</head>`);
 
   mkdirSync(dirname(OUTPUT_PATH), { recursive: true });
   const temporaryPath = `${OUTPUT_PATH}.tmp`;
