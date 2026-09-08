@@ -4,7 +4,45 @@ import {
   mapSuccessFactorsApiJob,
   parseSuccessFactorsHtml,
   parseSuccessFactorsUrl,
+  SUCCESSFACTORS_BOARDS,
 } from './successfactors.js';
+
+test('Kinectrics search URL resolves to its classic SuccessFactors endpoint', () => {
+  const board = SUCCESSFACTORS_BOARDS.find(({ name }) => name === 'Kinectrics');
+
+  assert.deepEqual(board, {
+    url: 'https://careers.kinectrics.com/search/?createNewAlert=false&q=&locationsearch=',
+    name: 'Kinectrics',
+  });
+  assert.deepEqual(parseSuccessFactorsUrl(board.url), {
+    origin: 'https://careers.kinectrics.com',
+    searchUrl: 'https://careers.kinectrics.com/search/',
+  });
+});
+
+test('Kinectrics classic result maps title, location, date and canonical URL', () => {
+  const [job] = parseSuccessFactorsHtml(`
+    <table>
+      <tr class="data-row">
+        <td><a class="jobTitle-link" href="/job/Toronto-Senior-EngineerScientist-%28Electrical-Design%29-Onta/588675617/">Senior Engineer/Scientist (Electrical Design)</a></td>
+        <td class="jobDate">Sep 6, 2026</td>
+        <td class="jobLocation">Toronto, Ontario, Canada</td>
+      </tr>
+    </table>
+  `, {
+    url: 'https://careers.kinectrics.com/search/?createNewAlert=false&q=&locationsearch=',
+    name: 'Kinectrics',
+  });
+
+  assert.ok(job);
+  assert.equal(job.title, 'Senior Engineer/Scientist (Electrical Design)');
+  assert.equal(job.company, 'Kinectrics');
+  assert.equal(job.location, 'Toronto, Ontario, Canada');
+  assert.equal(job.postedAt, '2026-09-06T00:00:00.000Z');
+  assert.equal(job.url,
+    'https://careers.kinectrics.com/job/Toronto-Senior-EngineerScientist-%28Electrical-Design%29-Onta/588675617/');
+  assert.equal(job.source, 'successfactors');
+});
 
 test('Celestica search URL resolves to its classic SuccessFactors endpoint', () => {
   assert.deepEqual(parseSuccessFactorsUrl(

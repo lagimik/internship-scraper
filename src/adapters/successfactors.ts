@@ -35,7 +35,7 @@ export const SUCCESSFACTORS_BOARDS: SuccessFactorsBoard[] = [
     name: 'ATS Automation',
   },
   {
-    url: 'https://careers.kinectrics.com/go/Engineering-and-Scientific/2625217/',
+    url: 'https://careers.kinectrics.com/search/?createNewAlert=false&q=&locationsearch=',
     name: 'Kinectrics',
   },
   {

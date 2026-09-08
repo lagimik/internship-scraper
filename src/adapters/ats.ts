@@ -17,6 +17,8 @@ export interface Board {
 
 /** Verified live Greenhouse boards (checked against the API, not guessed). */
 export const GREENHOUSE_BOARDS: Board[] = [
+  { token: 'lucidmotors', name: 'Lucid Motors' },
+  { token: 'figureai', name: 'Figure AI' },
   { token: 'aperaaiinc', name: 'Apera AI Inc' },
   { token: 'agilityrobotics', name: 'Agility Robotics' },
   { token: 'flyzipline', name: 'Zipline' },
@@ -78,11 +80,13 @@ export const LEVER_BOARDS: Board[] = [
   // Canadian, verified live. Telesat is the best intern source on this platform.
   { token: 'deepsky', name: 'DeepSky' },
   { token: 'telesat', name: 'Telesat' },
+  { token: 'kepler', name: 'Kepler Communications' },
   { token: 'waabi', name: 'Waabi' },
   { token: 'wattpad', name: 'Wattpad' },
   { token: 'achievers', name: 'Achievers' },
   { token: 'zensurance', name: 'Zensurance' },
   { token: 'mistplay', name: 'Mistplay' },
+  { token: 'promiserobotics', name: 'Promise Robotics' },
 ];
 
 interface GreenhouseJob {
@@ -96,13 +100,24 @@ interface GreenhouseJob {
   offices?: Array<{ location?: string; name?: string }>;
 }
 
-interface LeverJob {
+export interface LeverJob {
   id: string;
   text: string;
   hostedUrl: string;
   createdAt?: number;
   categories?: { location?: string; allLocations?: string[]; commitment?: string; team?: string };
   salaryRange?: { min?: number; max?: number; currency?: string };
+}
+
+export function parseLeverUrl(value: string): { token: string } | null {
+  try {
+    const url = new URL(value);
+    if (url.protocol !== 'https:' || url.hostname !== 'jobs.lever.co') return null;
+    const [token] = url.pathname.split('/').filter(Boolean);
+    return token ? { token } : null;
+  } catch {
+    return null;
+  }
 }
 
 async function fetchGreenhouseBoard(board: Board): Promise<RawJob[]> {
@@ -132,27 +147,29 @@ async function fetchGreenhouseBoard(board: Board): Promise<RawJob[]> {
   });
 }
 
+export function mapLeverPosting(job: LeverJob, board: Board): RawJob {
+  const location = job.categories?.allLocations?.join(', ') || job.categories?.location || '';
+  return {
+    title: job.text,
+    company: board.name ?? board.token,
+    location,
+    remote: /remote/i.test(location),
+    url: job.hostedUrl,
+    source: 'lever',
+    postedAt: job.createdAt ? new Date(job.createdAt).toISOString() : null,
+    salaryRaw: null,
+    salaryMin: job.salaryRange?.min ?? null,
+    salaryMax: job.salaryRange?.max ?? null,
+    salaryCurrency: job.salaryRange?.currency ?? null,
+    type: null,
+    sponsorship: null,
+    description: job.categories?.team ?? null,
+  };
+}
+
 async function fetchLeverBoard(board: Board): Promise<RawJob[]> {
   const data = await fetchJson<LeverJob[]>(`https://api.lever.co/v0/postings/${board.token}?mode=json`);
-  return (data ?? []).map((j) => {
-    const location = j.categories?.allLocations?.join(', ') || j.categories?.location || '';
-    return {
-      title: j.text,
-      company: board.name ?? board.token,
-      location,
-      remote: /remote/i.test(location),
-      url: j.hostedUrl,
-      source: 'lever',
-      postedAt: j.createdAt ? new Date(j.createdAt).toISOString() : null,
-      salaryRaw: null,
-      salaryMin: j.salaryRange?.min ?? null,
-      salaryMax: j.salaryRange?.max ?? null,
-      salaryCurrency: j.salaryRange?.currency ?? null,
-      type: null,
-      sponsorship: null,
-      description: j.categories?.team ?? null,
-    } satisfies RawJob;
-  });
+  return (data ?? []).map((job) => mapLeverPosting(job, board));
 }
 
 /** Fetch boards with bounded concurrency; a dead board is skipped, not fatal. */

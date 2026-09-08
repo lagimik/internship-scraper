@@ -24,8 +24,11 @@ export interface BambooHrBoard {
 export const BAMBOOHR_BOARDS: BambooHrBoard[] = [
   { url: 'https://acerta.bamboohr.com/careers', name: 'Acerta' },
   { url: 'https://avidbots.bamboohr.com/careers', name: 'Avidbots' },
+  { url: 'https://eavortechnologies.bamboohr.com/careers', name: 'Eavor Technologies' },
+  { url: 'https://giatecscientific.bamboohr.com/careers', name: 'Giatec Scientific' },
   { url: 'https://proslide.bamboohr.com/careers', name: 'Proslide' },
   { url: 'https://csmc.bamboohr.com/careers', name: 'CSMC' },
+  { url: 'https://svante.bamboohr.com/careers', name: 'Svante' },
   { url: 'https://volatus.bamboohr.com/careers', name: 'Volatus Aerospace' },
 ];
 
