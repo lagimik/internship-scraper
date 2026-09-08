@@ -60,7 +60,7 @@ export const SUCCESSFACTORS_BOARDS: SuccessFactorsBoard[] = [
     name: 'Magellan Aerospace',
   },
   {
-    url: 'https://careers.celestica.com/go/Engineering-Jobs/1280201/',
+    url: 'https://careers.celestica.com/search/?createNewAlert=false&q=&locationsearch=',
     name: 'Celestica',
   },
   {

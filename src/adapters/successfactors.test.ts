@@ -1,6 +1,42 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { mapSuccessFactorsApiJob } from './successfactors.js';
+import {
+  mapSuccessFactorsApiJob,
+  parseSuccessFactorsHtml,
+  parseSuccessFactorsUrl,
+} from './successfactors.js';
+
+test('Celestica search URL resolves to its classic SuccessFactors endpoint', () => {
+  assert.deepEqual(parseSuccessFactorsUrl(
+    'https://careers.celestica.com/search/?createNewAlert=false&q=&locationsearch=',
+  ), {
+    origin: 'https://careers.celestica.com',
+    searchUrl: 'https://careers.celestica.com/search/',
+  });
+});
+
+test('Celestica classic result maps title, location, date and canonical URL', () => {
+  const [job] = parseSuccessFactorsHtml(`
+    <table>
+      <tr class="data-row">
+        <td><a class="jobTitle-link" href="/job/Toronto-Advisor%2C-Internal-Audit%2C-IT-ON/1395122633/">Advisor, Internal Audit, IT</a></td>
+        <td class="jobLocation">Toronto, ON, CA</td>
+        <td class="jobDate">Aug 14, 2026</td>
+      </tr>
+    </table>
+  `, {
+    url: 'https://careers.celestica.com/search/?createNewAlert=false&q=&locationsearch=',
+    name: 'Celestica',
+  });
+
+  assert.ok(job);
+  assert.equal(job.title, 'Advisor, Internal Audit, IT');
+  assert.equal(job.company, 'Celestica');
+  assert.equal(job.location, 'Toronto, ON, CA');
+  assert.equal(job.postedAt, '2026-08-14T00:00:00.000Z');
+  assert.equal(job.url, 'https://careers.celestica.com/job/Toronto-Advisor%2C-Internal-Audit%2C-IT-ON/1395122633/');
+  assert.equal(job.source, 'successfactors');
+});
 
 test('Hydro-Québec French API job maps to its canonical URL', () => {
   const job = mapSuccessFactorsApiJob({

@@ -52,6 +52,33 @@ interface ConceptRule {
  */
 const CONCEPT_RULES: ConceptRule[] = [
   {
+    category: 'design-manufacturing',
+    name: 'emerging-engineering-design',
+    all: [/\b(ai\s+assisted\s+engineering|generative\s+design|digital\s+twins?|ai\s+driven\s+simulation|computational\s+engineering|net\s+zero\s+engineering)\b/],
+  },
+  {
+    category: 'manufacturing-engineering',
+    name: 'advanced-manufacturing',
+    all: [/\b(additive|smart)\s+manufacturing\b/],
+  },
+  {
+    category: 'materials-engineering',
+    name: 'advanced-materials',
+    all: [/\b(advanced|smart)\s+materials?\b/],
+  },
+  {
+    category: 'mechatronics',
+    name: 'robotics',
+    all: [/\brobot(ic(s|al)?|ics)\b/],
+    any: [ENGINEERING_ROLE, STUDENT_MARKER],
+  },
+  {
+    category: 'mechatronics',
+    name: 'vehicle-electrification',
+    all: [/\b(ev|electric\s+vehicles?|electrification)\b/],
+    any: [ENGINEERING_ROLE, STUDENT_MARKER],
+  },
+  {
     category: 'mechatronics',
     name: 'mechatronics',
     all: [/\b(mechatronic(s|al)?|electro\s?mechanical|robotics\s+(mechanical|mechatronics))\b/],

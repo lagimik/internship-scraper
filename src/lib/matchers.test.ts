@@ -90,6 +90,19 @@ test('work terms: incompatible durations override Winter/Hiver 2027 wording', ()
 
 test('roles: target titles match', () => {
   const cases: Array<[string, string]> = [
+    ['AI-Assisted Engineering Intern', 'design-manufacturing'],
+    ['Generative Design Co-op', 'design-manufacturing'],
+    ['Digital Twins Engineering Intern', 'design-manufacturing'],
+    ['AI-Driven Simulation Co-op', 'design-manufacturing'],
+    ['Computational Engineering Student', 'design-manufacturing'],
+    ['Net-Zero Engineering Intern', 'design-manufacturing'],
+    ['Additive Manufacturing Co-op', 'manufacturing-engineering'],
+    ['Smart Manufacturing Intern', 'manufacturing-engineering'],
+    ['Advanced Materials Student', 'materials-engineering'],
+    ['Smart Materials Engineering Co-op', 'materials-engineering'],
+    ['Robotics Intern', 'mechatronics'],
+    ['EV Engineering Co-op', 'mechatronics'],
+    ['Mechanical Engineering for Electrification Intern', 'mechatronics'],
     ['Mechanical Engineer', 'mechanical-engineering'],
     ['Mechanical Engineering Intern - Summer 2027', 'mechanical-engineering'],
     ['Mechatronics Engineer Co-op', 'mechatronics'],
@@ -113,6 +126,14 @@ test('roles: target titles match', () => {
     assert.equal(m.matches, true, `should match: ${title}`);
     assert.equal(m.category, category, `wrong category for: ${title}`);
   }
+});
+
+test('roles: requested engineering topics retain a specific match reason', () => {
+  assert.equal(matchRole('Generative Design Co-op').matchedBy, 'emerging-engineering-design');
+  assert.equal(matchRole('Additive Manufacturing Intern').matchedBy, 'advanced-manufacturing');
+  assert.equal(matchRole('Smart Materials Student').matchedBy, 'advanced-materials');
+  assert.equal(matchRole('Robotics Engineering Intern').matchedBy, 'robotics');
+  assert.equal(matchRole('Mechanical Engineering for Electrification Intern').matchedBy, 'vehicle-electrification');
 });
 
 test('roles: common unordered and qualified title permutations match', () => {
