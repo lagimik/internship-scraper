@@ -52,10 +52,52 @@ import {
   discoverCyberRecruiterPages,
   parseConfiguredHtml,
   parseCyberRecruiterJobs,
+  parseGlencoreJobs,
+  parseGlencoreUrl,
   parseKinovaJobs,
   parseMelitronJobs,
   parseWpJobManagerJobs,
 } from './custom.js';
+
+test('custom: Glencore careers URL exposes its public API endpoint', () => {
+  assert.deepEqual(parseGlencoreUrl('https://www.glencore.com/en/careers/jobs'), {
+    origin: 'https://www.glencore.com',
+    locale: 'en',
+    endpoint: 'https://www.glencore.com/.rest/api/v2/careers/',
+  });
+  assert.equal(parseGlencoreUrl('https://www.glencore.com/en/careers'), null);
+  assert.equal(parseGlencoreUrl('https://example.com/en/careers/jobs'), null);
+});
+
+test('custom: Glencore API maps a canonical Canadian internship', () => {
+  const [job] = parseGlencoreJobs({ data: [{
+    id: 12002090,
+    jobId: 'MA09O - 00239826',
+    title: 'Affinerie CCR - Stagiaire génie électrique - Stage de 4 ou 8 mois (Hiver 2027)',
+    city: 'Montreal',
+    region: 'Quebec',
+    country: 'Canada',
+    description: '<p>Contribuez aux projets électriques de l’affinerie.</p>',
+    url: 'https://glencorejobs.nga.net.au/?jati=A5C4E2AB-CE70-E7E3-F2F1-ED4A78D3B85D',
+    applicationLink: 'https://glencorejobs.nga.net.au/?jati=A5C4E2AB-CE70-E7E3-F2F1-ED4A78D3B85D',
+    startDate: 1788510600000,
+  }] }, {
+    kind: 'glencore',
+    name: 'Glencore',
+    url: 'https://www.glencore.com/en/careers/jobs',
+    locale: 'en',
+  });
+
+  assert.ok(job);
+  assert.equal(job.title, 'Affinerie CCR - Stagiaire génie électrique - Stage de 4 ou 8 mois (Hiver 2027)');
+  assert.equal(job.company, 'Glencore');
+  assert.equal(job.location, 'Montreal, Quebec, Canada');
+  assert.equal(job.url, 'https://glencorejobs.nga.net.au/?jati=A5C4E2AB-CE70-E7E3-F2F1-ED4A78D3B85D');
+  assert.equal(job.source, 'custom');
+  assert.equal(job.postedAt, '2026-09-04T08:30:00.000Z');
+  assert.equal(job.type, 'intern');
+  assert.match(job.description ?? '', /projets électriques/);
+});
 import { icimsAdapter, parseIcimsSearchPage, parseIcimsUrl } from './icims.js';
 import {
   mapSmartRecruitersPosting,

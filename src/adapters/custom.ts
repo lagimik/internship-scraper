@@ -11,7 +11,7 @@ import type { Adapter, JobType, RawJob } from '../types.js';
 import { fetchJson, fetchText } from '../lib/fetch.js';
 
 type CustomBoard = CyberRecruiterBoard | GcJobsBoard | HtmlBoard | Jp2gBoard | MelitronBoard
-  | WpJobManagerBoard | AmazonUniversityBoard | KinovaBoard;
+  | WpJobManagerBoard | AmazonUniversityBoard | KinovaBoard | GlencoreBoard;
 
 interface BoardBase {
   name: string;
@@ -47,6 +47,11 @@ export interface KinovaBoard extends BoardBase {
   kind: 'kinova';
 }
 
+export interface GlencoreBoard extends BoardBase {
+  kind: 'glencore';
+  locale: string;
+}
+
 export interface HtmlSelectors {
   card: string;
   titleLink: string;
@@ -64,6 +69,12 @@ export interface HtmlBoard extends BoardBase {
 }
 
 export const CUSTOM_BOARDS: CustomBoard[] = [
+  {
+    kind: 'glencore',
+    name: 'Glencore',
+    url: 'https://www.glencore.com/en/careers/jobs',
+    locale: 'en',
+  },
   {
     kind: 'kinova',
     name: 'Kinova Robotics',
@@ -144,6 +155,106 @@ function emptyFields(): Pick<RawJob,
     salaryCurrency: null,
     sponsorship: null,
   };
+}
+
+export interface ParsedGlencoreUrl {
+  origin: string;
+  locale: string;
+  endpoint: string;
+}
+
+export function parseGlencoreUrl(value: string): ParsedGlencoreUrl | null {
+  try {
+    const url = new URL(value);
+    const match = url.pathname.match(/^\/([a-z]{2})\/careers\/jobs\/?$/i);
+    if (url.protocol !== 'https:' || url.hostname !== 'www.glencore.com' || !match?.[1]) return null;
+    return {
+      origin: url.origin,
+      locale: match[1].toLowerCase(),
+      endpoint: `${url.origin}/.rest/api/v2/careers/`,
+    };
+  } catch {
+    return null;
+  }
+}
+
+export interface GlencoreJob {
+  id?: number;
+  jobId?: string;
+  title?: string;
+  city?: string;
+  region?: string;
+  country?: string;
+  description?: string;
+  url?: string;
+  applicationLink?: string;
+  startDate?: number;
+}
+
+export interface GlencoreResponse {
+  totalResults?: number;
+  data?: GlencoreJob[];
+}
+
+function mapGlencoreType(title: string): JobType | null {
+  if (/\bco[\s-]?op\b/i.test(title)) return 'co-op';
+  if (/\bintern(?:ship)?\b|\bstudent\b|\bstagiaire\b/i.test(title)) return 'intern';
+  return null;
+}
+
+/** Map Glencore's public Magnolia careers API response. */
+export function parseGlencoreJobs(
+  response: GlencoreResponse,
+  board: GlencoreBoard,
+): RawJob[] {
+  return (response.data ?? []).flatMap((posting): RawJob[] => {
+    const title = posting.title?.trim();
+    const url = posting.applicationLink?.trim() || posting.url?.trim();
+    if (!title || !url) return [];
+
+    const location = [posting.city, posting.region, posting.country]
+      .map((value) => value?.trim())
+      .filter(Boolean)
+      .join(', ');
+    const description = posting.description
+      ? load(posting.description).text().replace(/\s+/g, ' ').trim()
+      : null;
+    return [{
+      title,
+      company: board.name,
+      location,
+      remote: /\bremote\b|home.?based/i.test(`${title} ${location} ${description ?? ''}`),
+      url,
+      source: 'custom',
+      postedAt: posting.startDate && Number.isFinite(posting.startDate)
+        ? new Date(posting.startDate).toISOString()
+        : null,
+      ...emptyFields(),
+      type: mapGlencoreType(title),
+      description,
+    }];
+  });
+}
+
+async function fetchGlencore(board: GlencoreBoard): Promise<RawJob[]> {
+  const parsed = parseGlencoreUrl(board.url);
+  if (!parsed) throw new Error(`Unsupported Glencore careers URL: ${board.url}`);
+
+  const pageSize = 100;
+  const jobs: RawJob[] = [];
+  for (let offset = 0; offset < 1_000; offset += pageSize) {
+    const requestUrl = new URL(parsed.endpoint);
+    requestUrl.searchParams.set('locale', board.locale);
+    requestUrl.searchParams.set('sortBy', 'startDate-desc');
+    requestUrl.searchParams.set('offset', String(offset));
+    requestUrl.searchParams.set('limit', String(pageSize));
+    requestUrl.searchParams.set('searchCriteria', JSON.stringify({ commodity: ['!KCC'] }));
+    requestUrl.searchParams.set('keyword', '');
+    const response = await fetchJson<GlencoreResponse>(requestUrl.toString());
+    jobs.push(...parseGlencoreJobs(response, board));
+    if ((response.data?.length ?? 0) < pageSize) break;
+  }
+  return jobs;
 }
 
 export interface KinovaJob {
@@ -748,6 +859,7 @@ async function fetchGcJobs(board: GcJobsBoard): Promise<RawJob[]> {
 
 async function fetchBoard(board: CustomBoard): Promise<RawJob[]> {
   if (board.kind === 'amazon-university') return fetchAmazonUniversity(board);
+  if (board.kind === 'glencore') return fetchGlencore(board);
   if (board.kind === 'kinova') return fetchKinova(board);
   if (board.kind === 'cyber-recruiter') return fetchCyberRecruiter(board);
   if (board.kind === 'gc-jobs') return fetchGcJobs(board);
