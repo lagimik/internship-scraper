@@ -56,6 +56,7 @@ import {
   parseMelitronJobs,
   parseWpJobManagerJobs,
 } from './custom.js';
+import { icimsAdapter, parseIcimsSearchPage, parseIcimsUrl } from './icims.js';
 import {
   mapSmartRecruitersPosting,
   parseSmartRecruitersUrl,
@@ -69,6 +70,66 @@ import {
   parseSapERecruitingUrl,
 } from './sap-erecruiting.js';
 import { parseTeamtailorJobs, parseTeamtailorUrl, teamtailorAdapter } from './teamtailor.js';
+import { jazzHrAdapter, parseJazzHrJobs, parseJazzHrUrl } from './jazzhr.js';
+
+test('jazzhr: LMI Technologies URL preserves the verified tenant', () => {
+  assert.deepEqual(parseJazzHrUrl('https://lmitechnologies.applytojob.com/'), {
+    origin: 'https://lmitechnologies.applytojob.com',
+    tenant: 'lmitechnologies',
+    boardUrl: 'https://lmitechnologies.applytojob.com/',
+  });
+  assert.deepEqual(
+    parseJazzHrUrl('https://lmitechnologies.applytojob.com/apply/MW0FXAlPkx/Front-End-Software-Developer-II'),
+    {
+      origin: 'https://lmitechnologies.applytojob.com',
+      tenant: 'lmitechnologies',
+      boardUrl: 'https://lmitechnologies.applytojob.com/',
+    },
+  );
+  assert.equal(parseJazzHrUrl('https://example.com/apply/abc/job'), null);
+});
+
+test('jazzhr: listing card maps canonical job metadata', () => {
+  assert.equal(jazzHrAdapter().name, 'jazzhr');
+  const board = {
+    name: 'LMI Technologies',
+    url: 'https://lmitechnologies.applytojob.com/',
+  };
+  const parsed = parseJazzHrUrl(board.url);
+  assert.ok(parsed);
+  const [job] = parseJazzHrJobs(`
+    <ul class="list-group">
+      <li class="list-group-item">
+        <h3 class="list-group-item-heading">
+          <a href="https://lmitechnologies.applytojob.com/apply/abc123/Software-Developer-Intern">
+            Software Developer Intern
+          </a>
+        </h3>
+        <ul class="list-inline list-group-item-text">
+          <li><i class="fa fa-map-marker"></i>Burnaby, BC, Canada</li>
+          <li><i class="fa fa-sitemap"></i>Apps/Tech</li>
+        </ul>
+      </li>
+    </ul>
+  `, board, parsed);
+
+  assert.deepEqual(job, {
+    title: 'Software Developer Intern',
+    company: 'LMI Technologies',
+    location: 'Burnaby, BC, Canada',
+    remote: false,
+    url: 'https://lmitechnologies.applytojob.com/apply/abc123/Software-Developer-Intern',
+    source: 'jazzhr',
+    postedAt: null,
+    salaryRaw: null,
+    salaryMin: null,
+    salaryMax: null,
+    salaryCurrency: null,
+    type: 'intern',
+    sponsorship: null,
+    description: 'Apps/Tech',
+  });
+});
 
 test('teamtailor: Vention URL preserves the verified regional tenant', () => {
   assert.deepEqual(parseTeamtailorUrl('https://vention.na.teamtailor.com/jobs/'), {
@@ -1290,6 +1351,55 @@ test('custom: configured HTML cards map title, location and date', () => {
   assert.equal(job?.postedAt, '2026-08-25T00:00:00.000Z');
 });
 
+test('icims: Hexagon URL preserves the verified tenant', () => {
+  assert.deepEqual(parseIcimsUrl(
+    'https://careers-hexagonpositioning.icims.com/jobs/3093/geomatics-engineering-intern---gnss-algorithms/job',
+  ), {
+    origin: 'https://careers-hexagonpositioning.icims.com',
+    boardUrl: 'https://careers-hexagonpositioning.icims.com/jobs/search',
+  });
+  assert.equal(parseIcimsUrl('https://example.com/jobs/search'), null);
+});
+
+test('icims: search card maps canonical Hexagon job metadata and pagination', () => {
+  assert.equal(icimsAdapter().name, 'icims');
+  const board = {
+    name: 'Hexagon Autonomous Solutions',
+    url: 'https://careers-hexagonpositioning.icims.com/jobs/search',
+  };
+  const config = parseIcimsUrl(board.url);
+  assert.ok(config);
+  const page = parseIcimsSearchPage(`<div class="iCIMS_JobsTable"><div class="row">
+    <div class="col-xs-6 header left"><span class="sr-only">Job Locations</span>
+      <span>CA-AB-Calgary</span></div>
+    <div class="col-xs-12 title"><a href="/jobs/3093/geomatics-engineering-intern---gnss-algorithms/job?in_iframe=1">
+      <h3>Geomatics Engineering Intern - GNSS Algorithms</h3></a></div>
+    <div class="col-xs-12 description">Develop and test GNSS positioning software.</div>
+    <div class="iCIMS_JobHeaderTag"><dt>Category</dt><dd>Technical / Engineering</dd></div>
+    <div class="iCIMS_JobHeaderTag"><dt>Type</dt><dd>Intern</dd></div>
+  </div></div>
+  <a href="/jobs/search?pr=1&amp;in_iframe=1"><span title="Next page of results"></span></a>`,
+  board, config);
+
+  assert.equal(page.nextPage, 1);
+  assert.deepEqual(page.jobs[0], {
+    title: 'Geomatics Engineering Intern - GNSS Algorithms',
+    company: 'Hexagon Autonomous Solutions',
+    location: 'CA-AB-Calgary',
+    remote: false,
+    url: 'https://careers-hexagonpositioning.icims.com/jobs/3093/geomatics-engineering-intern---gnss-algorithms/job',
+    source: 'icims',
+    postedAt: null,
+    salaryRaw: null,
+    salaryMin: null,
+    salaryMax: null,
+    salaryCurrency: null,
+    type: 'intern',
+    sponsorship: null,
+    description: 'Technical / Engineering - Develop and test GNSS positioning software.',
+  });
+});
+
 test('custom: Kinova Craft response maps the supplied posting shape', () => {
   const board = CUSTOM_BOARDS.find(({ name }) => name === 'Kinova Robotics');
   assert.equal(board?.kind, 'kinova');
@@ -1380,6 +1490,104 @@ test('phenom: supplied Trane URL exposes the locale root and requisition id', ()
     jobId: 'JR-15026',
   });
   assert.equal(parsePhenomUrl('https://example.com/not-a-phenom-shape'), null);
+});
+
+test('phenom: ABB search URL exposes its locale root', () => {
+  assert.deepEqual(parsePhenomUrl(
+    'https://careers.abb/global/en/search-results?keywords=intern',
+  ), {
+    origin: 'https://careers.abb',
+    sitePath: '/global/en',
+    jobId: null,
+  });
+});
+
+test('phenom: supplied Thales search URL exposes its locale root', () => {
+  assert.deepEqual(parsePhenomUrl(
+    'https://careers.thalesgroup.com/global/en/search-results?keywords=intern',
+  ), {
+    origin: 'https://careers.thalesgroup.com',
+    sitePath: '/global/en',
+    jobId: null,
+  });
+});
+
+test('phenom: Thales JobPosting JSON-LD maps its canonical Canadian co-op', () => {
+  const url = 'https://careers.thalesgroup.com/global/en/job/R0333841/Naval-Architect-Intern-Co-op-Halifax';
+  const job = parsePhenomJob(`
+    <link rel="canonical" href="${url}">
+    <script type="application/ld+json">${JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'JobPosting',
+      title: 'Naval Architect Intern/Co op - Halifax',
+      description: '<p>Support naval architecture activities in Halifax.</p>',
+      datePosted: '2026-08-14',
+      employmentType: ['FULL_TIME'],
+      jobLocation: { address: {
+        addressLocality: 'Dartmouth',
+        addressRegion: 'Nova Scotia',
+        addressCountry: 'Canada',
+      } },
+    })}</script>
+  `, {
+    url: 'https://careers.thalesgroup.com/global/en',
+    name: 'Thales',
+    refNum: 'TGPTGWGLOBAL',
+    locale: 'en_global',
+  }, url);
+
+  assert.ok(job);
+  assert.equal(job.title, 'Naval Architect Intern/Co op - Halifax');
+  assert.equal(job.company, 'Thales');
+  assert.equal(job.location, 'Dartmouth, Nova Scotia, Canada');
+  assert.equal(job.url, url);
+  assert.equal(job.source, 'phenom');
+  assert.equal(job.postedAt, '2026-08-14T00:00:00.000Z');
+  assert.equal(job.type, 'co-op');
+});
+
+test('phenom: student discovery does not treat internal as intern', () => {
+  const internUrl = 'https://careers.abb/global/en/job/JR1/Production-Intern-Winter-2027';
+  const internalUrl = 'https://careers.abb/global/en/job/JR2/Internal-Logistics-Operator';
+  assert.deepEqual(discoverPhenomDetailUrls(`
+    <urlset>
+      <url><loc>${internUrl}</loc></url>
+      <url><loc>${internalUrl}</loc></url>
+    </urlset>
+  `), [internUrl]);
+});
+
+test('phenom: ABB JobPosting JSON-LD maps its canonical Canadian internship', () => {
+  const url = 'https://careers.abb/global/en/job/JR00045813/Production-Intern-Winter-2027';
+  const job = parsePhenomJob(`
+    <link rel="canonical" href="${url}">
+    <script type="application/ld+json">${JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'JobPosting',
+      title: 'Production Intern - Winter 2027',
+      description: '<p>Support manufacturing operations and process improvements.</p>',
+      datePosted: '2026-09-08',
+      employmentType: ['FULL_TIME'],
+      jobLocation: { address: {
+        addressLocality: 'Saint-Laurent',
+        addressRegion: 'Quebec',
+        addressCountry: 'Canada',
+      } },
+    })}</script>
+  `, {
+    url: 'https://careers.abb/global/en',
+    name: 'ABB',
+    refNum: 'ABB1GLOBAL',
+    locale: 'en_global',
+  }, url);
+
+  assert.ok(job);
+  assert.equal(job.title, 'Production Intern - Winter 2027');
+  assert.equal(job.company, 'ABB');
+  assert.equal(job.location, 'Saint-Laurent, Quebec, Canada');
+  assert.equal(job.url, url);
+  assert.equal(job.source, 'phenom');
+  assert.equal(job.type, 'intern');
 });
 
 test('phenom: ATCO direct sitemap exposes student job URLs', () => {

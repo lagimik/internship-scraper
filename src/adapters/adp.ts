@@ -15,13 +15,17 @@ export const ADP_BOARDS: AdpBoard[] = [
     url: 'https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=6008c003-f9a4-47a3-8573-a3b0d594bcba&ccId=9201209146560_3&lang=fr_CA&jobId=577655&jwId=9201209146560_1',
     name: 'Marmen',
   },
+  {
+    url: 'https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=d355e8f6-9a6c-48a9-b7ba-45a41dc5daad&ccId=9200648065638_2&lang=en_CA',
+    name: 'Novarc Technologies',
+  },
 ];
 
 export interface ParsedAdpUrl {
   origin: string;
   cid: string;
   ccId: string;
-  jwId: string;
+  jwId: string | null;
   lang: string;
 }
 
@@ -39,7 +43,7 @@ export function parseAdpUrl(url: string): ParsedAdpUrl | null {
   const ccId = parsed.searchParams.get('ccId');
   const jwId = parsed.searchParams.get('jwId');
   const lang = parsed.searchParams.get('lang');
-  if (!cid || !ccId || !jwId || !lang) return null;
+  if (!cid || !ccId || !lang) return null;
   return { origin: parsed.origin, cid, ccId, jwId, lang };
 }
 
@@ -160,13 +164,14 @@ function apiBase(parsed: ParsedAdpUrl): string {
 }
 
 function apiParams(parsed: ParsedAdpUrl): URLSearchParams {
-  return new URLSearchParams({
+  const params = new URLSearchParams({
     cid: parsed.cid,
     ccId: parsed.ccId,
-    jwId: parsed.jwId,
     lang: parsed.lang,
     locale: parsed.lang,
   });
+  if (parsed.jwId) params.set('jwId', parsed.jwId);
+  return params;
 }
 
 async function fetchBoard(board: AdpBoard): Promise<RawJob[]> {

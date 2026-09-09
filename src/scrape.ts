@@ -46,6 +46,8 @@ import { teamtailorAdapter } from './adapters/teamtailor.js';
 import { folksAdapter } from './adapters/glowinthecloud.js';
 import { adpAdapter } from './adapters/adp.js';
 import { taleoSocialAdapter } from './adapters/taleo-social.js';
+import { jazzHrAdapter } from './adapters/jazzhr.js';
+import { icimsAdapter } from './adapters/icims.js';
 
 /**
  * Sources cheap enough to poll often, the whole group finishes in ~10 seconds and
@@ -80,6 +82,8 @@ export function fastAdapters(): Adapter[] {
     folksAdapter(),
     adpAdapter(),
     taleoSocialAdapter(),
+    jazzHrAdapter(),
+    icimsAdapter(),
   ];
 }
 

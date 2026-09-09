@@ -14,6 +14,12 @@ export interface PhenomBoard {
 
 export const PHENOM_BOARDS: PhenomBoard[] = [
   {
+    url: 'https://careers.abb/global/en',
+    name: 'ABB',
+    refNum: 'ABB1GLOBAL',
+    locale: 'en_global',
+  },
+  {
     url: 'https://careers.tranetechnologies.com/global/en',
     name: 'Trane Technologies',
     refNum: 'TRTEGLOBAL',
@@ -23,6 +29,12 @@ export const PHENOM_BOARDS: PhenomBoard[] = [
     url: 'https://careers.atco.com/global/en',
     name: 'ATCO Group',
     refNum: 'AGZAGAGLOBAL',
+    locale: 'en_global',
+  },
+  {
+    url: 'https://careers.thalesgroup.com/global/en',
+    name: 'Thales',
+    refNum: 'TGPTGWGLOBAL',
     locale: 'en_global',
   },
 ];
@@ -35,7 +47,7 @@ export interface ParsedPhenomUrl {
 
 export function parsePhenomUrl(url: string): ParsedPhenomUrl | null {
   const parsed = new URL(url);
-  const match = parsed.pathname.match(/^(\/[^/]+\/[a-z]{2})(?:\/job\/([^/]+)(?:\/[^/]+)?)?\/?$/i);
+  const match = parsed.pathname.match(/^(\/[^/]+\/[a-z]{2})(?:(?:\/job\/([^/]+)(?:\/[^/]+)?)|\/search-results)?\/?$/i);
   if (!match?.[1]) return null;
   return { origin: parsed.origin, sitePath: match[1], jobId: match[2] ?? null };
 }
@@ -145,7 +157,7 @@ export function parsePhenomJob(html: string, board: PhenomBoard, pageUrl: string
   };
 }
 
-const STUDENT_SLUG = /\/(?:[^/?]*(?:intern|co-?op|student|stagiaire)[^/?]*)\/?$/i;
+const STUDENT_SLUG = /(?:^|[-_/])(?:intern(?:ship)?|co-?op|student|stagiaire)(?=[-_/]|$)/i;
 const MAX_SITEMAPS = 10;
 const MAX_DETAILS = 250;
 const DETAIL_CONCURRENCY = 5;
