@@ -76,6 +76,41 @@ test('Celestica classic result maps title, location, date and canonical URL', ()
   assert.equal(job.source, 'successfactors');
 });
 
+test('Gerdau posting URL resolves and maps its responsive search result', () => {
+  const board = SUCCESSFACTORS_BOARDS.find(({ name }) => name === 'Gerdau');
+
+  assert.ok(board);
+  assert.deepEqual(parseSuccessFactorsUrl(board.url), {
+    origin: 'https://jobs.gerdau.com',
+    searchUrl: 'https://jobs.gerdau.com/search/',
+  });
+
+  const [job] = parseSuccessFactorsHtml(`
+    <li class="job-tile job-id-1335729662 job-row-index-2">
+      <a class="jobTitle-link" href="/job/Cambridge-ENGINEERING-INTERN-Onta-N1T-1R9/1335729662/">
+        ENGINEERING INTERN
+      </a>
+      <div class="section-field location">
+        <span class="section-label">Location</span>
+        <div>Cambridge, Ontario, CA, N1T 1R9</div>
+      </div>
+      <div class="section-field date">
+        <span class="section-label">Date</span>
+        <div>Aug 16, 2026</div>
+      </div>
+    </li>
+  `, board);
+
+  assert.ok(job);
+  assert.equal(job.title, 'ENGINEERING INTERN');
+  assert.equal(job.company, 'Gerdau');
+  assert.equal(job.location, 'Cambridge, Ontario, CA, N1T 1R9');
+  assert.equal(job.postedAt, '2026-08-16T00:00:00.000Z');
+  assert.equal(job.url,
+    'https://jobs.gerdau.com/job/Cambridge-ENGINEERING-INTERN-Onta-N1T-1R9/1335729662/');
+  assert.equal(job.source, 'successfactors');
+});
+
 test('Babcock category URL maps its classic Canadian result markup', () => {
   const board = {
     url: 'https://jobs.babcockinternational.com/go/View-all-Jobs/4819301/',

@@ -62,6 +62,10 @@ export const ORACLE_BOARDS: OracleBoard[] = [
     name: 'Nokia',
     apiOrigin: 'https://fa-evmr-saasfaprod1.fa.ocs.oraclecloud.com',
   },
+  {
+    url: 'https://fa-exty-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/118908?utm_medium=jobshare',
+    name: 'Howmet Aerospace',
+  },
 ];
 
 export interface ParsedOracleUrl {

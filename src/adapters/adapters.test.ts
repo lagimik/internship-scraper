@@ -43,6 +43,7 @@ import {
 } from './taleo.js';
 import {
   discoverPhenomDetailUrls,
+  PHENOM_BOARDS,
   parsePhenomJob,
   parsePhenomSitemap,
   parsePhenomUrl,
@@ -1532,6 +1533,105 @@ test('phenom: supplied Trane URL exposes the locale root and requisition id', ()
     jobId: 'JR-15026',
   });
   assert.equal(parsePhenomUrl('https://example.com/not-a-phenom-shape'), null);
+});
+
+test('phenom: supplied P&G URL preserves its verified board and requisition id', () => {
+  const url = 'https://www.pgcareers.com/global/en/job/R000158865/Manufacturing-Engineering-Technical-Co-Op-Jan-2027-Start?source=RS_LINKEDIN';
+  assert.ok(PHENOM_BOARDS.some((board) => board.name === 'Procter & Gamble'
+    && board.url === 'https://www.pgcareers.com/global/en'
+    && board.refNum === 'PGBPGNGLOBAL'
+    && board.locale === 'en_global'));
+  assert.deepEqual(parsePhenomUrl(url), {
+    origin: 'https://www.pgcareers.com',
+    sitePath: '/global/en',
+    jobId: 'R000158865',
+  });
+});
+
+test('phenom: P&G JobPosting JSON-LD maps the supplied Canadian co-op', () => {
+  const url = 'https://www.pgcareers.com/global/en/job/R000158865/Manufacturing-Engineering-Technical-Co-Op-Jan-2027-Start';
+  const job = parsePhenomJob(`
+    <link rel="canonical" href="${url}">
+    <script type="application/ld+json">${JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'JobPosting',
+      title: 'Manufacturing & Engineering Technical Co-Op - Jan 2027 Start',
+      description: '<p>Sponsorship for work authorization is not available for this role.</p>',
+      datePosted: '2026-09-09',
+      employmentType: ['FULL_TIME'],
+      jobLocation: { address: {
+        addressLocality: 'Belleville',
+        addressRegion: 'Ontario',
+        addressCountry: 'Canada',
+      } },
+    })}</script>
+  `, {
+    url: 'https://www.pgcareers.com/global/en',
+    name: 'Procter & Gamble',
+    refNum: 'PGBPGNGLOBAL',
+    locale: 'en_global',
+  }, url);
+
+  assert.ok(job);
+  assert.equal(job.title, 'Manufacturing & Engineering Technical Co-Op - Jan 2027 Start');
+  assert.equal(job.company, 'Procter & Gamble');
+  assert.equal(job.location, 'Belleville, Ontario, Canada');
+  assert.equal(job.url, url);
+  assert.equal(job.source, 'phenom');
+  assert.equal(job.postedAt, '2026-09-09T00:00:00.000Z');
+  assert.equal(job.type, 'co-op');
+  assert.equal(job.sponsorship, 'Sponsorship for work authorization is not available for this role.');
+});
+
+test('phenom: supplied GE Aerospace search URL exposes its locale root', () => {
+  assert.deepEqual(parsePhenomUrl(
+    'https://careers.geaerospace.com/global/en/search-results?keywords=canada',
+  ), {
+    origin: 'https://careers.geaerospace.com',
+    sitePath: '/global/en',
+    jobId: null,
+  });
+});
+
+test('phenom: GE Aerospace JobPosting JSON-LD maps its software co-op', () => {
+  const url = 'https://careers.geaerospace.com/global/en/job/GAOGAYGLOBALR5029619EXTERNALENGLOBAL/Engines-Engineering-Co-op-Computer-or-Software-Engineering-US-Spring-2027';
+  const job = parsePhenomJob(`
+    <script type="application/ld+json">${JSON.stringify({
+      '@context': 'http://schema.org',
+      '@type': 'JobPosting',
+      title: 'Engines Engineering Co-op – Computer or Software Engineering – US – Spring 2027',
+      description: '<p>Legal authorization to work in the U.S. is required. We will not sponsor individuals for employment visas.</p>',
+      datePosted: '2026-08-17',
+      employmentType: ['FULL_TIME'],
+      jobLocation: [
+        { address: {
+          addressLocality: 'Evendale',
+          addressRegion: 'Ohio',
+          addressCountry: 'United States of America',
+        } },
+        { address: {
+          addressLocality: 'Lynn',
+          addressRegion: 'Massachusetts',
+          addressCountry: 'United States of America',
+        } },
+      ],
+    })}</script>
+  `, {
+    url: 'https://careers.geaerospace.com/global/en',
+    name: 'GE Aerospace',
+    refNum: 'GAOGAYGLOBAL',
+    locale: 'en_global',
+  }, url);
+
+  assert.ok(job);
+  assert.equal(job.title, 'Engines Engineering Co-op – Computer or Software Engineering – US – Spring 2027');
+  assert.equal(job.company, 'GE Aerospace');
+  assert.equal(job.location, 'Evendale, Ohio, United States of America; Lynn, Massachusetts, United States of America');
+  assert.equal(job.url, url);
+  assert.equal(job.source, 'phenom');
+  assert.equal(job.postedAt, '2026-08-17T00:00:00.000Z');
+  assert.equal(job.type, 'co-op');
+  assert.match(job.sponsorship ?? '', /will not sponsor/i);
 });
 
 test('phenom: ABB search URL exposes its locale root', () => {

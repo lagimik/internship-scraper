@@ -5,6 +5,7 @@ import { mapOracleRequisition, ORACLE_BOARDS, parseOracleUrl } from './oracle.js
 const suppliedUrl = 'https://ehif.fa.em2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/jobs?lastSelectedFacet=AttributeChar4&mode=location&selectedFlexFieldsFacets=%22AttributeChar4%7CGraduates%3BTrainees%22';
 const seaspanUrl = 'https://hckz.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/jobs?mode=job-location';
 const nokiaUrl = 'https://jobs.nokia.com/en/sites/CX_1/jobs?lastSelectedFacet=LOCATIONS&selectedFlexFieldsFacets=%22AttributeChar21%7CStudent+or+Intern+or+Trainee%3BGraduate+or+Entry+Level%22&selectedLocationsFacet=300000000471544';
+const howmetUrl = 'https://fa-exty-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/118908?utm_medium=jobshare';
 
 test('oracle: supplied Wood URL preserves its site and graduate trainee facet', () => {
   assert.ok(ORACLE_BOARDS.some((board) => board.name === 'Wood' && board.url === suppliedUrl));
@@ -132,4 +133,40 @@ test('oracle: Nokia requisition maps its live Canadian co-op fields', () => {
   assert.equal(job.remote, false);
   assert.equal(job.type, 'co-op');
   assert.match(job.description ?? '', /Optical Design Verification Test/);
+});
+
+test('oracle: supplied Howmet URL preserves its tenant, locale and site', () => {
+  assert.ok(ORACLE_BOARDS.some((board) =>
+    board.name === 'Howmet Aerospace' && board.url === howmetUrl));
+  assert.deepEqual(parseOracleUrl(howmetUrl), {
+    origin: 'https://fa-exty-saasfaprod1.fa.ocs.oraclecloud.com',
+    language: 'en',
+    site: 'CX_1',
+  });
+});
+
+test('oracle: Howmet requisition maps its live Canadian internship fields', () => {
+  const parsed = parseOracleUrl(howmetUrl);
+  assert.ok(parsed);
+  const job = mapOracleRequisition({
+    Id: '118908',
+    Title: 'engineering intern',
+    PrimaryLocation: 'Laval, QC, Canada',
+    workLocation: [{ LocationName: 'CA OAX Laval, QC' }],
+    WorkplaceType: 'On-site',
+    WorkplaceTypeCode: 'ORA_ON_SITE',
+    PostedDate: '2026-08-12',
+    ShortDescriptionStr: '',
+  }, { url: howmetUrl, name: 'Howmet Aerospace' }, parsed);
+
+  assert.ok(job);
+  assert.equal(job.title, 'engineering intern');
+  assert.equal(job.company, 'Howmet Aerospace');
+  assert.equal(job.location, 'Laval, QC, Canada; CA OAX Laval, QC');
+  assert.equal(job.url,
+    'https://fa-exty-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/118908');
+  assert.equal(job.source, 'oracle');
+  assert.equal(job.postedAt, '2026-08-12T00:00:00.000Z');
+  assert.equal(job.remote, false);
+  assert.equal(job.type, 'intern');
 });

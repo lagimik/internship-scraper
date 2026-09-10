@@ -61,6 +61,7 @@ export const WORKDAY_BOARDS: WorkdayBoard[] = [
  { url: 'https://cat.wd5.myworkdayjobs.com/en-US/CaterpillarCareers', name: 'Caterpillar' },
  { url: 'https://mosaic.wd5.myworkdayjobs.com/mosaic?workerSubType=ed8099291cc44a449715a96f49b3b316', name: 'The Mosaic Company' },
  { url: 'https://tcenergy.wd3.myworkdayjobs.com/en-US/CAREER_SITE_TC', name: 'TC Energy' },
+ { url: 'https://shell.wd3.myworkdayjobs.com/en-CA/ShellCareers/job/Scotford/Shell-Assessed-Internship-Programme--January-May-2027----Programme-de-stages-valus-de-Shell--janvier---mai-2027----Canada_R205117/apply?source=APPLICANT_SOURCE_LinkedIn_Job_Board', name: 'Shell' },
  
 
 
@@ -143,6 +144,7 @@ export interface ParsedWorkdayUrl {
   dc: string;
   tenant: string;
   site: string;
+  locale?: string;
   /** Base for building apply links back to the human-facing page. */
   origin: string;
   appliedFacets?: Record<string, string[]>;
@@ -187,6 +189,9 @@ export function parseWorkdayUrl(url: string): ParsedWorkdayUrl | null {
   const first = segments[0] ?? '';
   const site = /^[a-z]{2}-[A-Z]{2}$/i.test(first) ? segments[1] : first;
   if (!site) return null;
+  const locale = /^[a-z]{2}-[A-Z]{2}$/i.test(first) && first.toLowerCase() !== 'en-us'
+    ? first
+    : undefined;
 
   // The tenant is the subdomain for every tenant checked (incl. host≠company cases
   // like Loblaw's `myview`), so derive it rather than asking for it separately.
@@ -200,6 +205,7 @@ export function parseWorkdayUrl(url: string): ParsedWorkdayUrl | null {
     dc,
     tenant: host,
     site,
+    ...(locale ? { locale } : {}),
     origin: `${parsedUrl.protocol}//${parsedUrl.host}`,
     ...(Object.keys(appliedFacets).length > 0
       ? { appliedFacets }
@@ -208,10 +214,11 @@ export function parseWorkdayUrl(url: string): ParsedWorkdayUrl | null {
 }
 
 function workdayJobBase(parsed: ParsedWorkdayUrl): string {
+  const locale = parsed.locale ?? 'en-US';
   if (parsed.origin.endsWith('.myworkdaysite.com')) {
-    return `${parsed.origin}/en-US/recruiting/${parsed.tenant}/${parsed.site}`;
+    return `${parsed.origin}/${locale}/recruiting/${parsed.tenant}/${parsed.site}`;
   }
-  return `${parsed.origin}/en-US/${parsed.site}`;
+  return `${parsed.origin}/${locale}/${parsed.site}`;
 }
 
 /** "Posted 11 Days Ago" / "Posted 30+ Days Ago" / "Posted Today" → ISO date. */

@@ -72,6 +72,10 @@ export const SUCCESSFACTORS_BOARDS: SuccessFactorsBoard[] = [
     name: 'Celestica',
   },
   {
+    url: 'https://jobs.gerdau.com/job/Cambridge-ENGINEERING-INTERN-Onta-N1T-1R9/1335729662/',
+    name: 'Gerdau',
+  },
+  {
     url: 'https://jobsearch.alstom.com/search/',
     name: 'Alstom',
   },
@@ -213,7 +217,7 @@ export function parseSuccessFactorsHtml(
     // Both layouts repeat title links for desktop/tablet/phone. Their enclosing result
     // row is the stable boundary and, unlike link-to-link slicing, also handles ATS's
     // template where metadata appears before the title.
-    const container = anchor.closest('.job-row, tr.data-row, tr');
+    const container = anchor.closest('.job-row, .job-tile, tr.data-row, tr');
     const primaryLocation = container.find('.jobLocation').first().text().trim()
       || container.find('.section-field.location').first().text().replace(/^\s*location\s*/i, '').trim();
     const otherLocations = container.find('.section-field.multilocation').first().text()

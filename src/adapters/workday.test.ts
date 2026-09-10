@@ -94,3 +94,32 @@ test('workday: supplied TC Energy URL maps its board and an open internship', ()
   assert.equal(job.url, 'https://tcenergy.wd3.myworkdayjobs.com/en-US/CAREER_SITE_TC/job/Calgary-Alberta/Intern---Engineering_JR-10728');
   assert.equal(job.source, 'workday');
 });
+
+test('workday: supplied Shell application URL preserves its Canadian locale', () => {
+  const url = 'https://shell.wd3.myworkdayjobs.com/en-CA/ShellCareers/job/Scotford/Shell-Assessed-Internship-Programme--January-May-2027----Programme-de-stages-valus-de-Shell--janvier---mai-2027----Canada_R205117/apply?source=APPLICANT_SOURCE_LinkedIn_Job_Board';
+  assert.ok(WORKDAY_BOARDS.some((board) => board.name === 'Shell' && board.url === url));
+  const parsed = parseWorkdayUrl(url);
+  assert.deepEqual(parsed, {
+    host: 'shell',
+    dc: 'wd3',
+    tenant: 'shell',
+    site: 'ShellCareers',
+    locale: 'en-CA',
+    origin: 'https://shell.wd3.myworkdayjobs.com',
+  });
+  assert.ok(parsed);
+
+  const job = mapWorkdayPosting({
+    title: 'Shell Assessed Internship Programme (January/May 2027) / Programme de stages évalués de Shell (janvier / mai 2027) - Canada',
+    externalPath: '/job/Scotford/Shell-Assessed-Internship-Programme--January-May-2027----Programme-de-stages-valus-de-Shell--janvier---mai-2027----Canada_R205117',
+    locationsText: '2 Locations',
+    postedOn: 'Posted 6 Days Ago',
+    bulletFields: ['R205117'],
+  }, { url, name: 'Shell' }, parsed);
+
+  assert.equal(job.title, 'Shell Assessed Internship Programme (January/May 2027) / Programme de stages évalués de Shell (janvier / mai 2027) - Canada');
+  assert.equal(job.company, 'Shell');
+  assert.equal(job.location, '2 Locations');
+  assert.equal(job.url, 'https://shell.wd3.myworkdayjobs.com/en-CA/ShellCareers/job/Scotford/Shell-Assessed-Internship-Programme--January-May-2027----Programme-de-stages-valus-de-Shell--janvier---mai-2027----Canada_R205117');
+  assert.equal(job.source, 'workday');
+});

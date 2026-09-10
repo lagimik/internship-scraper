@@ -18,6 +18,11 @@ export const TALEO_BOARDS: TaleoBoard[] = [
     name: 'HDR',
     portal: '101430233',
   },
+  {
+    url: 'https://textron.taleo.net/careersection/textron/jobdetail.ftl?job=1543802&src=SNS-102',
+    name: 'Textron',
+    portal: '8140753014',
+  },
 ];
 
 export interface ParsedTaleoUrl {
@@ -91,7 +96,13 @@ function parseLocation(value: string | undefined): string {
 
 function parsePostedDate(value: string | undefined): string | null {
   if (!value) return null;
-  const match = /^(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+(\d{1,2}),\s*(\d{4})$/i.exec(cleanText(value));
+  const cleaned = cleanText(value).replace(/%5C/gi, '');
+  const numeric = /^(\d{1,2})\/(\d{1,2})\/(\d{4})(?:,.*)?$/.exec(cleaned);
+  if (numeric?.[1] && numeric[2] && numeric[3]) {
+    const date = new Date(Date.UTC(Number(numeric[3]), Number(numeric[1]) - 1, Number(numeric[2])));
+    return Number.isNaN(date.getTime()) ? null : date.toISOString();
+  }
+  const match = /^(Jan(?:uary)?|Feb(?:ruary)?|Mar(?:ch)?|Apr(?:il)?|May|Jun(?:e)?|Jul(?:y)?|Aug(?:ust)?|Sep(?:tember)?|Oct(?:ober)?|Nov(?:ember)?|Dec(?:ember)?)\s+(\d{1,2}),\s*(\d{4})$/i.exec(cleaned);
   if (!match?.[1] || !match[2] || !match[3]) return null;
   const months = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
   const month = months.indexOf(match[1].slice(0, 3).toLowerCase());
@@ -164,8 +175,14 @@ export function parseTaleoDetailHtml(html: string): TaleoDetail {
   // from this standard requisition-state sequence. Each displayed value is repeated.
   const state = html.split('!|!');
   const requisitionIndex = state.indexOf('descRequisition');
-  const serializedLocation = requisitionIndex >= 0 ? state[requisitionIndex + 16] : undefined;
-  const serializedDate = requisitionIndex >= 0 ? state[requisitionIndex + 36] : undefined;
+  const offsetLocation = requisitionIndex >= 0 ? state[requisitionIndex + 16] : undefined;
+  const duplicatedLocation = state.find((value, index) => value === state[index + 1]
+    && /^(?:[A-Z]{2}|Canada|United States)(?:[-,].+)/i.test(cleanText(value)));
+  const serializedLocation = cleanText(offsetLocation ?? '') || duplicatedLocation;
+  const offsetDate = requisitionIndex >= 0 ? state[requisitionIndex + 36] : undefined;
+  const duplicatedDate = state.find((value, index) => value === state[index + 1]
+    && parsePostedDate(value) !== null);
+  const serializedDate = parsePostedDate(offsetDate) !== null ? offsetDate : duplicatedDate;
   const location = fields.get('primary location') ?? cleanText(serializedLocation ?? '');
   const postedAt = parsePostedDate(fields.get('job posting') ?? serializedDate);
   const encodedDescription = requisitionIndex >= 0

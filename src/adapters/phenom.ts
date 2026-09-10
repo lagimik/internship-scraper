@@ -14,6 +14,12 @@ export interface PhenomBoard {
 
 export const PHENOM_BOARDS: PhenomBoard[] = [
   {
+    url: 'https://careers.geaerospace.com/global/en',
+    name: 'GE Aerospace',
+    refNum: 'GAOGAYGLOBAL',
+    locale: 'en_global',
+  },
+  {
     url: 'https://careers.abb/global/en',
     name: 'ABB',
     refNum: 'ABB1GLOBAL',
@@ -35,6 +41,12 @@ export const PHENOM_BOARDS: PhenomBoard[] = [
     url: 'https://careers.thalesgroup.com/global/en',
     name: 'Thales',
     refNum: 'TGPTGWGLOBAL',
+    locale: 'en_global',
+  },
+  {
+    url: 'https://www.pgcareers.com/global/en',
+    name: 'Procter & Gamble',
+    refNum: 'PGBPGNGLOBAL',
     locale: 'en_global',
   },
 ];
