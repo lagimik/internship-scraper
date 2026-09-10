@@ -250,6 +250,11 @@ test('sap-erecruiting: result update and OpenWindow command map a co-op posting'
   const command = String.raw`OpenWindow",{"windowId":"sapwd_main_window","url":"\x2fsap\x2fbc\x2fwebdynpro\x2fsap\x2fhrrcf_a_posting_apply\x3fPARAM\x3dabc\x253d\x253d"}`;
   const postingUrl = parseSapERecruitingPostingUrl(command, 'https://app.bchydro.com');
   assert.equal(postingUrl, 'https://app.bchydro.com/sap/bc/webdynpro/sap/hrrcf_a_posting_apply?PARAM=abc%3d%3d');
+  const currentCommand = String.raw`application.exec("openExternalWindow",{"windowId":"sapwd_main_window","url":"\x2fsap\x2fbc\x2fwebdynpro\x2fsap\x2fhrrcf_a_posting_apply\x3fPARAM\x3dcurrent"})`;
+  assert.equal(
+    parseSapERecruitingPostingUrl(currentCommand, 'https://app.bchydro.com'),
+    'https://app.bchydro.com/sap/bc/webdynpro/sap/hrrcf_a_posting_apply?PARAM=current',
+  );
   assert.ok(result);
   assert.ok(postingUrl);
   const job = mapSapERecruitingResult(result, postingUrl, {

@@ -91,7 +91,7 @@ function decodeSapEscapes(value: string): string {
 
 /** Recover the real public posting URL emitted by a title activation. */
 export function parseSapERecruitingPostingUrl(response: string, origin: string): string | null {
-  const raw = response.match(/OpenWindow[\s\S]*?"url":"([^"]+)"/)?.[1];
+  const raw = response.match(/\b(?:OpenWindow|openExternalWindow)\b[\s\S]*?"url":"([^"]+)"/i)?.[1];
   if (!raw) return null;
   try {
     return new URL(decodeSapEscapes(raw), origin).toString();
@@ -160,7 +160,16 @@ async function createSession(board: SapERecruitingBoard): Promise<SapSession> {
   }
   const sessionAction = new URL(action, board.url).toString();
   const contentResponse = await request(sessionAction, {
-    headers: { accept: 'text/html', cookie, referer: board.url },
+    method: 'POST',
+    headers: {
+      accept: 'text/xml, text/html, */*',
+      'content-type': 'application/x-www-form-urlencoded',
+      cookie,
+      referer: board.url,
+      'x-requested-with': 'XMLHttpRequest',
+      'x-xhr-logon': 'accept',
+    },
+    body: eventBody({ secureId, appName }, loadingPlaceholderLoad()),
   });
   const content = load(updateHtml(await contentResponse.text()));
   const startButtonId = content('[ct="B"]').filter((_, element) => {
@@ -170,13 +179,21 @@ async function createSession(board: SapERecruitingBoard): Promise<SapSession> {
   return { action: sessionAction, cookie, secureId, appName, startButtonId };
 }
 
-function eventBody(session: SapSession, eventQueue: string): string {
+function eventBody(
+  session: Pick<SapSession, 'secureId' | 'appName'>,
+  eventQueue: string,
+): string {
   return new URLSearchParams({
     'sap-charset': 'utf-8',
     'sap-wd-secure-id': session.secureId,
     fesrAppName: session.appName,
     SAPEVENTQUEUE: eventQueue,
   }).toString();
+}
+
+function loadingPlaceholderLoad(): string {
+  return 'LoadingPlaceHolder_Load~E002Id~E004_loadingPlaceholder_~E003'
+    + '~E002ResponseData~E004delta~E005ClientAction~E004submit~E003~E002~E003';
 }
 
 async function submitEvent(session: SapSession, eventQueue: string): Promise<string> {
