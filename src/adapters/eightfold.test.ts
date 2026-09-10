@@ -38,6 +38,8 @@ test('eightfold: Microsoft public search position maps to its canonical careers 
     positionUrl: '/careers/job/1970393556859421',
     workLocationOption: 'onsite',
     department: 'Data Center Technicians',
+    efcustomTextCustpayrange: [],
+    efcustomTextCustpreferredsalaryV2: ['C$25.90 - C$30.20'],
   }] } }, board, parsed);
 
   assert.ok(job);
@@ -45,4 +47,6 @@ test('eightfold: Microsoft public search position maps to its canonical careers 
   assert.equal(job.location, 'Canada, Québec, Quebec City');
   assert.equal(job.url, 'https://apply.careers.microsoft.com/careers/job/1970393556859421');
   assert.equal(job.source, 'eightfold');
+  assert.equal(job.salaryRaw, 'C$25.90 - C$30.20');
+  assert.equal(job.salaryCurrency, 'CAD');
 });

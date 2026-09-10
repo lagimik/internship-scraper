@@ -51,8 +51,8 @@ interface EightfoldPosition {
   locationFlexibility?: string;
   positionUrl?: string;
   department?: string;
-  efcustomTextCustpayrange?: string;
-  efcustomTextCustpreferredsalaryV2?: string;
+  efcustomTextCustpayrange?: string | string[];
+  efcustomTextCustpreferredsalaryV2?: string | string[];
 }
 
 interface EightfoldResponse {
@@ -103,6 +103,16 @@ function cleanLocations(position: EightfoldPosition): string {
   return [...new Set(locations)].join('; ');
 }
 
+function firstText(...values: Array<string | string[] | undefined>): string | null {
+  for (const value of values) {
+    const text = (Array.isArray(value) ? value : [value])
+      .find((item) => typeof item === 'string' && item.trim())
+      ?.trim();
+    if (text) return text;
+  }
+  return null;
+}
+
 /** Map one API page into the shared adapter shape. Exported for fixture tests. */
 export function parseEightfoldResponse(
   response: EightfoldResponse,
@@ -118,9 +128,10 @@ export function parseEightfoldResponse(
     const workMode = [position.workLocationOption, position.locationFlexibility]
       .filter(Boolean)
       .join(' ');
-    const salaryRaw = position.efcustomTextCustpayrange
-      ?? position.efcustomTextCustpreferredsalaryV2
-      ?? null;
+    const salaryRaw = firstText(
+      position.efcustomTextCustpayrange,
+      position.efcustomTextCustpreferredsalaryV2,
+    );
 
     return [{
       title,
