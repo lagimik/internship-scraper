@@ -37,7 +37,7 @@ export const ASHBY_BOARDS: AshbyBoard[] = [
   { token: 'dominion%20dynamics', name: 'Dominion Dynamics' },
   { token: 'gradientrobotics', name: 'Gradient Robotics' },
   { token: 'miovision', name: 'Miovision' },
-  { token: 'trexo%20robotics', name: 'Trexo Robotics' },
+  { token: 'Trexo%20Robotics', name: 'Trexo Robotics' },
   { token: 'cohere', name: 'Cohere' },
   { token: 'wealthsimple', name: 'Wealthsimple' },
   { token: '1password', name: '1Password' },
@@ -108,7 +108,7 @@ export function mapEmploymentType(t: string | undefined): JobType | null {
     case 'temporary':
       return 'contract';
     case 'fulltime':
-      return 'full-time';
+      return null; // Ashby also uses FullTime for full-time-schedule internships.
     default:
       return null; // let the title-based classifier decide
   }

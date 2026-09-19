@@ -79,3 +79,46 @@ test('bamboohr: Giatec detail record maps canonical posting fields', () => {
   assert.equal(job.salaryRaw, '$125,000 to $155,000');
   assert.equal(job.type, 'full-time');
 });
+
+test('bamboohr: Smardt posting URL decomposes into tenant API parts', () => {
+  assert.deepEqual(parseBambooHrUrl('https://smardt.bamboohr.com/careers/718?source=LinkedIn'), {
+    origin: 'https://smardt.bamboohr.com',
+    tenant: 'smardt',
+  });
+  assert.ok(BAMBOOHR_BOARDS.some((board) => (
+    board.url === 'https://smardt.bamboohr.com/careers'
+    && board.name === 'Smardt'
+  )));
+});
+
+test('bamboohr: Smardt detail record maps canonical posting fields', () => {
+  const board = {
+    url: 'https://smardt.bamboohr.com/careers',
+    name: 'Smardt',
+  };
+  const parsed = parseBambooHrUrl(board.url);
+  assert.ok(parsed);
+  const job = parseBambooHrPosting({
+    id: '718',
+    jobOpeningName: 'Stagiaire en g\u00e9nie de la fabrication / Manufacturing Engineering Intern',
+    jobOpeningStatus: 'Open',
+    employmentStatusLabel: 'Internship',
+    location: { city: 'Dorval', state: 'Quebec', addressCountry: 'Canada' },
+    atsLocation: { country: null, state: null, city: null },
+    description: '<p>This is a 4-month term from September 2026 - December 2026.</p>',
+    compensation: '19$-21$',
+    datePosted: '2026-04-17',
+    locationType: '0',
+    jobOpeningShareUrl: 'https://smardt.bamboohr.com/careers/718',
+  }, board, parsed);
+  assert.ok(job);
+  assert.equal(job.title, 'Stagiaire en g\u00e9nie de la fabrication / Manufacturing Engineering Intern');
+  assert.equal(job.company, 'Smardt');
+  assert.equal(job.location, 'Dorval, Quebec, Canada');
+  assert.equal(job.url, 'https://smardt.bamboohr.com/careers/718');
+  assert.equal(job.source, 'bamboohr');
+  assert.equal(job.postedAt, '2026-04-17T00:00:00.000Z');
+  assert.equal(job.salaryRaw, '19$-21$');
+  assert.equal(job.type, 'intern');
+  assert.match(job.description ?? '', /4-month term/);
+});

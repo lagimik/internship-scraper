@@ -31,6 +31,8 @@ const DEFAULT_ADAPTER_NAMES = [
   'adp',
   'taleo-social',
   'jazzhr',
+  'icims',
+  'recruitee',
   'workday',
   'eightfold',
   'siemens',

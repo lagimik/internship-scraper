@@ -61,7 +61,9 @@ export const WORKDAY_BOARDS: WorkdayBoard[] = [
  { url: 'https://cat.wd5.myworkdayjobs.com/en-US/CaterpillarCareers', name: 'Caterpillar' },
  { url: 'https://mosaic.wd5.myworkdayjobs.com/mosaic?workerSubType=ed8099291cc44a449715a96f49b3b316', name: 'The Mosaic Company' },
  { url: 'https://tcenergy.wd3.myworkdayjobs.com/en-US/CAREER_SITE_TC', name: 'TC Energy' },
+ { url: 'https://olg.wd3.myworkdayjobs.com/Careers-Students', name: 'OLG' },
  { url: 'https://shell.wd3.myworkdayjobs.com/en-CA/ShellCareers/job/Scotford/Shell-Assessed-Internship-Programme--January-May-2027----Programme-de-stages-valus-de-Shell--janvier---mai-2027----Canada_R205117/apply?source=APPLICANT_SOURCE_LinkedIn_Job_Board', name: 'Shell' },
+ { url: 'https://alcoa.wd5.myworkdayjobs.com/careers/job/Canada-QC-Bcancour/Stagiaire-gnie-industriel--mcanique-ou-de-la-production-automatise---Carbone--Hiver-2027-_Req-39194?source=LinkedIn', name: 'Alcoa' },
  
 
 

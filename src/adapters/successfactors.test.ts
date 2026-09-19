@@ -1,11 +1,60 @@
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import {
+  mapSuccessFactorsLegacyDetail,
   mapSuccessFactorsApiJob,
   parseSuccessFactorsHtml,
+  parseSuccessFactorsLegacyDwr,
   parseSuccessFactorsUrl,
   SUCCESSFACTORS_BOARDS,
 } from './successfactors.js';
+
+test('ADM posting URL preserves its legacy SuccessFactors tenant and locale', () => {
+  const board = SUCCESSFACTORS_BOARDS.find(({ name }) => name === 'Aéroports de Montréal (ADM)');
+
+  assert.ok(board);
+  assert.deepEqual(parseSuccessFactorsUrl(board.url), {
+    origin: 'https://career17.sapsf.com',
+    searchUrl: 'https://career17.sapsf.com/career?career_ns=job_listing_summary&company=C0000173697P&navBarLevel=JOB_SEARCH&rcm_site_locale=fr_CA',
+    legacyCompany: 'C0000173697P',
+    legacyLocale: 'fr_CA',
+  });
+});
+
+test('ADM legacy DWR result and detail page map the supplied internship', () => {
+  const [posting] = parseSuccessFactorsLegacyDwr(String.raw`
+    s1.postingCount="30";
+    s36.corporatePosting=true;s36.defaultLocale="fr_CA";s36.id=12045;s36.jobReqSecKey="123";s36.multiLingualTitles="[]";s36.operatorId=null;s36.operatorName=null;s36.otherValues=s46;s36.postingDate="2026-08-27";s36.showReferJobToFriend=true;s36.title="STAGE - G\u00E9nie m\u00E9canique / Efficacit\u00E9 \u00E9nerg\u00E9tique";
+  `);
+  assert.deepEqual(posting, {
+    id: '12045',
+    title: 'STAGE - Génie mécanique / Efficacité énergétique',
+    postedAt: '2026-08-27T00:00:00.000Z',
+  });
+
+  const board = SUCCESSFACTORS_BOARDS.find(({ name }) => name === 'Aéroports de Montréal (ADM)');
+  assert.ok(board);
+  assert.ok(posting);
+  const job = mapSuccessFactorsLegacyDetail(`
+    <div class="joqReqDescription">
+      <p><strong>Demande N°: 12045</strong></p>
+      <p><strong>Titre:</strong> STAGE - Génie mécanique / Efficacité énergétique</p>
+      <p><strong>Lieu de travail:</strong> Montréal- Trudeau</p>
+      <p><strong>Date d'affichage du 27 aout 2026</strong></p>
+      <h2>SOMMAIRE</h2><p>PROPULSE TA CARRIÈRE AVEC ADM !</p>
+    </div>
+  `, posting, board);
+
+  assert.ok(job);
+  assert.equal(job.title, 'STAGE - Génie mécanique / Efficacité énergétique');
+  assert.equal(job.company, 'Aéroports de Montréal (ADM)');
+  assert.equal(job.location, 'Montréal- Trudeau');
+  assert.equal(job.postedAt, '2026-08-27T00:00:00.000Z');
+  assert.equal(job.url, 'https://career17.sapsf.com/career?career_ns=job_listing&company=C0000173697P&navBarLevel=JOB_SEARCH&rcm_site_locale=fr_CA&career_job_req_id=12045');
+  assert.equal(job.source, 'successfactors');
+  assert.equal(job.type, 'intern');
+  assert.match(job.description ?? '', /PROPULSE TA CARRIÈRE AVEC ADM/);
+});
 
 test('Kinectrics search URL resolves to its classic SuccessFactors endpoint', () => {
   const board = SUCCESSFACTORS_BOARDS.find(({ name }) => name === 'Kinectrics');

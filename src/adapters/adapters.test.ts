@@ -430,7 +430,7 @@ test('workday: search posting maps to a canonical job', () => {
 
 test('oracle: supplied J.D. Irving detail URL preserves its site alias', () => {
   assert.deepEqual(parseOracleUrl(
-    'https://hcpd.fa.ca2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/Careers/job/11762?utm_medium=jobshare',
+    'https://hcpd.fa.ca2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/Careers/job/11829?utm_medium=jobshare',
   ), {
     origin: 'https://hcpd.fa.ca2.oraclecloud.com',
     language: 'en',
@@ -447,21 +447,23 @@ test('oracle: supplied J.D. Irving requisition maps to a canonical job', () => {
   const parsed = parseOracleUrl(board.url);
   assert.ok(parsed);
   const job = mapOracleRequisition({
-    Id: '11762',
-    Title: 'Paper Mill Engineering Co-op Student - Winter 2027',
-    PostedDate: '2026-09-03',
-    PrimaryLocation: 'Toronto, ON, Canada',
-    ShortDescriptionStr: 'Irving Tissue is seeking a Paper Mill Engineering Co-op Student.',
+    Id: '11829',
+    Title: 'Mechanical Engineering Student - Winter 2027',
+    PostedDate: '2026-08-26',
+    PrimaryLocation: 'Saint John, NB, Canada',
+    WorkplaceType: '',
+    ShortDescriptionStr: 'CFM is looking for a Mechanical Engineering Student in Saint John, NB for the Winter 2027 term.',
   }, board, parsed);
 
   assert.ok(job);
-  assert.equal(job.title, 'Paper Mill Engineering Co-op Student - Winter 2027');
+  assert.equal(job.title, 'Mechanical Engineering Student - Winter 2027');
   assert.equal(job.company, 'J.D. Irving');
-  assert.equal(job.location, 'Toronto, ON, Canada');
-  assert.equal(job.url, 'https://hcpd.fa.ca2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/Careers/job/11762');
+  assert.equal(job.location, 'Saint John, NB, Canada');
+  assert.equal(job.url, 'https://hcpd.fa.ca2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/Careers/job/11829');
   assert.equal(job.source, 'oracle');
-  assert.equal(job.postedAt, '2026-09-03T00:00:00.000Z');
-  assert.equal(job.type, 'co-op');
+  assert.equal(job.postedAt, '2026-08-26T00:00:00.000Z');
+  assert.equal(job.type, 'intern');
+  assert.match(job.description ?? '', /Mechanical Engineering Student/);
 });
 
 test('workday: supplied GM detail URL maps its board and posting', () => {
@@ -1238,7 +1240,7 @@ test('ashby: secondary locations are kept so Canada-remote roles survive', () =>
   assert.match(loc, /New York/);
 
   assert.equal(mapEmploymentType('Intern'), 'intern');
-  assert.equal(mapEmploymentType('FullTime'), 'full-time');
+  assert.equal(mapEmploymentType('FullTime'), null);
   assert.equal(mapEmploymentType(undefined), null);
 });
 

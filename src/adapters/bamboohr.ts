@@ -28,6 +28,7 @@ export const BAMBOOHR_BOARDS: BambooHrBoard[] = [
   { url: 'https://giatecscientific.bamboohr.com/careers', name: 'Giatec Scientific' },
   { url: 'https://proslide.bamboohr.com/careers', name: 'Proslide' },
   { url: 'https://csmc.bamboohr.com/careers', name: 'CSMC' },
+  { url: 'https://smardt.bamboohr.com/careers', name: 'Smardt' },
   { url: 'https://svante.bamboohr.com/careers', name: 'Svante' },
   { url: 'https://volatus.bamboohr.com/careers', name: 'Volatus Aerospace' },
 ];

@@ -93,6 +93,10 @@ test('work terms: incompatible durations override Winter/Hiver 2027 wording', ()
     assert.equal(isFourMonthEligible(term), false, `should reject ${text}`);
   }
   assert.equal(isFourMonthEligible(matchWorkTerm('Hiver 2027 - stage de quatre mois', null)), true);
+  assert.equal(isFourMonthEligible(matchWorkTerm(
+    'Engineering student - Mechanical Design - Winter 2027',
+    'This is a 4 or 8 months internship starting in January 2027.',
+  )), true);
 });
 
 test('work terms: calendar ranges determine duration before seasonal inference', () => {

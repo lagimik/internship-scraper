@@ -48,23 +48,28 @@ function calendarRangeDuration(text: string): WorkTermMatch | null {
 }
 
 function explicitDuration(text: string, requireContext = false): WorkTermMatch | null {
+  const alternatives = /\b(\d{1,2}|four|eight|twelve|sixteen|quatre|huit|douze|seize)\s*(?:-|to|or|ou|\/)\s*(\d{1,2}|four|eight|twelve|sixteen|quatre|huit|douze|seize)\s*[- ]?(months?|weeks?|mois|semaines?)\b/g;
   const pattern = /\b(\d{1,2}|four|eight|twelve|sixteen|quatre|huit|douze|seize)\s*[- ]?(months?|weeks?|mois|semaines?)\b/g;
-  const duration = [...text.matchAll(pattern)].find((match) => {
+  const hasContext = (match: RegExpMatchArray): boolean => {
     if (!requireContext || match.index === undefined) return true;
     const nearby = text.slice(Math.max(0, match.index - 60), match.index + match[0].length + 60);
     return DURATION_CONTEXT.test(nearby);
-  });
+  };
+  const alternative = [...text.matchAll(alternatives)].find(hasContext);
+  const duration = alternative ?? [...text.matchAll(pattern)].find(hasContext);
   if (!duration) return null;
 
   const value = duration[1];
-  const unit = duration[2];
+  const unit = alternative ? duration[3] : duration[2];
   if (!value || !unit) return null;
 
   const words: Record<string, number> = {
     four: 4, eight: 8, twelve: 12, sixteen: 16,
     quatre: 4, huit: 8, douze: 12, seize: 16,
   };
-  const count = words[value] ?? Number(value);
+  const counts = [value, ...(alternative && duration[2] ? [duration[2]] : [])]
+    .map((candidate) => words[candidate] ?? Number(candidate));
+  const count = counts.includes(4) ? 4 : Math.min(...counts);
   const months = /^(?:weeks?|semaines?)$/.test(unit) ? Math.round(count / 4) : count;
   return { months, confidence: 'confirmed', matchedBy: duration[0], isTargetTerm: false };
 }

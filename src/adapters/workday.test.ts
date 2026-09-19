@@ -95,6 +95,34 @@ test('workday: supplied TC Energy URL maps its board and an open internship', ()
   assert.equal(job.source, 'workday');
 });
 
+test('workday: supplied OLG student URL maps its board and posting shape', () => {
+  const url = 'https://olg.wd3.myworkdayjobs.com/Careers-Students';
+  assert.ok(WORKDAY_BOARDS.some((board) => board.name === 'OLG' && board.url === url));
+  const parsed = parseWorkdayUrl(url);
+  assert.deepEqual(parsed, {
+    host: 'olg',
+    dc: 'wd3',
+    tenant: 'olg',
+    site: 'Careers-Students',
+    origin: 'https://olg.wd3.myworkdayjobs.com',
+  });
+  assert.ok(parsed);
+
+  const job = mapWorkdayPosting({
+    title: 'Software Developer Co-op',
+    externalPath: '/job/Toronto-ON/Software-Developer-Co-op_R123456',
+    locationsText: 'Toronto, ON',
+    postedOn: 'Posted Today',
+    bulletFields: ['R123456'],
+  }, { url, name: 'OLG' }, parsed);
+
+  assert.equal(job.title, 'Software Developer Co-op');
+  assert.equal(job.company, 'OLG');
+  assert.equal(job.location, 'Toronto, ON');
+  assert.equal(job.url, 'https://olg.wd3.myworkdayjobs.com/en-US/Careers-Students/job/Toronto-ON/Software-Developer-Co-op_R123456');
+  assert.equal(job.source, 'workday');
+});
+
 test('workday: supplied Shell application URL preserves its Canadian locale', () => {
   const url = 'https://shell.wd3.myworkdayjobs.com/en-CA/ShellCareers/job/Scotford/Shell-Assessed-Internship-Programme--January-May-2027----Programme-de-stages-valus-de-Shell--janvier---mai-2027----Canada_R205117/apply?source=APPLICANT_SOURCE_LinkedIn_Job_Board';
   assert.ok(WORKDAY_BOARDS.some((board) => board.name === 'Shell' && board.url === url));
@@ -121,5 +149,33 @@ test('workday: supplied Shell application URL preserves its Canadian locale', ()
   assert.equal(job.company, 'Shell');
   assert.equal(job.location, '2 Locations');
   assert.equal(job.url, 'https://shell.wd3.myworkdayjobs.com/en-CA/ShellCareers/job/Scotford/Shell-Assessed-Internship-Programme--January-May-2027----Programme-de-stages-valus-de-Shell--janvier---mai-2027----Canada_R205117');
+  assert.equal(job.source, 'workday');
+});
+
+test('workday: supplied Alcoa URL maps its board and open internship', () => {
+  const url = 'https://alcoa.wd5.myworkdayjobs.com/careers/job/Canada-QC-Bcancour/Stagiaire-gnie-industriel--mcanique-ou-de-la-production-automatise---Carbone--Hiver-2027-_Req-39194?source=LinkedIn';
+  assert.ok(WORKDAY_BOARDS.some((board) => board.name === 'Alcoa' && board.url === url));
+  const parsed = parseWorkdayUrl(url);
+  assert.deepEqual(parsed, {
+    host: 'alcoa',
+    dc: 'wd5',
+    tenant: 'alcoa',
+    site: 'careers',
+    origin: 'https://alcoa.wd5.myworkdayjobs.com',
+  });
+  assert.ok(parsed);
+
+  const job = mapWorkdayPosting({
+    title: 'Stagiaire génie industriel, mécanique ou de la production automatisée - Carbone (Hiver 2027)',
+    externalPath: '/job/Canada-QC-Bcancour/Stagiaire-gnie-industriel--mcanique-ou-de-la-production-automatise---Carbone--Hiver-2027-_Req-39194',
+    locationsText: 'Canada, QC, Bécancour',
+    postedOn: 'Posted 8 Days Ago',
+    bulletFields: ['Req-39194'],
+  }, { url, name: 'Alcoa' }, parsed);
+
+  assert.equal(job.title, 'Stagiaire génie industriel, mécanique ou de la production automatisée - Carbone (Hiver 2027)');
+  assert.equal(job.company, 'Alcoa');
+  assert.equal(job.location, 'Canada, QC, Bécancour');
+  assert.equal(job.url, 'https://alcoa.wd5.myworkdayjobs.com/en-US/careers/job/Canada-QC-Bcancour/Stagiaire-gnie-industriel--mcanique-ou-de-la-production-automatise---Carbone--Hiver-2027-_Req-39194');
   assert.equal(job.source, 'workday');
 });
