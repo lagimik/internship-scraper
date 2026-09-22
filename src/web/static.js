@@ -1,6 +1,6 @@
 const data = JSON.parse(document.getElementById('dashboard-data').textContent);
 const $ = (id) => document.getElementById(id);
-const controls = ['q', 'source', 'category', 'type', 'region', 'sort', 'remote'];
+const controls = ['q', 'source', 'category', 'type', 'fit', 'region', 'sort', 'remote'];
 
 function esc(value) {
   return String(value ?? '').replace(/[&<>"']/g, (character) =>
@@ -37,6 +37,7 @@ function filteredJobs() {
   const source = $('source').value;
   const category = $('category').value;
   const type = $('type').value;
+  const fit = $('fit').value;
   const country = document.querySelector('input[name="country"]:checked').value;
   const region = $('region').value;
   const remoteOnly = $('remote').checked;
@@ -47,6 +48,7 @@ function filteredJobs() {
     if (source && job.source !== source) return false;
     if (category && job.role_category !== category) return false;
     if (type && job.type !== type) return false;
+    if (fit && job.fit !== fit) return false;
     if (job.country !== country) return false;
     if (region && job.region !== region) return false;
     if (remoteOnly && !job.remote) return false;
@@ -101,6 +103,7 @@ function render() {
 fillSelect($('source'), data.facets.sources);
 fillSelect($('category'), data.facets.categories);
 fillSelect($('type'), data.facets.types);
+fillSelect($('fit'), data.facets.fits);
 fillSelect($('region'), data.facets.regions);
 
 const generated = new Date(data.generatedAt).toLocaleString();

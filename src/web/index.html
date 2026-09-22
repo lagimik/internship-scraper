@@ -88,6 +88,7 @@
     <select id="source"><option value="">All sources</option></select>
     <select id="category"><option value="">All roles</option></select>
     <select id="type"><option value="">Intern + co-op</option></select>
+    <select id="fit"><option value="">All fit assessments</option></select>
     <select id="region"><option value="">All provinces/states</option></select>
     <select id="sort">
       <option value="newest">Newest posted</option>
@@ -104,7 +105,7 @@
 
 <script>
 const $ = (id) => document.getElementById(id);
-const controls = ['q','source','category','type','region','sort','remote'];
+const controls = ['q','source','category','type','fit','region','sort','remote'];
 let facetsLoaded = false;
 let matching = 0;
 
@@ -164,6 +165,7 @@ async function load() {
     fillSelect($('source'), facets.sources);
     fillSelect($('category'), facets.categories);
     fillSelect($('type'), facets.types);
+    fillSelect($('fit'), facets.fits);
     fillSelect($('region'), facets.regions);
     facetsLoaded = true;
   }

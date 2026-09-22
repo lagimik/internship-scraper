@@ -92,9 +92,10 @@ function buildFilter(params: URLSearchParams): { where: string[]; args: Array<st
   return { where, args };
 }
 
-function queryJobs(params: URLSearchParams): JobRow[] {
+function queryJobs(params: URLSearchParams, limit = 500): JobRow[] {
   refreshFitAssessments();
   const { where, args } = buildFilter(params);
+  const fit = params.get('fit');
 
   const dir = params.get('sort') === 'oldest' ? 'ASC' : 'DESC';
   // Name the columns rather than SELECT *: `description` alone is ~32KB across the
@@ -104,8 +105,7 @@ function queryJobs(params: URLSearchParams): JobRow[] {
                       role_category, matched_by, location_confidence, location_matched_by,
                       work_term_months, work_term_confidence
                FROM jobs ${where.length ? `WHERE ${where.join(' AND ')}` : ''}
-               ORDER BY COALESCE(posted_at, first_seen_at) ${dir}, company ASC
-               LIMIT 500`;
+               ORDER BY COALESCE(posted_at, first_seen_at) ${dir}, company ASC`;
   const jobs = db.prepare(sql).all(...args) as unknown as JobRow[];
   for (const job of jobs) {
     if (job.country !== 'CA') continue;
@@ -115,11 +115,13 @@ function queryJobs(params: URLSearchParams): JobRow[] {
     job.fit = assessment.fit;
     job.fit_summary = assessment.summary;
   }
-  return jobs;
+  const matchingJobs = fit ? jobs.filter((job) => job.fit === fit) : jobs;
+  return matchingJobs.slice(0, limit);
 }
 
 /** How many rows match the current filters, ignoring the display limit. */
 function countJobs(params: URLSearchParams): number {
+  if (params.get('fit')) return queryJobs(params, Number.POSITIVE_INFINITY).length;
   const { where, args } = buildFilter(params);
   const sql = `SELECT COUNT(*) AS n FROM jobs ${where.length ? `WHERE ${where.join(' AND ')}` : ''}`;
   return (db.prepare(sql).get(...args) as { n: number }).n;
@@ -154,6 +156,7 @@ function computeFacets() {
     // Only intern and co-op exist in the db, the scrape drops everything else, so
     // this is a sub-filter between the two, not a way to reach other job types.
     types: col('type'),
+    fits: countBy(queryJobs(new URLSearchParams(), Number.POSITIVE_INFINITY), 'fit'),
     total: one('SELECT COUNT(*) AS n FROM jobs'),
     runs: db.prepare(`SELECT source, ok, kept, inserted, started_at, error FROM runs
                       WHERE id IN (SELECT MAX(id) FROM runs GROUP BY source)
@@ -161,6 +164,15 @@ function computeFacets() {
                         source: string; ok: number; kept: number; inserted: number;
                         started_at: string; error: string | null }>,
   };
+}
+
+function countBy(jobs: JobRow[], key: keyof JobRow): Array<{ v: string; n: number }> {
+  const counts = new Map<string, number>();
+  for (const job of jobs) {
+    const value = job[key];
+    if (typeof value === 'string' && value) counts.set(value, (counts.get(value) ?? 0) + 1);
+  }
+  return [...counts].map(([v, n]) => ({ v, n })).sort((a, b) => b.n - a.n || a.v.localeCompare(b.v));
 }
 
 /**

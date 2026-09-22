@@ -6,6 +6,8 @@ const suppliedUrl = 'https://ehif.fa.em2.oraclecloud.com/hcmUI/CandidateExperien
 const seaspanUrl = 'https://hckz.fa.us2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/jobs?mode=job-location';
 const nokiaUrl = 'https://jobs.nokia.com/en/sites/CX_1/jobs?lastSelectedFacet=LOCATIONS&selectedFlexFieldsFacets=%22AttributeChar21%7CStudent+or+Intern+or+Trainee%3BGraduate+or+Entry+Level%22&selectedLocationsFacet=300000000471544';
 const howmetUrl = 'https://fa-exty-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/118908?utm_medium=jobshare';
+const standardAeroUrl = 'https://cva.fa.us1.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_3/job/10293?utm_medium=jobboard&utm_source=linkedin';
+const metrolinxUrl = 'https://ehtc.fa.ca2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/117445?utm_medium=jobboard&utm_source=linkedin';
 
 test('oracle: supplied Wood URL preserves its site and graduate trainee facet', () => {
   assert.ok(ORACLE_BOARDS.some((board) => board.name === 'Wood' && board.url === suppliedUrl));
@@ -169,4 +171,76 @@ test('oracle: Howmet requisition maps its live Canadian internship fields', () =
   assert.equal(job.postedAt, '2026-08-12T00:00:00.000Z');
   assert.equal(job.remote, false);
   assert.equal(job.type, 'intern');
+});
+
+test('oracle: supplied StandardAero URL preserves its tenant, locale and site', () => {
+  assert.ok(ORACLE_BOARDS.some((board) =>
+    board.name === 'StandardAero' && board.url === standardAeroUrl));
+  assert.deepEqual(parseOracleUrl(standardAeroUrl), {
+    origin: 'https://cva.fa.us1.oraclecloud.com',
+    language: 'en',
+    site: 'CX_3',
+  });
+});
+
+test('oracle: StandardAero requisition maps its live Canadian internship fields', () => {
+  const parsed = parseOracleUrl(standardAeroUrl);
+  assert.ok(parsed);
+  const job = mapOracleRequisition({
+    Id: '10293',
+    Title: 'Engineering Intern (Winter or Summer 2027)',
+    PrimaryLocation: 'Winnipeg, MB, Canada',
+    workLocation: [{ LocationName: 'US-AZ-Scottsdale' }],
+    WorkplaceType: 'On-site',
+    WorkplaceTypeCode: 'ORA_ON_SITE',
+    PostedDate: '2026-09-18',
+  }, { url: standardAeroUrl, name: 'StandardAero' }, parsed);
+
+  assert.ok(job);
+  assert.equal(job.title, 'Engineering Intern (Winter or Summer 2027)');
+  assert.equal(job.company, 'StandardAero');
+  assert.equal(job.location, 'Winnipeg, MB, Canada; US-AZ-Scottsdale');
+  assert.equal(job.url,
+    'https://cva.fa.us1.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_3/job/10293');
+  assert.equal(job.source, 'oracle');
+  assert.equal(job.postedAt, '2026-09-18T00:00:00.000Z');
+  assert.equal(job.remote, false);
+  assert.equal(job.type, 'intern');
+});
+
+test('oracle: supplied Metrolinx URL preserves its tenant, locale and site', () => {
+  assert.ok(ORACLE_BOARDS.some((board) =>
+    board.name === 'Metrolinx' && board.url === metrolinxUrl));
+  assert.deepEqual(parseOracleUrl(metrolinxUrl), {
+    origin: 'https://ehtc.fa.ca2.oraclecloud.com',
+    language: 'en',
+    site: 'CX_1',
+  });
+});
+
+test('oracle: Metrolinx requisition maps its live Canadian co-op fields', () => {
+  const parsed = parseOracleUrl(metrolinxUrl);
+  assert.ok(parsed);
+  const job = mapOracleRequisition({
+    Id: '117445',
+    Title: 'Co-op Student, Bus Fleet Engineering',
+    PrimaryLocation: 'Canada',
+    workLocation: [{ LocationName: 'Streetsville Garage' }],
+    WorkplaceType: '',
+    WorkplaceTypeCode: null,
+    PostedDate: '2026-09-18',
+    ShortDescriptionStr: 'Support initiatives that improve bus fleet reliability.',
+  }, { url: metrolinxUrl, name: 'Metrolinx' }, parsed);
+
+  assert.ok(job);
+  assert.equal(job.title, 'Co-op Student, Bus Fleet Engineering');
+  assert.equal(job.company, 'Metrolinx');
+  assert.equal(job.location, 'Canada; Streetsville Garage');
+  assert.equal(job.url,
+    'https://ehtc.fa.ca2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/117445');
+  assert.equal(job.source, 'oracle');
+  assert.equal(job.postedAt, '2026-09-18T00:00:00.000Z');
+  assert.equal(job.remote, false);
+  assert.equal(job.type, 'co-op');
+  assert.match(job.description ?? '', /bus fleet reliability/);
 });

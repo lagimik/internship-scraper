@@ -66,6 +66,14 @@ export const ORACLE_BOARDS: OracleBoard[] = [
     url: 'https://fa-exty-saasfaprod1.fa.ocs.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/118908?utm_medium=jobshare',
     name: 'Howmet Aerospace',
   },
+  {
+    url: 'https://cva.fa.us1.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_3/job/10293?utm_medium=jobboard&utm_source=linkedin',
+    name: 'StandardAero',
+  },
+  {
+    url: 'https://ehtc.fa.ca2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1/job/117445?utm_medium=jobboard&utm_source=linkedin',
+    name: 'Metrolinx',
+  },
 ];
 
 export interface ParsedOracleUrl {
@@ -130,8 +138,8 @@ export interface OracleRequisition {
   primaryLocation?: string;
   WorkplaceType?: string;
   workplaceType?: string;
-  WorkplaceTypeCode?: string;
-  workplaceTypeCode?: string;
+  WorkplaceTypeCode?: string | null;
+  workplaceTypeCode?: string | null;
   WorkerType?: string;
   workerType?: string;
   ContractType?: string;

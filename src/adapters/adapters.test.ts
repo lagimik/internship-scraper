@@ -39,6 +39,7 @@ import {
   parseTaleoRss,
   parseTaleoSearchResponse,
   parseTaleoUrl,
+  TALEO_BOARDS,
   taleoAdapter,
 } from './taleo.js';
 import {
@@ -106,6 +107,7 @@ import {
 } from './smartrecruiters.js';
 import { parseUltiProResponse, parseUltiProUrl } from './ultipro.js';
 import { cwsAdapter, mapCwsJob, parseCwsUrl } from './cws.js';
+import { jobsynAdapter, mapJobsynJob, parseJobsynUrl } from './jobsyn.js';
 import {
   mapSapERecruitingResult,
   parseSapERecruitingPostingUrl,
@@ -307,6 +309,47 @@ test('cws: public API record maps to the canonical Rio Tinto job', () => {
   assert.equal(job.postedAt, '2026-09-01T00:00:00.000Z');
   assert.equal(job.type, 'intern');
   assert.equal(job.description, 'Build experience with mechanical assets.');
+});
+
+test('jobsyn: supplied AECOM URL preserves its origin identity', () => {
+  assert.deepEqual(parseJobsynUrl('https://aecom.jobs/jobs/?q=intern&r=25'), {
+    origin: 'https://aecom.jobs',
+    hostname: 'aecom.jobs',
+  });
+  assert.equal(parseJobsynUrl('http://aecom.jobs/jobs/'), null);
+});
+
+test('jobsyn: public API record maps to the canonical AECOM job', () => {
+  assert.equal(jobsynAdapter().name, 'jobsyn');
+  const job = mapJobsynJob({
+    city_exact: 'Burnaby',
+    country_exact: 'Canada',
+    date_new: '2026-08-24T16:10:21Z',
+    description: 'Build field engineering experience.',
+    guid: '508F3BFD8EE14A4DA74798068CAF68F3',
+    job_type: 'On-Site',
+    location_exact: 'Burnaby, BC',
+    state_short: 'BC',
+    title_exact: 'Field Engineering Intern',
+    title_slug: 'field-engineering-intern',
+  }, {
+    url: 'https://aecom.jobs/jobs/?q=intern&r=25',
+    name: 'AECOM',
+    apiUrl: 'https://prod-search-api.jobsyn.org/api/v1/solr/search',
+    location: 'can',
+  });
+
+  assert.ok(job);
+  assert.equal(job.title, 'Field Engineering Intern');
+  assert.equal(job.company, 'AECOM');
+  assert.equal(job.location, 'Burnaby, BC, Canada');
+  assert.equal(
+    job.url,
+    'https://aecom.jobs/burnaby-bc/field-engineering-intern/508F3BFD8EE14A4DA74798068CAF68F3/job/',
+  );
+  assert.equal(job.source, 'jobsyn');
+  assert.equal(job.postedAt, '2026-08-24T16:10:21.000Z');
+  assert.equal(job.type, 'intern');
 });
 
 test('github: angle-bracket markdown links yield a clean URL', () => {
@@ -572,6 +615,40 @@ test('taleo: supplied detail URL exposes the career section identifiers', () => 
   assert.equal(parseTaleoUrl('https://example.com/careersection/ex/jobdetail.ftl?job=1'), null);
 });
 
+test('taleo: Agnico application URL preserves the supplied section and portal', () => {
+  const url = 'https://agnicoeagle.taleo.net/careersection/application.jss?lang=fr&type=1&csNo=2&portal=101430233&reqNo=146881&isOnLogoutPage=true';
+  assert.deepEqual(parseTaleoUrl(url), {
+    origin: 'https://agnicoeagle.taleo.net',
+    section: '2',
+    language: 'fr',
+    jobId: null,
+    searchUrl: 'https://agnicoeagle.taleo.net/careersection/rest/jobboard/searchjobs?lang=fr',
+  });
+  assert.ok(TALEO_BOARDS.some((board) => board.url === url
+    && board.name === 'Agnico Eagle'
+    && board.portal === '101430233'
+    && board.searchTerms?.length === 1
+    && board.searchTerms[0] === ''));
+});
+
+test('taleo: Agnico RSS posting maps to its canonical French career section', () => {
+  const board = TALEO_BOARDS.find(({ name }) => name === 'Agnico Eagle');
+  assert.ok(board);
+  const parsed = parseTaleoUrl(board.url);
+  assert.ok(parsed);
+  const [job] = parseTaleoRss(`<?xml version="1.0"?><rss><channel><item>
+    <title>Coordonnateur des systèmes entretien mine</title>
+    <link>http://agnicoeagle.taleo.net/careersection/2/jobdetail.ftl?lang=fr&amp;job=MCM00295</link>
+    <pubDate>Mon, 21 Sep 2026 14:23:05 EDT</pubDate>
+  </item></channel></rss>`, board, parsed);
+
+  assert.ok(job);
+  assert.equal(job.title, 'Coordonnateur des systèmes entretien mine');
+  assert.equal(job.company, 'Agnico Eagle');
+  assert.equal(job.url, 'https://agnicoeagle.taleo.net/careersection/2/jobdetail.ftl?job=MCM00295&lang=fr');
+  assert.equal(job.source, 'taleo');
+});
+
 test('taleo: public search response maps the supplied HDR posting', () => {
   const board = {
     url: 'https://hdr.taleo.net/careersection/ex/jobdetail.ftl?job=195537&lang=en',
@@ -654,6 +731,18 @@ test('taleo: RSS discovery and detail fields map without a browser session', () 
   assert.equal(detail.postedAt, '2026-08-25T00:00:00.000Z');
   assert.equal(detail.salaryRaw, '$21.00 - $31.00 per hour');
   assert.equal(detail.salaryCurrency, 'CAD');
+});
+
+test('taleo: detail parser does not treat Agnico encoded description as location', () => {
+  const state = Array<string>(42).fill('');
+  state[0] = 'descRequisition';
+  state[16] = '!*!%3Cp%3EÉtablie et dirigée au Canada%3C/p%3E';
+  state[28] = 'Québec-Val-d%27Or';
+  state[29] = 'Québec-Val-d%27Or';
+
+  const detail = parseTaleoDetailHtml(`<script>x!|!${state.join('!|!')}!|!x</script>`);
+
+  assert.equal(detail.location, "Québec-Val-d'Or");
 });
 
 test('smartrecruiters: public job URL exposes the exact company identifier', () => {
@@ -1047,6 +1136,52 @@ test('ultipro: Arrow URL preserves the supplied tenant and board identifiers', (
     boardUrl: 'https://recruiting.ultipro.ca/ARR5001AMFG/JobBoard/e3606402-dc8c-458e-855b-d6cd867e57fc/',
     searchUrl: 'https://recruiting.ultipro.ca/ARR5001AMFG/JobBoard/e3606402-dc8c-458e-855b-d6cd867e57fc/JobBoardView/LoadSearchResults',
   });
+});
+
+test('ultipro: supplied Heroux-Devtek detail URL preserves tenant and board identifiers', () => {
+  assert.deepEqual(parseUltiProUrl(
+    'https://recruiting.ultipro.ca/HER5001HERO/JobBoard/e5ac0ff2-938c-46f6-8143-8edb3cf5527b/OpportunityDetail?opportunityId=86986ab6-cc9f-45e8-a470-f570d204ba6d&source=LinkedIn',
+  ), {
+    origin: 'https://recruiting.ultipro.ca',
+    boardPath: '/HER5001HERO/JobBoard/e5ac0ff2-938c-46f6-8143-8edb3cf5527b',
+    boardUrl: 'https://recruiting.ultipro.ca/HER5001HERO/JobBoard/e5ac0ff2-938c-46f6-8143-8edb3cf5527b/',
+    searchUrl: 'https://recruiting.ultipro.ca/HER5001HERO/JobBoard/e5ac0ff2-938c-46f6-8143-8edb3cf5527b/JobBoardView/LoadSearchResults',
+  });
+});
+
+test('ultipro: Heroux-Devtek opportunity maps live response fields', () => {
+  const board = {
+    url: 'https://recruiting.ultipro.ca/HER5001HERO/JobBoard/e5ac0ff2-938c-46f6-8143-8edb3cf5527b/',
+    name: 'Heroux-Devtek Inc',
+  };
+  const [job] = parseUltiProResponse({ opportunities: [{
+    Id: '86986ab6-cc9f-45e8-a470-f570d204ba6d',
+    Title: 'Manufacturing Engineering Intern - Summer 2026',
+    RequisitionNumber: 'STAGI001708',
+    PostedDate: '2026-09-14T20:09:24.641Z',
+    BriefDescription: 'Approximately 4-month internship.',
+    JobLocationType: 'On-site',
+    Locations: [{
+      LocalizedName: '755 Rue Thurber',
+      Address: {
+        City: 'Longueuil',
+        PostalCode: 'J4H',
+        State: { Code: 'QC', Name: 'Quebec' },
+        Country: { Code: 'CAN', Name: 'Canada' },
+      },
+    }],
+  }] }, board);
+
+  assert.ok(job);
+  assert.equal(job.title, 'Manufacturing Engineering Intern - Summer 2026');
+  assert.equal(job.company, 'Heroux-Devtek Inc');
+  assert.equal(job.location, 'Longueuil, QC, J4H, CAN');
+  assert.equal(job.postedAt, '2026-09-14T20:09:24.641Z');
+  assert.equal(job.source, 'ultipro');
+  assert.equal(
+    job.url,
+    'https://recruiting.ultipro.ca/HER5001HERO/JobBoard/e5ac0ff2-938c-46f6-8143-8edb3cf5527b/OpportunityDetail?opportunityId=86986ab6-cc9f-45e8-a470-f570d204ba6d',
+  );
 });
 
 test('ultipro: Alamos Gold opportunity maps live response fields', () => {
@@ -1540,6 +1675,100 @@ test('phenom: supplied Trane URL exposes the locale root and requisition id', ()
     jobId: 'JR-15026',
   });
   assert.equal(parsePhenomUrl('https://example.com/not-a-phenom-shape'), null);
+});
+
+test('phenom: supplied Thermo Fisher URL preserves its verified board and requisition id', () => {
+  const url = 'https://jobs.thermofisher.com/global/en/job/R-01366591/Reliability-Engineering-Co-Op?utm_source=linkedin';
+  assert.ok(PHENOM_BOARDS.some((board) => board.name === 'Thermo Fisher Scientific'
+    && board.url === 'https://jobs.thermofisher.com/global/en'
+    && board.refNum === 'TFSCGLOBAL'
+    && board.locale === 'en_global'));
+  assert.deepEqual(parsePhenomUrl(url), {
+    origin: 'https://jobs.thermofisher.com',
+    sitePath: '/global/en',
+    jobId: 'R-01366591',
+  });
+});
+
+test('phenom: Thermo Fisher JobPosting JSON-LD maps the supplied Canadian co-op', () => {
+  const url = 'https://jobs.thermofisher.com/global/en/job/R-01366591/Reliability-Engineering-Co-Op';
+  const job = parsePhenomJob(`
+    <link rel="canonical" href="${url}">
+    <script type="application/ld+json">${JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'JobPosting',
+      title: 'Reliability Engineering Co-Op',
+      description: '<p>Support reliability engineering activities in Whitby.</p>',
+      datePosted: '2026-09-19',
+      employmentType: ['FULL_TIME'],
+      jobLocation: { address: {
+        addressLocality: 'Whitby',
+        addressRegion: 'Ontario',
+        addressCountry: 'Canada',
+      } },
+    })}</script>
+  `, {
+    url: 'https://jobs.thermofisher.com/global/en',
+    name: 'Thermo Fisher Scientific',
+    refNum: 'TFSCGLOBAL',
+    locale: 'en_global',
+  }, url);
+
+  assert.ok(job);
+  assert.equal(job.title, 'Reliability Engineering Co-Op');
+  assert.equal(job.company, 'Thermo Fisher Scientific');
+  assert.equal(job.location, 'Whitby, Ontario, Canada');
+  assert.equal(job.url, url);
+  assert.equal(job.source, 'phenom');
+  assert.equal(job.postedAt, '2026-09-19T00:00:00.000Z');
+  assert.equal(job.type, 'co-op');
+});
+
+test('phenom: supplied Danaher URL preserves its verified board and requisition id', () => {
+  const url = 'https://jobs.danaher.com/global/en/job/R1316259/Mechatronics-Engineering-Co-op';
+  assert.ok(PHENOM_BOARDS.some((board) => board.name === 'Danaher'
+    && board.url === 'https://jobs.danaher.com/global/en'
+    && board.refNum === 'DANAGLOBAL'
+    && board.locale === 'en_global'));
+  assert.deepEqual(parsePhenomUrl(url), {
+    origin: 'https://jobs.danaher.com',
+    sitePath: '/global/en',
+    jobId: 'R1316259',
+  });
+});
+
+test('phenom: Danaher JobPosting JSON-LD maps the supplied Canadian co-op', () => {
+  const url = 'https://jobs.danaher.com/global/en/job/DANAGLOBALR1316259EXTERNALENGLOBAL/Mechatronics-Engineering-Co-op';
+  const job = parsePhenomJob(`
+    <link rel="canonical" href="${url}">
+    <script type="application/ld+json">${JSON.stringify({
+      '@context': 'http://schema.org',
+      '@type': 'JobPosting',
+      title: 'Mechatronics Engineering Co op',
+      description: '<p>Support R&amp;D and product development initiatives at Cytiva.</p>',
+      datePosted: '2026-09-20',
+      employmentType: ['FULL_TIME'],
+      jobLocation: { address: {
+        addressLocality: 'Vancouver',
+        addressRegion: 'British Columbia',
+        addressCountry: 'Canada',
+      } },
+    })}</script>
+  `, {
+    url: 'https://jobs.danaher.com/global/en',
+    name: 'Danaher',
+    refNum: 'DANAGLOBAL',
+    locale: 'en_global',
+  }, url);
+
+  assert.ok(job);
+  assert.equal(job.title, 'Mechatronics Engineering Co op');
+  assert.equal(job.company, 'Danaher');
+  assert.equal(job.location, 'Vancouver, British Columbia, Canada');
+  assert.equal(job.url, url);
+  assert.equal(job.source, 'phenom');
+  assert.equal(job.postedAt, '2026-09-20T00:00:00.000Z');
+  assert.equal(job.type, 'co-op');
 });
 
 test('phenom: supplied P&G URL preserves its verified board and requisition id', () => {

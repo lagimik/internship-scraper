@@ -49,6 +49,8 @@ import { taleoSocialAdapter } from './adapters/taleo-social.js';
 import { jazzHrAdapter } from './adapters/jazzhr.js';
 import { icimsAdapter } from './adapters/icims.js';
 import { recruiteeAdapter } from './adapters/recruitee.js';
+import { dvinciAdapter } from './adapters/dvinci.js';
+import { jobsynAdapter } from './adapters/jobsyn.js';
 
 /**
  * Sources cheap enough to poll often, the whole group finishes in ~10 seconds and
@@ -86,6 +88,8 @@ export function fastAdapters(): Adapter[] {
     jazzHrAdapter(),
     icimsAdapter(),
     recruiteeAdapter(),
+    dvinciAdapter(),
+    jobsynAdapter(),
   ];
 }
 

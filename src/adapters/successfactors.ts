@@ -47,6 +47,10 @@ export const SUCCESSFACTORS_BOARDS: SuccessFactorsBoard[] = [
     name: 'Bombardier',
   },
   {
+    url: 'https://jobs.bunge.com/search/',
+    name: 'Bunge',
+  },
+  {
     url: 'https://jobs.babcockinternational.com/go/View-all-Jobs/4819301/',
     name: 'Babcock International',
   },
@@ -74,6 +78,10 @@ export const SUCCESSFACTORS_BOARDS: SuccessFactorsBoard[] = [
   {
     url: 'https://careers.celestica.com/search/?createNewAlert=false&q=&locationsearch=',
     name: 'Celestica',
+  },
+  {
+    url: 'https://jobs.exxonmobil.com/search/?createNewAlert=false&q=&locationsearch=&optionsFacetsDD_department=&optionsFacetsDD_shifttype=&optionsFacetsDD_country=',
+    name: 'ExxonMobil',
   },
   {
     url: 'https://jobs.gerdau.com/job/Cambridge-ENGINEERING-INTERN-Onta-N1T-1R9/1335729662/',
@@ -105,6 +113,18 @@ export const SUCCESSFACTORS_BOARDS: SuccessFactorsBoard[] = [
     legacyCompany: 'C0000173697P',
     legacyLocale: 'fr_CA',
   },
+  {
+    url: 'https://career4.successfactors.com/careers?company=Cascades',
+    name: 'Cascades',
+    legacyCompany: 'Cascades',
+    legacyLocale: 'en_US',
+  },
+  {
+    url: 'https://career4.successfactors.com/careers?company=leggettplatt&company=leggettplatt',
+    name: 'Leggett & Platt',
+    legacyCompany: 'leggettplatt',
+    legacyLocale: 'en_US',
+  },
 ];
 
 export interface ParsedSuccessFactorsUrl {
@@ -121,15 +141,21 @@ export function parseSuccessFactorsUrl(url: string): ParsedSuccessFactorsUrl | n
     if (parsed.protocol !== 'https:') return null;
     const legacyCompany = parsed.searchParams.get('company')
       ?? parsed.searchParams.get('career_company');
-    if (/^career\d+\.sapsf\.com$/i.test(parsed.hostname) && parsed.pathname === '/career') {
+    const legacyHost = /^career\d+\.(?:sapsf|successfactors)\.com$/i.test(parsed.hostname);
+    if (legacyHost && /^\/careers?$/.test(parsed.pathname)) {
       if (!legacyCompany) return null;
       const legacyLocale = parsed.searchParams.get('rcm_site_locale')
         ?? parsed.searchParams.get('lang') ?? 'en_US';
-      const searchUrl = new URL('/career', parsed.origin);
-      searchUrl.searchParams.set('career_ns', 'job_listing_summary');
-      searchUrl.searchParams.set('company', legacyCompany);
-      searchUrl.searchParams.set('navBarLevel', 'JOB_SEARCH');
-      searchUrl.searchParams.set('rcm_site_locale', legacyLocale);
+      const searchUrl = new URL(parsed.pathname, parsed.origin);
+      if (parsed.pathname === '/careers') {
+        searchUrl.searchParams.set('company', legacyCompany);
+        searchUrl.searchParams.set('lang', legacyLocale);
+      } else {
+        searchUrl.searchParams.set('career_ns', 'job_listing_summary');
+        searchUrl.searchParams.set('company', legacyCompany);
+        searchUrl.searchParams.set('navBarLevel', 'JOB_SEARCH');
+        searchUrl.searchParams.set('rcm_site_locale', legacyLocale);
+      }
       return { origin: parsed.origin, searchUrl: searchUrl.toString(), legacyCompany, legacyLocale };
     }
     return { origin: parsed.origin, searchUrl: `${parsed.origin}/search/` };
@@ -303,18 +329,23 @@ export function parseSuccessFactorsLegacyDwr(body: string): SuccessFactorsLegacy
       title: decodeDwrString(title),
       postedAt: /^\d{4}-\d{2}-\d{2}$/.test(postingDate)
         ? new Date(`${postingDate}T00:00:00.000Z`).toISOString()
-        : null,
+        : parseApiDate(postingDate.replace(/\\\//g, '/')),
     });
   }
   return postings;
 }
 
 function legacyDetailUrl(parsed: ParsedSuccessFactorsUrl, id: string): string {
-  const url = new URL('/career', parsed.origin);
+  const searchUrl = new URL(parsed.searchUrl);
+  const url = new URL(searchUrl.pathname, parsed.origin);
   url.searchParams.set('career_ns', 'job_listing');
   url.searchParams.set('company', parsed.legacyCompany ?? '');
-  url.searchParams.set('navBarLevel', 'JOB_SEARCH');
-  url.searchParams.set('rcm_site_locale', parsed.legacyLocale ?? 'en_US');
+  if (searchUrl.pathname === '/careers') {
+    url.searchParams.set('lang', parsed.legacyLocale ?? 'en_US');
+  } else {
+    url.searchParams.set('navBarLevel', 'JOB_SEARCH');
+    url.searchParams.set('rcm_site_locale', parsed.legacyLocale ?? 'en_US');
+  }
   url.searchParams.set('career_job_req_id', id);
   return url.toString();
 }
@@ -333,7 +364,14 @@ export function mapSuccessFactorsLegacyDetail(
     $(element).text().replace(/\s+/g, ' ').trim()
   )).get();
   const locationLine = paragraphs.find((line) => /^(?:lieu de travail|location)\s*:/i.test(line));
-  const location = locationLine?.replace(/^(?:lieu de travail|location)\s*:\s*/i, '').trim() ?? '';
+  const metadata = $('.pagetitle').next('div').find('b').map((_, element) => (
+    $(element).text().replace(/\s+/g, ' ').trim()
+  )).get();
+  const metadataLocation = metadata[0] === posting.id
+    ? metadata.slice(2, -1).filter(Boolean).join(', ')
+    : '';
+  const location = locationLine?.replace(/^(?:lieu de travail|location)\s*:\s*/i, '').trim()
+    || metadataLocation;
   const description = descriptionRoot.text().replace(/\s+/g, ' ').trim() || null;
 
   return {

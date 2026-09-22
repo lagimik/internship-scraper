@@ -19,6 +19,10 @@ export const ADP_BOARDS: AdpBoard[] = [
     url: 'https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=d355e8f6-9a6c-48a9-b7ba-45a41dc5daad&ccId=9200648065638_2&lang=en_CA',
     name: 'Novarc Technologies',
   },
+  {
+    url: 'https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=e6a246fd-48e8-48f1-9c85-2bfec30a42b0&ccId=19000101_000001&lang=en_CA&jobId=557938&source=LI',
+    name: 'FTAI Aviation',
+  },
 ];
 
 export interface ParsedAdpUrl {

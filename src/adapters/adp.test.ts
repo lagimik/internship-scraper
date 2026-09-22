@@ -4,6 +4,7 @@ import { adpAdapter, mapAdpPosting, parseAdpUrl } from './adp.js';
 
 const suppliedUrl = 'https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=6008c003-f9a4-47a3-8573-a3b0d594bcba&ccId=9201209146560_3&lang=fr_CA&jobId=577655&jwId=9201209146560_1';
 const novarcUrl = 'https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=d355e8f6-9a6c-48a9-b7ba-45a41dc5daad&ccId=9200648065638_2&lang=en_CA';
+const ftaiUrl = 'https://workforcenow.adp.com/mascsr/default/mdf/recruitment/recruitment.html?cid=e6a246fd-48e8-48f1-9c85-2bfec30a42b0&ccId=19000101_000001&lang=en_CA&jobId=557938&source=LI';
 
 test('adp: supplied Marmen URL preserves every public API identifier', () => {
   assert.deepEqual(parseAdpUrl(suppliedUrl), {
@@ -21,6 +22,16 @@ test('adp: supplied Novarc URL supports boards without a jwId', () => {
     origin: 'https://workforcenow.adp.com',
     cid: 'd355e8f6-9a6c-48a9-b7ba-45a41dc5daad',
     ccId: '9200648065638_2',
+    jwId: null,
+    lang: 'en_CA',
+  });
+});
+
+test('adp: supplied FTAI Aviation URL preserves the public API identifiers', () => {
+  assert.deepEqual(parseAdpUrl(ftaiUrl), {
+    origin: 'https://workforcenow.adp.com',
+    cid: 'e6a246fd-48e8-48f1-9c85-2bfec30a42b0',
+    ccId: '19000101_000001',
     jwId: null,
     lang: 'en_CA',
   });
@@ -85,4 +96,30 @@ test('adp: public API posting maps to the canonical Novarc job', () => {
   assert.equal(job.location, 'Burnaby, BC, CA');
   assert.equal(job.url, `${novarcUrl}&jobId=576979`);
   assert.equal(job.source, 'adp');
+});
+
+test('adp: public API posting maps to the canonical FTAI Aviation internship', () => {
+  const job = mapAdpPosting({
+    itemID: '19000101_000001',
+    requisitionTitle: 'Propulsion Engineering Intern',
+    postDate: '2026-09-02T00:00:00.000-04:00',
+    workLevelCode: { shortName: 'Intern' },
+    customFieldGroup: {
+      stringFields: [
+        { stringValue: '557938', nameCode: { codeValue: 'ExternalJobID' } },
+      ],
+    },
+    requisitionLocations: [{
+      nameCode: { shortName: 'Montreal, QC, CA' },
+    }],
+    requisitionDescription: '<p>Support Propulsion Engineers throughout the engine overhaul process.</p>',
+  }, { url: ftaiUrl, name: 'FTAI Aviation' });
+
+  assert.ok(job);
+  assert.equal(job.title, 'Propulsion Engineering Intern');
+  assert.equal(job.company, 'FTAI Aviation');
+  assert.equal(job.location, 'Montreal, QC, CA');
+  assert.equal(job.url, ftaiUrl);
+  assert.equal(job.source, 'adp');
+  assert.equal(job.type, 'intern');
 });

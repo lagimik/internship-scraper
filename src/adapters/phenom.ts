@@ -14,6 +14,18 @@ export interface PhenomBoard {
 
 export const PHENOM_BOARDS: PhenomBoard[] = [
   {
+    url: 'https://jobs.thermofisher.com/global/en',
+    name: 'Thermo Fisher Scientific',
+    refNum: 'TFSCGLOBAL',
+    locale: 'en_global',
+  },
+  {
+    url: 'https://jobs.danaher.com/global/en',
+    name: 'Danaher',
+    refNum: 'DANAGLOBAL',
+    locale: 'en_global',
+  },
+  {
     url: 'https://careers.geaerospace.com/global/en',
     name: 'GE Aerospace',
     refNum: 'GAOGAYGLOBAL',

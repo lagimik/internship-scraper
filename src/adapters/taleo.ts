@@ -10,6 +10,8 @@ export interface TaleoBoard {
   name: string;
   /** Portal ID observed in the career section's public search request. */
   portal: string;
+  /** Override RSS keywords for boards whose localized categories are not searchable. */
+  searchTerms?: string[];
 }
 
 export const TALEO_BOARDS: TaleoBoard[] = [
@@ -22,6 +24,12 @@ export const TALEO_BOARDS: TaleoBoard[] = [
     url: 'https://textron.taleo.net/careersection/textron/jobdetail.ftl?job=1543802&src=SNS-102',
     name: 'Textron',
     portal: '8140753014',
+  },
+  {
+    url: 'https://agnicoeagle.taleo.net/careersection/application.jss?lang=fr&type=1&csNo=2&portal=101430233&reqNo=146881&isOnLogoutPage=true',
+    name: 'Agnico Eagle',
+    portal: '101430233',
+    searchTerms: [''],
   },
 ];
 
@@ -59,20 +67,35 @@ export interface TaleoDetail {
 
 const cleanText = (value: string): string => value.replace(/\s+/g, ' ').trim();
 
+function looksLikeLocation(value: string | undefined): value is string {
+  if (!value || value.length > 250 || /!\*!|%3C/i.test(value)) return false;
+  return /^(?:[A-Z]{2}|Canada|United States|Alberta|British Columbia|Manitoba|New Brunswick|Newfoundland and Labrador|Nova Scotia|Ontario|Prince Edward Island|Quebec|Québec|Saskatchewan)(?:[-,].+)/i.test(cleanText(value));
+}
+
+function decodeSerializedValue(value: string): string {
+  try {
+    return decodeURIComponent(value.replace(/%5C/gi, ''));
+  } catch {
+    return value;
+  }
+}
+
 /** Parse the tenant, career section and locale from a Taleo Career Section URL. */
 export function parseTaleoUrl(url: string): ParsedTaleoUrl | null {
   try {
     const parsed = new URL(url);
     if (!parsed.hostname.endsWith('.taleo.net')) return null;
     const match = /^\/careersection\/([^/]+)\/(?:jobdetail|jobsearch)\.ftl$/i.exec(parsed.pathname);
-    if (!match?.[1]) return null;
+    const application = /^\/careersection\/application\.jss$/i.test(parsed.pathname);
+    const section = match?.[1] ?? (application ? parsed.searchParams.get('csNo') : null);
+    if (!section) return null;
 
     const language = parsed.searchParams.get('lang') || 'en';
     return {
       origin: parsed.origin,
-      section: match[1],
+      section,
       language,
-      jobId: parsed.searchParams.get('job'),
+      jobId: match ? parsed.searchParams.get('job') : null,
       searchUrl: `${parsed.origin}/careersection/rest/jobboard/searchjobs?lang=${encodeURIComponent(language)}`,
     };
   } catch {
@@ -177,13 +200,14 @@ export function parseTaleoDetailHtml(html: string): TaleoDetail {
   const requisitionIndex = state.indexOf('descRequisition');
   const offsetLocation = requisitionIndex >= 0 ? state[requisitionIndex + 16] : undefined;
   const duplicatedLocation = state.find((value, index) => value === state[index + 1]
-    && /^(?:[A-Z]{2}|Canada|United States)(?:[-,].+)/i.test(cleanText(value)));
-  const serializedLocation = cleanText(offsetLocation ?? '') || duplicatedLocation;
+    && looksLikeLocation(value));
+  const serializedLocation = looksLikeLocation(offsetLocation) ? offsetLocation : duplicatedLocation;
   const offsetDate = requisitionIndex >= 0 ? state[requisitionIndex + 36] : undefined;
   const duplicatedDate = state.find((value, index) => value === state[index + 1]
     && parsePostedDate(value) !== null);
   const serializedDate = parsePostedDate(offsetDate) !== null ? offsetDate : duplicatedDate;
-  const location = fields.get('primary location') ?? cleanText(serializedLocation ?? '');
+  const location = fields.get('primary location')
+    ?? cleanText(decodeSerializedValue(serializedLocation ?? ''));
   const postedAt = parsePostedDate(fields.get('job posting') ?? serializedDate);
   const encodedDescription = requisitionIndex >= 0
     ? state.slice(requisitionIndex + 12, requisitionIndex + 16).join(' ')
@@ -255,7 +279,7 @@ async function fetchBoard(board: TaleoBoard): Promise<RawJob[]> {
 
   const jobs: RawJob[] = [];
   const seen = new Set<string>();
-  for (const term of SEARCH_TERMS) {
+  for (const term of board.searchTerms ?? SEARCH_TERMS) {
     const feedUrl = new URL(`${parsed.origin}/careersection/feed/joblist.rss`);
     feedUrl.searchParams.set('lang', parsed.language);
     feedUrl.searchParams.set('portal', board.portal);

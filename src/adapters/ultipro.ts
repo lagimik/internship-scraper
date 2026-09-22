@@ -60,7 +60,9 @@ export function parseUltiProUrl(url: string): ParsedUltiProUrl | null {
     if (parsed.protocol !== 'https:' || !/^(recruiting\.)?(ultipro|ukg)\./i.test(parsed.hostname)) {
       return null;
     }
-    const match = parsed.pathname.match(/^\/(.+?\/JobBoard\/[0-9a-f-]+)\/?$/i);
+    const match = parsed.pathname.match(
+      /^\/(.+?\/JobBoard\/[0-9a-f-]+)(?:\/OpportunityDetail)?\/?$/i,
+    );
     if (!match?.[1]) return null;
     const boardPath = `/${match[1]}`;
     return {

@@ -97,6 +97,7 @@ try {
       regions: countBy(jobs, 'region'),
       categories: countBy(jobs, 'role_category'),
       types: countBy(jobs, 'type'),
+      fits: countBy(jobs, 'fit'),
       total: jobs.length,
       runs: db.prepare(`SELECT source, ok, kept, started_at, error FROM runs
                         WHERE id IN (SELECT MAX(id) FROM runs GROUP BY source)

@@ -9,6 +9,93 @@ import {
   SUCCESSFACTORS_BOARDS,
 } from './successfactors.js';
 
+test('Cascades careers URL preserves its legacy SuccessFactors tenant and locale', () => {
+  const board = SUCCESSFACTORS_BOARDS.find(({ name }) => name === 'Cascades');
+
+  assert.ok(board);
+  assert.deepEqual(parseSuccessFactorsUrl(board.url), {
+    origin: 'https://career4.successfactors.com',
+    searchUrl: 'https://career4.successfactors.com/careers?company=Cascades&lang=en_US',
+    legacyCompany: 'Cascades',
+    legacyLocale: 'en_US',
+  });
+});
+
+test('Cascades legacy response and detail page map a current posting', () => {
+  const [posting] = parseSuccessFactorsLegacyDwr(String.raw`
+    s1.postingCount="92";
+    s36.corporatePosting=true;s36.defaultLocale="en_US";s36.id=37295;s36.jobReqSecKey="123";s36.postingDate="09\/21\/2026";s36.title="Truck Mechanic";
+  `);
+  assert.deepEqual(posting, {
+    id: '37295',
+    title: 'Truck Mechanic',
+    postedAt: '2026-09-21T00:00:00.000Z',
+  });
+
+  const board = SUCCESSFACTORS_BOARDS.find(({ name }) => name === 'Cascades');
+  assert.ok(board);
+  assert.ok(posting);
+  const job = mapSuccessFactorsLegacyDetail(`
+    <div class="joqReqDescription">
+      <p>Join us as a Truck Mechanic in Etobicoke.</p>
+      <p>Apply now and join our team as Truck Mechanic in Etobicoke.</p>
+    </div>
+  `, posting, board);
+
+  assert.ok(job);
+  assert.equal(job.title, 'Truck Mechanic');
+  assert.equal(job.company, 'Cascades');
+  assert.equal(job.postedAt, '2026-09-21T00:00:00.000Z');
+  assert.equal(job.url,
+    'https://career4.successfactors.com/careers?career_ns=job_listing&company=Cascades&lang=en_US&career_job_req_id=37295');
+  assert.equal(job.source, 'successfactors');
+  assert.match(job.description ?? '', /Truck Mechanic in Etobicoke/);
+});
+
+test('Leggett & Platt careers URL preserves its legacy SuccessFactors tenant and locale', () => {
+  const board = SUCCESSFACTORS_BOARDS.find(({ name }) => name === 'Leggett & Platt');
+
+  assert.ok(board);
+  assert.deepEqual(parseSuccessFactorsUrl(board.url), {
+    origin: 'https://career4.successfactors.com',
+    searchUrl: 'https://career4.successfactors.com/careers?company=leggettplatt&lang=en_US',
+    legacyCompany: 'leggettplatt',
+    legacyLocale: 'en_US',
+  });
+});
+
+test('Leggett & Platt legacy detail metadata maps a current Canadian internship', () => {
+  const board = SUCCESSFACTORS_BOARDS.find(({ name }) => name === 'Leggett & Platt');
+
+  assert.ok(board);
+  const job = mapSuccessFactorsLegacyDetail(`
+    <div>
+      <div class="pagetitle"><h1>Career Opportunities: CPD Intern (Canada) (41516)</h1></div>
+      <div>Requisition ID <b>41516</b> - Posted <b id="postedOnDate"></b> -
+        <b>CANADA</b> - <b>Lakeshore</b> - <b>ON</b> - <b>Intern/Internship</b>
+      </div>
+    </div>
+    <div class="joqReqDescription">
+      <p>Open The Door to Opportunity!</p>
+      <p>Able to work onsite in Lakeshore, Ontario.</p>
+    </div>
+  `, {
+    id: '41516',
+    title: 'CPD Intern (Canada)',
+    postedAt: '2026-09-04T00:00:00.000Z',
+  }, board);
+
+  assert.ok(job);
+  assert.equal(job.title, 'CPD Intern (Canada)');
+  assert.equal(job.company, 'Leggett & Platt');
+  assert.equal(job.location, 'CANADA, Lakeshore, ON');
+  assert.equal(job.postedAt, '2026-09-04T00:00:00.000Z');
+  assert.equal(job.url,
+    'https://career4.successfactors.com/careers?career_ns=job_listing&company=leggettplatt&lang=en_US&career_job_req_id=41516');
+  assert.equal(job.source, 'successfactors');
+  assert.equal(job.type, 'intern');
+});
+
 test('ADM posting URL preserves its legacy SuccessFactors tenant and locale', () => {
   const board = SUCCESSFACTORS_BOARDS.find(({ name }) => name === 'Aéroports de Montréal (ADM)');
 
@@ -122,6 +209,64 @@ test('Celestica classic result maps title, location, date and canonical URL', ()
   assert.equal(job.location, 'Toronto, ON, CA');
   assert.equal(job.postedAt, '2026-08-14T00:00:00.000Z');
   assert.equal(job.url, 'https://careers.celestica.com/job/Toronto-Advisor%2C-Internal-Audit%2C-IT-ON/1395122633/');
+  assert.equal(job.source, 'successfactors');
+});
+
+test('Bunge supplied search URL and classic result map through SuccessFactors', () => {
+  const board = SUCCESSFACTORS_BOARDS.find(({ name }) => name === 'Bunge');
+
+  assert.ok(board);
+  assert.deepEqual(parseSuccessFactorsUrl(board.url), {
+    origin: 'https://jobs.bunge.com',
+    searchUrl: 'https://jobs.bunge.com/search/',
+  });
+
+  const [job] = parseSuccessFactorsHtml(`
+    <table>
+      <tr class="data-row">
+        <td><a class="jobTitle-link" href="/job/Regina-Operations-Technology-&amp;-Automation-InternCo-op-SK-S4T-7T9/1439156833/">Operations Technology &amp; Automation Intern/Co-op</a></td>
+        <td><span class="jobLocation">Regina, SK, CA, S4T 7T9</span></td>
+        <td><span class="jobDate">Sep 18, 2026</span></td>
+      </tr>
+    </table>
+  `, board);
+
+  assert.ok(job);
+  assert.equal(job.title, 'Operations Technology & Automation Intern/Co-op');
+  assert.equal(job.company, 'Bunge');
+  assert.equal(job.location, 'Regina, SK, CA, S4T 7T9');
+  assert.equal(job.postedAt, '2026-09-18T00:00:00.000Z');
+  assert.equal(job.url,
+    'https://jobs.bunge.com/job/Regina-Operations-Technology-&-Automation-InternCo-op-SK-S4T-7T9/1439156833/');
+  assert.equal(job.source, 'successfactors');
+});
+
+test('ExxonMobil supplied search URL and classic result map through SuccessFactors', () => {
+  const board = SUCCESSFACTORS_BOARDS.find(({ name }) => name === 'ExxonMobil');
+
+  assert.ok(board);
+  assert.deepEqual(parseSuccessFactorsUrl(board.url), {
+    origin: 'https://jobs.exxonmobil.com',
+    searchUrl: 'https://jobs.exxonmobil.com/search/',
+  });
+
+  const [job] = parseSuccessFactorsHtml(`
+    <table>
+      <tr class="data-row">
+        <td><a class="jobTitle-link" href="/job/Nanticoke-Process-Engineer-Student-Nanticoke-January-2027-ON-N0A-1L0/1423972400/">Process Engineer - Student - Nanticoke - January 2027</a></td>
+        <td><span class="jobLocation">Nanticoke, ON, CA, N0A 1L0</span></td>
+        <td><span class="jobDate">Aug 27, 2026</span></td>
+      </tr>
+    </table>
+  `, board);
+
+  assert.ok(job);
+  assert.equal(job.title, 'Process Engineer - Student - Nanticoke - January 2027');
+  assert.equal(job.company, 'ExxonMobil');
+  assert.equal(job.location, 'Nanticoke, ON, CA, N0A 1L0');
+  assert.equal(job.postedAt, '2026-08-27T00:00:00.000Z');
+  assert.equal(job.url,
+    'https://jobs.exxonmobil.com/job/Nanticoke-Process-Engineer-Student-Nanticoke-January-2027-ON-N0A-1L0/1423972400/');
   assert.equal(job.source, 'successfactors');
 });
 
