@@ -2,8 +2,8 @@ name: Scrape and export internships
 
 on:
   schedule:
-    # 8:00 AM, 2:00 PM, and 8:00 PM EST (UTC-5).
-    - cron: '0 1,13,19 * * *'
+    # 1:00 PM EST (UTC-5).
+    - cron: '0 18 * * *'
   workflow_dispatch:
 
 concurrency:
