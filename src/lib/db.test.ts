@@ -18,7 +18,7 @@ test('db: stores country, region, and work-term metadata', () => {
     roleCategory: 'mechanical-engineering', matchedBy: 'mechanical-engineering',
     locationConfidence: 'confirmed', locationMatchedBy: 'state-code:TX',
     workTermMonths: 4, workTermConfidence: 'confirmed', workTermMatchedBy: '4 months',
-    sponsorship: null, description: null, status: 'new',
+    sponsorship: null, description: null,
   };
 
   try {
@@ -29,6 +29,8 @@ test('db: stores country, region, and work-term metadata', () => {
     assert.deepEqual({ ...row }, {
       country: 'US', region: 'TX', work_term_months: 4, work_term_confidence: 'confirmed',
     });
+    const columns = db.prepare('PRAGMA table_info(jobs)').all() as Array<{ name: string }>;
+    assert.equal(columns.some((column) => column.name === 'status'), false);
   } finally {
     db.close();
     rmSync(directory, { recursive: true, force: true });

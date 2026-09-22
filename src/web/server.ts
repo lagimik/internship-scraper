@@ -6,15 +6,22 @@
 
 import { createServer, type IncomingMessage } from 'node:http';
 import { timingSafeEqual } from 'node:crypto';
-import { readFileSync } from 'node:fs';
+import { readFileSync, statSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { dirname, join } from 'node:path';
-import { openDb, setStatus } from '../lib/db.js';
-import type { JobStatus } from '../types.js';
+import { dirname, join, resolve } from 'node:path';
+import { openDb } from '../lib/db.js';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const PORT = Number(process.env.PORT ?? 4000);
-const VALID_STATUS: JobStatus[] = ['new', 'applied', 'interview', 'rejected', 'offer'];
+const JOB_FIT_PATH = resolve(process.env.JT_JOB_FIT_PATH ?? resolve(process.cwd(), 'data/job-fit.json'));
+
+interface JobFitAssessment {
+  company: string;
+  title: string;
+  source_url: string;
+  fit: string;
+  summary: string;
+}
 
 interface JobRow {
   id: string; title: string; company: string; location: string; country: string; region: string | null;
@@ -22,10 +29,28 @@ interface JobRow {
   first_seen_at: string; salary_raw: string | null; type: string | null;
   role_category: string | null; matched_by: string | null; location_confidence: string;
   location_matched_by: string | null; work_term_months: number | null;
-  work_term_confidence: string; status: string;
+  work_term_confidence: string;
+  fit?: string;
+  fit_summary?: string;
 }
 
 const db = openDb();
+let fitModifiedAt = -1;
+let fitByUrl = new Map<string, JobFitAssessment>();
+let fitByRole = new Map<string, JobFitAssessment>();
+
+function refreshFitAssessments(): void {
+  const modifiedAt = statSync(JOB_FIT_PATH).mtimeMs;
+  if (modifiedAt === fitModifiedAt) return;
+  const fitData = JSON.parse(readFileSync(JOB_FIT_PATH, 'utf8')) as { roles?: JobFitAssessment[] };
+  const assessments = fitData.roles ?? [];
+  fitByUrl = new Map(assessments.map((assessment) => [assessment.source_url, assessment]));
+  fitByRole = new Map(assessments.map((assessment) => [
+    `${assessment.company.trim().toLocaleLowerCase()}\u0000${assessment.title.trim().toLocaleLowerCase()}`,
+    assessment,
+  ]));
+  fitModifiedAt = modifiedAt;
+}
 
 /**
  * The WHERE clause for the current view. Shared by the row query and the count, so the
@@ -41,8 +66,7 @@ function buildFilter(params: URLSearchParams): { where: string[]; args: Array<st
     args.push(`%${q}%`, `%${q}%`, `%${q}%`);
   }
   for (const [param, col] of [['source', 'source'], ['country', 'country'], ['region', 'region'],
-                              ['category', 'role_category'],
-                              ['status', 'status']] as const) {
+                              ['category', 'role_category']] as const) {
     const v = params.get(param);
     if (v) {
       where.push(`${col} = ?`);
@@ -69,6 +93,7 @@ function buildFilter(params: URLSearchParams): { where: string[]; args: Array<st
 }
 
 function queryJobs(params: URLSearchParams): JobRow[] {
+  refreshFitAssessments();
   const { where, args } = buildFilter(params);
 
   const dir = params.get('sort') === 'oldest' ? 'ASC' : 'DESC';
@@ -77,11 +102,20 @@ function queryJobs(params: URLSearchParams): JobRow[] {
   const sql = `SELECT id, title, company, location, country, region, remote, url, source,
                       sources, posted_at, first_seen_at, salary_raw, type,
                       role_category, matched_by, location_confidence, location_matched_by,
-                      work_term_months, work_term_confidence, status
+                      work_term_months, work_term_confidence
                FROM jobs ${where.length ? `WHERE ${where.join(' AND ')}` : ''}
                ORDER BY COALESCE(posted_at, first_seen_at) ${dir}, company ASC
                LIMIT 500`;
-  return db.prepare(sql).all(...args) as unknown as JobRow[];
+  const jobs = db.prepare(sql).all(...args) as unknown as JobRow[];
+  for (const job of jobs) {
+    if (job.country !== 'CA') continue;
+    const roleKey = `${job.company.trim().toLocaleLowerCase()}\u0000${job.title.trim().toLocaleLowerCase()}`;
+    const assessment = fitByUrl.get(job.url) ?? fitByRole.get(roleKey);
+    if (!assessment) continue;
+    job.fit = assessment.fit;
+    job.fit_summary = assessment.summary;
+  }
+  return jobs;
 }
 
 /** How many rows match the current filters, ignoring the display limit. */
@@ -120,9 +154,7 @@ function computeFacets() {
     // Only intern and co-op exist in the db, the scrape drops everything else, so
     // this is a sub-filter between the two, not a way to reach other job types.
     types: col('type'),
-    statuses: col('status'),
     total: one('SELECT COUNT(*) AS n FROM jobs'),
-    fresh: one("SELECT COUNT(*) AS n FROM jobs WHERE status = 'new'"),
     runs: db.prepare(`SELECT source, ok, kept, inserted, started_at, error FROM runs
                       WHERE id IN (SELECT MAX(id) FROM runs GROUP BY source)
                       ORDER BY source`).all() as unknown as Array<{
@@ -184,8 +216,7 @@ function recordFailure(ip: string, now = Date.now()): void {
  * Basic auth, enabled only when JT_PASSWORD is set.
  *
  * Locally the variable is unset and the dashboard stays open, exactly as before.
- * On a public host it is set, and this is what keeps the board private, it holds
- * personal application tracking, so it should never be world-readable.
+ * On a public host it is set to keep this personal job search private.
  */
 function authorized(req: { headers: Record<string, string | string[] | undefined> }): boolean {
   const expected = process.env.JT_PASSWORD;
@@ -253,27 +284,6 @@ const server = createServer(async (req, res) => {
       return;
     }
 
-    if (url.pathname === '/api/status' && req.method === 'POST') {
-      const body = await new Promise<string>((resolve, reject) => {
-        let d = '';
-        req.on('data', (c) => { d += c; if (d.length > 1e6) req.destroy(); });
-        req.on('end', () => resolve(d));
-        req.on('error', reject);
-      });
-      const { id, status } = JSON.parse(body) as { id?: string; status?: string };
-      if (!id || !status || !VALID_STATUS.includes(status as JobStatus)) {
-        res.writeHead(400, { 'content-type': 'application/json' });
-        res.end(JSON.stringify({ error: 'id and a valid status are required' }));
-        return;
-      }
-      setStatus(db, id, status as JobStatus);
-      // Marking a job changes the unreviewed count, so don't serve a stale one back.
-      facetCache = null;
-      res.writeHead(200, { 'content-type': 'application/json' });
-      res.end(JSON.stringify({ ok: true }));
-      return;
-    }
-
     res.writeHead(404, { 'content-type': 'text/plain' });
     res.end('not found');
   } catch (err) {
@@ -285,7 +295,7 @@ const server = createServer(async (req, res) => {
 // 0.0.0.0 so the process is reachable from outside its container when deployed;
 // locally this behaves the same as binding localhost.
 server.listen(PORT, '0.0.0.0', () => {
-  const { total, fresh } = facets();
+  const { total } = facets();
   const lock = process.env.JT_PASSWORD ? ' [password protected]' : '';
-  console.log(`job-tracker → http://localhost:${PORT}  (${total} jobs, ${fresh} unreviewed)${lock}`);
+  console.log(`job-tracker → http://localhost:${PORT}  (${total} jobs)${lock}`);
 });

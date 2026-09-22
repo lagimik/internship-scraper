@@ -1,5 +1,7 @@
 node_modules/
 data/cache/*
+data/*.db-shm
+data/*.db-wal
 scripts/_probe.ts
 *.log
 .DS_Store

@@ -13,6 +13,15 @@ const HERE = dirname(fileURLToPath(import.meta.url));
 const TEMPLATE_PATH = resolve(HERE, 'web/index.html');
 const CLIENT_PATH = resolve(HERE, 'web/static.js');
 const OUTPUT_PATH = resolve(process.env.JT_STATIC_OUTPUT ?? resolve(process.cwd(), 'site/index.html'));
+const JOB_FIT_PATH = resolve(process.env.JT_JOB_FIT_PATH ?? resolve(process.cwd(), 'data/job-fit.json'));
+
+interface JobFitAssessment {
+  company: string;
+  title: string;
+  source_url: string;
+  fit: string;
+  summary: string;
+}
 
 interface StaticJob {
   title: string;
@@ -33,6 +42,8 @@ interface StaticJob {
   location_matched_by: string | null;
   work_term_months: number | null;
   work_term_confidence: string;
+  fit?: string;
+  fit_summary?: string;
 }
 
 interface Facet {
@@ -49,10 +60,12 @@ function countBy(jobs: StaticJob[], key: keyof StaticJob): Facet[] {
   return [...counts].map(([v, n]) => ({ v, n })).sort((a, b) => b.n - a.n || a.v.localeCompare(b.v));
 }
 
+function matchKey(company: string, title: string): string {
+  return `${company.trim().toLocaleLowerCase()}\u0000${title.trim().toLocaleLowerCase()}`;
+}
+
 const db = openDb();
 try {
-  // Status and notes are intentionally excluded: the static dashboard is a job
-  // discovery snapshot, not an application tracker.
   const jobs = db.prepare(`
         SELECT title, company, location, country, region, remote, url, source, sources,
            posted_at, first_seen_at, salary_raw, type, role_category,
@@ -60,6 +73,20 @@ try {
           work_term_confidence
     FROM jobs
   `).all() as unknown as StaticJob[];
+  const fitData = JSON.parse(readFileSync(JOB_FIT_PATH, 'utf8')) as { roles?: JobFitAssessment[] };
+  const assessments = fitData.roles ?? [];
+  const fitByUrl = new Map(assessments.map((assessment) => [assessment.source_url, assessment]));
+  const fitByRole = new Map(assessments.map((assessment) => [
+    matchKey(assessment.company, assessment.title), assessment,
+  ]));
+
+  for (const job of jobs) {
+    if (job.country !== 'CA') continue;
+    const assessment = fitByUrl.get(job.url) ?? fitByRole.get(matchKey(job.company, job.title));
+    if (!assessment) continue;
+    job.fit = assessment.fit;
+    job.fit_summary = assessment.summary;
+  }
 
   const data = {
     generatedAt: new Date().toISOString(),

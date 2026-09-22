@@ -119,7 +119,6 @@ export function normalize(raw: RawJob[]): NormalizeStats {
         workTermMonths: term.months,
         workTermConfidence: term.confidence,
         workTermMatchedBy: term.matchedBy,
-        status: 'new',
       });
     }
   }

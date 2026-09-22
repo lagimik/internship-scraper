@@ -169,11 +169,8 @@ export async function runScrape(adapters: Adapter[]): Promise<SourceResult[]> {
   if (pruned > 0) console.log(`  pruned ${pruned} postings older than ${MAX_AGE_DAYS} days`);
 
   const total = db.prepare('SELECT COUNT(*) AS n FROM jobs').get() as { n: number };
-  const fresh = db.prepare("SELECT COUNT(*) AS n FROM jobs WHERE status = 'new'").get() as { n: number };
   const okCount = results.filter((r) => r.ok).length;
-  console.log(
-    `\n${okCount}/${results.length} sources ok, ${total.n} jobs in db, ${fresh.n} unreviewed`,
-  );
+  console.log(`\n${okCount}/${results.length} sources ok, ${total.n} jobs in db`);
   db.close();
   return results;
 }

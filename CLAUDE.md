@@ -86,7 +86,6 @@ Every adapter outputs this, whatever the source looks like:
 - `matched_by`, which title rule fired, for tuning the filter
 - `sponsorship` / `citizenship` notes when the source states them
 - `description` (raw text for keyword search)
-- `status`, my own tracking: new / applied / interview / rejected / offer
 
 ## Canada filtering
 
@@ -101,8 +100,6 @@ flag it rather than silently dropping it.
 - One dashboard listing everything, newest first
 - Filter by source, location/province, remote, job type (intern vs co-op),
   role category (swe / devops / ai-ml), salary, keyword, date posted
-- Saved searches and a "new since last visit" view
-- Per-job status tracking so I can mark applied/rejected and not see it again
 - Show which source(s) a job came from, and link out to the original posting
 - Ideally: a digest (email or just a page section) of new matches since yesterday
 
@@ -129,4 +126,4 @@ lightweight web frontend. Optimize for "I can run this on a cron and forget abou
 4. Job Bank Canada
 5. Minimal web UI over the database
 6. Aggregator scrapers (LinkedIn / Indeed / Glassdoor), hardest, do last
-7. Scheduling, status tracking, digests
+7. Scheduling and digests

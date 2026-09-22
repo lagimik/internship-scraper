@@ -78,7 +78,11 @@ function render() {
 
     return `<article class="job">
       <div>
-        <h2><a href="${esc(job.url)}" target="_blank" rel="noopener">${esc(job.title)}</a></h2>
+        <div class="job-title-row">
+          <h2><a href="${esc(job.url)}" target="_blank" rel="noopener">${esc(job.title)}</a></h2>
+          ${job.country === 'CA' && job.fit
+            ? `<span class="tag fit ${esc(job.fit)}">${esc(job.fit)} fit</span>` : ''}
+        </div>
         <div class="meta">
           <strong style="color:var(--fg)">${esc(job.company)}</strong>
           <span>·</span><span>${esc(job.location) || '-'}</span>
@@ -87,6 +91,8 @@ function render() {
           <span>·</span><span>${sources.map(esc).join(' + ')}</span>
           ${tags}
         </div>
+        ${job.country === 'CA' && job.fit_summary
+          ? `<p class="fit-summary"><strong>Fit summary:</strong> ${esc(job.fit_summary)}</p>` : ''}
       </div>
     </article>`;
   }).join('') : '<div class="empty">No jobs match these filters.</div>';

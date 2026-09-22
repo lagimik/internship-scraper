@@ -3,8 +3,7 @@
 A self-hosted job board for one person. It polls Greenhouse, Lever, Ashby, Workday, Eightfold, Avature,
 curated GitHub internship lists and Job Bank on a schedule, keeps only Canadian
 **software / DevOps / AI internships and co-ops**, dedupes them across sources, and
-serves them as one filterable dashboard with per-job application tracking and push
-notifications for new postings.
+serves them as one filterable dashboard with push notifications for new postings.
 
 Full-time, new-grad and contract roles are dropped at scrape time and never reach the
 database. Roughly 290 live postings at any time, from ~2,000 fetched per run.
@@ -41,9 +40,7 @@ guarantee.
 
 **With no card on file, you cannot be charged**: when the trial credit runs out Fly
 suspends the app rather than billing you. The failure mode is your tracker going quiet,
-not a surprise invoice, so back up the database before that happens (see the bottom of
-this section), since the postings re-scrape in seconds but your applied/interview marks
-don't.
+not a surprise invoice.
 
 Free alternatives, both with the same tradeoff, they only run while your machine is
 awake, so overnight postings are missed:
@@ -116,11 +113,10 @@ postings, including the false positives worth keeping out.
 
 ### Why the deploy looks the way it does
 
-- **The volume** holds `jobs.db`. Without it every redeploy would wipe your
-  applied/interview marks, the only data that can't be re-scraped.
+- **The volume** holds `jobs.db`, so redeploys retain scraped postings and run history.
 - **`JT_PASSWORD`** gates the page *and* the API. Locally it's unset and the dashboard
-  stays open; on a public URL it's the only thing keeping your application tracking
-  private. Ten failed logins from one IP trigger a 15-minute lockout, though a correct
+  stays open; on a public URL it keeps your job search private. Ten failed logins from
+  one IP trigger a 15-minute lockout, though a correct
   password always gets through, a single-user board shouldn't lock out its owner.
 - **`min_machines_running = 1`** keeps the scrape timer alive. Scaling to zero would
   suspend it between visits.
@@ -137,7 +133,7 @@ empty one in ~15 seconds):
 fly ssh sftp shell -C 'put data/jobs.db /data/jobs.db'
 ```
 
-Backing it up the other way, worth doing once you've marked real applications:
+To back up the deployed database locally:
 
 ```bash
 fly ssh sftp get /data/jobs.db ./jobs-backup.db

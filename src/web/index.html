@@ -44,10 +44,10 @@
   main { padding: 16px 20px 60px; max-width: 1200px; margin: 0 auto; }
   .job {
     background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
-    padding: 12px 14px; margin-bottom: 8px; display: grid;
-    grid-template-columns: 1fr auto; gap: 10px; align-items: start;
+    padding: 12px 14px; margin-bottom: 8px;
   }
-  .job h2 { font-size: 15px; margin: 0 0 4px; font-weight: 600; }
+  .job-title-row { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; margin-bottom: 4px; }
+  .job h2 { font-size: 15px; margin: 0; font-weight: 600; }
   .job h2 a { color: var(--fg); text-decoration: none; }
   .job h2 a:hover { color: var(--accent); text-decoration: underline; }
   .meta { color: var(--muted); font-size: 12.5px; display: flex; gap: 8px; flex-wrap: wrap; align-items: center; }
@@ -61,20 +61,18 @@
   .tag.project-management, .tag.program-management { color: #ffa657; }
   .tag.intern, .tag\[co-op\] { color: var(--warn); }
   .tag.amb { color: var(--warn); border-color: var(--warn); }
-  .actions { display: flex; gap: 4px; flex-wrap: wrap; justify-content: flex-end; }
-  button.st {
-    background: var(--panel-2); color: var(--muted); border: 1px solid var(--line);
-    border-radius: 7px; padding: 4px 9px; font-size: 12px; cursor: pointer; font-family: inherit;
-  }
-  button.st:hover { color: var(--fg); border-color: var(--accent); }
-  button.st.on { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .tag.fit { font-weight: 650; text-transform: uppercase; }
+  .tag.fit.strong { color: #7ee787; border-color: #3fb950; }
+  .tag.fit.medium { color: #f2cc60; border-color: #d29922; }
+  .tag.fit.low { color: #ff9b8f; border-color: #f85149; }
+  .tag.fit.moonshot { color: #d2a8ff; border-color: #a371f7; }
+  .fit-summary { color: var(--fg); font-size: 12.5px; margin: 8px 0 0; max-width: 90ch; }
   .empty { color: var(--muted); text-align: center; padding: 60px 20px; }
   .runs { font-size: 12px; color: var(--muted); margin-top: 24px; border-top: 1px solid var(--line); padding-top: 12px; }
   .runs .bad { color: var(--bad); }
   .runs .good { color: var(--ok); }
   a.src { color: var(--muted); text-decoration: none; }
   a.src:hover { color: var(--accent); }
-  @media (max-width: 640px) { .job { grid-template-columns: 1fr; } .actions { justify-content: flex-start; } }
 </style>
 </head>
 <body>
@@ -106,15 +104,8 @@
 
 <script>
 const $ = (id) => document.getElementById(id);
-const STATUSES = ['new', 'applied', 'interview', 'rejected', 'offer'];
-// Stored value -> button label, where the two differ.
-const STATUS_LABELS = { interview: 'interview scheduled' };
 const controls = ['q','source','category','type','region','sort','remote'];
 let facetsLoaded = false;
-// Mirrored from the last load so a status click can adjust the header count locally.
-let total = 0;
-let unreviewed = 0;
-let shown = 0;
 let matching = 0;
 
 function params() {
@@ -131,7 +122,7 @@ function params() {
 function renderCount() {
   // Stale postings are deleted by the scrape rather than filtered here, so `matching`
   // is the whole board unless you have narrowed it with the controls above.
-  $('count').textContent = `${unreviewed} unreviewed · ${matching} total`;
+  $('count').textContent = `${matching} jobs`;
 }
 
 function fillSelect(el, items, label = (v) => v) {
@@ -166,9 +157,6 @@ async function load() {
   const res = await fetch('/api/jobs?' + params());
   const { jobs, facets, matching: matchingCount } = await res.json();
 
-  total = facets.total;
-  unreviewed = facets.fresh;
-  shown = jobs.length;
   matching = matchingCount ?? jobs.length;
   renderCount();
 
@@ -194,7 +182,11 @@ async function load() {
 
     return `<article class="job">
       <div>
-        <h2><a href="${esc(j.url)}" target="_blank" rel="noopener">${esc(j.title)}</a></h2>
+        <div class="job-title-row">
+          <h2><a href="${esc(j.url)}" target="_blank" rel="noopener">${esc(j.title)}</a></h2>
+          ${j.country === 'CA' && j.fit
+            ? `<span class="tag fit ${esc(j.fit)}">${esc(j.fit)} fit</span>` : ''}
+        </div>
         <div class="meta">
           <strong style="color:var(--fg)">${esc(j.company)}</strong>
           <span>·</span><span>${esc(j.location) || '-'}</span>
@@ -203,10 +195,8 @@ async function load() {
           <span>·</span><span>${sources.map(esc).join(' + ')}</span>
           ${tags}
         </div>
-      </div>
-      <div class="actions" data-id="${esc(j.id)}">
-        ${STATUSES.map(s =>
-          `<button class="st ${j.status === s ? 'on' : ''}" data-status="${s}">${STATUS_LABELS[s] ?? s}</button>`).join('')}
+        ${j.country === 'CA' && j.fit_summary
+          ? `<p class="fit-summary"><strong>Fit summary:</strong> ${esc(j.fit_summary)}</p>` : ''}
       </div>
     </article>`;
   }).join('') : '<div class="empty">No jobs match these filters.<br/>Run <code>npm run scrape</code> to fetch more.</div>';
@@ -214,47 +204,6 @@ async function load() {
   $('runs').innerHTML = '<strong>Last run per source:</strong> ' + facets.runs.map(r =>
     `<span class="${r.ok ? 'good' : 'bad'}">${esc(r.source)} ${r.ok ? `✓ ${r.kept} kept` : `✗ ${esc((r.error || '').slice(0, 60))}`}</span>`
   ).join(' · ');
-}
-
-$('list').addEventListener('click', async (e) => {
-  const btn = e.target.closest('button.st');
-  if (!btn) return;
-  const actions = btn.closest('.actions');
-  const id = actions.dataset.id;
-  const status = btn.dataset.status;
-
-  // Repaint immediately rather than waiting on the round-trip, and move only this
-  // row's buttons, the old code re-fetched and re-rendered all ~290 jobs, which is
-  // what made a click feel sticky.
-  const previous = actions.querySelector('button.st.on');
-  if (previous === btn) return;
-  previous?.classList.remove('on');
-  btn.classList.add('on');
-  updateUnreviewed(previous?.dataset.status, status);
-
-  try {
-    const res = await fetch('/api/status', {
-      method: 'POST',
-      headers: { 'content-type': 'application/json' },
-      body: JSON.stringify({ id, status }),
-    });
-    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-  } catch (err) {
-    // The save failed, so put the buttons back rather than showing a state the
-    // database doesn't have.
-    btn.classList.remove('on');
-    previous?.classList.add('on');
-    updateUnreviewed(status, previous?.dataset.status);
-    alert(`Could not save status: ${err.message}`);
-  }
-});
-
-/** Keep the header count in step without refetching the whole list. */
-function updateUnreviewed(from, to) {
-  if (from === to) return;
-  if (from === 'new') unreviewed--;
-  if (to === 'new') unreviewed++;
-  renderCount();
 }
 
 let t;

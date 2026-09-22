@@ -10,13 +10,10 @@ import { DatabaseSync } from 'node:sqlite';
 import { createHash } from 'node:crypto';
 import { mkdirSync } from 'node:fs';
 import { dirname, resolve } from 'node:path';
-import type { JobPosting, JobStatus } from '../types.js';
+import type { JobPosting } from '../types.js';
 import { normalizeTitle } from './roles.js';
 
-/**
- * JT_DATA_DIR points this at a mounted volume when deployed, so the database (and
- * with it every applied/interview mark) survives a redeploy. Unset locally.
- */
+/** JT_DATA_DIR points this at a mounted volume when deployed. Unset locally. */
 export const DB_PATH = resolve(process.env.JT_DATA_DIR ?? resolve(process.cwd(), 'data'), 'jobs.db');
 
 /** Strip qualifiers that differ between sources for the same underlying job. */
@@ -30,7 +27,7 @@ function identityTitle(title: string): string {
 }
 
 export function jobId(company: string, title: string, country: string, region: string | null): string {
-  // Preserve pre-country Canadian IDs so existing application statuses are retained.
+  // Preserve pre-country Canadian IDs so existing postings retain their identity.
   const place = country === 'CA' ? (region ?? '') : `${country}:${region ?? ''}`;
   const key = [company.toLowerCase().trim(), identityTitle(title), place].join('|');
   return createHash('sha256').update(key).digest('hex').slice(0, 16);
@@ -72,12 +69,9 @@ export function openDb(path = DB_PATH): DatabaseSync {
       work_term_confidence TEXT NOT NULL DEFAULT 'unspecified',
       work_term_matched_by TEXT,
       sponsorship       TEXT,
-      description       TEXT,
-      status            TEXT NOT NULL DEFAULT 'new',
-      notes             TEXT
+      description       TEXT
     );
     CREATE INDEX IF NOT EXISTS idx_jobs_first_seen ON jobs(first_seen_at DESC);
-    CREATE INDEX IF NOT EXISTS idx_jobs_status     ON jobs(status);
     CREATE INDEX IF NOT EXISTS idx_jobs_category   ON jobs(role_category);
     CREATE TABLE IF NOT EXISTS runs (
       id        INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -94,7 +88,7 @@ export function openDb(path = DB_PATH): DatabaseSync {
   `);
 
   // Databases created before country support are upgraded in place. Keeping the
-  // original IDs preserves status/notes and avoids re-announcing every Canadian job.
+  // original IDs avoids re-announcing every Canadian job.
   const columns = new Set(
     (db.prepare('PRAGMA table_info(jobs)').all() as Array<{ name: string }>).map((column) => column.name),
   );
@@ -126,10 +120,7 @@ export interface UpsertResult {
   newJobs: JobPosting[];
 }
 
-/**
- * Insert new postings; for ones already known, refresh last_seen and merge the source
- * list. Never overwrites `status` or `notes`, that is the user's own tracking data.
- */
+/** Insert new postings; for known ones, refresh last_seen and merge the source list. */
 export function upsertJobs(db: DatabaseSync, jobs: JobPosting[]): UpsertResult {
   const existing = db.prepare('SELECT id, sources FROM jobs WHERE id = ?');
   const insert = db.prepare(`
@@ -138,11 +129,11 @@ export function upsertJobs(db: DatabaseSync, jobs: JobPosting[]): UpsertResult {
       posted_at, first_seen_at, last_seen_at, salary_raw, salary_min, salary_max,
       salary_currency, type, role_category, matched_by, location_confidence,
       location_matched_by, work_term_months, work_term_confidence,
-      work_term_matched_by, sponsorship, description, status
+      work_term_matched_by, sponsorship, description
     ) VALUES (
       ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
       ?, ?, ?, ?, ?, ?, ?, ?, ?, ?,
-      ?, ?, ?, ?, ?, ?, ?, ?
+      ?, ?, ?, ?, ?, ?, ?
     )
   `);
   const update = db.prepare(`
@@ -185,7 +176,7 @@ export function upsertJobs(db: DatabaseSync, jobs: JobPosting[]): UpsertResult {
           j.salaryRaw, j.salaryMin, j.salaryMax, j.salaryCurrency, j.type,
           j.roleCategory, j.matchedBy, j.locationConfidence, j.locationMatchedBy,
           j.workTermMonths, j.workTermConfidence, j.workTermMatchedBy, j.sponsorship,
-          j.description, j.status,
+          j.description,
         );
         inserted++;
         newJobs.push(j);
@@ -212,22 +203,13 @@ export function recordRun(
 /**
  * Delete postings older than `days`, so the table only ever holds current listings.
  *
- * Two deliberate exemptions:
- *  - rows with no `posted_at` (about a third of them, from lists with no date column)
- *    would all be deleted by a naive date comparison
- *  - anything you have marked, since that is your own tracking rather than a listing,
- *    and losing an applied job because the posting aged out would be worse than a
- *    stale row
+ * Rows with no `posted_at` (about a third of them, from lists with no date column)
+ * are exempt because a date comparison cannot determine their age.
  */
 export function pruneStale(db: DatabaseSync, days = 30): number {
   return db.prepare(`
     DELETE FROM jobs
     WHERE posted_at IS NOT NULL
       AND posted_at < datetime('now', ?)
-      AND status = 'new'
   `).run(`-${Math.floor(days)} days`).changes as number;
-}
-
-export function setStatus(db: DatabaseSync, id: string, status: JobStatus): void {
-  db.prepare('UPDATE jobs SET status = ? WHERE id = ?').run(status, id);
 }

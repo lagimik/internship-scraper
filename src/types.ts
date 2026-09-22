@@ -9,7 +9,6 @@ export type RoleCategory =
   | 'materials-engineering'
   | 'project-management'
   | 'program-management';
-export type JobStatus = 'new' | 'applied' | 'interview' | 'rejected' | 'offer';
 export type CountryCode = 'CA' | 'US';
 export type LocationConfidence = 'confirmed' | 'ambiguous';
 export type WorkTermConfidence = 'confirmed' | 'inferred' | 'unspecified';
@@ -47,7 +46,6 @@ export interface JobPosting {
   workTermMatchedBy: string | null;
   sponsorship: string | null;
   description: string | null;
-  status: JobStatus;
 }
 
 /** What an adapter returns before storage fills in bookkeeping fields. */
@@ -55,7 +53,6 @@ export type RawJob = Omit<
   JobPosting,
   | 'id'
   | 'firstSeenAt'
-  | 'status'
   | 'country'
   | 'region'
   | 'roleCategory'
