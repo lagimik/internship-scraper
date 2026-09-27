@@ -1,7 +1,16 @@
 {
   "schema_version": 1,
-  "updated_at": "2026-09-21T00:00:00Z",
+  "updated_at": "2026-09-27T01:18:25Z",
   "roles": [
+    {
+      "company": "ABB",
+      "title": "Mechanical Test Engineer Intern-Winter 2027",
+      "source_url": "https://careers.abb/global/en/job/JR00048453/Mechanical-Test-Engineer-Intern-Winter-2027",
+      "assessment_path": "output/ABB/Mechanical Test Engineer Intern-Winter 2027/fit-assessment.md",
+      "fit": "strong",
+      "summary": "The candidate directly satisfies the mechanical-engineering education requirement and brings unusually relevant hands-on evidence in measurement, inspection, mockup testing, test-property review, and technical documentation. Instrument calibration, certification-database work, and MS Office remain unverified, but none displaces the strong coverage of the role's central test-execution responsibilities.",
+      "assessed_at": "2026-09-27"
+    },
     {
       "company": "ABB",
       "title": "Production Intern - Winter 2027",
@@ -39,6 +48,24 @@
       "assessed_at": "2026-09-21"
     },
     {
+      "company": "Arcelor Mittal",
+      "title": "Stagiaire génie mécanique - Hiver 2027",
+      "source_url": "https://emfg.fa.em4.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_4001/job/41854",
+      "assessment_path": "output/Arcelor Mittal/Stagiaire génie mécanique - Hiver 2027/fit-assessment.md",
+      "fit": "strong",
+      "summary": "Le candidat satisfait directement aux études en génie mécanique et démontre une expérience manufacturière très pertinente en entretien, planification, fiabilité pratique, schémas/dessins, amélioration mécanique, hydraulique et sécurité dans des projets nucléaires et de production. L'anglais fonctionnel et l'expérience en milieu syndiqué ne sont pas établis dans le CV; ce dernier élément n'est toutefois qu'un atout.",
+      "assessed_at": "2026-09-27"
+    },
+    {
+      "company": "Arup",
+      "title": "Mechanical Engineering Intern (January - April 2027)",
+      "source_url": "https://jobs.arup.com/jobs/mechanical-engineering-intern-january-april-2027-34431",
+      "assessment_path": "output/Arup/Mechanical Engineering Intern (January - April 2027)/fit-assessment.md",
+      "fit": "medium",
+      "summary": "The candidate has the required mechanical-engineering enrolment plus strong CAD, FEA, manufacturing-drawing, mechanical-system, Python, collaboration, and quantified design-improvement evidence. However, the resume does not establish HVAC/building-services design, Revit MEP, building energy/load/airflow modelling, the preferred thermal/fluid coursework, professional-association eligibility, or Canadian work authorization.",
+      "assessed_at": "2026-09-27"
+    },
+    {
       "company": "BBA",
       "title": "Intern, Industrial Building Mechanical Systems - Winter 2027",
       "source_url": "https://bba.csod.com/ux/ats/careersite/5/home/requisition/3192?c=bba",
@@ -55,6 +82,33 @@
       "fit": "medium",
       "summary": "The candidate directly matches Mechanical Engineering, SolidWorks, drawings, quality control, and heavy-industry work through nuclear and power-generation projects. Tubing work is transferable to piping, but professional piping calculations and specifications are not established. Advanced French, a core communication requirement, also needs confirmation.",
       "assessed_at": "2026-09-21"
+    },
+    {
+      "company": "BC Hydro",
+      "title": "Co-op Student - General Mechanical Engineering - January Winter 2027",
+      "source_url": "https://app.bchydro.com/sap/bc/webdynpro/sap/hrrcf_a_posting_apply?PARAM=cG9zdF9pbnN0X2d1aWQ9M0ExODRDMTRBMTBCMUZEMUFBOTI3MzNDNjUxM0MwNDUmY2FuZF90eXBlPUVYVA%3d%3d&sap-theme=sap_belize&sap-client=100&sap-language=EN&sap-accessibility=X&saml2=disabled&sap-theme=sap_belize&sap-wd-configid=ZHRRCF_A_UNREG_JOB_SEARCH",
+      "assessment_path": "output/BC Hydro/Co-op Student - General Mechanical Engineering - January Winter 2027/fit-assessment.md",
+      "fit": "medium",
+      "summary": "The candidate directly meets the Canadian mechanical-engineering study and second-year requirements and has strong drawing, communication, motivation, results, office/field, and safety-sensitive-industry evidence. A valid Class 5 Driver’s Licence and MS Office proficiency are explicit but unverified, leaving a material eligibility gap despite otherwise strong alignment.",
+      "assessed_at": "2026-09-27"
+    },
+    {
+      "company": "BC Hydro",
+      "title": "Co-op Student – Civil or Mechanical Engineering (Revelstoke) – January Winter 2027",
+      "source_url": "https://app.bchydro.com/sap/bc/webdynpro/sap/hrrcf_a_posting_apply?PARAM=cG9zdF9pbnN0X2d1aWQ9M0ExODRDMTRBMTBCMUZEMUFBOTI3NTA4QUZCQjAwMjUmY2FuZF90eXBlPUVYVA%3d%3d&sap-theme=sap_belize&sap-client=100&sap-language=EN&sap-accessibility=X&saml2=disabled&sap-theme=sap_belize&sap-wd-configid=ZHRRCF_A_UNREG_JOB_SEARCH",
+      "assessment_path": "output/BC Hydro/Co-op Student – Civil or Mechanical Engineering (Revelstoke) – January Winter 2027/fit-assessment.md",
+      "fit": "medium",
+      "summary": "The candidate meets the mechanical-engineering education and return-to-school requirements and has direct evidence in field-service support, drawings, inspections, non-conformance prevention, technical coordination, initiative, and problem solving. The resume does not confirm a Class 5 licence, field-construction interest, relocation, testing conditions, or presentation proficiency, so meaningful logistical and eligibility gaps remain.",
+      "assessed_at": "2026-09-27"
+    },
+    {
+      "company": "BC Hydro",
+      "title": "Co-op Student – Project Management – PMO (EV Service Delivery) - January Winter 2027",
+      "source_url": "https://app.bchydro.com/sap/bc/webdynpro/sap/hrrcf_a_posting_apply?PARAM=cG9zdF9pbnN0X2d1aWQ9M0ExODRDMTRBMTBCMUZEMUFBRjVFQkQ0QkJFNTAwMjYmY2FuZF90eXBlPUVYVA%3d%3d&sap-theme=sap_belize&sap-client=100&sap-language=EN&sap-accessibility=X&saml2=disabled&sap-theme=sap_belize&sap-wd-configid=ZHRRCF_A_UNREG_JOB_SEARCH",
+      "assessment_path": "output/BC Hydro/Co-op Student – Project Management – PMO (EV Service Delivery) - January Winter 2027/fit-assessment.md",
+      "fit": "medium",
+      "summary": "The candidate meets student eligibility and has direct evidence of cross-functional coordination, reporting, prioritization, measurable improvement, technical breadth, and production planning. These skills transfer credibly to a PMO, but the resume does not establish ownership of concurrent projects, milestone/scorecard tracking, formal risk management, senior-audience presentations, customer partnerships, or EV-program experience.",
+      "assessed_at": "2026-09-27"
     },
     {
       "company": "Bosch Home Comfort",
@@ -84,6 +138,24 @@
       "assessed_at": "2026-09-21"
     },
     {
+      "company": "GE Vernova",
+      "title": "Stagiaire Concepteur Mécanique Turbine",
+      "source_url": "https://careers.gevernova.com/stagiaire-concepteur-m%C3%A9canique-turbine/job/R5051913",
+      "assessment_path": "output/GE Vernova/Stagiaire Concepteur Mécanique Turbine/fit-assessment.md",
+      "fit": "strong",
+      "summary": "The candidate directly meets the mechanical-engineering education, work-experience, CAD, mechanical-analysis, and hydro/power-adjacent design needs through Waterloo Mechanical Engineering, three engineering co-ops, SolidWorks/Solid Edge/AutoCAD/Fusion 360, FEA, and power-generation welding work. Fluid mechanics, vibration, Word/Excel, and written-English proficiency are not explicitly evidenced, but no known core eligibility gap is present.",
+      "assessed_at": "2026-09-27"
+    },
+    {
+      "company": "General Motors",
+      "title": "2027 Winter Co-op - CCA Manufacturing Engineering",
+      "source_url": "https://generalmotors.wd5.myworkdayjobs.com/en-CA/Careers_GM/job/Oshawa-Ontario-Canada/XMLNAME-2027-Winter-Co-op---CCA-Manufacturing-Engineering_JR-202618667",
+      "assessment_path": "output/General Motors/2027 Winter Co-op - CCA Manufacturing Engineering/fit-assessment.md",
+      "fit": "medium",
+      "summary": "The candidate has unusually relevant manufacturing, supervision, safety-conscious quality, Lean/5S, automation, troubleshooting-adjacent, and process-improvement evidence. However, the explicit 8- or 12-month term, Canadian work authorization/no-sponsorship condition, co-op-program eligibility, plant-hour flexibility, and Microsoft Office suite need confirmation.",
+      "assessed_at": "2026-09-27"
+    },
+    {
       "company": "General Motors",
       "title": "2027 Winter Co-Op - Student Production Group Leader (Evergreen)",
       "source_url": "https://generalmotors.wd5.myworkdayjobs.com/en-US/Careers_GM/job/Oshawa-Ontario-Canada/XMLNAME-2027-Winter-Co-Op---Student-Production-Group-Leader--Evergreen-_JR-202618703",
@@ -111,6 +183,24 @@
       "assessed_at": "2026-09-19"
     },
     {
+      "company": "GoMaterials",
+      "title": "Data Quality Intern - Winter 2027",
+      "source_url": "https://jobs.lever.co/gomaterials/be3fb0e8-54a1-43de-b998-99dd071eed19/apply",
+      "assessment_path": "output/GoMaterials/Data Quality Intern - Winter 2027/fit-assessment.md",
+      "fit": "medium",
+      "summary": "Quality inspection, material-data verification, drawing-change control, Python, and cross-functional operations experience transfer credibly to detecting errors and maintaining consistent data. The resume does not establish intermediate Excel, databases/data entry, HubSpot, explicit data cleaning/imports, language proficiency, or whether Mechanical Engineering is accepted as a related field.",
+      "assessed_at": "2026-09-27"
+    },
+    {
+      "company": "Gradient Robotics",
+      "title": "Mechanical Engineer Intern (Winter 2027)",
+      "source_url": "https://jobs.ashbyhq.com/gradientrobotics/477ee28b-2e05-4ac0-bf9e-d6bc2aa67de0",
+      "assessment_path": "output/Gradient Robotics/Mechanical Engineer Intern (Winter 2027)/fit-assessment.md",
+      "fit": "medium",
+      "summary": "The candidate directly demonstrates CAD, FEA, fabrication-aware design, fixtures, assemblies, testing, and iterative hardware improvement across co-ops and student projects. Material gaps remain in hands-on machining, explicit hand calculations/tolerance stacks/fastener selection, CAM/toolpaths, U.S. work authorization, and ability to sustain the unusually demanding San Francisco onsite schedule.",
+      "assessed_at": "2026-09-27"
+    },
+    {
       "company": "Hatch",
       "title": "Winter 2027 - Piping Engineering Co-op - High Pressure Metallurgy",
       "source_url": "https://jobs.hatch.com/job/Mississauga-Winter-2027-Piping-Engineering-Co-op-High-Pressure-Metallurgy-ON/1427670800/",
@@ -118,6 +208,24 @@
       "fit": "medium",
       "summary": "Mechanical Engineering study, industrial co-op experience, drawings, GD&T, FEA, material verification, tubing assembly, testing, and cross-functional work provide a credible foundation. Professional piping calculations, P&IDs, hydraulic software, process equipment, ASME design, hazard reviews, and cost estimates remain meaningful gaps.",
       "assessed_at": "2026-09-21"
+    },
+    {
+      "company": "HDR",
+      "title": "Mechanical Co-op (Winter 2027)",
+      "source_url": "https://hdr.taleo.net/careersection/ex/jobdetail.ftl?job=196489&lang=en",
+      "assessment_path": "output/HDR/Mechanical Co-op (Winter 2027)/fit-assessment.md",
+      "fit": "strong",
+      "summary": "The candidate directly meets every stated required qualification through Mechanical Engineering enrollment, precision quality work, engineering problem solving, cross-functional reporting, and active team participation. CAD/FEA and design experience also transfer well to building systems; the meaningful gaps—BIM, IES VE, consulting experience, Microsoft Office confirmation, and preferred academic-year/GPA criteria—are preferred or readily confirmable rather than core disqualifiers.",
+      "assessed_at": "2026-09-27"
+    },
+    {
+      "company": "J.D. Irving",
+      "title": "Build Readiness Production Engineering Student/Co-op- Winter 2027",
+      "source_url": "https://hcpd.fa.ca2.oraclecloud.com/hcmUI/CandidateExperience/en/sites/Careers/job/12312",
+      "assessment_path": "output/J.D. Irving/Build Readiness Production Engineering Student-Co-op- Winter 2027/fit-assessment.md",
+      "fit": "medium",
+      "summary": "The candidate directly covers fixture/tooling design, manufacturing drawings, AutoCAD, 3D CAD, GD&T, production planning, inspection, process improvement, and cross-functional execution. Shipbuilding disciplines, NC nesting/time studies/work instructions, Microsoft Office, security/Controlled Goods/ITAR eligibility, and Dartmouth in-office availability remain gaps or confirmations, including a potentially material eligibility condition.",
+      "assessed_at": "2026-09-27"
     },
     {
       "company": "J.D. Irving",
@@ -219,6 +327,15 @@
       "assessed_at": "2026-09-21"
     },
     {
+      "company": "Johnson & Johnson",
+      "title": "Project Delivery Digital Engineering & Property Services Co-op",
+      "source_url": "https://jj.wd5.myworkdayjobs.com/JJ/job/New-Brunswick-New-Jersey-United-States-of-America/Project-Delivery-Digital-Engineering---Property-Services-Co-Op_R-096717",
+      "assessment_path": "output/Johnson & Johnson/Project Delivery Digital Engineering & Property Services Co-op/fit-assessment.md",
+      "fit": "moonshot",
+      "summary": "The candidate has transferable Python/C++/C#, engineering problem solving, reporting, and cross-functional coordination, but the role's core is software/data/AI/cloud engineering: full-stack development, APIs, databases, Power BI, machine learning, cloud platforms, and web maintenance are unsupported. Permanent U.S. work authorization without future sponsorship and the 3.0 GPA also require confirmation.",
+      "assessed_at": "2026-09-27"
+    },
+    {
       "company": "Kinaxis",
       "title": "AI Quality Co-op Intern - Evaluation & Security",
       "source_url": "https://careers-kinaxis.icims.com/jobs/35378/job?mobile=true&needsRedirect=false",
@@ -226,6 +343,15 @@
       "fit": "moonshot",
       "summary": "Python, manufacturing exposure, quality validation, and clear technical documentation offer a narrow transferable base. The role centers on software engineering, GitHub-native development, AI-agent evaluation, test infrastructure, observability, and security, and the source resume provides no direct evidence for most of those core requirements. The 8- or 12-month term also needs confirmation.",
       "assessed_at": "2026-09-19"
+    },
+    {
+      "company": "Lockheed Martin",
+      "title": "Winter 2027 - Co-op - Business Management - Production Control",
+      "source_url": "https://lockheedmartin.eightfold.ai/careers/job/996476845849",
+      "assessment_path": "output/Lockheed Martin/Winter 2027 - Co-op - Business Management - Production Control/fit-assessment.md",
+      "fit": "medium",
+      "summary": "Direct manufacturing, production coordination, maintenance scheduling, quality, reporting, Lean, and cross-functional evidence aligns unusually well with the work. The candidate's Mechanical Engineering program may qualify as a related field, but that interpretation needs employer confirmation; ERP/MRP/SAP, Microsoft Office, formal data-analysis tools, and January 2027 onsite availability are not established.",
+      "assessed_at": "2026-09-27"
     },
     {
       "company": "Lockheed Martin",
@@ -237,6 +363,15 @@
       "assessed_at": "2026-09-21"
     },
     {
+      "company": "Lockheed Martin",
+      "title": "Winter 2027 Co-op - Mechanical Engineering Tech - Manufacturing Support",
+      "source_url": "https://lockheedmartin.eightfold.ai/careers/job/996476846361",
+      "assessment_path": "output/Lockheed Martin/Winter 2027 Co-op - Mechanical Engineering Tech - Manufacturing Support/fit-assessment.md",
+      "fit": "medium",
+      "summary": "The resume directly supports manufacturing, drawings, engineering changes, production coordination, quality, Lean/5S, and cross-functional work. The BASc is adjacent to—but not the exact technician diploma named—and SAP/ERP, Office, formal analytics, Enhanced Security eligibility, and term availability remain unconfirmed.",
+      "assessed_at": "2026-09-27"
+    },
+    {
       "company": "MDA Space",
       "title": "Engineering student - Mechanical Design - Winter 2027",
       "source_url": "https://recruiting.ultipro.ca/MAC5000MCDW/JobBoard/7667adcc-47ae-477a-9183-0d8ef8bc0748/OpportunityDetail?opportunityId=87e553cb-d4ba-418b-b938-250f209b334f",
@@ -244,6 +379,15 @@
       "fit": "strong",
       "summary": "Direct evidence covers Mechanical Engineering education, 3D CAD, mechanical design, manufacturing drawings, GD&T, documentation, prior technical internships, manufacturing support, and cross-functional coordination. Siemens NX is not listed, but the posting provides NX training and the candidate has experience with four other CAD packages. Mass budgets, parts lists, purchasing support, GPA, completed-third-year status, and Controlled Goods Program eligibility remain unverified.",
       "assessed_at": "2026-09-19"
+    },
+    {
+      "company": "MDA Space",
+      "title": "Engineering Student - Quality Assurance - Winter 2027",
+      "source_url": "https://recruiting.ultipro.ca/MAC5000MCDW/JobBoard/7667adcc-47ae-477a-9183-0d8ef8bc0748/OpportunityDetail?opportunityId=c40cad1e-fca3-424b-b61c-5522d5db4b2c",
+      "assessment_path": "output/MDA Space/Engineering Student - Quality Assurance - Winter 2027/fit-assessment.md",
+      "fit": "medium",
+      "summary": "The candidate has exceptionally direct mechanical engineering, manufacturing QA, drawing/change-control, inspection, non-conformance, documentation, and process-improvement evidence. However, bilingual French/English ability, CGP assessment eligibility, January 2027 availability, and transcript status are not established and are material constraints.",
+      "assessed_at": "2026-09-27"
     },
     {
       "company": "Procter & Gamble",
@@ -355,6 +499,15 @@
     },
     {
       "company": "RTX",
+      "title": "Mechanical Engineering Co-op (Winter/Spring 2027)",
+      "source_url": "https://globalhr.wd5.myworkdayjobs.com/en-US/REC_RTX_Ext_Gateway/job/US-IL-ROCKFORD-P6--4747-Harrison-Ave--4747-HARRISON-AVE-P6/Mechanical-Engineering-Co-op--Winter-Spring-2027-_01872583",
+      "assessment_path": "output/RTX/Mechanical Engineering Co-op (Winter-Spring 2027)/fit-assessment.md",
+      "fit": "medium",
+      "summary": "Mechanical Engineering enrollment, MATLAB/CAD/AutoCAD, drawings, engineering changes, testing, non-conformance, manufacturing, and cross-functional experience directly support the technical work. U.S. citizenship—a mandatory eligibility condition—is not established, and Office, 60-credit status, long-term availability, and formal presentation proficiency need confirmation.",
+      "assessed_at": "2026-09-27"
+    },
+    {
+      "company": "RTX",
       "title": "Performance Indicator Development and Process and Project Management Internship",
       "source_url": "https://globalhr.wd5.myworkdayjobs.com/rec_rtx_ext_gateway/job/CA-QC-LONGUEUIL-J01--1000-Blvd-Marie-Victorin--J01-BLDG/Stage---Hiver-2027---Dveloppement-d-indicateurs-de-performance-et-gestion-des-processus-et-projets---Internship---Winter-2027--Development-of-Performance-Indicators-and-Process-and-Project-Management_01867284",
       "assessment_path": "output/RTX/Performance Indicator Development and Process and Project Management Internship/fit-assessment.md",
@@ -370,6 +523,24 @@
       "fit": "medium",
       "summary": "The candidate meets the Mechanical Engineering requirement and has relevant Pratt & Whitney, quality, design-change, conformance, process, and testing evidence. The role's core product-integrity scope, including aerospace certification, safety-critical parts, design escapes, audit corrective actions, databases, and SharePoint, is not directly evidenced.",
       "assessed_at": "2026-09-19"
+    },
+    {
+      "company": "RTX",
+      "title": "Production Support Engineering Co-op (Winter/Spring 2027)",
+      "source_url": "https://globalhr.wd5.myworkdayjobs.com/en-CA/REC_RTX_Ext_Gateway/job/US-CT-MIDDLETOWN-220A--Aircraft-Rd--BLDG-220A/Production-Support-Engineering-Co-op--Winter-Spring-2027-_01872654",
+      "assessment_path": "output/RTX/Production Support Engineering Co-op (Winter-Spring 2027)/fit-assessment.md",
+      "fit": "medium",
+      "summary": "Mechanical Engineering enrollment, CAD, Pratt & Whitney shop-floor experience, component conformance, drawings, rework reduction, testing, reporting, and cross-functional coordination strongly align. Mandatory U.S. citizenship is not established; credit count, full-term availability, Office, SAP, QN/RTX CORE, and formal RCCA need confirmation.",
+      "assessed_at": "2026-09-27"
+    },
+    {
+      "company": "RTX",
+      "title": "Project Engineering Co-op (Winter/Spring 2027)",
+      "source_url": "https://globalhr.wd5.myworkdayjobs.com/en-CA/REC_RTX_Ext_Gateway/job/US-CT-WINDSOR-LOCKS-B1A--1-Hamilton-Rd--BLDG-1A/Project-Engineering-Co-op--Winter-Spring-2027-_01872926",
+      "assessment_path": "output/RTX/Project Engineering Co-op (Winter-Spring 2027)/fit-assessment.md",
+      "fit": "medium",
+      "summary": "The candidate directly meets STEM enrollment and offers strong transferable production scheduling, engineering-change, requirements conformance, root-cause-adjacent, and cross-functional execution evidence. Mandatory U.S. citizenship is not established, while Microsoft Project/Office, formal milestone-budget ownership, aerospace design reviews, and full-term availability remain gaps or need confirmation.",
+      "assessed_at": "2026-09-27"
     },
     {
       "company": "RTX",
@@ -400,6 +571,15 @@
     },
     {
       "company": "RTX",
+      "title": "Stage - Hiver 2027 - Gestionnaire de projet - Acquisition Capital et Développement des technologies manufacturières  / Internship - Winter 2027 - Project Manager - Capital Acquisition & Manufacturing Technology Development",
+      "source_url": "https://globalhr.wd5.myworkdayjobs.com/en-CA/REC_RTX_Ext_Gateway/job/CA-QC-LONGUEUIL-J01--1000-Blvd-Marie-Victorin--J01-BLDG/Stage---Hiver-2027---Gestionnaire-de-projet---Acquisition-Capital-et-Dveloppement-des-technologies-manufacturires----Internship---Winter-2027---Project-Manager---Capital-Acquisition---Manufacturing-Technology-Development_01876956",
+      "assessment_path": "output/RTX/Stage - Hiver 2027 - Gestionnaire de projet - Acquisition Capital et Développement des technologies manufacturières  - Internship - Winter 2027 - Project Manager - Capital Acquisition & Manufacturing Technology Development/fit-assessment.md",
+      "fit": "medium",
+      "summary": "Direct manufacturing, drawing, lean, and production-coordination evidence supports the role, but French/English proficiency and work eligibility need confirmation, and SAP, VXelements/PolyWorks, and formal capital-equipment ownership are not documented.",
+      "assessed_at": "2026-09-27"
+    },
+    {
+      "company": "RTX",
       "title": "Stage - Hiver 2027 - Génie manufacturier / Internship - Winter 2027 - Manufacturing Engineering",
       "source_url": "https://globalhr.wd5.myworkdayjobs.com/en-US/REC_RTX_Ext_Gateway/job/CA-QC-LONGUEUIL-J01--1000-Blvd-Marie-Victorin--J01-BLDG/Stage---Hiver-2027---Gnie-manufacturier---Internship---Winter-2027---Manufacturing-Engineering_01871164",
       "assessment_path": "output/RTX/Stage - Hiver 2027 - Génie manufacturier - Internship - Winter 2027 - Manufacturing Engineering/fit-assessment.md",
@@ -409,12 +589,30 @@
     },
     {
       "company": "RTX",
+      "title": "Stage - Hiver 2027 - Génie mécanique – Installations d’essais / Internship - Winter 2027 - Mechanical Engineering – Test Facilities",
+      "source_url": "https://globalhr.wd5.myworkdayjobs.com/en-US/REC_RTX_Ext_Gateway/job/CA-QC-LONGUEUIL-J01--1000-Blvd-Marie-Victorin--J01-BLDG/Stage---Hiver-2027---Gnie-mcanique---Installations-d-essais---Internship---Winter-2027---Mechanical-Engineering---Test-Facilities_01872695",
+      "assessment_path": "output/RTX/Stage - Hiver 2027 - Génie mécanique – Installations d’essais - Internship - Winter 2027 - Mechanical Engineering – Test Facilities/fit-assessment.md",
+      "fit": "medium",
+      "summary": "The mechanical-engineering degree, technical drawings, test work, and cross-functional industrial experience transfer well, but hydrogen-combustion test-stand and construction-site experience are absent, while bilingual proficiency, travel, eligibility, and clearance remain unconfirmed.",
+      "assessed_at": "2026-09-27"
+    },
+    {
+      "company": "RTX",
       "title": "Stage - Hiver 2027 - Ingénierie de fabrication / Internship - Winter 2027 - Manufacturing Engineer",
       "source_url": "https://globalhr.wd5.myworkdayjobs.com/en-US/REC_RTX_Ext_Gateway/job/CA-QC-LONGUEUIL-J01--1000-Blvd-Marie-Victorin--J01-BLDG/Stage---Hiver-2027---Ingnierie-de-fabrication---Internship---Winter-2027---Manufacturing-Engineer_01864153",
       "assessment_path": "output/RTX/Stage - Hiver 2027 - Ingénierie de fabrication - Internship - Winter 2027 - Manufacturing Engineer/fit-assessment.md",
       "fit": "strong",
       "summary": "Mechanical Engineering, manufacturing drawings, GD&T, metrology, part conformance, materials verification, manufacturing support, and prior P&WC production experience directly cover the central work. Training media, language, eligibility, and clearances remain unverified.",
       "assessed_at": "2026-09-21"
+    },
+    {
+      "company": "RTX",
+      "title": "Stage - Hiver 2027 - Ingénierie de projet / Internship – Winter 2027 – Project Engineering",
+      "source_url": "https://globalhr.wd5.myworkdayjobs.com/en-CA/REC_RTX_Ext_Gateway/job/CA-QC-LONGUEUIL-J01--1000-Blvd-Marie-Victorin--J01-BLDG/Stage---Hiver-2027---Ingnierie-de-projet---Internship---Winter-2027---Project-Engineering_01877428",
+      "assessment_path": "output/RTX/Stage - Hiver 2027 - Ingénierie de projet - Internship – Winter 2027 – Project Engineering/fit-assessment.md",
+      "fit": "medium",
+      "summary": "Mechanical education plus coordination, scheduling, manufacturing, testing, and drawing-change evidence provides a credible project-engineering base, but aircraft-engine development, MS Project/Excel proficiency, bilingual proficiency, eligibility, and clearance are not established.",
+      "assessed_at": "2026-09-27"
     },
     {
       "company": "RTX",
@@ -445,12 +643,30 @@
     },
     {
       "company": "RTX",
+      "title": "Stage - Hiver 2027 - Stage en conception mécanique – Support aux opérations / Internship - Winter 2027 - Mechanical Designer - Support to operations",
+      "source_url": "https://globalhr.wd5.myworkdayjobs.com/en-CA/REC_RTX_Ext_Gateway/job/CA-QC-LONGUEUIL-J01--1000-Blvd-Marie-Victorin--J01-BLDG/Stage---Hiver-2027---Stage-en-conception-mcanique---Support-aux-oprations---Internship---Winter-2027---Mechanical-Designer---Support-to-operations_01877752",
+      "assessment_path": "output/RTX/Stage - Hiver 2027 - Stage en conception mécanique – Support aux opérations - Internship - Winter 2027 - Mechanical Designer - Support to operations/fit-assessment.md",
+      "fit": "strong",
+      "summary": "Direct design, GD&T drawing, producibility, nonconformance, manufacturing, testing, and project-coordination evidence covers most core work; supplier substantiation, language proficiency, eligibility, and clearance still need confirmation.",
+      "assessed_at": "2026-09-27"
+    },
+    {
+      "company": "RTX",
       "title": "Stage - Hiver 2027 - Transformation numerique de la fabrication aeronautique / Internship - Winter 2027 - Digital Transformation of Aeronautic Manufacturing",
       "source_url": "https://globalhr.wd5.myworkdayjobs.com/en-US/REC_RTX_Ext_Gateway/job/CA-QC-LONGUEUIL-J01--1000-Blvd-Marie-Victorin--J01-BLDG/Stage---hiver-2027---Transformation-numerique-de-la-fabrication-aeronautique---Internship---Winter-2027---Digital-Transformation-of-Aeronautic-Manufacturing_01865735",
       "assessment_path": "output/RTX/Stage - Hiver 2027 - Transformation numerique de la fabrication aeronautique - Internship - Winter 2027 - Digital Transformation of Aeronautic Manufacturing/fit-assessment.md",
       "fit": "strong",
       "summary": "Mechanical Engineering, C#/Python, 3D design, drawings, GD&T, CMM inspection, testing, documentation, manufacturing, and prior Pratt & Whitney Canada experience cover most priorities. CATIA, CAM, SQL, 3D scanning, data-science delivery, language, and clearance remain gaps or unconfirmed.",
       "assessed_at": "2026-09-21"
+    },
+    {
+      "company": "RTX",
+      "title": "Stage - Hiver 2027- Recherche et Developpement en genie manufacturier / Internship - Winter 2027- Manufacturing Engineering Research and Development (R&D)",
+      "source_url": "https://globalhr.wd5.myworkdayjobs.com/en-US/REC_RTX_Ext_Gateway/job/CA-QC-LONGUEUIL-J01--1000-Blvd-Marie-Victorin--J01-BLDG/Stage---Hiver-2027--Recherche-et-Developpement-en-genie-manufacturier---Internship---Winter-2027--Manufacturing-Engineering-Research-and-Development--R-D-_01866178",
+      "assessment_path": "output/RTX/Stage - Hiver 2027- Recherche et Developpement en genie manufacturier - Internship - Winter 2027- Manufacturing Engineering Research and Development (R&D)/fit-assessment.md",
+      "fit": "medium",
+      "summary": "Direct welding-process development, mockup testing, materials review, manufacturing improvement, and cross-functional evidence aligns strongly, but digital manufacturing technologies, metallography, French proficiency, eligibility, and clearance are not documented.",
+      "assessed_at": "2026-09-27"
     },
     {
       "company": "RTX",
@@ -478,6 +694,15 @@
       "fit": "strong",
       "summary": "Direct aerospace manufacturing, tooling, testing, drawings, DFM, production coordination, quality, and process-improvement evidence covers most technical priorities. Sourcing strategy, MRL, cost-risk planning, language, and clearance remain gaps or unconfirmed.",
       "assessed_at": "2026-09-21"
+    },
+    {
+      "company": "RTX",
+      "title": "Stage Hiver 2027 - Ingénierie de projet PT6A / Internship - Winter 2027 - PT6A Project Engineering",
+      "source_url": "https://globalhr.wd5.myworkdayjobs.com/en-US/REC_RTX_Ext_Gateway/job/CA-QC-LONGUEUIL-J01--1000-Blvd-Marie-Victorin--J01-BLDG/Stage-Hiver-2027---Ingnierie-de-projet-PT6A---Internship---Winter-2027---PT6A-Project-Engineering_01868596",
+      "assessment_path": "output/RTX/Stage Hiver 2027 - Ingénierie de projet PT6A - Internship - Winter 2027 - PT6A Project Engineering/fit-assessment.md",
+      "fit": "medium",
+      "summary": "Mechanical education and direct design, manufacturing, test, scheduling, and aerospace-manufacturing evidence transfer to PT6A project support, but engine-program management, certification, PT6A knowledge, French proficiency, eligibility, and clearance remain unverified.",
+      "assessed_at": "2026-09-27"
     },
     {
       "company": "RTX",
